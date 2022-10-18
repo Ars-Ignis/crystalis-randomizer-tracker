@@ -1,7 +1,7 @@
 ﻿{
   "name": "Crystalis Randomizer",
   "game_name": "Crystalis",
-  "package_version": "1.1.3",
+  "package_version": "1.2.0",
   "package_uid": "crystalis_codegorilla",
   "author": "CodeGorilla",
   "variants": {
@@ -10,6 +10,9 @@
     },
     "items_and_map_custom": {
       "display_name": "Map Tracker"
+    },
+    "items_and_map_chat_hud": {
+      "display_name": "ChatHUD Compatible Map Tracker"
     }
   }
 }

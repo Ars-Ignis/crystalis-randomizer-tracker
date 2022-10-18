@@ -8,7 +8,8 @@
 			{
 				"name": "Pyramid Front",
 				"access_rules": [
-					"[$hasAnySword]",
+					"[$hasAnySword], [flag_nw]",
+					"[$hasAnyLevelTwo]"
 				],
 				"sections": [
 					{
@@ -31,7 +32,8 @@
 			{
 				"name": "Pyramid Front",
 				"access_rules": [
-					"$hasAnySword",
+					"$hasAnySword, flag_nw",
+					"$hasAnyLevelTwo"
 				],
 				"sections": [
 					{
@@ -73,7 +75,8 @@
 			{
 				"name": "Pyramid Front",
 				"access_rules": [
-					"$hasAnySword"
+					"$hasAnySword, flag_nw",
+					"$hasAnyLevelTwo"
 				],
 				"sections": [
 					{

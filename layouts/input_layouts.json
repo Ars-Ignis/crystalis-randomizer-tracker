@@ -362,35 +362,6 @@
 		]
 	},
 
-	"tracker_flags": {
-		"type": "array",
-		"orientation": "horizontal",
-		"v_alignment": "top",
-		//"background": "#202a33",
-		"min_width": 356,
-		"min_height": 366,
-		"content": [
-			{
-				"type": "itemgrid",
-				"item_width": 68,
-				"item_height": 32,
-				"v_alignment": "center",
-				"h_alignment": "center",
-				"dropshadow": false,
-				"margin": 11,
-				"rows": [
-					[ "flag_gf", "flag_wm", "flag_me", "flag_nw" ],
-					[ "flag_gs", "flag_wh", "flag_ro", "flag_ns" ],
-					[ "flag_gn", "flag_wt", "flag_rd", "flag_nb" ],
-					[ "flag_gg", "flag_wu", "flag_et", "flag_ng" ],
-					[ "flag_gc", "flag_we", "flag_eu", "flag_vm" ],
-					[ "flag_gt", "flag_wg", "flag_er", "flag_vw" ],
-					[ "flag_gr", "", "",  "flag_vb" ],
-				]
-			}
-		]
-	},
-
 	"tracker_input": {
 		"type": "tabbed",
 		"tabs": [
