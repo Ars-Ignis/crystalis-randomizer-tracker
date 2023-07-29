@@ -65,6 +65,8 @@ v1.2.1
 	-Added support for the new Mg (Oops, All Mimics!) flag
 v1.2.2
 	-Fixed a logic bug with the Gn flag
+v1.3.0
+	-Fixed a logic bug with unidentified bows
 
 Future Release Plans:
 	Wh flag logic
