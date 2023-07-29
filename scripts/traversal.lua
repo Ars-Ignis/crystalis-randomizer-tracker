@@ -139,7 +139,9 @@ function canReachOakFromBrynmaer()
 end
 
 function canReachNadaresFromBrynmaer()
-	return (Tracker:ProviderCountForCode("telepathy") > 0 and Tracker:ProviderCountForCode("teleport") > 0) or (Tracker:ProviderCountForCode("flag_gn") > 0 and Tracker:ProviderCountForCode("flight") > 0) or canTriggerSkip()
+	return  (Tracker:ProviderCountForCode("telepathy") > 0 and Tracker:ProviderCountForCode("teleport") > 0) or 
+			(Tracker:ProviderCountForCode("flag_gn") > 0 and (Tracker:ProviderCountForCode("flight") > 0 or Tracker:ProviderCountForCode("teleport") > 0)) or 
+			canTriggerSkip()
 end
 
 function canReachBrynmaerFromOak()
