@@ -2,7 +2,7 @@
 	{
 		//Oasis Cave
 		"name": "Oasis Cave",
-		"access_rules": ["$canMaybeReach|goa, [$canReach|goa]"],
+		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canOpenChest"],
 		"children": [
 			//Overview with consumables
 			{

@@ -8,8 +8,8 @@
 			{
 				"name": "Mt. Sabre West",
 				"access_rules": [
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet]",
-					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet]"
+					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet], [$canOpenChest]",
+					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet], [$canOpenChest]"
 				],
 				"sections": [
 					{
@@ -32,10 +32,10 @@
 			{
 				"name": "Mt. Sabre West",
 				"access_rules": [
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet]",
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet]",
-					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet]",
-					"flag_wm, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet]",
+					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet], [$canOpenChest]",
+					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet], [$canOpenChest]",
+					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet], [$canOpenChest]",
+					"flag_wm, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet], [$canOpenChest]",
 				],
 				"sections": [
 					{
@@ -59,7 +59,7 @@
 				"name": "Mt. Sabre West",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $canClimbSlope",
-					"flag_wm, $canClimbSlope, [$canBreakSabreWestWalls]"
+					"flag_wm, $canClimbSlope, [$canBreakSabreWestWalls], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -80,8 +80,8 @@
 				"name": "Mt. Sabre West",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
-					"flag_wm, d_sabrewest1",
-					"flag_wm, $canBreakSabreWestWalls"
+					"flag_wm, d_sabrewest1, $canOpenChest",
+					"flag_wm, $canBreakSabreWestWalls, $canOpenChest"
 				],
 				"sections": [
 					{
@@ -103,9 +103,9 @@
 				"name": "Mt. Sabre West",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
-					"flag_wm, d_sabrewest2, [$canBreakSabreWestWalls]",
-					"flag_wm, flight, [$canBreakSabreWestWalls]",
-					"flag_wm, flag_gt, [$canBreakSabreWestWalls]",
+					"flag_wm, d_sabrewest2, [$canBreakSabreWestWalls], $canOpenChest",
+					"flag_wm, flight, [$canBreakSabreWestWalls], $canOpenChest",
+					"flag_wm, flag_gt, [$canBreakSabreWestWalls], $canOpenChest",
 					"flag_wm, $canBreakSabreWestWalls"
 				],
 				"sections": [
@@ -128,7 +128,7 @@
 				"name": "Mt. Sabre West",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
-					"flag_wm, d_sabrewest6",
+					"flag_wm, d_sabrewest6, $canOpenChest",
 					"flag_wm, $canBreakSabreWestWalls"
 				],
 				"sections": [

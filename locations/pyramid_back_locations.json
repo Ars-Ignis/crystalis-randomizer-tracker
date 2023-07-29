@@ -2,7 +2,7 @@
 	{
 		//Pyramid Back
 		"name": "Pyramid Back",
-		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $maybeHasCryptAccess, [$hasCryptAccess]"],
+		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $maybeHasCryptAccess, [$hasCryptAccess], $canOpenChest"],
 		"children": [
 			//Overview with mimics
 			{

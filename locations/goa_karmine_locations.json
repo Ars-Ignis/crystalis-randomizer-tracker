@@ -3,8 +3,8 @@
 		//Goa: Karmine's Floor
 		"name": "Goa: Karmine's Floor",
 		"access_rules": [
-			"$canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance]",
-			"$canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]"
+			"$canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], [$canOpenChest]",
+			"$canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], [$canOpenChest]"
 		],
 		"children": [
 			//Overview with mimics
@@ -94,9 +94,9 @@
 				"name": "Goa: Karmine's Floor",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
-					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
-					"flag_wm, d_goakarmine3, [$canCrossSpikes]",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes]",
+					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
+					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
 				],
 				"sections": [
 					{
@@ -119,9 +119,9 @@
 				"name": "Goa: Karmine's Floor",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
-					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
-					"flag_wm, d_goakarmine3, [$canCrossSpikes]",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes]",
+					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
+					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
 				],
 				"sections": [
 					{
@@ -144,9 +144,9 @@
 				"name": "Goa: Karmine's Floor",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
-					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
-					"flag_wm, d_goakarmine3, [$canCrossSpikes]",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes]",
+					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
+					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
 				],
 				"sections": [
 					{
@@ -192,9 +192,9 @@
 				"name": "Goa: Karmine's Floor",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
-					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
-					"flag_wm, d_goakarmine3, [$canCrossSpikes]",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes]",
+					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
+					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
 				],
 				"sections": [
 					{
@@ -217,9 +217,9 @@
 				"name": "Goa: Karmine's Floor",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
-					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
-					"flag_wm, d_goakarmine3, [$canCrossSpikes]",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes]",
+					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
+					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
 				],
 				"sections": [
 					{

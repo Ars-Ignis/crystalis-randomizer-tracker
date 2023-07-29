@@ -2,7 +2,7 @@
 	{
 		//Pyramid Front
 		"name": "Pyramid Front",
-		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight"],
+		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $canOpenChest"],
 		"children": [
 			//Overview with consumables
 			{

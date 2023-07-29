@@ -3,8 +3,8 @@
 		//Sealed Cave
 		"name": "Sealed Cave",
 		"access_rules": [
-			"$maybeHasWindmillKey, [$hasWindmillKey], $canMaybeReach|leaf, [$canReach|leaf]",
-			"flag_vw"
+			"$maybeHasWindmillKey, [$hasWindmillKey], $canMaybeReach|leaf, [$canReach|leaf], $canOpenChest",
+			"flag_vw, $canOpenChest"
 		],
 		"children": [
 			//Overview with consumables

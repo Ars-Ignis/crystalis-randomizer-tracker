@@ -77,6 +77,10 @@ function hasAllBattleMagic()
 	return hasAllSwords() and hasAllBracelets()
 end
 
+function canOpenChest()
+	return Tracker:ProviderCountForCode("flag_mg") == 0 or hasAnySword()
+end
+
 function canCrossRivers()
 	return Tracker:ProviderCountForCode("flight") > 0 or canBreakEmberWalls()
 end

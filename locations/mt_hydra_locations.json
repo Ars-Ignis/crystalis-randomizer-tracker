@@ -2,7 +2,7 @@
 	{
 		//Mt. Hydra
 		"name": "Mt. Hydra",
-		"access_rules": ["$canMaybeReach|goa, [$canReach|goa]"],
+		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canOpenChest"],
 		"children": [
 			//Overview with mimics
 			{

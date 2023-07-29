@@ -2,7 +2,7 @@
 	{
 		//East Cave
 		"name": "East Cave",
-		"access_rules": ["$canMaybeReach|leaf, [$canReach|leaf]"],
+		"access_rules": ["$canMaybeReach|leaf, [$canReach|leaf], $canOpenChest"],
 		"force_invisibility_rules": ["flag_vm", "flag_vbangm"],
 		"children": [
 			//Overview with consumables

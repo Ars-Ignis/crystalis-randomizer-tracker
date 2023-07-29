@@ -63,6 +63,15 @@
 		"codes": "flag_me"
     },
 	
+	// (Me) Oops, all Mimics!
+	{
+		"name": "Oops, all Mimics!",
+		"type": "toggle",
+		"img": "images/flags/Mg.png",
+		"loop": true,
+		"codes": "flag_mg"
+    },
+	
 	// (Ro) Orbs not required to break walls
 	{
 		"name": "Orbs Not Required to Break Walls",

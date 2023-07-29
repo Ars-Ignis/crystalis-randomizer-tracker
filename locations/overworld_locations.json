@@ -141,10 +141,10 @@
 	{
 		"name": "Amazones",
 		"access_rules": [
-			"change, $canMaybeReach|amazones, [$canReach|amazones]",
-			"paralysis, $canMaybeReach|amazones, [$canReach|amazones]",
-			"flag_gs, $canMaybeReach|amazones, [$canReach|amazones]",
-			"$canTriggerSkip, $canMaybeReach|amazones, [$canReach|amazones]"
+			"change, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+			"paralysis, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+			"flag_gs, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+			"$canTriggerSkip, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest"
 		],
 		"sections": [
 			{
@@ -302,7 +302,6 @@
 	{
 		"name": "Portoa Waterway",
 		"access_rules": [
-			"flight, $canMaybeReach|joel, [$canReach|joel]",
 			"$canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]"
 		],
 		"sections": [
@@ -324,7 +323,7 @@
 	{
 		"name": "Kensu's Beach House",
 		"access_rules": [
-			"$maybeHasFishermanTrade, [$hasFishermanTrade], $canMaybeReach|portoa, [$canReach|portoa]"
+			"$maybeHasFishermanTrade, [$hasFishermanTrade], $canMaybeReach|portoa, [$canReach|portoa], $canOpenChest"
 		],
 		"sections": [
 			{
@@ -368,7 +367,7 @@
 	{
 		"name": "Lighthouse",
 		"access_rules": [
-			"glasses, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|joel, [$canReach|joel]"
+			"glasses, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|joel, [$canReach|joel], $canOpenChest"
 		],
 		"sections": [
 			{
@@ -508,7 +507,7 @@
 		],
 		"sections": [
 			{
-				"name": "Trigger Masscre first",
+				"name": "Trigger Massacre first",
 				"item_count": 1,
 				"hosted_item": "mado1_cleared"
 			}

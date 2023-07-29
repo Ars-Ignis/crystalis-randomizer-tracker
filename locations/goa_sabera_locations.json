@@ -3,8 +3,8 @@
 		//Goa: Sabera's Floor
 		"name": "Goa: Sabera's Floor",
 		"access_rules": [
-			"$canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance]",
-			"$canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit]"
+			"$canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canOpenChest",
+			"$canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canOpenChest"
 		],
 		"children": [
 			//Overview with consumables

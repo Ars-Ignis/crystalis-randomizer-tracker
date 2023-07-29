@@ -61,10 +61,11 @@ v1.1.3
 v1.2.0
 	-Added a ChatHUD compatible variant of the pack.  It does not support the Wt (randomized trade-ins) or Wu (unidentified key items) flags, and will not automatically reset boss or wall tracking when finding new swords and sword upgrades, but it should work for all other cases.
 	-Additional fix to Draygon 1 logic - apparently, the official logic is that Draygon 1 requires a sword if Nw is on, or any level 2 weapon if Nw is off.  The tracker now officially reflects that.
+v1.2.1
+	-Added support for the new Mg (Oops, All Mimics!) flag
 
 Future Release Plans:
 	Wh flag logic
-	Wg logic optimization
 	Ww flag logic
 	Autotracking
 	Wa flag logic

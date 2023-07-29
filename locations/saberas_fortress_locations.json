@@ -2,7 +2,7 @@
 	{
 		//Sabera's Fortress
 		"name": "Sabera's Fortress",
-		"access_rules": ["$canMaybeReach|zombie, [$canReach|zombie]"],
+		"access_rules": ["$canMaybeReach|zombie, [$canReach|zombie], $canOpenChest"],
 		"children": [
 			//Overview with consumables
 			{

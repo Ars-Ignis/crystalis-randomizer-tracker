@@ -3,8 +3,8 @@
 		//Goa: Mado's Floor
 		"name": "Goa: Mado's Floor",
 		"access_rules": [
-			"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance]",
-			"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit]"
+			"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canOpenChest",
+			"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canOpenChest"
 		],
 		"children": [
 			//Overview with consumables

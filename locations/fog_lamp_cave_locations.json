@@ -2,7 +2,7 @@
 	{
 		//Fog Lamp Cave
 		"name": "Fog Lamp Cave",
-		"access_rules": ["$canMaybeReach|portoa, [$canReach|portoa], $canCrossRivers"],
+		"access_rules": ["$canMaybeReach|portoa, [$canReach|portoa], $canCrossRivers, $canOpenChest"],
 		"children": [
 			//Overview with mimics
 			{

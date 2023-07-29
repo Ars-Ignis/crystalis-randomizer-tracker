@@ -3,7 +3,7 @@
 		//Waterfall Cave
 		"name": "Waterfall Cave",
 		"access_rules": [
-			"$canMaybeReach|portoa, [$canReach|portoa]"
+			"$canMaybeReach|portoa, [$canReach|portoa], $canOpenChest"
 			],
 		"children": [
 			//Overview with mimics

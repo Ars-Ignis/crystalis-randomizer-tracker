@@ -2,7 +2,7 @@
 	{
 		//Styx
 		"name": "Styx",
-		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canCrossRivers, $maybeHasKeyToStyx, [$hasKeyToStyx], $canBypassBarriers"],
+		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canCrossRivers, $maybeHasKeyToStyx, [$hasKeyToStyx], $canBypassBarriers, $canOpenChest"],
 		"children": [
 			//Overview with mimics
 			{

@@ -5,9 +5,9 @@
 		"access_rules": [
 			"$negate|flag_wm, $canMaybeReach|joel, [$canReach|joel], $canMaybeUseShellFlute, [$canUseShellFlute], $canCrossRivers, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]",
 			"$negate|flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canCrossRivers, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]",
-			"$canMaybeReach|zombie, [$canReach|zombie]",
-			"flag_wm, $canMaybeReach|joel, [$canReach|joel], $canMaybeUseShellFlute, [$canUseShellFlute]",
-			"flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt"
+			"$canMaybeReach|zombie, [$canReach|zombie], $canOpenChest",
+			"flag_wm, $canMaybeReach|joel, [$canReach|joel], $canMaybeUseShellFlute, [$canUseShellFlute], $canOpenChest",
+			"flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canOpenChest"
 		],
 		"children": [
 			//Overview with consumables and mimics

@@ -9,7 +9,7 @@
 				"name": "Kirisa Plant Cave",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
-					"flag_wm, [$canBreakKirisaPlantCaveWalls]"
+					"flag_wm, [$canBreakKirisaPlantCaveWalls], [$canOpenChest]"
 				],
 				"sections": [
 					{
@@ -33,7 +33,7 @@
 				"name": "Kirisa Plant Cave",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
-					"flag_wm, [$canBreakKirisaPlantCaveWalls]"
+					"flag_wm, [$canBreakKirisaPlantCaveWalls], [$canOpenChest]"
 				],
 				"sections": [
 					{
@@ -57,7 +57,7 @@
 				"name": "Kirisa Plant Cave",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
-					"flag_wm, [$canBreakKirisaPlantCaveWalls], d_kirisaplant1",
+					"flag_wm, [$canBreakKirisaPlantCaveWalls], d_kirisaplant1, $canOpenChest",
 					"flag_wm, $canBreakKirisaPlantCaveWalls"
 				],
 				"sections": [

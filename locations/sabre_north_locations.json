@@ -2,7 +2,7 @@
 	{
 		//Mt. Sabre North
 		"name": "Mt. Sabre North",
-		"access_rules": ["$canMaybeAccessSabreNorth, [$canAccessSabreNorth]"],
+		"access_rules": ["$canMaybeAccessSabreNorth, [$canAccessSabreNorth], $canOpenChest"],
 		"children": [
 			//Overview with consumables
 			{
