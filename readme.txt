@@ -63,6 +63,8 @@ v1.2.0
 	-Additional fix to Draygon 1 logic - apparently, the official logic is that Draygon 1 requires a sword if Nw is on, or any level 2 weapon if Nw is off.  The tracker now officially reflects that.
 v1.2.1
 	-Added support for the new Mg (Oops, All Mimics!) flag
+v1.2.2
+	-Fixed a logic bug with the Gn flag
 
 Future Release Plans:
 	Wh flag logic
