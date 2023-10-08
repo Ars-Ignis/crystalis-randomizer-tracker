@@ -1,0 +1,34 @@
+{
+	"tracker_default": {
+		"type": "itemgrid",
+		"h_alignment": "center",
+		//"background": "#202a33",
+		"item_size": 40,
+		"item_margin": "4,4",
+		"rows": [
+			[
+				"wind",
+				"fire",
+				"water",
+				"thunder"
+			],
+			[
+				"sunmoon",
+				"truth",
+				"flight",
+				"draygon"
+			],
+			[
+				"kelbesque",
+				"sabera",
+				"mado",
+				"karmine"
+			]
+		]
+	},
+	
+	"tracker_broadcast": {
+		"type": "layout",
+		"key": "tracker_default"
+	}
+}

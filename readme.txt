@@ -67,6 +67,8 @@ v1.2.2
 	-Fixed a logic bug with the Gn flag
 v1.3.0
 	-Fixed a logic bug with unidentified bows
+v1.4.0
+	-Added new variant: super compact variant for restreaming races
 
 Future Release Plans:
 	Wh flag logic

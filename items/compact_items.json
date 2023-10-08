@@ -1,0 +1,306 @@
+[
+	// Sword of Wind
+	{
+		"name": "Sword of Wind",
+		"type": "progressive",
+		"loop": "false",
+		"stages": [
+			{
+				"img": "images/items/swordofwind.png",
+				"codes": "wind, sword, windsword",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandballofwind.png",
+				"codes": "windball, ball",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandbraceletofwind.png",
+				"codes": "tornado, bracelet, windbracelet, tornadobracelet",
+				"inherit_codes": true
+			},
+		]
+	},
+	// Sword of Fire
+	{
+		"name": "Sword of Fire",
+		"type": "progressive",
+		"loop": "false",
+		"stages": [
+			{
+				"img": "images/items/swordoffire.png",
+				"codes": "fire, sword, firesword",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandballoffire.png",
+				"codes": "fireball, ball",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandbraceletoffire.png",
+				"codes": "flame, bracelet, firebracelet, flamebracelet",
+				"inherit_codes": true
+			},
+		]
+	},
+	// Sword of Water
+	{
+		"name": "Sword of Water",
+		"type": "progressive",
+		"loop": "false",
+		"stages": [
+			{
+				"img": "images/items/swordofwater.png",
+				"codes": "water, sword, watersword",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandballofwater.png",
+				"codes": "waterball, ball",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandbraceletofwater.png",
+				"codes": "blizzard, bracelet, waterbracelet, blizzardbracelet",
+				"inherit_codes": true
+			},
+		]
+	},
+	// Sword of Thunder
+	{
+		"name": "Sword of Thunder",
+		"type": "progressive",
+		"loop": "false",
+		"stages": [
+			{
+				"img": "images/items/thundernowarp.png",
+				"codes": "thunder, sword, thundersword",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandballofthunder.png",
+				"codes": "thunderball, ball",
+				"inherit_codes": true
+			},
+			{
+				"img": "images/items/swordandbraceletofthunder.png",
+				"codes": "storm, bracelet, thunderbracelet, stormbracelet",
+				"inherit_codes": true
+			},
+		]
+	},
+	// Bow of Moon
+	{
+		"name": "Bow of Moon",
+		"type": "toggle",
+		"img": "images/items/bowofmoon.png",
+		"loop": "true",
+		"codes": "bow, moon, bowofmoon, graybow"
+	},
+	// Bow of Sun
+	{
+		"name": "Bow of Sun",
+		"type": "toggle",
+		"img": "images/items/bowofsun.png",
+		"loop": "true",
+		"codes": "bow, sun, bowofsun, redbow"
+	},
+	// Bow of Sun/Moon
+	{
+		"name": "Bow of Sun/Moon",
+		"type": "composite_toggle",
+		"codes": "bow, sunmoon",
+		"item_left": "bowofmoon",
+		"item_right": "bowofsun",
+		"images": [
+			{
+				"left": false,
+				"right": false,
+				"img": "images/items/sunmoonblank.png",
+				"img_mods": "@disabled"
+			},
+			{
+				"left": true,
+				"right": false,
+				"img": "images/items/moononly.png"
+			},
+			{
+				"left": false,
+				"right": true,
+				"img": "images/items/bowofsun.png"
+			},
+			{
+				"left": true,
+				"right": true,
+				"img": "images/items/sunmoon.png"
+			}
+		]
+	},
+	// Bow of Truth
+	{
+		"name": "Bow of Truth",
+		"type": "toggle",
+		"img": "images/items/bowoftruth.png",
+		"loop": "true",
+		"codes": "bow, truth, bowoftruth, bluebow"
+	},
+	// Draygon 1
+	{
+		"name": "Draygon",
+		"type": "toggle",
+		"img": "images/bosses/draygon.png",
+		"loop": "true",
+		"codes": "draygon"
+	},
+	// Kelbesque 1
+	{
+		"name": "Kelbesque 1",
+		"type": "toggle",
+		"img": "images/bosses/kelbesque1compact.png",
+		"loop": "true",
+		"codes": "kelbesque1"
+	},
+	// Kelbesque 2
+	{
+		"name": "Kelbesque 2",
+		"type": "toggle",
+		"img": "images/bosses/kelbesque2compact.png",
+		"loop": "true",
+		"codes": "kelbesque2"
+	},
+	// Kelbesque
+	{
+		"name": "Kelbesque",
+		"type": "composite_toggle",
+		"codes": "kelbesque",
+		"item_left": "kelbesque1",
+		"item_right": "kelbesque2",
+		"images": [
+			{
+				"left": false,
+				"right": false,
+				"img": "images/bosses/kelbesquecompact.png",
+				"img_mods": "@disabled"
+			},
+			{
+				"left": true,
+				"right": false,
+				"img": "images/bosses/kelbesque1compact.png",
+			},
+			{
+				"left": false,
+				"right": true,
+				"img": "images/bosses/kelbesque2compact.png",
+			},
+			{
+				"left": true,
+				"right": true,
+				"img": "images/bosses/kelbesquebothcompact.png",
+			}
+		]
+	},
+	// Sabera 1
+	{
+		"name": "Sabera 1",
+		"type": "toggle",
+		"img": "images/bosses/sabera1compact.png",
+		"loop": "true",
+		"codes": "sabera1"
+	},
+	// Sabera 2
+	{
+		"name": "Sabera 2",
+		"type": "toggle",
+		"img": "images/bosses/sabera2compact.png",
+		"loop": "true",
+		"codes": "sabera2"
+	},
+	// Sabera
+	{
+		"name": "Sabera",
+		"type": "composite_toggle",
+		"codes": "sabera",
+		"item_left": "sabera1",
+		"item_right": "sabera2",
+		"images": [
+			{
+				"left": false,
+				"right": false,
+				"img": "images/bosses/saberacompact.png",
+				"img_mods": "@disabled"
+			},
+			{
+				"left": true,
+				"right": false,
+				"img": "images/bosses/sabera1compact.png",
+			},
+			{
+				"left": false,
+				"right": true,
+				"img": "images/bosses/sabera2compact.png",
+			},
+			{
+				"left": true,
+				"right": true,
+				"img": "images/bosses/saberabothcompact.png",
+			}
+		]
+	},
+	// Mado 1
+	{
+		"name": "Mado 1",
+		"type": "toggle",
+		"img": "images/bosses/mado1compact.png",
+		"loop": "true",
+		"codes": "mado1"
+	},
+	// Mado 2
+	{
+		"name": "Mado 2",
+		"type": "toggle",
+		"img": "images/bosses/mado2compact.png",
+		"loop": "true",
+		"codes": "mado2"
+	},
+	// Mado
+	{
+		"name": "Mado",
+		"type": "composite_toggle",
+		"codes": "mado",
+		"item_left": "mado1",
+		"item_right": "mado2",
+		"images": [
+			{
+				"left": false,
+				"right": false,
+				"img": "images/bosses/madocompact.png",
+				"img_mods": "@disabled"
+			},
+			{
+				"left": true,
+				"right": false,
+				"img": "images/bosses/mado1compact.png",
+			},
+			{
+				"left": false,
+				"right": true,
+				"img": "images/bosses/mado2compact.png",
+			},
+			{
+				"left": true,
+				"right": true,
+				"img": "images/bosses/madobothcompact.png",
+			}
+		]
+	},
+	// Karmine
+	{
+		"name": "Karmine",
+		"type": "toggle",
+		"img": "images/bosses/karminecompact.png",
+		"loop": "true",
+		"codes": "karmine"
+	},
+]

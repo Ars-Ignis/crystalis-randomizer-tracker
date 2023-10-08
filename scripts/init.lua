@@ -11,7 +11,9 @@ ScriptHost:LoadScript("scripts/init_custom_items.lua")
 Tracker:AddItems("items/common.json")
 Tracker:AddItems("items/dungeon_walls.json")
 Tracker:AddItems("items/eastcaveexits.json")
-Tracker:AddItems("items/bosses.json")
+if (Tracker.ActiveVariantUID ~= "super_compact") then
+	Tracker:AddItems("items/bosses.json")
+end
 Tracker:AddItems("items/miscellaneous_items.json")
 Tracker:AddItems("items/flags.json")
 
@@ -21,6 +23,9 @@ Tracker:AddItems("items/flags.json")
 		Tracker:AddLayouts("layouts/input_layouts.json")
 		Tracker:AddLayouts("layouts/items_only_layout.json")
 		Tracker:AddLayouts("layouts/broadcast_items_only.json")
+	elseif (Tracker.ActiveVariantUID == "super_compact") then
+		Tracker:AddItems("items/compact_items.json")
+		Tracker:AddLayouts("layouts/super_compact_layout.json")
 	else
 		Tracker:AddItems("items/doors.json")
 		ScriptHost:LoadScript("scripts/logic_common.lua")
