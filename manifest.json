@@ -1,9 +1,10 @@
 ﻿{
   "name": "Crystalis Randomizer",
   "game_name": "Crystalis",
+  "platform": "nes",
   "package_version": "1.4.0",
-  "package_uid": "crystalis_codegorilla",
-  "author": "CodeGorilla",
+  "package_uid": "crystalis_codegorilla_thesirarchibald",
+  "author": "CodeGorilla_SirArchibald",
   "variants": {
     "items_only": {
       "display_name": "Full Item Tracker"
