@@ -801,7 +801,7 @@ function updateMoonBow(segment, code, address)
 	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
     	local KEYITEM16 = ReadU8(segment, 0x64BF)
 	
-	if item  then    
+	--if item  then    
                	if KEYITEM1 == 0x3E 
 		    or KEYITEM2 == 0x3E
 		    or KEYITEM3 == 0x3E 
@@ -818,10 +818,10 @@ function updateMoonBow(segment, code, address)
 		    or KEYITEM14 == 0x3E
 		    or KEYITEM15 == 0x3E 
             or KEYITEM16 == 0x3E then
-            		if item.Active == false then
-                		print(item.Name .. " obtained")
-                		item.Active = true
-            		end
+            		if item.Active == true then
+                		--print(item.Name .. " obtained")
+                		--item.Active = true
+            		--end
         			else
             			item.Active = false
         			end        	
@@ -847,7 +847,7 @@ function updateSunBow(segment, code, address)
 	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
     	local KEYITEM16 = ReadU8(segment, 0x64BF)
 	
-	if item  then    
+	--if item  then    
                	if KEYITEM1 == 0x3F 
 		    or KEYITEM2 == 0x3F
 		    or KEYITEM3 == 0x3F 
@@ -864,10 +864,10 @@ function updateSunBow(segment, code, address)
 		    or KEYITEM14 == 0x3F
 		    or KEYITEM15 == 0x3F 
             or KEYITEM16 == 0x3F then
-            		if item.Active == false then
-                		print(item.Name .. " obtained")
-                		item.Active = true
-            		end
+            		if item.Active == true then
+                		--print(item.Name .. " obtained")
+                		--item.Active = true
+            		--end
         			else
             			item.Active = false
         			end        	
@@ -893,7 +893,7 @@ function updateTruthBow(segment, code, address)
 	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
     	local KEYITEM16 = ReadU8(segment, 0x64BF)
 	
-	if item  then    
+	--if item  then    
                	if KEYITEM1 == 0x40 
 		    or KEYITEM2 == 0x40
 		    or KEYITEM3 == 0x40 
@@ -910,10 +910,10 @@ function updateTruthBow(segment, code, address)
 		    or KEYITEM14 == 0x40
 		    or KEYITEM15 == 0x40 
             or KEYITEM16 == 0x40 then
-            		if item.Active == false then
-                		print(item.Name .. " obtained")
-                		item.Active = true
-            		end
+            		if item.Active == true then
+                		--print(item.Name .. " obtained")
+                		--item.Active = true
+            		--end
         			else
             			item.Active = false
         			end        	
@@ -1922,29 +1922,29 @@ function updateChestsFromMemorySegmentCorridor(segment)
     InvalidateReadCaches()
 
     if AUTOTRACKER_ENABLE_LOCATION_TRACKING then
-        updateSectionChestCountFromByteAndFlag(segment, "@Leaf Village/Leaf Elder", 0x64A0, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Leaf Village: Elder/Leaf Elder", 0x64A0, 0x01)
         updateSectionChestCountFromByteAndFlag(segment, "@Save the child or kill the boss/Oak Elder", 0x64A0, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave/Sword of Water", 0x64A0, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Sword of Thunder", 0x64A0, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave: Sword of Water/Sword of Water", 0x64A0, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Styx: Sword of Thunder/Sword of Thunder", 0x64A0, 0x08)
         --Crystalis updateSectionChestCountFromByteAndFlag(segment, "@Crystalis", 0x64A0, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Ball of Wind", 0x64A0, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West/Tornado Bracelet", 0x64A0, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Ball of Wind/Ball of Wind", 0x64A0, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West: Tornado Bracelet/Tornado Bracelet", 0x64A0, 0x40)
         updateSectionChestCountFromByteAndFlag(segment, "@Insect Boss/Use Insect Flute", 0x64A0, 0x80)
 
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North/Key to Prison", 0x64A1, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North: Kelbesque1/Kelbesque 1 Reward", 0x64A1, 0x01)  --Kelby 1
         updateSectionChestCountFromByteAndFlag(segment, "@Lime Tree/Rage", 0x64A1, 0x02)
         updateSectionChestCountFromByteAndFlag(segment, "@Amazones Basement/Storage Room", 0x64A1, 0x04)
         updateSectionChestCountFromByteAndFlag(segment, "@Mado 1/Trigger Massacre first", 0x64A1, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Karmine Reward 2", 0x64A1, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Karmine Reward 2/Karmine Reward 2", 0x64A1, 0x10)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A1, 0x20) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A1, 0x40) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A1, 0x80) Not used
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave/Mimic", 0x64A2, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave: Flute of Lime/Flute of Lime", 0x64A2, 0x01)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A2, 0x02) Not used
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor/Mado 2 Reward", 0x64A2, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Mado2/Mado 2 Reward", 0x64A2, 0x04)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A2, 0x08) Not used
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Psycho Shield", 0x64A2, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Styx: Psycho Shield/Psycho Shield", 0x64A2, 0x10)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A2, 0x20) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A2, 0x40) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A2, 0x80) Not used
@@ -1952,58 +1952,59 @@ function updateChestsFromMemorySegmentCorridor(segment)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A3, 0x01) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A3, 0x02) Not used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A3, 0x04) Not used
-        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave/Battle Armor", 0x64A3, 0x08)
-        --updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Front/Bow of Truth + Psycho Armor", 0x64A3, 0x10, 0x64A8, 0x01)  --Note need to fix this is two items
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Medical Herb 1", 0x64A3, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Antidote", 0x64A3, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave/Lysis Plant", 0x64A3, 0x80)
+        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave: Battle Armor/Battle Armor", 0x64A3, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Front: BoT/Bow of Truth", 0x64A3, 0x10)
+		--update2ItemLocation(segment, "@Pyramid Front: BoT and Psycho Armor/Bow of Truth + Psycho Armor", 0x64A3, 0x10, 0x64A8, 0x01)  --Note need to fix this is two items
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Medical Herb 2/Medical Herb 2", 0x64A3, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Antidote/Antidote", 0x64A3, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave: Lysis/Lysis Plant", 0x64A3, 0x80)
 
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra/Fruit of Lime", 0x64A4, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress/Fruit of Power", 0x64A4, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island/Magic Ring", 0x64A4, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor/Sabera 2 Reward", 0x64A4, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Warp Boots", 0x64A4, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra: Fruit of Lime/Fruit of Lime", 0x64A4, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress: Fruit of Power/Fruit of Power", 0x64A4, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island: Magic Ring/Magic Ring", 0x64A4, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor: Sabera 2/Sabera 2 Reward", 0x64A4, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Warp Boots/Warp Boots", 0x64A4, 0x10)
         updateSectionChestCountFromByteAndFlag(segment, "@Item in grass/Walk on bridge first", 0x64A4, 0x20)
         updateSectionChestCountFromByteAndFlag(segment, "@Goa: Kelbesque's Floor/Kelbesque 2", 0x64A4, 0x40)
         updateSectionChestCountFromByteAndFlag(segment, "@Save the child or kill the boss/Mom", 0x64A4, 0x80)
 
         updateSectionChestCountFromByteAndFlag(segment, "@Queen 1/Queen 1", 0x64A5, 0x01)
         updateSectionChestCountFromByteAndFlag(segment, "@Akahana Trade-In/Give him item", 0x64A5, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave/Power Ring", 0x64A5, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave: Power Ring/Power Ring", 0x64A5, 0x04)
         updateSectionChestCountFromByteAndFlag(segment, "@Brokahana/Change into Akahana", 0x64A5, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island/Iron Necklace", 0x64A5, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island: Iron Necklace/Iron Necklace", 0x64A5, 0x10)
         updateSectionChestCountFromByteAndFlag(segment, "@Meadow/Console the Bunny", 0x64A5, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Vampire Reward", 0x64A5, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave/Leather Boots", 0x64A5, 0x80)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Vampire/Vampire Reward", 0x64A5, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave: Leather Boots/Leather Boots", 0x64A5, 0x80)
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave/Rescue Akahana", 0x64A6, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@Leaf Village/Zebu's Student", 0x64A6, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave: Akahana/Rescue Akahana", 0x64A6, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Leaf Village: Student/Student", 0x64A6, 0x02)
         updateSectionChestCountFromByteAndFlag(segment, "@Windmill Guard/Wake him up", 0x64A6, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North/Key to Prison", 0x64A6, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North: Prison Key/Key to Prison", 0x64A6, 0x08)
         updateSectionChestCountFromByteAndFlag(segment, "@Shyron/Zebu in the Temple", 0x64A6, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave/Fog Lamp", 0x64A6, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave: Fog Lamp/Fog Lamp", 0x64A6, 0x20)
         updateSectionChestCountFromByteAndFlag(segment, "@Dolphin/Heal them", 0x64A6, 0x40)
         updateSectionChestCountFromByteAndFlag(segment, "@Clark/Kill Sabera first", 0x64A6, 0x80)
 
-        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress/Sabera Reward", 0x64A7, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress: Sabera1/Sabera Reward", 0x64A7, 0x01)
         updateSectionChestCountFromByteAndFlag(segment, "@Lighthouse/Wake Up Kensu", 0x64A7, 0x02)
         updateSectionChestCountFromByteAndFlag(segment, "@Combine the Items/Combine them!", 0x64A7, 0x04)
         updateSectionChestCountFromByteAndFlag(segment, "@Portoa Waterway/Underwater Item", 0x64A7, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Kirisa Plant Cave/Kirisa Plant", 0x64A7, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Karmine Reward 1", 0x64A7, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Amazones/TradeInKirisaPlant", 0x64A7, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra/Bow of Sun", 0x64A7, 0x80)
+        updateSectionChestCountFromByteAndFlag(segment, "@Kirisa Plant Cave: Kirisa/Kirisa Plant", 0x64A7, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Karmine Reward 1/Karmine Reward 1", 0x64A7, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Amazones/Trade In Kirisa Plant", 0x64A7, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra: Bow of Sun/Bow of Sun", 0x64A7, 0x80)
 
-        --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A8, 0x01) See above for two items
-        updateSectionChestCountFromByteAndFlag(segment, "@Windmill Reward/Activate Windmill", 0x64A8, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North/Prison Break Reward", 0x64A8, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Front: Psycho Armor/Psycho Armor", 0x64A8, 0x01)
+		updateSectionChestCountFromByteAndFlag(segment, "@Windmill Reward/Activate Windmill", 0x64A8, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North: Prison Break Reward/Prison Break Reward", 0x64A8, 0x04)
         updateSectionChestCountFromByteAndFlag(segment, "@Stom Fight/Visit Oak first", 0x64A8, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West/Tornel - Show him Tornado Bracelet", 0x64A8, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West: Tornel Reward/Tornel - Show him Tornado Bracelet", 0x64A8, 0x10)
         updateSectionChestCountFromByteAndFlag(segment, "@Queen 2/Queen 2 (Talk to Mesia first)", 0x64A8, 0x20)
         updateSectionChestCountFromByteAndFlag(segment, "@Altar/Calm the Sea", 0x64A8, 0x40)
         updateSectionChestCountFromByteAndFlag(segment, "@Kensu Tag/Turn-in Love Pendant", 0x64A8, 0x80)
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Slimed Kensu", 0x64A9, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Slimed Kensu/Slimed Kensu", 0x64A9, 0x01)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A9, 0x02) Not Used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A9, 0x04) Not Used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A9, 0x08) Not Used
@@ -2012,60 +2013,61 @@ function updateChestsFromMemorySegmentCorridor(segment)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A9, 0x40) Not Used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64A9, 0x80) Not Used
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave/Medical Herb 1", 0x64AA, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sealed Cave: Medical Herb 1/Medical Herb 1", 0x64AA, 0x01)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AA, 0x02) Not Used
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West/Medical Herb", 0x64AA, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North/Medical Herb", 0x64AA, 0x08)
-        --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AA, 0x10) Not Used
-        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress/Medical Herb", 0x64AA, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra/Medical Herb", 0x64AA, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Medical Herb", 0x64AA, 0x80)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West: Medical Herb/Medical Herb", 0x64AA, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North: Medical Herb/Medical Herb", 0x64AA, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Magic Ring 3/Magic Ring 3", 0x64AA, 0x10) --NEW MADO CHEST
+        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress: Medical Herb/Medical Herb", 0x64AA, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra: Medical Herb/Medical Herb", 0x64AA, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Styx: Medical Herb/Medical Herb", 0x64AA, 0x80)
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Magic Ring", 0x64AB, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@East Cave/Key Item", 0x64AB, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave/Fruit of Power 1", 0x64AB, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Magic Ring/Magic Ring", 0x64AB, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@East Cave: Key Item/Key Item", 0x64AB, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave: Fruit of Power 1/Fruit of Power 1", 0x64AB, 0x04)
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AB, 0x08) Not Used
-        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island/Lysis Plant", 0x64AB, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor/Lysis Plant", 0x64AB, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North/Antidote", 0x64AB, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Kirisa Plant Cave/Antidote", 0x64AB, 0x80)
+        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island: Lysis/Lysis Plant", 0x64AB, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor: Lysis/Lysis Plant", 0x64AB, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre North: Antidote/Antidote", 0x64AB, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Kirisa Plant Cave: Antidote/Antidote", 0x64AB, 0x80)
 		
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor/Antidote", 0x64AC, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress/Vampire Reward", 0x64AC, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor/Fruit of Power", 0x64AC, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor/Opel Statue", 0x64AC, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave/Fruit of Power 2", 0x64AC, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra/Magic Ring", 0x64AC, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor/Fruit of Repun", 0x64AC, 0x40)
-        --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AC, 0x80) Not Used
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Antidote/Antidote", 0x64AC, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Sabera's Fortress: Vampire2/Vampire Reward", 0x64AC, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor: Fruit of Power/Fruit of Power", 0x64AC, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Opel/Opel Statue", 0x64AC, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@Oasis Cave: Fruit of Power 2/Fruit of Power 2", 0x64AC, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra: Magic Ring/Magic Ring", 0x64AC, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Sabera's Floor: Fruit of Repun/Fruit of Repun", 0x64AC, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Kensu's Beach House/Take the boat", 0x64AC, 0x80)
 		
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AD, 0x01) Not Used
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West/Magic Ring", 0x64AD, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West/Warp Boots", 0x64AD, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor/Magic Ring 1", 0x64AD, 0x08) --MIGHT BE 2
-        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Front/Magic Ring", 0x64AD, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Back/Opel Statue", 0x64AD, 0x20)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Warp Boots", 0x64AD, 0x40)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor/Magic Ring 2", 0x64AD, 0x80)  --Might be 1
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West: Magic Ring/Magic Ring", 0x64AD, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Sabre West: Warp Boots/Warp Boots", 0x64AD, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Magic Ring 2/Magic Ring 2", 0x64AD, 0x08) --MIGHT BE 2
+        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Front: Magic Ring/Magic Ring", 0x64AD, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Back: Opel Statue/Opel Statue", 0x64AD, 0x20)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Warp Boots/Warp Boots", 0x64AD, 0x40)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Mado's Floor: Magic Ring 1/Magic Ring 1", 0x64AD, 0x80)  --Might be 1
 			
-        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave/Mimic 1", 0x64AE, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave/Mimic 1", 0x64AE, 0x02)  
-        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave/Mimic", 0x64AE, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island/Mimic", 0x64AE, 0x08) 
-        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra/Mimic", 0x64AE, 0x10)
-        --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AE, 0x20) Not Used
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Mimic 1", 0x64AE, 0x40)  --13
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Mimic 2", 0x64AE, 0x80)   --13
+        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave: Mimic 1/Mimic 1", 0x64AE, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Fog Lamp Cave: Mimic 2/Mimic 2", 0x64AE, 0x02)  
+        updateSectionChestCountFromByteAndFlag(segment, "@Waterfall Cave: Mimic/Mimic", 0x64AE, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Evil Spirit Island: Mimic/Mimic", 0x64AE, 0x08) 
+        updateSectionChestCountFromByteAndFlag(segment, "@Mt. Hydra: Mimic/Mimic", 0x64AE, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Styx: Mimic 1/Mimic 1", 0x64AE, 0x20)
+        --updateSectionChestCountFromByteAndFlag(segment, "@Styx: Mimic 1/Mimic 1", 0x64AE, 0x40)
+		updateSectionChestCountFromByteAndFlag(segment, "@Styx: Mimic 3/Mimic 3", 0x64AE, 0x80)
 			
-        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Back/Mimic", 0x64AF, 0x01)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Mimic 1", 0x64AF, 0x02)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Mimic 2", 0x64AF, 0x04)
-        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor/Mimic 3", 0x64AF, 0x08)
-        updateSectionChestCountFromByteAndFlag(segment, "@East Cave/Consumable Item", 0x64AF, 0x10)
-        updateSectionChestCountFromByteAndFlag(segment, "@Styx/Mimic 3", 0x64AF, 0x20) --13
+        updateSectionChestCountFromByteAndFlag(segment, "@Pyramid Back: Mimic/Mimic", 0x64AF, 0x01)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Mimic 1/Mimic 1", 0x64AF, 0x02)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Mimic 2/Mimic 2", 0x64AF, 0x04)
+        updateSectionChestCountFromByteAndFlag(segment, "@Goa: Karmine's Floor: Mimic 3/Mimic 3", 0x64AF, 0x08)
+        updateSectionChestCountFromByteAndFlag(segment, "@East Cave: Consumable/Consumable Item", 0x64AF, 0x10)
+        updateSectionChestCountFromByteAndFlag(segment, "@Styx: Mimic 2/Mimic 2", 0x64AF, 0x20) --13
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AF, 0x40) Not Used
         --updateSectionChestCountFromByteAndFlag(segment, "@", 0x64AF, 0x80) Not Used
 
+--Note need to find magic ring 3 in mado2 floor
     end
 end
 
@@ -2080,7 +2082,19 @@ function updateKeyItemsFromMemorySegment(segment)
     if AUTOTRACKER_ENABLE_ITEM_TRACKING then
 
     
-    updateWindSword(segment, "windsword", 0x6430)
+	--updateToggleItemFromByte(segment, "kelbesque1_cleared", 0x64A1, 0x01)  
+	--updateProgessiveItemFromByteAndFlag(segment, "Kelbesque 1", 0x64A1, 0x01)
+	--updateToggleItemFromByte(segment, "kelbesque2_cleared", 0x64A4, 0x40)
+	--updateToggleItemFromByte(segment, "sabera1_cleared", 0x64A7, 0x01)
+	--updateToggleItemFromByte(segment, "sabera2_cleared", 0x64A4, 0x08)
+	--updateToggleItemFromByte(segment, "mado1_cleared", 0x64A1, 0x08)
+	--updateToggleItemFromByte(segment, "mado2_cleared", 0x64A2, 0x04)
+	--updateToggleItemFromByte(segment, "karmine_cleared", 0x64A1, 0x10)	
+	--updateToggleItemFromByte(segment, "vampire_cleared", 0x64A5, 0x40)
+	--updateToggleItemFromByte(segment, "giantinsect_cleared", 0x64A0, 0x80)	
+	--updateToggleItemFromByte(segment, "draygon1_cleared", 0x64A8, 0x01)  Needs to be made
+	
+	updateWindSword(segment, "windsword", 0x6430)
     updateToggleItemFromByte(segment, "firesword", 0x6431, 0x01)
     updateToggleItemFromByte(segment, "watersword", 0x6432, 0x02)
     updateToggleItemFromByte(segment, "thundersword", 0x6433, 0x03)
@@ -2155,5 +2169,5 @@ end
 
 -- I know this is bad practice but the amount of resets makes it so all the sanity
 -- checking needs to be done on the segment
-ScriptHost:AddMemoryWatch("Item Data", 0x6000, 0x500, updateKeyItemsFromMemorySegment)
+ScriptHost:AddMemoryWatch("Item Data", 0x6430, 0x500, updateKeyItemsFromMemorySegment)
 ScriptHost:AddMemoryWatch("Location Data", 0x64A0, 0x20, updateChestsFromMemorySegmentCorridor)

@@ -1,5 +1,4 @@
---  Load configuration options up front
-ScriptHost:LoadScript("scripts/settings.lua")
+
 print("Starting up scipts")
 ScriptHost:LoadScript("scripts/sdk/class.lua")
 ScriptHost:LoadScript("scripts/sdk/custom_item.lua")
@@ -13,15 +12,10 @@ ScriptHost:LoadScript("scripts/init_custom_items.lua")
 
 
 
-if _VERSION == "Lua 5.3" then
-  print("Your tracker version supports autotracking!")
-  ScriptHost:LoadScript("scripts/autotracker.lua")
-else
-  print("Your tracker version does not support autotracking")
-end
+
 
 Tracker:AddItems("items/common.json")
-Tracker:AddItems("items/simple_items.json")
+--Tracker:AddItems("items/simple_items.json")
 Tracker:AddItems("items/dungeon_walls.json")
 Tracker:AddItems("items/eastcaveexits.json")
 if (Tracker.ActiveVariantUID ~= "super_compact") then
@@ -65,28 +59,29 @@ Tracker:AddItems("items/flags.json")
 		end
 		Tracker:AddLocations("locations/overworld_locations.json")
 		Tracker:AddLocations("locations/all_sublocations.json")
-		--Tracker:AddLocations("locations/east_cave_locations.json")
-		--Tracker:AddLocations("locations/sealed_cave_locations.json")
-		--Tracker:AddLocations("locations/sabre_west_locations.json")
-		--Tracker:AddLocations("locations/sabre_north_locations.json")
-		--Tracker:AddLocations("locations/waterfall_cave_locations.json")
-		--Tracker:AddLocations("locations/fog_lamp_cave_locations.json")
-		--Tracker:AddLocations("locations/kirisa_plant_cave_locations.json")
-		--Tracker:AddLocations("locations/evil_spirit_island_locations.json")
-		--Tracker:AddLocations("locations/saberas_fortress_locations.json")
-		--Tracker:AddLocations("locations/mt_hydra_locations.json")
-		--Tracker:AddLocations("locations/styx_locations.json")
-		--Tracker:AddLocations("locations/oasis_cave_locations.json")
-		--Tracker:AddLocations("locations/pyramid_front_locations.json")
-		--Tracker:AddLocations("locations/pyramid_back_locations.json")
+		Tracker:AddLocations("locations/east_cave_locations.json")
+		Tracker:AddLocations("locations/sealed_cave_locations.json")
+		Tracker:AddLocations("locations/sabre_west_locations.json")
+		Tracker:AddLocations("locations/sabre_north_locations.json")
+		Tracker:AddLocations("locations/waterfall_cave_locations.json")
+		Tracker:AddLocations("locations/fog_lamp_cave_locations.json")
+		Tracker:AddLocations("locations/kirisa_plant_cave_locations.json")
+		Tracker:AddLocations("locations/evil_spirit_island_locations.json")
+		Tracker:AddLocations("locations/saberas_fortress_locations.json")
+		Tracker:AddLocations("locations/mt_hydra_locations.json")
+		Tracker:AddLocations("locations/styx_locations.json")
+		Tracker:AddLocations("locations/oasis_cave_locations.json")
+		Tracker:AddLocations("locations/pyramid_front_locations.json")
+		Tracker:AddLocations("locations/pyramid_back_locations.json")
 		Tracker:AddLocations("locations/goa_kelbesque_locations.json")
-		--Tracker:AddLocations("locations/goa_sabera_locations.json")
-		--Tracker:AddLocations("locations/goa_mado_locations.json")
-		--Tracker:AddLocations("locations/goa_karmine_locations.json")
-		--Tracker:AddLocations("locations/cache_invalidation_location.json")
+		Tracker:AddLocations("locations/goa_sabera_locations.json")
+		Tracker:AddLocations("locations/goa_mado_locations.json")
+		Tracker:AddLocations("locations/goa_karmine_locations.json")
+		Tracker:AddLocations("locations/cache_invalidation_location.json")
 	end
 
-
+--  Load configuration options up front
+ScriptHost:LoadScript("scripts/settings.lua")
 
 if _VERSION == "Lua 5.3" then
   print("Your tracker version supports autotracking!")
