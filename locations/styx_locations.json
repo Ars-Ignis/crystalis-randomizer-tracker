@@ -4,72 +4,10 @@
 		"name": "Styx",
 		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canCrossRivers, $maybeHasKeyToStyx, [$hasKeyToStyx], $canBypassBarriers, $canOpenChest"],
 		"children": [
-			//Overview with mimics
-			{
-				"name": "Styx",
-				"access_rules": ["[flight]"],
-				"sections": [
-					{
-						"name": "Styx Items",
-						"item_count": 6,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 70,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Styx",
-				"access_rules": ["[flight]"],
-				"sections": [
-					{
-						"name": "Styx Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 70,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Styx",
-				"access_rules": ["[flight]"],
-				"sections": [
-					{
-						"name": "Styx Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 70,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+	
 			//Mimic 1
 			{
-				"name": "Styx",
+				"name": "Styx: Mimic 1",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, [flight]"
@@ -86,13 +24,20 @@
 						"map": "map_styx",
 						"x": 95,
 						"y": 20,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 0,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Mimic 2
 			{
-				"name": "Styx",
+				"name": "Styx: Mimic 2",
 				"access_rules": [
 					"$negate|flag_wm, flight",
 					"flag_wm, [flight]"
@@ -109,13 +54,20 @@
 						"map": "map_styx",
 						"x": 275,
 						"y": 150,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 50,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Mimic 3
 			{
-				"name": "Styx",
+				"name": "Styx: Mimic 3",
 				"access_rules": [
 					"$negate|flag_wm, flight",
 					"flag_wm, [flight]"
@@ -132,13 +84,20 @@
 						"map": "map_styx",
 						"x": 200,
 						"y": 230,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 100,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Medical Herb
 			{
-				"name": "Styx",
+				"name": "Styx: Medical Herb",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers",
 					"flag_wm, [flight]"
@@ -155,13 +114,20 @@
 						"map": "map_styx",
 						"x": 120,
 						"y": 230,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 150,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [  "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Sword of Thunder
 			{
-				"name": "Styx",
+				"name": "Styx: Sword of Thunder",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers, $canCrossSpikes",
 					"flag_wm, flight",
@@ -179,12 +145,19 @@
 						"map": "map_styx",
 						"x": 500,
 						"y": 100
+					},
+					{
+						"map": "map_overworld",
+						"x": 200,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
-				],
+				]
 			},
 			//Psycho Shield
 			{
-				"name": "Styx",
+				"name": "Styx: Psycho Shield",
 				"access_rules": [
 					"$negate|flag_wm, flight",
 					"flag_wm, [flight]"
@@ -201,8 +174,15 @@
 						"map": "map_styx",
 						"x": 250,
 						"y": 175
+					},
+					{
+						"map": "map_overworld",
+						"x": 250,
+						"y": 70,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
-				],
+				]
 			},
 			//Door Location
 			{

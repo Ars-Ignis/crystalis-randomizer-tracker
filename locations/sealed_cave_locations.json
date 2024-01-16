@@ -7,51 +7,10 @@
 			"flag_vw, $canOpenChest"
 		],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Sealed Cave Items0",
-				"access_rules": ["[$canBreakSealedCaveWalls]"],
-				"sections": [
-					{
-						"name": "Sealed Cave Items",
-						"item_count": 6,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 130,
-						"y": 1180,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Sealed Cave Items1",
-				"access_rules": ["[$canBreakSealedCaveWalls]"],
-				"sections": [
-					{
-						"name": "Sealed Cave Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 130,
-						"y": 1180,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+			
 			//Warp Boots
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Warp Boots",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_sealed2",
@@ -68,13 +27,20 @@
 						"map": "map_wind_cave",
 						"x": 360,
 						"y": 200,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 180,
+						"y": 1000,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Medical Herb 1
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Medical Herb 1",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_sealed1, [$canBreakSealedCaveWalls]",
@@ -91,13 +57,20 @@
 						"map": "map_wind_cave",
 						"x": 415,
 						"y": 440,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 130,
+						"y": 1040,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Ball of Wind
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Ball of Wind",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_sealed1, [$canBreakSealedCaveWalls]",
@@ -114,12 +87,18 @@
 						"map": "map_wind_cave",
 						"x": 515,
 						"y": 540
+					},
+					{
+						"map": "map_overworld",
+						"x": 180,
+						"y": 1040,
+						"size": 45
 					}
 				]
 			},
 			//Antidote
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Antidote",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSealedCaveWalls, [$canBreakSealedCaveWalls]",
 					"flag_wm, d_sealed1, [$canBreakSealedCaveWalls]",
@@ -136,13 +115,20 @@
 						"map": "map_wind_cave",
 						"x": 515,
 						"y": 300,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 230,
+						"y": 1040,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Medical Herb 2
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Medical Herb 2",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSealedCaveWalls, [$canBreakSealedCaveWalls]",
 					"flag_wm, d_sealed3",
@@ -159,13 +145,20 @@
 						"map": "map_wind_cave",
 						"x": 140,
 						"y": 220,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 130,
+						"y": 1000,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Vampire
 			{
-				"name": "Sealed Cave",
+				"name": "Sealed Cave: Vampire",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSealedCaveWalls, [$canBreakSealedCaveWalls]",
 					"flag_wm, d_sealed4, $hasAnySword",
@@ -182,6 +175,12 @@
 						"map": "map_wind_cave",
 						"x": 405,
 						"y": 90
+					},
+					{
+						"map": "map_overworld",
+						"x": 230,
+						"y": 1000,
+						"size": 45
 					}
 				]
 			},

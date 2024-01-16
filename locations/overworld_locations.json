@@ -1,7 +1,7 @@
 ﻿[
 	// Leaf Village
 	{
-		"name": "Leaf Village",
+		"name": "Leaf Village: Elder",
 		"access_rules": [
 			"$canMaybeReach|leaf, [$canReach|leaf]"
 		],
@@ -10,9 +10,26 @@
 				"name": "Leaf Elder",
 				"visibility_rules": [ "" ],
 				"item_count": 1
-			},
+			}			
+		],
+		"map_locations": [
 			{
-				"name": "Zebu's Student",
+				"map": "map_overworld",
+				"x": 250,
+				"y": 1564,
+				"size": 60
+			}
+		]
+	},
+
+	{
+		"name": "Leaf Village: Student",
+		"access_rules": [
+			"$canMaybeReach|leaf, [$canReach|leaf]"
+		],
+		"sections": [
+			{
+				"name": "Student",
 				"visibility_rules": [ "" ],
 				"item_count": 1
 			}
@@ -20,12 +37,13 @@
 		"map_locations": [
 			{
 				"map": "map_overworld",
-				"x": 275,
-				"y": 1564
+				"x": 300,
+				"y": 1564,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Sleeping Guy
 	{
 		"name": "Windmill Guard",
@@ -48,7 +66,7 @@
 			}
 		]
 	},
-	
+
 	// Windmill
 	{
 		"name": "Windmill Reward",
@@ -66,7 +84,8 @@
 			{
 				"map": "map_overworld",
 				"x": 140,
-				"y": 1256
+				"y": 1256,
+				"size": 60
 			}
 		]
 	},
@@ -86,13 +105,14 @@
 		"map_locations": [
 			{
 				"map": "map_overworld",
-				"visibility_rules": [""],
+				"visibility_rules": [ "" ],
 				"x": 550,
-				"y": 1038
+				"y": 1038,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Akahana
 	{
 		"name": "Akahana Trade-In",
@@ -114,7 +134,7 @@
 			}
 		]
 	},
-	
+
 	// Stom Fight
 	{
 		"name": "Stom Fight",
@@ -132,14 +152,15 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 605,
-				"y": 900
+				"y": 900,
+				"size": 60
 			}
 		]
 	},
 
 	// Amazones Items
 	{
-		"name": "Amazones",
+		"name": "Amazones Basement",
 		"access_rules": [
 			"change, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
 			"paralysis, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
@@ -157,7 +178,8 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 580,
-				"y": 1350
+				"y": 1350,
+				"size": 60
 			}
 		]
 	},
@@ -177,7 +199,8 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 650,
-				"y": 1350
+				"y": 1350,
+				"size": 60
 			}
 		]
 	},
@@ -204,7 +227,8 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 900,
-				"y": 1042
+				"y": 1042,
+				"size": 60
 			}
 		]
 	},
@@ -227,7 +251,8 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 900,
-				"y": 1102
+				"y": 1102,
+				"size": 60
 			}
 		]
 	},
@@ -255,7 +280,8 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 980,
-				"y": 1002
+				"y": 1002,
+				"size": 60
 			}
 		]
 	},
@@ -275,7 +301,8 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 980,
-				"y": 942
+				"y": 942,
+				"size": 60
 			}
 		]
 	},
@@ -295,7 +322,8 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 980,
-				"y": 882
+				"y": 882,
+				"size": 60
 			}
 		]
 	},
@@ -315,7 +343,8 @@
 			{
 				"map": "map_overworld",
 				"x": 980,
-				"y": 822
+				"y": 822,
+				"size": 60
 			}
 		]
 	},
@@ -336,7 +365,8 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "$negate|flag_rd" ],
 				"x": 1190,
-				"y": 720
+				"y": 720,
+				"size": 60
 			}
 		]
 	},
@@ -358,11 +388,12 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 910,
-				"y": 1300
+				"y": 1300,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Sleeping Kensu
 	{
 		"name": "Lighthouse",
@@ -380,11 +411,12 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 1050,
-				"y": 600
+				"y": 600,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Post-Sabera Clean-up
 	{
 		"name": "Clark",
@@ -401,12 +433,13 @@
 			{
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
-				"x": 920,
-				"y": 510
+				"x": 940,
+				"y": 510,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Altar
 	{
 		"name": "Altar",
@@ -428,11 +461,12 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 870,
-				"y": 360
+				"y": 360,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Combine the Items
 	{
 		"name": "Combine the Items",
@@ -454,7 +488,7 @@
 			}
 		]
 	},
-	
+
 	// Kensu Tag
 	{
 		"name": "Kensu Tag",
@@ -472,11 +506,12 @@
 				"visibility_rules": [ "" ],
 				"map": "map_overworld",
 				"x": 1000,
-				"y": 200
+				"y": 200,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Zebu in the Temple
 	{
 		"name": "Shyron",
@@ -494,7 +529,8 @@
 			{
 				"map": "map_overworld",
 				"x": 120,
-				"y": 230
+				"y": 230,
+				"size": 60
 			}
 		]
 	},
@@ -517,11 +553,12 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 60,
-				"y": 230
+				"y": 230,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Brokahana
 	{
 		"name": "Brokahana",
@@ -539,11 +576,12 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 360,
-				"y": 50
+				"y": 50,
+				"size": 60
 			}
 		]
 	},
-	
+
 	// Deo's Pendant
 	{
 		"name": "Meadow",
@@ -561,22 +599,23 @@
 				"map": "map_overworld",
 				"visibility_rules": [ "" ],
 				"x": 550,
-				"y": 500
+				"y": 500,
+				"size": 60
 			}
 		]
 	},
-	
+
 	//Zebu's Door
 	{
 		"name": "Zebu's Cave",
-		"access_rules": ["$negate|d_zebu_blocked"],
+		"access_rules": [ "$negate|d_zebu_blocked" ],
 		"sections": [
 			{
 				"name": "Passage to Mt. Sabre West",
 				"item_count": 1,
 				"hosted_item": "d_zebu",
 				"chest_opened_img": "images/blank.png",
-				"chest_unopened_img": "images/blank.png",
+				"chest_unopened_img": "images/blank.png"
 			}
 		],
 		"map_locations": [
@@ -585,7 +624,7 @@
 				"visibility_rules": [ "flag_wm" ],
 				"x": 60,
 				"y": 1400,
-				"force_invisibility_rules": ["$canBreakZebusCaveWall"]
+				"force_invisibility_rules": [ "$canBreakZebusCaveWall" ]
 			}
 		]
 	}
