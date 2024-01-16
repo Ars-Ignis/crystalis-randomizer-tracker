@@ -150,5 +150,204 @@
 		"img": "images/items/gomode.png",
 		"loop": "true",
 		"codes": "gomode"
-	}
+	},
+
+	
+		// Sword of Wind
+		{
+			"name": "Sword of Wind",
+			"type": "toggle",
+			"img": "images/items/swordofwind.png",
+			"loop": "true",
+			"codes": "wind, sword, windsword"
+		},
+		// Sword of Fire
+		{
+			"name": "Sword of Fire",
+			"type": "toggle",
+			"img": "images/items/swordoffire.png",
+			"loop": "true",
+			"codes": "fire, sword, firesword"
+		},
+		// Sword of Water
+		{
+			"name": "Sword of Water",
+			"type": "toggle",
+			"img": "images/items/swordofwater.png",
+			"loop": "true",
+			"codes": "water, sword, watersword"
+		},
+		// Sword of Thunder
+		{
+			"name": "Sword of Thunder",
+			"type": "progressive_toggle",
+			"loop": "true",
+			"stages": [
+				{
+					"img": "images/items/thundernowarp.png",
+					"codes": "thunder, sword, thundersword",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thundershyron.png",
+					"codes": "thunder, sword, thundersword, thundershyron",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderleaf.png",
+					"codes": "thunder, sword, thundersword, thunderleaf",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderbrynmaer.png",
+					"codes": "thunder, sword, thundersword, thunderbrynmaer",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderoak.png",
+					"codes": "thunder, sword, thundersword, thunderoak",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thundernadares.png",
+					"codes": "thunder, sword, thundersword, thundernadares",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderportoa.png",
+					"codes": "thunder, sword, thundersword, thunderportoa",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderamazones.png",
+					"codes": "thunder, sword, thundersword, thunderamazones",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderjoel.png",
+					"codes": "thunder, sword, thundersword, thunderjoel",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderzombie.png",
+					"codes": "thunder, sword, thundersword, thunderzombie",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thunderswan.png",
+					"codes": "thunder, sword, thundersword, thunderswan",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thundergoa.png",
+					"codes": "thunder, sword, thundersword, thundergoa",
+					"inherit_codes": false
+				},
+				{
+					"img": "images/items/thundersahara.png",
+					"codes": "thunder, sword, thundersword, thundersahara",
+					"inherit_codes": false
+				}
+			]
+		},
+		// Ball of Wind
+		{
+			"name": "Ball of Wind",
+			"type": "toggle",
+			"img": "images/items/ballofwind.png",
+			"loop": "true",
+			"codes": "windball, ball"
+		},
+		// Ball of Fire
+		{
+			"name": "Ball of Fire",
+			"type": "toggle",
+			"img": "images/items/balloffire.png",
+			"loop": "true",
+			"codes": "fireball, ball"
+		},
+		// Ball of Water
+		{
+			"name": "Ball of Water",
+			"type": "toggle",
+			"img": "images/items/ballofwater.png",
+			"loop": "true",
+			"codes": "waterball, ball"
+		},
+		// Ball of Thunder
+		{
+			"name": "Ball of Thunder",
+			"type": "toggle",
+			"img": "images/items/ballofthunder.png",
+			"loop": "true",
+			"codes": "thunderball, ball"
+		},
+		// Tornado Bracelet
+		{
+			"name": "Tornado Bracelet",
+			"type": "toggle",
+			"img": "images/items/braceletofwind.png",
+			"loop": "true",
+			"codes": "tornado, bracelet, windbracelet, tornadobracelet"
+		},
+		// Flame Bracelet
+		{
+			"name": "Flame Bracelet",
+			"type": "toggle",
+			"img": "images/items/braceletoffire.png",
+			"loop": "true",
+			"codes": "flame, bracelet, firebracelet, flamebracelet"
+		},
+		// Blizzard Bracelet
+		{
+			"name": "Blizzard Bracelet",
+			"type": "toggle",
+			"img": "images/items/braceletofwater.png",
+			"loop": "true",
+			"codes": "blizzard, bracelet, waterbracelet, blizzardbracelet"
+		},
+		// Storm Bracelet
+		{
+			"name": "Storm Bracelet",
+			"type": "toggle",
+			"img": "images/items/braceletofthunder.png",
+			"loop": "true",
+			"codes": "storm, bracelet, thunderbracelet, stormbracelet"
+		},
+		// Kirisa Plant
+		{
+			"name": "Kirisa Plant",
+			"type": "toggle",
+			"img": "images/items/kirisaplant.png",
+			"loop": "true",
+			"codes": "kirisa, trade, kirisaplant"
+		},
+		// Love Pendant
+		{
+			"name": "Love Pendant",
+			"type": "toggle",
+			"img": "images/items/lovependant.png",
+			"loop": "true",
+			"codes": "love, pendant, lovependant, trade"
+		},
+		// (Wt) Randomize trade-in items
+		{
+			"name": "Unsupported on this pack",
+			"type": "toggle",
+			"img": "images/flags/not implemented.png",
+			"disabled_img": "images/flags/Wt.png",
+			"loop": true,
+			"codes": "unsupported_flag_wt"
+		},
+		// (Wu) Unidentified key items
+		{
+			"name": "Unsupported on this pack",
+			"type": "toggle",
+			"img": "images/flags/not implemented.png",
+			"disabled_img": "images/flags/Wu.png",
+			"loop": true,
+			"codes": "unsupported_flag_wu"
+		}
+	
+
 	]
