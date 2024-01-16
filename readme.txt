@@ -10,6 +10,11 @@ EmoTracker Pack by
 	CodeGorilla
 	twitch.tv/CodeGorilla
 	Discord: CodeGorilla#8571
+	
+	TheSirArchibald
+	twitch.tv/TheSirArchibald
+	Discord: TheSirArchibald#9807
+	
 
 Maps are from Mike's RPG Center: http://mikesrpgcenter.com/crystalis/index.html
 
@@ -69,9 +74,11 @@ v1.3.0
 	-Fixed a logic bug with unidentified bows
 v1.4.0
 	-Added new variant: super compact variant for restreaming races
+v1.5.0
+	-Added location tracking and item tracking.  Note currently key items (statue, key, bow etc) are not tracked due to unidentified items not working yet.
 
 Future Release Plans:
 	Wh flag logic
 	Ww flag logic
-	Autotracking
+	Autotracking (Archie working on improving)
 	Wa flag logic
