@@ -1,5 +1,5 @@
 -- Configuration --------------------------------------
-AUTOTRACKER_ENABLE_DEBUG_LOGGING = true
+AUTOTRACKER_ENABLE_DEBUG_LOGGING = false
 -------------------------------------------------------
 
 print("")
