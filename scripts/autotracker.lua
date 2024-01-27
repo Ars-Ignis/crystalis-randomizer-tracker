@@ -1,5 +1,5 @@
 -- Configuration --------------------------------------
-AUTOTRACKER_ENABLE_DEBUG_LOGGING = false
+AUTOTRACKER_ENABLE_DEBUG_LOGGING = true
 -------------------------------------------------------
 
 print("")
@@ -55,17 +55,17 @@ function updateToggleItemFromByteAndFlag(segment, code, address, flag)
     end
 end
 
-function updateProgessiveItemFromByteAndFlag(segment, code, address, flag, currentStage)
+function updateProgessiveItemFromByteAndFlag(segment, code, address, flag)
     local item = Tracker:FindObjectForCode(code)
     if item then
         local value = ReadU8(segment, address)
         if AUTOTRACKER_ENABLE_DEBUG_LOGGING then
-            print(item.Name, code, flag)
+            print(item.Name, code, value, flag)
         end
 
-        local flagTest = value & flag
+        --local flagTest = value & flag
 
-        if flagTest ~= 0 and currentStage == 0 then
+        if (value & flag) ~= 0 then
             item.CurrentStage = 1
             currentStage = 1
         elseif currentStage == 1 then
@@ -784,6 +784,13 @@ end
 
 function updateMoonBow(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
+
+	if item then
+		-- Do not auto-track this the user has manually modified it
+		if item.Active then
+		  return
+		end
+
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
@@ -818,7 +825,7 @@ function updateMoonBow(segment, code, address)
 		    or KEYITEM14 == 0x3E
 		    or KEYITEM15 == 0x3E 
             or KEYITEM16 == 0x3E then
-            		if item.Active == true then
+            		 item.Active = true 
                 		--print(item.Name .. " obtained")
                 		--item.Active = true
             		--end
@@ -830,6 +837,12 @@ end
 
 function updateSunBow(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
+
+	if item then
+		-- Do not auto-track this the user has manually modified it
+		if item.Active then
+		  return
+		end
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
@@ -864,7 +877,7 @@ function updateSunBow(segment, code, address)
 		    or KEYITEM14 == 0x3F
 		    or KEYITEM15 == 0x3F 
             or KEYITEM16 == 0x3F then
-            		if item.Active == true then
+            		 item.Active = true 
                 		--print(item.Name .. " obtained")
                 		--item.Active = true
             		--end
@@ -876,6 +889,13 @@ end
 
 function updateTruthBow(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
+
+	if item then
+		-- Do not auto-track this the user has manually modified it
+		if item.Active then
+		  return
+		end
+
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
@@ -910,7 +930,7 @@ function updateTruthBow(segment, code, address)
 		    or KEYITEM14 == 0x40
 		    or KEYITEM15 == 0x40 
             or KEYITEM16 == 0x40 then
-            		if item.Active == true then
+            		 item.Active = true 
                 		--print(item.Name .. " obtained")
                 		--item.Active = true
             		--end
@@ -1889,21 +1909,11 @@ function updateToggleItemFromByteAndFlag(segment, code, address, flag)
     end
 end
 
-function updateProgressiveItemFromByteAndFlags(segment, code, address, flag1, flag2)
+function updateProgressiveItemFromByteAndFlag(segment, code, address, flag1)
     local item = Tracker:FindObjectForCode(code)
     if item then
-        local value = ReadU8(segment, address)
-        if value & flag1 ~= 0 and value & flag2 ~= 0 then
-            if item.CurrentStage ~= 3 then
-                print(item.Name .. " obtained")
-                item.CurrentStage = 3
-            end
-        elseif value & flag2 ~= 0 then
-            if item.CurrentStage ~= 2 then
-                print(item.Name .. " obtained")
-                item.CurrentStage = 2
-            end
-        elseif value & flag1 ~= 0 then
+        local value = ReadU8(segment, address)        
+        if value & flag1 ~= 0 then
             if item.CurrentStage ~= 1 then
                 print(item.Name .. " obtained")
                 item.CurrentStage = 1
@@ -2082,16 +2092,16 @@ function updateKeyItemsFromMemorySegment(segment)
     if AUTOTRACKER_ENABLE_ITEM_TRACKING then
 
     
-	--updateToggleItemFromByte(segment, "kelbesque1_cleared", 0x64A1, 0x01)  
-	--updateProgessiveItemFromByteAndFlag(segment, "Kelbesque 1", 0x64A1, 0x01)
-	--updateToggleItemFromByte(segment, "kelbesque2_cleared", 0x64A4, 0x40)
-	--updateToggleItemFromByte(segment, "sabera1_cleared", 0x64A7, 0x01)
-	--updateToggleItemFromByte(segment, "sabera2_cleared", 0x64A4, 0x08)
-	--updateToggleItemFromByte(segment, "mado1_cleared", 0x64A1, 0x08)
-	--updateToggleItemFromByte(segment, "mado2_cleared", 0x64A2, 0x04)
-	--updateToggleItemFromByte(segment, "karmine_cleared", 0x64A1, 0x10)	
-	--updateToggleItemFromByte(segment, "vampire_cleared", 0x64A5, 0x40)
-	--updateToggleItemFromByte(segment, "giantinsect_cleared", 0x64A0, 0x80)	
+	
+	updateProgessiveItemFromByteAndFlag(segment, "kelbesque1_cleared", 0x64A1, 0x01)
+	updateProgessiveItemFromByteAndFlag(segment, "kelbesque2_cleared", 0x64A4, 0x40)
+	updateProgessiveItemFromByteAndFlag(segment, "sabera1_cleared", 0x64A7, 0x01)
+	updateProgessiveItemFromByteAndFlag(segment, "sabera2_cleared", 0x64A4, 0x08)
+	updateProgessiveItemFromByteAndFlag(segment, "mado1_cleared", 0x64A1, 0x08)
+	updateProgessiveItemFromByteAndFlag(segment, "mado2_cleared", 0x64A2, 0x04)
+	updateProgessiveItemFromByteAndFlag(segment, "karmine_cleared", 0x64A7, 0x10)	
+	updateProgessiveItemFromByteAndFlag(segment, "vampire_cleared", 0x64AC, 0x02)
+	updateProgessiveItemFromByteAndFlag(segment, "giantinsect_cleared", 0x64A0, 0x80)	
 	--updateToggleItemFromByte(segment, "draygon1_cleared", 0x64A8, 0x01)  Needs to be made
 	
 	updateWindSword(segment, "windsword", 0x6430)
