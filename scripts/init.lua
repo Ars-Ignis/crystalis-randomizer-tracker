@@ -15,7 +15,8 @@ ScriptHost:LoadScript("scripts/init_custom_items.lua")
 
 
 Tracker:AddItems("items/common.json")
---Tracker:AddItems("items/simple_items.json")
+Tracker:AddItems("items/bosses.json")
+Tracker:AddItems("items/simple_items.json")
 Tracker:AddItems("items/dungeon_walls.json")
 Tracker:AddItems("items/eastcaveexits.json")
 if (Tracker.ActiveVariantUID ~= "super_compact") then
@@ -43,12 +44,14 @@ Tracker:AddItems("items/flags.json")
 		ScriptHost:LoadScript("scripts/key_item_logic.lua")
 		Tracker:AddMaps("maps/sub_maps.json")
 		if (Tracker.ActiveVariantUID == "items_and_map_custom") then
-			initCustomItems()
+			initCustomItems()			
+			--Tracker:AddItems("items/simple_items.json")
 			Tracker:AddLayouts("layouts/flags_layout.json")
 			Tracker:AddLayouts("layouts/input_layouts.json")
 			Tracker:AddLayouts("layouts/map_layouts.json")
 			Tracker:AddLayouts("layouts/map_tracker_layout.json")
 			Tracker:AddLayouts("layouts/broadcast_map.json")
+			
 		else
 			Tracker:AddItems("items/simple_items.json")
 			Tracker:AddLayouts("layouts/simple_flags_layout.json")
@@ -58,7 +61,7 @@ Tracker:AddItems("items/flags.json")
 			Tracker:AddLayouts("layouts/broadcast_map.json")
 		end
 		Tracker:AddLocations("locations/overworld_locations.json")
-		Tracker:AddLocations("locations/all_sublocations.json")
+		--Tracker:AddLocations("locations/all_sublocations.json")
 		Tracker:AddLocations("locations/east_cave_locations.json")
 		Tracker:AddLocations("locations/sealed_cave_locations.json")
 		Tracker:AddLocations("locations/sabre_west_locations.json")
