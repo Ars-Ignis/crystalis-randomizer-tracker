@@ -78,7 +78,7 @@ end
 		elseif (Tracker.ActiveVariantUID == "items_and_map_custom2") then
 			initCustomItemsAuto()			--New one to eliminate the badge system
 			Tracker:AddItems("items/simple_items.json")
-			Tracker:AddLayouts("layouts/simple_flags_layout.json")
+			Tracker:AddLayouts("layouts/flags_layout.json")
 			Tracker:AddLayouts("layouts/input_layouts_unid.json")  --Note unid field
 			--Tracker:AddLayouts("layouts/input_layouts.json")
 			Tracker:AddLayouts("layouts/map_layouts.json")
