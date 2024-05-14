@@ -20,6 +20,7 @@ function initCustomItems()
 	local goa3rd = GoaFloorItem("3rd", 0)
 	local goa4th = GoaFloorItem("4th", 0)
 
+
 	local keyBadges = 
 	{
 		{code = "unknownkey", flag_wt = false, flag_wu = true, both = true},

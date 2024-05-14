@@ -143,7 +143,7 @@ function hasBothLamps()
 end
 
 function hasAkahanaTrade()
-	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
+local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt and not flag_wu then
 		return Tracker:ProviderCountForCode("redstatue") > 0
@@ -163,7 +163,7 @@ function maybeHasAkahanaTrade()
 		return Tracker:ProviderCountForCode("redstatue") > 0
 	elseif not flag_wt and flag_wu then
 		return	Tracker:ProviderCountForCode("tradeakahana") > 0 or
-				(Tracker:ProviderCountForCode("unknowntrade") > 0 and Tracker:ProviderCountForCode("nottradeakahana") == 0)
+				(Tracker:ProviderCountForCode("unknownstatue") > 0 and Tracker:ProviderCountForCode("nottradeakahana") == 0)
 	elseif flag_wt and not flag_wu then
 		return	Tracker:ProviderCountForCode("tradeakahana") > 0 or
 				(Tracker:ProviderCountForCode("unknowntrade") > 0 and Tracker:ProviderCountForCode("nottradeakahana") == 0)
@@ -196,7 +196,7 @@ function maybeHasSlimeTrade()
 		return Tracker:ProviderCountForCode("graystatue") > 0
 	elseif not flag_wt and flag_wu then
 		return	Tracker:ProviderCountForCode("tradeslime") > 0 or
-				(Tracker:ProviderCountForCode("unkownstatue") > 0 and Tracker:ProviderCountForCode("nottradeslime") == 0)
+				(Tracker:ProviderCountForCode("unknownstatue") > 0 and Tracker:ProviderCountForCode("nottradeslime") == 0)
 	elseif flag_wt and not flag_wu then
 		return	Tracker:ProviderCountForCode("tradeslime") > 0 or
 				(Tracker:ProviderCountForCode("unknowntrade") > 0 and Tracker:ProviderCountForCode("nottradeslime") == 0)

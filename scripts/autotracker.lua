@@ -32,6 +32,18 @@ function ReadU8(segment, address)
     return U8_READ_CACHE
 end
 
+function checkBitSet(name, segment, address, flag)
+
+  local trackerItem = Tracker:FindObjectForCode(name)
+  if trackerItem then
+    local value = segment:ReadUInt8(address)
+    trackerItem.Active = ((value & flag) ~= 0)
+  else
+    --printDebug("checkBitSet: Unable to find tracker item: " .. name)  
+  end  
+end
+
+
 function isInGame()
   return true -- Need to eventually fix this.
 end
@@ -782,6 +794,108 @@ function updateShieldRing(segment, code, address)
     	end
 end
 
+function updateBowCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+      
+    if negate("flag_wu") then
+    return
+
+    else
+        if item then
+        local value = 0
+        local valuemoon = 0
+        local valuesun = 0
+        local valuetruth = 0
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x3E 
+		        or KEYITEM2 == 0x3E
+		        or KEYITEM3 == 0x3E 
+		        or KEYITEM4 == 0x3E 
+		        or KEYITEM5 == 0x3E 
+		        or KEYITEM6 == 0x3E 
+		        or KEYITEM7 == 0x3E
+		        or KEYITEM8 == 0x3E 
+                or KEYITEM9 == 0x3E
+		        or KEYITEM10 == 0x3E 
+		        or KEYITEM11 == 0x3E 
+		        or KEYITEM12 == 0x3E 
+		        or KEYITEM13 == 0x3E 
+		        or KEYITEM14 == 0x3E
+		        or KEYITEM15 == 0x3E 
+                or KEYITEM16 == 0x3E then
+                valuemoon = 1
+            end
+
+            if KEYITEM1 == 0x3F 
+		        or KEYITEM2 == 0x3F
+		        or KEYITEM3 == 0x3F 
+		        or KEYITEM4 == 0x3F 
+		        or KEYITEM5 == 0x3F 
+		        or KEYITEM6 == 0x3F 
+		        or KEYITEM7 == 0x3F
+		        or KEYITEM8 == 0x3F 
+                or KEYITEM9 == 0x3F
+		        or KEYITEM10 == 0x3F 
+		        or KEYITEM11 == 0x3F 
+		        or KEYITEM12 == 0x3F 
+		        or KEYITEM13 == 0x3F 
+		        or KEYITEM14 == 0x3F
+		        or KEYITEM15 == 0x3F 
+                or KEYITEM16 == 0x3F then
+                valuesun = 1
+            end
+
+            if KEYITEM1 == 0x40 
+		        or KEYITEM2 == 0x40
+		        or KEYITEM3 == 0x40 
+		        or KEYITEM4 == 0x40 
+		        or KEYITEM5 == 0x40 
+		        or KEYITEM6 == 0x40 
+		        or KEYITEM7 == 0x40
+		        or KEYITEM8 == 0x40 
+                or KEYITEM9 == 0x40
+		        or KEYITEM10 == 0x40 
+		        or KEYITEM11 == 0x40 
+		        or KEYITEM12 == 0x40 
+		        or KEYITEM13 == 0x40 
+		        or KEYITEM14 == 0x40
+		        or KEYITEM15 == 0x40 
+                or KEYITEM16 == 0x40 then
+                valuetruth = 1
+            end
+
+        if
+        valuemoon or valuesun or valuetruth > 0 then
+        value = valuemoon + valuesun + valuetruth
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+    end
+end
+
 function updateMoonBow(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
 
@@ -790,6 +904,8 @@ function updateMoonBow(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -809,7 +925,7 @@ function updateMoonBow(segment, code, address)
     	local KEYITEM16 = ReadU8(segment, 0x64BF)
 	
 	--if item  then    
-               	if KEYITEM1 == 0x3E 
+            if KEYITEM1 == 0x3E 
 		    or KEYITEM2 == 0x3E
 		    or KEYITEM3 == 0x3E 
 		    or KEYITEM4 == 0x3E 
@@ -832,7 +948,10 @@ function updateMoonBow(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("graybow", segment, 0x6481, 0x40)  	--statue destory
+    	end          
+    end
 end
 
 function updateSunBow(segment, code, address)
@@ -843,7 +962,10 @@ function updateSunBow(segment, code, address)
 		if item.Active then
 		  return
 		end
-    	local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	
+        if negate("flag_wu") then
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
     	local KEYITEM4 = ReadU8(segment, 0x6453)
@@ -884,7 +1006,10 @@ function updateSunBow(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("redbow", segment, 0x6481, 0x08)  	--statue destory
+    	end          
+    end
 end
 
 function updateTruthBow(segment, code, address)
@@ -895,6 +1020,8 @@ function updateTruthBow(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -930,26 +1057,136 @@ function updateTruthBow(segment, code, address)
 		    or KEYITEM14 == 0x40
 		    or KEYITEM15 == 0x40 
             or KEYITEM16 == 0x40 then
-            		 item.Active = true 
-                		--print(item.Name .. " obtained")
-                		--item.Active = true
-            		--end
+            		if item.Active == false then
+                		print(item.Name .. " obtained")
+                		item.Active = true
+            		end
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("bluebow", segment, 0x6485, 0x80)  	--draygon2 spawn
+    	end          
+    end
+end
+
+
+function updateKeyCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+    
+    if negate("flag_wu") then
+    return
+
+    else
+    if item then
+        local value = 0
+        local valuewind = 0
+        local valueprison = 0
+        local valuestyx = 0
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x32 
+		        or KEYITEM2 == 0x32
+		        or KEYITEM3 == 0x32 
+		        or KEYITEM4 == 0x32 
+		        or KEYITEM5 == 0x32 
+		        or KEYITEM6 == 0x32 
+		        or KEYITEM7 == 0x32
+		        or KEYITEM8 == 0x32 
+                or KEYITEM9 == 0x32
+		        or KEYITEM10 == 0x32 
+		        or KEYITEM11 == 0x32 
+		        or KEYITEM12 == 0x32 
+		        or KEYITEM13 == 0x32 
+		        or KEYITEM14 == 0x32
+		        or KEYITEM15 == 0x32 
+                or KEYITEM16 == 0x32 then
+                valuewind = 1
+            end
+
+            if KEYITEM1 == 0x33 
+		        or KEYITEM2 == 0x33
+		        or KEYITEM3 == 0x33 
+		        or KEYITEM4 == 0x33 
+		        or KEYITEM5 == 0x33 
+		        or KEYITEM6 == 0x33 
+		        or KEYITEM7 == 0x33
+		        or KEYITEM8 == 0x33 
+                or KEYITEM9 == 0x33
+		        or KEYITEM10 == 0x33 
+		        or KEYITEM11 == 0x33 
+		        or KEYITEM12 == 0x33 
+		        or KEYITEM13 == 0x33 
+		        or KEYITEM14 == 0x33
+		        or KEYITEM15 == 0x33 
+                or KEYITEM16 == 0x33 then
+                valueprison = 1
+            end
+
+            if KEYITEM1 == 0x34 
+		        or KEYITEM2 == 0x34
+		        or KEYITEM3 == 0x34 
+		        or KEYITEM4 == 0x34 
+		        or KEYITEM5 == 0x34 
+		        or KEYITEM6 == 0x34 
+		        or KEYITEM7 == 0x34
+		        or KEYITEM8 == 0x34 
+                or KEYITEM9 == 0x34
+		        or KEYITEM10 == 0x34 
+		        or KEYITEM11 == 0x34 
+		        or KEYITEM12 == 0x34 
+		        or KEYITEM13 == 0x34 
+		        or KEYITEM14 == 0x34
+		        or KEYITEM15 == 0x34 
+                or KEYITEM16 == 0x34 then
+                valuestyx = 1
+            end
+
+        if
+        valuewind or valueprison or valuestyx > 0 then
+        value = valuewind + valueprison + valuestyx
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+end
 end
 
 function updateWindKey(segment, code, address)
+    
+         
     local item = Tracker:FindObjectForCode(code)
 
-	if item then
+	    if item then
 		-- Do not auto-track this the user has manually modified it
-		if item.Active then
-		  return
+		    if item.Active then
+		        return
 		end
-		
-    	local KEYITEM1 = ReadU8(segment, 0x6450) 
+
+        if negate("flag_wu") then
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
     	local KEYITEM4 = ReadU8(segment, 0x6453)
@@ -984,16 +1221,18 @@ function updateWindKey(segment, code, address)
 		    or KEYITEM15 == 0x32 
             or KEYITEM16 == 0x32 then
             		 item.Active = true 
-                		--print(item.Name .. " obtained")
-                		--item.Active = false
-            		--end
         			else
             			item.Active = false
-        		end        	
-			end
-	
-end
+        			end 
 
+
+    	else
+        checkBitSet("redkey", segment, 0x6481, 0x04)  	
+    	end          
+    end
+end
+   
+    
 function updatePrisonKey(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
 
@@ -1002,6 +1241,8 @@ function updatePrisonKey(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1041,7 +1282,10 @@ function updatePrisonKey(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("bluekey", segment, 0x64DB, 0x01)  	
+    	end          
+    end
 end
 
 function updateStyxKey(segment, code, address)
@@ -1051,6 +1295,8 @@ function updateStyxKey(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1090,7 +1336,95 @@ function updateStyxKey(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("greenkey", segment, 0x64D6, 0x01)  	--find bit for door
+    	end          
+    end
+end
+
+function updateLampCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+      
+    if negate("flag_wu") then
+    return
+
+    else
+
+        if item then
+        local value = 0
+        local valuefog = 0
+        local valueglowing = 0
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x39 
+		        or KEYITEM2 == 0x39
+		        or KEYITEM3 == 0x39 
+		        or KEYITEM4 == 0x39 
+		        or KEYITEM5 == 0x39 
+		        or KEYITEM6 == 0x39 
+		        or KEYITEM7 == 0x39
+		        or KEYITEM8 == 0x39 
+                or KEYITEM9 == 0x39
+		        or KEYITEM10 == 0x39 
+		        or KEYITEM11 == 0x39 
+		        or KEYITEM12 == 0x39 
+		        or KEYITEM13 == 0x39 
+		        or KEYITEM14 == 0x39
+		        or KEYITEM15 == 0x39 
+                or KEYITEM16 == 0x39 then
+                valueglowing = 1
+            end
+
+            if KEYITEM1 == 0x35 
+		        or KEYITEM2 == 0x35
+		        or KEYITEM3 == 0x35 
+		        or KEYITEM4 == 0x35 
+		        or KEYITEM5 == 0x35 
+		        or KEYITEM6 == 0x35 
+		        or KEYITEM7 == 0x35
+		        or KEYITEM8 == 0x35 
+                or KEYITEM9 == 0x35
+		        or KEYITEM10 == 0x35 
+		        or KEYITEM11 == 0x35 
+		        or KEYITEM12 == 0x35 
+		        or KEYITEM13 == 0x35 
+		        or KEYITEM14 == 0x35
+		        or KEYITEM15 == 0x35 
+                or KEYITEM16 == 0x35 then
+                valuefog = 1
+            end
+
+            
+
+        if
+        valuefog or valueglowing > 0 then
+        value = valuefog + valueglowing
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+    end
 end
 
 function updateGlowLamp(segment, code, address)
@@ -1100,6 +1434,8 @@ function updateGlowLamp(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1139,7 +1475,10 @@ function updateGlowLamp(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("glowinglamp", segment, 0x64A7, 0x04)
+    	end          
+    end
 end
 
 function updateFogLamp(segment, code, address)
@@ -1149,6 +1488,8 @@ function updateFogLamp(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1188,8 +1529,149 @@ function updateFogLamp(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("foglamp", segment, 0x6484, 0x02)   --find boat bit Need to test this
+    	end          
+    end
 end
+
+function updateFluteCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+    
+    if negate("flag_wu") then --added
+    return  --added
+    
+    else
+    if item then
+        local value = 0
+        local valuealarm = 0
+        local valuelime = 0 
+        local valueshell = 0
+        local valuebug = 0
+        local shellfluteactive = 0
+        local alarmfluteactive = 0
+
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+        
+        local alarmfluteread = segment:ReadUInt8(0x64A6)
+    
+            if ((alarmfluteread & 0x04) ~=0) then
+           alarmfluteactive = 1
+        end
+        
+        local shellfluteread = segment:ReadUInt8(0x64A7)
+    
+            if ((shellfluteread & 0x08) ~=0) then
+           shellfluteactive = 1
+        end
+
+            if KEYITEM1 == 0x31 
+		        or KEYITEM2 == 0x31
+		        or KEYITEM3 == 0x31 
+		        or KEYITEM4 == 0x31 
+		        or KEYITEM5 == 0x31 
+		        or KEYITEM6 == 0x31 
+		        or KEYITEM7 == 0x31
+		        or KEYITEM8 == 0x31 
+                or KEYITEM9 == 0x31
+		        or KEYITEM10 == 0x31 
+		        or KEYITEM11 == 0x31 
+		        or KEYITEM12 == 0x31 
+		        or KEYITEM13 == 0x31 
+		        or KEYITEM14 == 0x31
+		        or KEYITEM15 == 0x31 
+                or KEYITEM16 == 0x31 then
+                valuealarm = 1
+            end
+
+            if KEYITEM1 == 0x36 
+		        or KEYITEM2 == 0x36
+		        or KEYITEM3 == 0x36 
+		        or KEYITEM4 == 0x36 
+		        or KEYITEM5 == 0x36 
+		        or KEYITEM6 == 0x36 
+		        or KEYITEM7 == 0x36
+		        or KEYITEM8 == 0x36 
+                or KEYITEM9 == 0x36
+		        or KEYITEM10 == 0x36 
+		        or KEYITEM11 == 0x36 
+		        or KEYITEM12 == 0x36 
+		        or KEYITEM13 == 0x36 
+		        or KEYITEM14 == 0x36
+		        or KEYITEM15 == 0x36 
+                or KEYITEM16 == 0x36 then
+                valueshell = 1
+            end
+
+             if KEYITEM1 == 0x27 
+		        or KEYITEM2 == 0x27
+		        or KEYITEM3 == 0x27 
+		        or KEYITEM4 == 0x27 
+		        or KEYITEM5 == 0x27 
+		        or KEYITEM6 == 0x27 
+		        or KEYITEM7 == 0x27
+		        or KEYITEM8 == 0x27 
+                or KEYITEM9 == 0x27
+		        or KEYITEM10 == 0x27 
+		        or KEYITEM11 == 0x27 
+		        or KEYITEM12 == 0x27 
+		        or KEYITEM13 == 0x27 
+		        or KEYITEM14 == 0x27
+		        or KEYITEM15 == 0x27 
+                or KEYITEM16 == 0x27 then
+                valuebug = 1
+            end
+
+
+            if KEYITEM1 == 0x28 
+		        or KEYITEM2 == 0x28
+		        or KEYITEM3 == 0x28 
+		        or KEYITEM4 == 0x28 
+		        or KEYITEM5 == 0x28 
+		        or KEYITEM6 == 0x28 
+		        or KEYITEM7 == 0x28
+		        or KEYITEM8 == 0x28 
+                or KEYITEM9 == 0x28
+		        or KEYITEM10 == 0x28 
+		        or KEYITEM11 == 0x28 
+		        or KEYITEM12 == 0x28 
+		        or KEYITEM13 == 0x28 
+		        or KEYITEM14 == 0x28
+		        or KEYITEM15 == 0x28 
+                or KEYITEM16 == 0x28 then
+                valuelime = 1
+            end
+
+        if
+        valuealarm or valuebug or valueshell or valuelime > 0 then
+        value = valuealarm + valuebug + valueshell + valuelime - shellfluteactive -alarmfluteactive
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+    end
+end
+
 
 function updateAlarmFlute(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
@@ -1198,6 +1680,8 @@ function updateAlarmFlute(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1237,7 +1721,10 @@ function updateAlarmFlute(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+        else
+        checkBitSet("grayflute", segment, 0x64A6, 0x04)         	
+    	end          
+    end
 end
 
 function updateShellFlute(segment, code, address)
@@ -1247,6 +1734,8 @@ function updateShellFlute(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1286,7 +1775,10 @@ function updateShellFlute(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("redflute", segment, 0x64A7, 0x08)       --find dolphin actived riding is 0x40  	
+    	end          
+    end
 end
 
 function updateBugFlute(segment, code, address)
@@ -1297,6 +1789,8 @@ function updateBugFlute(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1336,7 +1830,10 @@ function updateBugFlute(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("greenflute", segment, 0x64A0, 0x80)         	
+    	end          
+    end
 end
 
 function updateLimeFlute(segment, code, address)
@@ -1347,6 +1844,8 @@ function updateLimeFlute(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1386,7 +1885,464 @@ function updateLimeFlute(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("blueflute", segment, 0x64A6, 0x01)      ---Note can also be the people   	
+    	end          
+    end
+end
+
+function updateStatueTradeCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+
+    if negate("flag_wt") then --added
+    return  --added
+
+    else
+    if item then
+        local value = 0
+        --Statues
+        local valueonyx = 0
+        local valuebroken = 0 
+        local valuegold = 0
+        local valueivory = 0
+        
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x25 
+		        or KEYITEM2 == 0x25
+		        or KEYITEM3 == 0x25 
+		        or KEYITEM4 == 0x25 
+		        or KEYITEM5 == 0x25 
+		        or KEYITEM6 == 0x25 
+		        or KEYITEM7 == 0x25
+		        or KEYITEM8 == 0x25 
+                or KEYITEM9 == 0x25
+		        or KEYITEM10 == 0x25 
+		        or KEYITEM11 == 0x25 
+		        or KEYITEM12 == 0x25 
+		        or KEYITEM13 == 0x25 
+		        or KEYITEM14 == 0x25
+		        or KEYITEM15 == 0x25 
+                or KEYITEM16 == 0x25 then
+                valueonyx = 1
+            end
+
+            if KEYITEM1 == 0x3A 
+		        or KEYITEM2 == 0x3A
+		        or KEYITEM3 == 0x3A 
+		        or KEYITEM4 == 0x3A 
+		        or KEYITEM5 == 0x3A 
+		        or KEYITEM6 == 0x3A 
+		        or KEYITEM7 == 0x3A
+		        or KEYITEM8 == 0x3A 
+                or KEYITEM9 == 0x3A
+		        or KEYITEM10 == 0x3A 
+		        or KEYITEM11 == 0x3A 
+		        or KEYITEM12 == 0x3A 
+		        or KEYITEM13 == 0x3A 
+		        or KEYITEM14 == 0x3A
+		        or KEYITEM15 == 0x3A 
+                or KEYITEM16 == 0x3A then
+                valuebroken = 1
+            end
+
+             if KEYITEM1 == 0x3D 
+		        or KEYITEM2 == 0x3D
+		        or KEYITEM3 == 0x3D 
+		        or KEYITEM4 == 0x3D 
+		        or KEYITEM5 == 0x3D 
+		        or KEYITEM6 == 0x3D 
+		        or KEYITEM7 == 0x3D
+		        or KEYITEM8 == 0x3D 
+                or KEYITEM9 == 0x3D
+		        or KEYITEM10 == 0x3D 
+		        or KEYITEM11 == 0x3D 
+		        or KEYITEM12 == 0x3D 
+		        or KEYITEM13 == 0x3D 
+		        or KEYITEM14 == 0x3D
+		        or KEYITEM15 == 0x3D 
+                or KEYITEM16 == 0x3D then
+                valuegold = 1
+            end
+
+            if KEYITEM1 == 0x38 
+		        or KEYITEM2 == 0x38
+		        or KEYITEM3 == 0x38 
+		        or KEYITEM4 == 0x38 
+		        or KEYITEM5 == 0x38 
+		        or KEYITEM6 == 0x38 
+		        or KEYITEM7 == 0x38
+		        or KEYITEM8 == 0x38 
+                or KEYITEM9 == 0x38
+		        or KEYITEM10 == 0x38 
+		        or KEYITEM11 == 0x38 
+		        or KEYITEM12 == 0x38 
+		        or KEYITEM13 == 0x38 
+		        or KEYITEM14 == 0x38
+		        or KEYITEM15 == 0x38 
+                or KEYITEM16 == 0x38 then
+                valueivory = 1
+            end
+
+
+
+        if
+        valueonyx or valuegold or valuebroken or valueivory > 0 then
+        value = valueonyx + valuegold + valuebroken + valueivory
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+end
+end
+
+function updateTradeCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+
+    if negate("flag_wt") then --added
+    return  --added
+
+    else
+    if item then
+        local value = 0
+        --Statues
+        local valueonyx = 0
+        local valuebroken = 0 
+        local valuegold = 0
+        local valueivory = 0
+        --Lamps
+        local valuefog = 0
+        local valueglowing = 0
+        --Karissa
+        local karrisa = 0
+        --Necklace
+        local lovenecklace = 0
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x25 
+		        or KEYITEM2 == 0x25
+		        or KEYITEM3 == 0x25 
+		        or KEYITEM4 == 0x25 
+		        or KEYITEM5 == 0x25 
+		        or KEYITEM6 == 0x25 
+		        or KEYITEM7 == 0x25
+		        or KEYITEM8 == 0x25 
+                or KEYITEM9 == 0x25
+		        or KEYITEM10 == 0x25 
+		        or KEYITEM11 == 0x25 
+		        or KEYITEM12 == 0x25 
+		        or KEYITEM13 == 0x25 
+		        or KEYITEM14 == 0x25
+		        or KEYITEM15 == 0x25 
+                or KEYITEM16 == 0x25 then
+                valueonyx = 1
+            end
+
+            if KEYITEM1 == 0x3A 
+		        or KEYITEM2 == 0x3A
+		        or KEYITEM3 == 0x3A 
+		        or KEYITEM4 == 0x3A 
+		        or KEYITEM5 == 0x3A 
+		        or KEYITEM6 == 0x3A 
+		        or KEYITEM7 == 0x3A
+		        or KEYITEM8 == 0x3A 
+                or KEYITEM9 == 0x3A
+		        or KEYITEM10 == 0x3A 
+		        or KEYITEM11 == 0x3A 
+		        or KEYITEM12 == 0x3A 
+		        or KEYITEM13 == 0x3A 
+		        or KEYITEM14 == 0x3A
+		        or KEYITEM15 == 0x3A 
+                or KEYITEM16 == 0x3A then
+                valuebroken = 1
+            end
+
+             if KEYITEM1 == 0x3D 
+		        or KEYITEM2 == 0x3D
+		        or KEYITEM3 == 0x3D 
+		        or KEYITEM4 == 0x3D 
+		        or KEYITEM5 == 0x3D 
+		        or KEYITEM6 == 0x3D 
+		        or KEYITEM7 == 0x3D
+		        or KEYITEM8 == 0x3D 
+                or KEYITEM9 == 0x3D
+		        or KEYITEM10 == 0x3D 
+		        or KEYITEM11 == 0x3D 
+		        or KEYITEM12 == 0x3D 
+		        or KEYITEM13 == 0x3D 
+		        or KEYITEM14 == 0x3D
+		        or KEYITEM15 == 0x3D 
+                or KEYITEM16 == 0x3D then
+                valuegold = 1
+            end
+
+            if KEYITEM1 == 0x38 
+		        or KEYITEM2 == 0x38
+		        or KEYITEM3 == 0x38 
+		        or KEYITEM4 == 0x38 
+		        or KEYITEM5 == 0x38 
+		        or KEYITEM6 == 0x38 
+		        or KEYITEM7 == 0x38
+		        or KEYITEM8 == 0x38 
+                or KEYITEM9 == 0x38
+		        or KEYITEM10 == 0x38 
+		        or KEYITEM11 == 0x38 
+		        or KEYITEM12 == 0x38 
+		        or KEYITEM13 == 0x38 
+		        or KEYITEM14 == 0x38
+		        or KEYITEM15 == 0x38 
+                or KEYITEM16 == 0x38 then
+                valueivory = 1
+            end
+
+            if KEYITEM1 == 0x39 
+		        or KEYITEM2 == 0x39
+		        or KEYITEM3 == 0x39 
+		        or KEYITEM4 == 0x39 
+		        or KEYITEM5 == 0x39 
+		        or KEYITEM6 == 0x39 
+		        or KEYITEM7 == 0x39
+		        or KEYITEM8 == 0x39 
+                or KEYITEM9 == 0x39
+		        or KEYITEM10 == 0x39 
+		        or KEYITEM11 == 0x39 
+		        or KEYITEM12 == 0x39 
+		        or KEYITEM13 == 0x39 
+		        or KEYITEM14 == 0x39
+		        or KEYITEM15 == 0x39 
+                or KEYITEM16 == 0x39 then
+                valueglowing = 1
+            end
+
+            if KEYITEM1 == 0x35 
+		        or KEYITEM2 == 0x35
+		        or KEYITEM3 == 0x35 
+		        or KEYITEM4 == 0x35 
+		        or KEYITEM5 == 0x35 
+		        or KEYITEM6 == 0x35 
+		        or KEYITEM7 == 0x35
+		        or KEYITEM8 == 0x35 
+                or KEYITEM9 == 0x35
+		        or KEYITEM10 == 0x35 
+		        or KEYITEM11 == 0x35 
+		        or KEYITEM12 == 0x35 
+		        or KEYITEM13 == 0x35 
+		        or KEYITEM14 == 0x35
+		        or KEYITEM15 == 0x35 
+                or KEYITEM16 == 0x35 then
+                valuefog = 1
+            end
+
+            if KEYITEM1 == 0x3C
+		    or KEYITEM2 == 0x3C
+		    or KEYITEM3 == 0x3C 
+		    or KEYITEM4 == 0x3C 
+		    or KEYITEM5 == 0x3C 
+		    or KEYITEM6 == 0x3C 
+		    or KEYITEM7 == 0x3C
+		    or KEYITEM8 == 0x3C 
+            or KEYITEM9 == 0x3C
+		    or KEYITEM10 == 0x3C 
+		    or KEYITEM11 == 0x3C 
+		    or KEYITEM12 == 0x3C 
+		    or KEYITEM13 == 0x3C 
+		    or KEYITEM14 == 0x3C
+		    or KEYITEM15 == 0x3C 
+            or KEYITEM16 == 0x3C  then
+            karrisa = 1
+            end
+
+            if KEYITEM1 == 0X3B
+		    or KEYITEM2 == 0x3B
+		    or KEYITEM3 == 0x3B 
+		    or KEYITEM4 == 0x3B 
+		    or KEYITEM5 == 0x3B 
+		    or KEYITEM6 == 0x3B 
+		    or KEYITEM7 == 0x3B
+		    or KEYITEM8 == 0x3B 
+            or KEYITEM9 == 0x3B
+		    or KEYITEM10 == 0x3B 
+		    or KEYITEM11 == 0x3B 
+		    or KEYITEM12 == 0x3B 
+		    or KEYITEM13 == 0x3B 
+		    or KEYITEM14 == 0x3B
+		    or KEYITEM15 == 0x3B 
+            or KEYITEM16 == 0x3B then
+            lovenecklace = 1
+            end
+
+        if
+        valueonyx or valuegold or valuebroken or valueivory or valueglowing or valuefog or karrisa or lovenecklace > 0 then
+        value = valueonyx + valuegold + valuebroken + valueivory + valueglowing + valuefog + karrisa + lovenecklace
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+end
+end
+
+function updateStatueCount(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+
+    if negate("flag_wu") then --added
+    return  --added
+
+    else
+    if item then
+        local value = 0
+        local valueonyx = 0
+        local valuebroken = 0 
+        local valuegold = 0
+        local valueivory = 0
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+
+        
+            if KEYITEM1 == 0x25 
+		        or KEYITEM2 == 0x25
+		        or KEYITEM3 == 0x25 
+		        or KEYITEM4 == 0x25 
+		        or KEYITEM5 == 0x25 
+		        or KEYITEM6 == 0x25 
+		        or KEYITEM7 == 0x25
+		        or KEYITEM8 == 0x25 
+                or KEYITEM9 == 0x25
+		        or KEYITEM10 == 0x25 
+		        or KEYITEM11 == 0x25 
+		        or KEYITEM12 == 0x25 
+		        or KEYITEM13 == 0x25 
+		        or KEYITEM14 == 0x25
+		        or KEYITEM15 == 0x25 
+                or KEYITEM16 == 0x25 then
+                valueonyx = 1
+            end
+
+            if KEYITEM1 == 0x3A 
+		        or KEYITEM2 == 0x3A
+		        or KEYITEM3 == 0x3A 
+		        or KEYITEM4 == 0x3A 
+		        or KEYITEM5 == 0x3A 
+		        or KEYITEM6 == 0x3A 
+		        or KEYITEM7 == 0x3A
+		        or KEYITEM8 == 0x3A 
+                or KEYITEM9 == 0x3A
+		        or KEYITEM10 == 0x3A 
+		        or KEYITEM11 == 0x3A 
+		        or KEYITEM12 == 0x3A 
+		        or KEYITEM13 == 0x3A 
+		        or KEYITEM14 == 0x3A
+		        or KEYITEM15 == 0x3A 
+                or KEYITEM16 == 0x3A then
+                valuebroken = 1
+            end
+
+             if KEYITEM1 == 0x3D 
+		        or KEYITEM2 == 0x3D
+		        or KEYITEM3 == 0x3D 
+		        or KEYITEM4 == 0x3D 
+		        or KEYITEM5 == 0x3D 
+		        or KEYITEM6 == 0x3D 
+		        or KEYITEM7 == 0x3D
+		        or KEYITEM8 == 0x3D 
+                or KEYITEM9 == 0x3D
+		        or KEYITEM10 == 0x3D 
+		        or KEYITEM11 == 0x3D 
+		        or KEYITEM12 == 0x3D 
+		        or KEYITEM13 == 0x3D 
+		        or KEYITEM14 == 0x3D
+		        or KEYITEM15 == 0x3D 
+                or KEYITEM16 == 0x3D then
+                valuegold = 1
+            end
+
+            if KEYITEM1 == 0x38 
+		        or KEYITEM2 == 0x38
+		        or KEYITEM3 == 0x38 
+		        or KEYITEM4 == 0x38 
+		        or KEYITEM5 == 0x38 
+		        or KEYITEM6 == 0x38 
+		        or KEYITEM7 == 0x38
+		        or KEYITEM8 == 0x38 
+                or KEYITEM9 == 0x38
+		        or KEYITEM10 == 0x38 
+		        or KEYITEM11 == 0x38 
+		        or KEYITEM12 == 0x38 
+		        or KEYITEM13 == 0x38 
+		        or KEYITEM14 == 0x38
+		        or KEYITEM15 == 0x38 
+                or KEYITEM16 == 0x38 then
+                valueivory = 1
+            end
+
+        if
+        valueonyx or valuegold or valuebroken or valueivory > 0 then
+        value = valueonyx + valuegold + valuebroken + valueivory
+        end
+
+        if item.AcquiredCount ~= value then
+            print(item.Name .. ": " .. value)
+            item.AcquiredCount = value
+            --item.ItemState:updateIcon()
+        end
+    end
+end
 end
 
 function updateOnyxStatue(segment, code, address)
@@ -1397,6 +2353,8 @@ function updateOnyxStatue(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1431,12 +2389,19 @@ function updateOnyxStatue(segment, code, address)
 		    or KEYITEM13 == 0x25 
 		    or KEYITEM14 == 0x25
 		    or KEYITEM15 == 0x25 
-            or KEYITEM16 == 0x25 then
-            		 item.Active = true 
+            or KEYITEM16 == 0x25 
+                    then
+            		    item.Active = true 
         			else
             			item.Active = false
-        			end        	
-    	end
+        		end        	
+    	 
+        else
+        checkBitSet("redstatue", segment, 0x64A5, 0x02)         	
+    	end     	
+    	
+    end
+    
 end
 
 function updateGoldStatue(segment, code, address)
@@ -1447,6 +2412,8 @@ function updateGoldStatue(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1485,9 +2452,14 @@ function updateGoldStatue(segment, code, address)
             		 item.Active = true 
         			else
             			item.Active = false
-        			end        	
-    	end
+        			end  
+        
+        else
+        checkBitSet("bluestatue", segment, 0x64A8, 0x40)         	
+    	end  
+    end
 end
+
 
 function updateIvoryStatue(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
@@ -1497,6 +2469,8 @@ function updateIvoryStatue(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1536,7 +2510,10 @@ function updateIvoryStatue(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("graystatue", segment, 0x64A9, 0x01)         	
+    	end          
+    end
 end
 
 function updateBrokenStatue(segment, code, address)
@@ -1547,6 +2524,8 @@ function updateBrokenStatue(segment, code, address)
 		if item.Active then
 		  return
 		end
+
+        if negate("flag_wu") then --Added
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1566,7 +2545,7 @@ function updateBrokenStatue(segment, code, address)
     	local KEYITEM16 = ReadU8(segment, 0x64BF)
 	
 	  
-               	if KEYITEM1 == 0x38
+            if KEYITEM1 == 0x38
 		    or KEYITEM2 == 0x38
 		    or KEYITEM3 == 0x38 
 		    or KEYITEM4 == 0x38 
@@ -1586,7 +2565,10 @@ function updateBrokenStatue(segment, code, address)
         			else
             			item.Active = false
         			end        	
-    	end
+    	else
+        checkBitSet("brokenstatue", segment, 0x64A7, 0x04)         	
+    	end          
+    end
 end
 
 function updateOpelStatue(segment, code, address)
@@ -1690,6 +2672,8 @@ function updateKarissaPlant(segment, code, address)
 		  return
 		end
 
+        if negate("flag_wu") then
+
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
         local KEYITEM3 = ReadU8(segment, 0x6452) 
@@ -1727,7 +2711,11 @@ function updateKarissaPlant(segment, code, address)
             		 item.Active = true 
         			else
             			item.Active = false
-        			end        	
+        			end    
+            else
+            checkBitSet("kirisaplant", segment, 0x64A7, 0x40)
+            end
+
     	end
 end
 
@@ -1790,6 +2778,8 @@ function updateLovePendant(segment, code, address)
 		if item.Active then
 		  return
 		end
+        
+        if negate("flag_wu") then
 
     	local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1828,7 +2818,11 @@ function updateLovePendant(segment, code, address)
             		 item.Active = true
         			else
             			item.Active = false
-        			end        	
+        			end 
+            else
+            checkBitSet("love", segment, 0x64A8, 0x80) --update
+            end
+
     	end
 end
 
@@ -1909,20 +2903,20 @@ function updateToggleItemFromByteAndFlag(segment, code, address, flag)
     end
 end
 
-function updateProgressiveItemFromByteAndFlag(segment, code, address, flag1)
-    local item = Tracker:FindObjectForCode(code)
-    if item then
-        local value = ReadU8(segment, address)        
-        if value & flag1 ~= 0 then
-            if item.CurrentStage ~= 1 then
-                print(item.Name .. " obtained")
-                item.CurrentStage = 1
-            end
-        else
-            item.CurrentStage = 0
-        end
-    end
-end
+--function updateProgressiveItemFromByteAndFlag(segment, code, address, flag1)
+--    local item = Tracker:FindObjectForCode(code)
+--    if item then
+--        local value = ReadU8(segment, address)        
+--        if value & flag1 ~= 0 then
+--            if item.CurrentStage ~= 1 then
+ --               print(item.Name .. " obtained")
+  --              item.CurrentStage = 1
+    --        end
+     --   else
+      --      item.CurrentStage = 0
+       -- end
+   -- end
+--end
 
 function updateChestsFromMemorySegmentCorridor(segment)
     if not isInGame() then
@@ -2099,10 +3093,10 @@ function updateKeyItemsFromMemorySegment(segment)
 	updateProgessiveItemFromByteAndFlag(segment, "sabera2_cleared", 0x64A4, 0x08)
 	updateProgessiveItemFromByteAndFlag(segment, "mado1_cleared", 0x64A1, 0x08)
 	updateProgessiveItemFromByteAndFlag(segment, "mado2_cleared", 0x64A2, 0x04)
-	updateProgessiveItemFromByteAndFlag(segment, "karmine_cleared", 0x64A7, 0x10)	
+	updateProgessiveItemFromByteAndFlag(segment, "karmine_cleared", 0x64A7, 0x20)	
 	updateProgessiveItemFromByteAndFlag(segment, "vampire_cleared", 0x64AC, 0x02)
 	updateProgessiveItemFromByteAndFlag(segment, "giantinsect_cleared", 0x64A0, 0x80)	
-	--updateToggleItemFromByte(segment, "draygon1_cleared", 0x64A8, 0x01)  Needs to be made
+	updateProgessiveItemFromByteAndFlag(segment, "draygon_cleared", 0x64A3, 0x10)  --Needs to be made
 	
 	updateWindSword(segment, "windsword", 0x6430)
     updateToggleItemFromByte(segment, "firesword", 0x6431, 0x01)
@@ -2138,32 +3132,40 @@ function updateKeyItemsFromMemorySegment(segment)
     updateSpeedBoots(segment, "speedboots")
     updateShieldRing(segment, "shieldring")
 
-    updateMoonBow(segment, "bowofmoon")
-    updateSunBow(segment, "bowofsun")
-    updateTruthBow(segment, "bowoftruth")
+    updateBowCount(segment, "bow")
+    updateMoonBow(segment, "graybow")
+    updateSunBow(segment, "redbow")
+    updateTruthBow(segment, "bluebow")
+      
+    updateKeyCount(segment, "unknownkey")
+    updateWindKey(segment, "redkey")
+    updatePrisonKey(segment, "bluekey")
+    updateStyxKey(segment, "greenkey")
 
-    updateWindKey(segment, "windmillkey")
-    updatePrisonKey(segment, "keytoprison")
-    updateStyxKey(segment, "keytostyx")
-
-    updateFogLamp(segment, "foglamp")
+    updateLampCount(segment, "unknownlamp")
+    updateFogLamp(segment, "bluelamp")
     updateGlowLamp(segment, "glowinglamp")
 
-    updateAlarmFlute(segment, "alarmflute")
-    updateBugFlute(segment, "insectflute")
-    updateLimeFlute(segment, "fluteoflime")
-    updateShellFlute(segment, "shellflute")
+    updateFluteCount(segment, "unknownflute")
+    updateAlarmFlute(segment, "grayflute")
+    updateBugFlute(segment, "greenflute")
+    updateLimeFlute(segment, "blueflute")
+    updateShellFlute(segment, "redflute")
     
-    updateIvoryStatue(segment, "ivorystatue")
+    updateTradeCount(segment, "unknowntrade")
+    
+    updateStatueCount(segment, "unknownstatue")
+    updateIvoryStatue(segment, "graystatue")
     updateBrokenStatue(segment, "brokenstatue")
-    updateGoldStatue(segment, "goldstautue")
-    updateOnyxStatue(segment, "statueofonyx")
+    updateGoldStatue(segment, "bluestatue")
+    updateOnyxStatue(segment, "redstatue")
+    
 
-    updateOpelStatue(segment, "opelstatue")
+    updateOpelStatue(segment, "opel")
     updateFruitofRepun(segment, "fruitofrepun")
 
     updateKarissaPlant(segment, "kirisaplant")
-    updateLovePendant(segment, "lovependant")
+    updateLovePendant(segment, "love")
     updateXrayGlasses(segment, "eyeglasses")
 
     updatePsychoArmor(segment, "psychoarmor")
