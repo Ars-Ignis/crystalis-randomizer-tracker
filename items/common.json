@@ -330,35 +330,6 @@
 		"loop": "true",
 		"codes": "love, pendant, lovependant, trade"
 	},
-	// Keys
-	//{
-	//	"name": "Keys",
-	//	"type": "progressive",
-	//	"img": "images/items/keys.png",
-	//	"loop": "true",
-	//	"codes": "keys"
-	//},
-
-
-
-	//{
-	//	"name": "Keys",
-	//	"type": "progressive",
-	//	"loop": true,
-	//	"stages": [
-	//		{
-	//			"img": "images/items/keys1.png",
-	//			"codes": "keys1",
-	//			"inherit_codes": false
-	//		},
-	//		{
-	//			"img": "images/items/keys.png",
-	//			"codes": "keys",
-	//			"inherit_codes": false
-	//		}
-	//	]
-	//},
-
 
 	//Keys
 	{
