@@ -8,12 +8,12 @@
 			{
 				"img": "images/bosses/kelbesque1.png",
 				"codes": "kelbesque1, kelbesque1_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/kelbesque1tested.png",
 				"codes": "kelbesque1, kelbesque1_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -26,12 +26,12 @@
 			{
 				"img": "images/bosses/kelbesque2.png",
 				"codes": "kelbesque2, kelbesque2_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/kelbesque2tested.png",
 				"codes": "kelbesque2, kelbesque2_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -44,12 +44,12 @@
 			{
 				"img": "images/bosses/sabera1.png",
 				"codes": "sabera1, sabera1_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/sabera1tested.png",
 				"codes": "sabera1, sabera1_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -62,12 +62,12 @@
 			{
 				"img": "images/bosses/sabera2.png",
 				"codes": "sabera2, sabera2_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/sabera2tested.png",
 				"codes": "sabera2, sabera2_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -80,12 +80,12 @@
 			{
 				"img": "images/bosses/mado1.png",
 				"codes": "mado1, mado1_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/mado1tested.png",
 				"codes": "mado1, mado1_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -98,12 +98,12 @@
 			{
 				"img": "images/bosses/mado2.png",
 				"codes": "mado2, mado2_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/mado2tested.png",
 				"codes": "mado2, mado2_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -116,12 +116,30 @@
 			{
 				"img": "images/bosses/karmine.png",
 				"codes": "karmine, karmine_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/karminetested.png",
 				"codes": "karmine, karmine_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
+			}
+		]
+	},
+	//Draygon
+	{
+		"name": "Draygon",
+		"type": "progressive",
+		"loop": true,
+		"stages": [
+			{
+				"img": "images/bosses/draygon.png",
+				"codes": "draygon, draygon_cleared",
+				"inherit_codes": false
+			},
+			{
+				"img": "images/bosses/draygontested.png",
+				"codes": "draygon, draygon_tested",
+				"inherit_codes": false
 			}
 		]
 	},
@@ -134,12 +152,12 @@
 			{
 				"img": "images/bosses/vampire.png",
 				"codes": "vampire, vampire_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/vampiretested.png",
 				"codes": "vampire, vampire_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
 	},
@@ -152,13 +170,13 @@
 			{
 				"img": "images/bosses/giantinsect.png",
 				"codes": "giantinsect, giantinsect_cleared",
-				"inherit_codes" : false
+				"inherit_codes": false
 			},
 			{
 				"img": "images/bosses/giantinsecttested.png",
 				"codes": "giantinsect, giantinsect_tested",
-				"inherit_codes" : false
+				"inherit_codes": false
 			}
 		]
-	},
+	}
 ]
