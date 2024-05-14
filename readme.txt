@@ -76,9 +76,10 @@ v1.4.0
 	-Added new variant: super compact variant for restreaming races
 v1.5.0
 	-Added location tracking and item tracking.  Note currently key items (statue, key, bow etc) are not tracked due to unidentified items not working yet.
+v1.6.0
+	-Unidentified key items fixed for autotracking. Use proper variants.
 
 Future Release Plans:
 	Wh flag logic
 	Ww flag logic
-	Autotracking (Archie working on improving)
 	Wa flag logic
