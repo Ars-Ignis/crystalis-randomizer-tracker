@@ -1660,7 +1660,7 @@ function updateFluteCount(segment, code)
 
         if
         valuealarm or valuebug or valueshell or valuelime > 0 then
-        value = valuealarm + valuebug + valueshell + valuelime - shellfluteactive -alarmfluteactive
+        value = valuealarm + valuebug + valueshell + valuelime - shellfluteactive 
         end
 
         if item.AcquiredCount ~= value then
