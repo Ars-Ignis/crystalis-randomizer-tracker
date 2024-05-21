@@ -79,7 +79,8 @@
 						"unknownkey",
 						"unknownflute",
 						"unknownstatue",
-						"unknownlamp"
+						"unknownlamp",
+						"unknowntrade"
 					]
 
 				]
@@ -131,11 +132,10 @@
 						"kirisa"
 					],
 					[
-						"unknowntrade",
 						"opel",
 						"love",
+						"",
 						"gomode"
-
 					]
 				]			
 	},
