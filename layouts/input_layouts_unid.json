@@ -1,218 +1,149 @@
 {
 	"weapons": {
-		"type": "itemgrid",
-		"h_alignment": "center",
-		//"background": "#202a33",
-		"item_size": 40,
-		"item_margin": "4,4",
-		"rows": [
-			[
-				"wind",
-				"fire",
-				"water",
-				"thunder"
-			],
-			[
-				"windball",
-				"fireball",
-				"waterball",
-				"thunderball"
-			],
-			[
-				"windbracelet",
-				"firebracelet",
-				"waterbracelet",
-				"thunderbracelet"
-			]
+		"type": "group",
+		"margin": 0,
+		"header": "Weapons/Worn Items/Magic",
+		"header_background": "#ff000000",
+		"content": [
+			{
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 40,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"wind",
+						"fire",
+						"water",
+						"thunder"
+					],
+					[
+						"windball",
+						"fireball",
+						"waterball",
+						"thunderball"
+					],
+					[
+						"windbracelet",
+						"firebracelet",
+						"waterbracelet",
+						"thunderbracelet"
+					],
+					[
+						"gas",
+						"power",
+						"warrior",
+						"iron"
+					],
+					[
+						"deo",
+						"rabbit",
+						"speed",
+						"shield"
+					],
+					[
+						"refresh",
+						"paralysis",
+						"telepathy",
+						"teleport"
+					],
+					[
+						"recover",
+						"barrier",
+						"change",
+						"flight"
+					]
+
+				]
+			}
 		]
 	},
 
-	"worn_items": {
-		"type": "itemgrid",
-		"h_alignment": "center",
-		//"background": "#202a33",
-		"item_size": 40,
-		"item_margin": "4,4",
-		"rows": [
-			[
-				"gas",
-				"power",
-				"warrior",
-				"iron"
-			],
-			[
-				"deo",
-				"rabbit",
-				"speed",
-				"shield"
-			]
-		]
-	},
 
-	"magic": {
-		"type": "itemgrid",
-		"h_alignment": "center",
-		//"background": "#202a33",
-		"item_size": 40,
-		"item_margin": "4,4",
-		"rows": [
-			[
-				"refresh",
-				"paralysis",
-				"telepathy",
-				"teleport"
-			],
-			[
-				"recover",
-				"barrier",
-				"change",
-				"flight"
-			]
-		]
-	},
-		
+
 	"itemcounts": {
-		"type": "itemgrid",
-		"h_alignment": "center",
-		//"background": "#202a33",
-		"item_size": 40,
-		"item_margin": "4,4",
-		"rows": [
-			[
-				"unknownkey",
-				"unknownflute",
-				"unknownstatue",
-				"unknownlamp"
-			]
-			
+		"type": "group",
+		"margin": 0,
+		"header": "Event Items",
+		"header_background": "#ff000000",
+		"content": [
+			{
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 30,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"unknownkey",
+						"unknownflute",
+						"unknownstatue",
+						"unknownlamp"
+					]
+
+				]
+			}
 		]
 	},
 
 	"event_items": {
-		"type": "itemgrid",
-		"h_alignment": "center",
-		//"background": "#202a33",
-		"item_size": 40,
-		"item_margin": "4,4",
-		"rows": [
-			[
-				"bow",
-				"graybow",
-				"redbow",
-				"bluebow"
-			],
+		
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 40,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"bow",
+						"graybow",
+						"redbow",
+						"bluebow"
+					],
 
-			[
-				
-				"redkey",
-				"bluekey",
-				"greenkey",
-				""
-			],
-			[
-				
-				"grayflute",
-				"greenflute",
-				"blueflute",
-				"redflute"
-			],
-			[
-				
-				"redstatue",
-				"crackedstatue",
-				"bluestatue",
-				"graystatue"
-			],
-			[
-				
-				"bluelamp",
-				"graylamp",
-				"eyeglasses",
-				"kirisa"
-			],
-			[
-				"unknowntrade",
-				"opel",
-				"love",
-				"gomode"
+					[
 
-			]
-		]
-	},
+						"redkey",
+						"bluekey",
+						"greenkey",
+						""
+					],
+					[
 
-	"tracker_left": {
-		"type": "array",
-		"orientation": "vertical",
-		//"background": "#202a33",
-		"style": "stack",
-		"content": [
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "weapons"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "worn_items"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "magic"
-			}
-		]
-	},
+						"grayflute",
+						"greenflute",
+						"blueflute",
+						"redflute"
+					],
+					[
 
-	"tracker_right": {
-		"type": "array",
-		"orientation": "vertical",
-		//"background": "#202a33",
-		"style": "stack",
-		"content": [
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "itemcounts"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "event_items"
-			}
-		]
-	},
+						"redstatue",
+						"crackedstatue",
+						"bluestatue",
+						"graystatue"
+					],
+					[
 
-	"tracker_items": {
-		"type": "array",
-		"orientation": "horizontal",
-		//"background": "#202a33",
-		"style": "wrap",
-		"content": [
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "tracker_left"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "tracker_right"
-			}
-		]
+						"bluelamp",
+						"graylamp",
+						"eyeglasses",
+						"kirisa"
+					],
+					[
+						"unknowntrade",
+						"opel",
+						"love",
+						"gomode"
+
+					]
+				]			
 	},
 
 	"tracker_visible_walls": {
 		"type": "group",
 		"margin": 0,
-		"header": "Visible Walls",
+		"header": "Visible Walls & Steel Walls",
 		"header_background": "#ff000000",
 		"content": [
 			{
@@ -230,12 +161,7 @@
 	},
 
 	"tracker_steel_walls": {
-		"type": "group",
-		"margin": 0,
-		"header": "Steel Walls",
-		"header_background": "#ff000000",
-		"content": [
-			{
+		
 				"type": "itemgrid",
 				"margin": 0,
 				"item_margin": 2,
@@ -244,8 +170,7 @@
 					[ "goa_entrance_wall_cleared", "goa_sabera_item_wall_cleared", "goa_sabera_boss_wall_cleared", "goa_mado_wall_cleared" ],
 					[ "", "goa_karmine_wall_cleared", "goa_basement_wall_cleared", "" ]
 				]
-			}
-		]
+			
 	},
 
 	"tracker_bosses": {
@@ -260,9 +185,8 @@
 				"item_margin": 2,
 				"item_size": 40,
 				"rows": [
-					[ "kelbesque1", "sabera1", "mado1" ],
-					[ "kelbesque2", "sabera2", "mado2" ],
-					[ "draygon", "vampire", "karmine" ]
+					[ "kelbesque1", "sabera1", "mado1", "draygon" ],
+					[ "kelbesque2", "sabera2", "mado2", "karmine" ]
 				]
 			}
 		]
@@ -298,80 +222,107 @@
 				"item_margin": 2,
 				"item_size": 40,
 				"rows": [
-					[ "eastfreebrynmaer", "eastwallbrynmaer" ],
-					[ "tornelwind", "ragewind" ]
+					[ "eastfreebrynmaer", "eastwallbrynmaer", "tornelwind", "ragewind" ]
 				]
 			}
 		]
 	},
 
-	"tracker_walls_bosses_and_misc": {
+	"tracker_left": {
 		"type": "array",
-		"orientation": "horizontal",
-		//"background": "#203040",
-		"style": "wrap",
-		"v_alignment": "top",
-		"width": 356,
-		"height": 366,
-		"margin": 0,
+		"orientation": "vertical",
+		//"background": "#202a33",
+		"style": "stack",
 		"content": [
 			{
-				"type": "array",
-				"orientation": "vertical",
-				"style": "stack",
-				"content": [
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_visible_walls"
-					},
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_steel_walls"
-					},
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_goa_floors"
-					}
-				]
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "weapons"
 			},
 			{
-				"type": "array",
-				"orientation": "vertical",
-				"style": "stack",
-				"min_width": 0
-				//"background": "#202a33",
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "worn_items"
 			},
 			{
-				"type": "array",
-				"orientation": "vertical",
-				"style": "stack",
-				"content": [
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_bosses"
-					},
-					{
-						"type": "array",
-						"orientation": "horizontal",
-						"style": "stack",
-						"min_height": 0
-						//"background": "#202a33",
-					},
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_misc"
-					}
-				]
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "magic"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_visible_walls"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_steel_walls"
+			}
+		]
+	},
+
+	"tracker_right": {
+		"type": "array",
+		"orientation": "vertical",
+		//"background": "#202a33",
+		"style": "stack",
+		"content": [
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "itemcounts"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "event_items"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_bosses"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_goa_floors"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_misc"
+			}
+		]
+	},
+
+	"tracker_items": {
+		"type": "array",
+		"orientation": "horizontal",
+		//"background": "#202a33",
+		"style": "wrap",
+		"content": [
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_left"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_right"
 			}
 		]
 	},
@@ -380,21 +331,12 @@
 		"type": "tabbed",
 		"tabs": [
 			{
-				"title": "Items",
+				"title": "Tracker",
 				"content": {
 					"type": "layout",
 					"dropshadow": false,
 					"margin": 0,
 					"key": "tracker_items"
-				}
-			},
-			{
-				"title": "Walls/Bosses/Misc",
-				"content": {
-					"type": "layout",
-					"dropshadow": false,
-					"margin": 0,
-					"key": "tracker_walls_bosses_and_misc"
 				}
 			},
 			{
