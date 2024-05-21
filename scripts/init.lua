@@ -105,7 +105,31 @@ end
 	end
 
 
+		if (Tracker.ActiveVariantUID == "items_and_map_custom2") then
 
+		Tracker:AddLocations("locations/overworld_locations_split.json")
+		Tracker:AddLocations("locations/east_cave_locations_split.json")
+		Tracker:AddLocations("locations/sealed_cave_locations_split.json")
+		Tracker:AddLocations("locations/sabre_west_locations_split.json")
+		Tracker:AddLocations("locations/sabre_north_locations_split.json")
+		Tracker:AddLocations("locations/waterfall_cave_locations_split.json")
+		Tracker:AddLocations("locations/fog_lamp_cave_locations_split.json")
+		Tracker:AddLocations("locations/kirisa_plant_cave_locations_split.json")
+		Tracker:AddLocations("locations/evil_spirit_island_locations_split.json")
+		Tracker:AddLocations("locations/saberas_fortress_locations_split.json")
+		Tracker:AddLocations("locations/mt_hydra_locations_split.json")
+		Tracker:AddLocations("locations/styx_locations_split.json")
+		Tracker:AddLocations("locations/oasis_cave_locations_split.json")
+		Tracker:AddLocations("locations/pyramid_front_locations_split.json")
+		Tracker:AddLocations("locations/pyramid_back_locations_split.json")
+		Tracker:AddLocations("locations/goa_kelbesque_locations_split.json")
+		Tracker:AddLocations("locations/goa_sabera_locations_split.json")
+		Tracker:AddLocations("locations/goa_mado_locations_split.json")
+		Tracker:AddLocations("locations/goa_karmine_locations_split.json")
+		Tracker:AddLocations("locations/cache_invalidation_location_split.json")
+
+
+		else
 		Tracker:AddLocations("locations/overworld_locations.json")
 		Tracker:AddLocations("locations/east_cave_locations.json")
 		Tracker:AddLocations("locations/sealed_cave_locations.json")
@@ -126,5 +150,6 @@ end
 		Tracker:AddLocations("locations/goa_mado_locations.json")
 		Tracker:AddLocations("locations/goa_karmine_locations.json")
 		Tracker:AddLocations("locations/cache_invalidation_location.json")
+		end
 	end
 
