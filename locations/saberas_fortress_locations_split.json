@@ -4,55 +4,11 @@
 		"name": "Sabera's Fortress",
 		"access_rules": ["$canMaybeReach|zombie, [$canReach|zombie], $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Sabera's Fortress",
-				"access_rules": ["[$canKillVampire2], [$canKillSabera1]"],
-				"sections": [
-					{
-						"name": "Sabera's Fortress Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 910,
-						"y": 440,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Sabera's Fortress",
-				"access_rules": [
-					"$canMaybeKillVampire2, [$canKillVampire2], [$canKillSabera1]",
-					"flag_wm, $canMaybeKillSabera1, [$canKillVampire2], [$canKillSabera1]"
-				],
-				"sections": [
-					{
-						"name": "Sabera's Fortress Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 910,
-						"y": 440,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+	
 			//Vampire Reward
 			{
-				"name": "Sabera's Fortress",
-				"access_rules": ["$canMaybeKillVampire2, [$canKillVampire2]"],
+				"name": "Sabera's Fortress: Vampire2",
+				"access_rules": [ "$canMaybeKillVampire2, [$canKillVampire2]" ],
 				"sections": [
 					{
 						"name": "Vampire Reward",
@@ -65,17 +21,24 @@
 						"map": "map_saberas_fortress",
 						"x": 405,
 						"y": 450
+					},
+					{
+						"map": "map_overworld",
+						"x": 910,
+						"y": 440,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Sabera Reward
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera's Fortress: Sabera1",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeKillVampire2, [$canKillVampire2], $canMaybeKillSabera1, [$canKillSabera1]",
 					"flag_wm, d_sabera2, $canMaybeKillSabera1, [$canKillSabera1]",
 					"flag_wm, $canKillVampire2, $canMaybeKillSabera1, [$canKillSabera1]"
-					
+
 				],
 				"sections": [
 					{
@@ -89,12 +52,19 @@
 						"map": "map_saberas_fortress",
 						"x": 546,
 						"y": 250
+					},
+					{
+						"map": "map_overworld",
+						"x": 960,
+						"y": 440,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Fruit of Power
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera's Fortress: Fruit of Power",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_sabera1",
@@ -111,13 +81,20 @@
 						"map": "map_saberas_fortress",
 						"x": 82,
 						"y": 470,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1010,
+						"y": 440,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Medical Herb
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera's Fortress: Medical Herb",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeKillVampire2, [$canKillVampire2]",
 					"flag_wm, d_sabera2",
@@ -134,7 +111,14 @@
 						"map": "map_saberas_fortress",
 						"x": 460,
 						"y": 110,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1060,
+						"y": 440,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},

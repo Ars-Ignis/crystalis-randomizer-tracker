@@ -1,0 +1,28 @@
+[
+	// Kelbesque's Floor
+	{
+		"name": "Goa: Kelbesque's Floor",
+		"access_rules": [
+			"$canMaybeReachKelbesquesFloor, [$canReachKelbesquesFloor], $canMaybeKillKelbesque2, [$canKillKelbesque2]"
+		],
+		"sections": [
+			{
+				"name": "Kelbesque 2",
+				"item_count": 1,
+				"hosted_item": "kelbesque2_cleared"
+			}
+		],
+		"map_locations": [
+			{
+				"map": "map_overworld",
+				"x": 519,
+				"y": 20,
+			},
+			{
+				"map": "map_goa_kelbesque",
+				"x": 418,
+				"y": 28
+			}
+		]
+	},
+]

@@ -7,62 +7,10 @@
 			"$canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canOpenChest"
 		],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Goa: Sabera's Floor",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canCrossRivers], [$canBreakSaberaChestWall], [$canBreakSaberaBossWall], [$canKillSabera2]",
-					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canCrossRivers, [$canBreakSaberaChestWall], [$canBreakSaberaBossWall], [$canKillSabera2]",
-					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], [$canCrossRivers], $canMaybeBreakSaberaChestWall, [$canBreakSaberaChestWall], [$canBreakSaberaBossWall], [$canKillSabera2]",
-					"flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], [flight], [$canBreakSaberaBossWall], [$canBreakSaberaChestWall], [$canKillSabera2]",
-					"flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2], [flight], [$canBreakSaberaBossWall], [$canBreakSaberaChestWall]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Sabera's Floor Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 619,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Goa: Sabera's Floor",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2]",
-					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canCrossRivers, $canMaybeBreakSaberaBossWall, [$canBreakSaberaBossWall], $canMaybeKillSabera2, [$canKillSabera2]",
-					"flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], [flight], [$canBreakSaberaBossWall], [$canBreakSaberaChestWall], $canMaybeKillSabera2, [$canKillSabera2]",
-					"flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2], [flight], [$canBreakSaberaBossWall], [$canBreakSaberaChestWall]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Sabera's Floor Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 619,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+		
 			//Fruit of Power
 			{
-				"name": "Goa: Sabera's Floor",
+				"name": "Goa: Sabera's Floor: Fruit of Power",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canMaybeBreakSaberaChestWall, [$canBreakSaberaChestWall]",
 					"$negate|flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2], $canMaybeBreakSaberaBossWall, [$canBreakSaberaBossWall], $canCrossRivers, $canMaybeBreakSaberaChestWall, [$canBreakSaberaChestWall]",
@@ -80,13 +28,20 @@
 						"map": "map_goa_sabera",
 						"x": 90,
 						"y": 25,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 590,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Lysis Plant
 			{
-				"name": "Goa: Sabera's Floor",
+				"name": "Goa: Sabera's Floor: Lysis",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canCrossRivers",
 					"$negate|flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2], $canMaybeBreakSaberaBossWall, [$canBreakSaberaBossWall], $canCrossRivers",
@@ -104,13 +59,20 @@
 						"map": "map_goa_sabera",
 						"x": 230,
 						"y": 200,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 625,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Fruit of Repun
 			{
-				"name": "Goa: Sabera's Floor",
+				"name": "Goa: Sabera's Floor: Fruit of Repun",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canCrossRivers",
 					"$negate|flag_wm, $canMaybeReachSaberasFloorExit, [$canReachSaberasFloorExit], $canMaybeKillSabera2, [$canKillSabera2], $canMaybeBreakSaberaBossWall, [$canBreakSaberaBossWall], $canCrossRivers",
@@ -128,13 +90,20 @@
 						"map": "map_goa_sabera",
 						"x": 475,
 						"y": 380,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 590,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Sabera 2 Reward
 			{
-				"name": "Goa: Sabera's Floor",
+				"name": "Goa: Sabera's Floor: Sabera 2",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], $canCrossRivers, $canMaybeBreakSaberaBossWall, [$canBreakSaberaBossWall], $canMaybeKillSabera2, [$canKillSabera2]",
 					"flag_wm, $canMaybeReachSaberasFloorEntrance, [$canReachSaberasFloorEntrance], d_goasabera2, $canMaybeKillSabera2, [$canKillSabera2]",
@@ -153,6 +122,13 @@
 						"map": "map_goa_sabera",
 						"x": 410,
 						"y": 10
+					},
+					{
+						"map": "map_overworld",
+						"x": 625,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},
