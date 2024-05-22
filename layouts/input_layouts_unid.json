@@ -72,24 +72,53 @@
 				"type": "itemgrid",
 				"h_alignment": "center",
 				//"background": "#202a33",
-				"item_size": 30,
+				"item_size": 40,
 				"item_margin": "4,4",
 				"rows": [
 					[
-						"unknownkey",
-						"unknownflute",
-						"unknownstatue",
-						"unknownlamp",
+						"bow",
+						"graybow",
+						"redbow",
+						"bluebow",
 						"unknowntrade"
-					]
-
+					],
+					[
+						"unknownkey",
+						"redkey",
+						"bluekey",
+						"greenkey",
+						"love"
+					],
+					[
+						"unknownflute",
+						"grayflute",
+						"greenflute",
+						"blueflute",
+						"redflute"
+					],
+					[
+						"unknownstatue",
+						"redstatue",
+						"crackedstatue",
+						"bluestatue",
+						"graystatue"
+					],
+					[
+						"unknownlamp",
+						"bluelamp",
+						"graylamp",
+						"eyeglasses",
+						"kirisa"
+					],
+					[ "vampire", "kelbesque1", "sabera1", "mado1", "draygon" ],
+					[ "giantinsect", "kelbesque2", "sabera2", "mado2", "karmine" ]
 				]
-			}
+			},
 		]
 	},
 
 	"event_items": {
-		
+
 				"type": "itemgrid",
 				"h_alignment": "center",
 				//"background": "#202a33",
@@ -100,44 +129,38 @@
 						"bow",
 						"graybow",
 						"redbow",
-						"bluebow"
+						"bluebow",
+						"unknowntrade"
 					],
-
 					[
-
+						"unknownkey",
 						"redkey",
 						"bluekey",
 						"greenkey",
-						""
+						"love"
 					],
 					[
-
+						"unknownflute",
 						"grayflute",
 						"greenflute",
 						"blueflute",
 						"redflute"
 					],
 					[
-
+						"unknownstatue",
 						"redstatue",
 						"crackedstatue",
 						"bluestatue",
 						"graystatue"
 					],
 					[
-
+						"unknownlamp",
 						"bluelamp",
 						"graylamp",
 						"eyeglasses",
 						"kirisa"
-					],
-					[
-						"opel",
-						"love",
-						"",
-						"gomode"
 					]
-				]			
+				]
 	},
 
 	"tracker_visible_walls": {
@@ -154,7 +177,8 @@
 				"rows": [
 					[ "zcw", "ecw", "scw", "msww" ],
 					[ "msnw", "wcw", "flcw", "kpcw" ],
-					[ "", "esiw", "mhw", "" ]
+					[ "esiw", "mhw", "goa_entrance_wall_cleared", "goa_basement_wall_cleared" ],
+					[ "goa_sabera_item_wall_cleared", "goa_sabera_boss_wall_cleared", "goa_mado_wall_cleared", "goa_karmine_wall_cleared" ]
 				]
 			}
 		]
@@ -164,7 +188,7 @@
 		
 				"type": "itemgrid",
 				"margin": 0,
-				"item_margin": 2,
+				"item_margin": 4,
 				"item_size": 40,
 				"rows": [
 					[ "goa_entrance_wall_cleared", "goa_sabera_item_wall_cleared", "goa_sabera_boss_wall_cleared", "goa_mado_wall_cleared" ],
@@ -182,8 +206,8 @@
 			{
 				"type": "itemgrid",
 				"margin": 0,
-				"item_margin": 2,
-				"item_size": 40,
+				"item_margin": 0,
+				"item_size": 75,
 				"rows": [
 					[ "kelbesque1", "sabera1", "mado1", "draygon" ],
 					[ "kelbesque2", "sabera2", "mado2", "karmine" ]
@@ -201,10 +225,11 @@
 			{
 				"type": "itemgrid",
 				"margin": 0,
-				"item_margin": 2,
-				"item_size": 40,
+				"item_margin": 5,
+				"item_size": 50,
 				"rows": [
-					[ "goa1st", "goa2nd", "goa3rd", "goa4th" ]
+					[ "goa1st", "goa2nd", "goa3rd", "goa4th" ],
+					[]
 				]
 			}
 		]
@@ -218,9 +243,9 @@
 		"content": [
 			{
 				"type": "itemgrid",
-				"margin": 0,
-				"item_margin": 2,
-				"item_size": 40,
+				"margin": 2,
+				"item_margin": 5,
+				"item_size": 50,
 				"rows": [
 					[ "eastfreebrynmaer", "eastwallbrynmaer", "tornelwind", "ragewind" ]
 				]
@@ -257,12 +282,6 @@
 				"dropshadow": false,
 				"margin": 0,
 				"key": "tracker_visible_walls"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "tracker_steel_walls"
 			}
 		]
 	},
@@ -278,18 +297,6 @@
 				"dropshadow": false,
 				"margin": 0,
 				"key": "itemcounts"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "event_items"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "tracker_bosses"
 			},
 			{
 				"type": "layout",
