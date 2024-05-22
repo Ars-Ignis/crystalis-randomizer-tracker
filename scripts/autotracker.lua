@@ -44,9 +44,9 @@ function checkBitSet(name, segment, address, flag)
 end
 
 
-function isInGame()
-  return true -- Need to eventually fix this.
-end
+	function isInGame()
+		return AutoTracker:ReadU8(0x0040) == 0x01
+	  end
 
 --NEW CODE STARTS HERE
 function updateToggleItemFromByteAndFlag(segment, code, address, flag)
