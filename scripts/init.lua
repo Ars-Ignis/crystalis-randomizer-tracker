@@ -126,7 +126,7 @@ end
 		Tracker:AddLocations("locations/goa_sabera_locations_split.json")
 		Tracker:AddLocations("locations/goa_mado_locations_split.json")
 		Tracker:AddLocations("locations/goa_karmine_locations_split.json")
-		Tracker:AddLocations("locations/cache_invalidation_location_split.json")
+		Tracker:AddLocations("locations/cache_invalidation_location.json")
 
 
 		else
