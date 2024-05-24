@@ -38,7 +38,7 @@
 						"x": 800,
 						"y": 520,
 						"size": 45,
-						"force_invisibility_rules": [ "flag_eu", "flag_et" ]
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
@@ -67,7 +67,7 @@
 						"x": 850,
 						"y": 520,
 						"size": 45,
-						"force_invisibility_rules": [ "flag_eu", "flag_et" ]
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},
@@ -128,7 +128,7 @@
 						"x": 850,
 						"y": 570,
 						"size": 45,
-						"force_invisibility_rules": [ "flag_eu", "flag_et" ]
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},

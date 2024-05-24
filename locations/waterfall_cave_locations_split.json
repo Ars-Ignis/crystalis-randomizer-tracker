@@ -60,7 +60,7 @@
 						"x": 1200,
 						"y": 850,
 						"size": 45,
-						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},
@@ -89,7 +89,7 @@
 						"x": 1250,
 						"y": 850,
 						"size": 45,
-						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
