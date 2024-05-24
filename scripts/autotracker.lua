@@ -2918,6 +2918,50 @@ end
    -- end
 --end
 
+---Flag Setting Code Start
+function removeQuestionAndExclamation(str)
+    return str:gsub("[!?]", "")
+end
+
+-- Function to split string by uppercase letters
+function splitStringByUpperCase(str)
+    local parts = {}
+    local currentPart = ""
+    
+    for i = 1, #str do
+        local char = str:sub(i, i)
+        if char:match("%u") then
+            table.insert(parts, currentPart)
+            currentPart = char
+        else
+            currentPart = currentPart .. char
+        end
+    end
+    
+    table.insert(parts, currentPart)
+    
+    return parts
+end
+
+-- Your provided input string
+local inputString = "A?cmDsE?tuG?cfnrstM?etN?bgwR?bdostV?bdmW?aeghmstuw"
+local outputString = removeQuestionAndExclamation(inputString)
+print(outputString) -- Output: "GfnsHtcMetgNbwRotsVmWegtu"
+
+-- Function to remove question marks and exclamation marks from a string
+
+
+-- Split the outputString by uppercase letters
+local parts = splitStringByUpperCase(outputString)
+
+-- Print the parts
+for i, part in ipairs(parts) do
+    print(i, part)
+end
+---Flag Setting Code Stop
+
+
+
 function updateChestsFromMemorySegmentCorridor(segment)
     if not isInGame() then
         return false
