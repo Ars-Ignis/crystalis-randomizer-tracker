@@ -48,7 +48,6 @@ end
 		return AutoTracker:ReadU8(0x0040) == 0x01
 	  end
 
---NEW CODE STARTS HERE
 function updateToggleItemFromByteAndFlag(segment, code, address, flag)
     local item = Tracker:FindObjectForCode(code)
     if item then
@@ -115,11 +114,6 @@ function updateSectionChestCountFromByteAndFlag(segment, locationRef, address, f
         print("Couldn't find location", locationRef)
     end
 end
-
-
--- CODE STOPS
-
-
 
 
 
@@ -336,7 +330,7 @@ function updateRefresh(segment, code)
 		or SPELL8 == 0x41 then
             		if item.Active == false then
                 	print(item.Name .. " obtained")
-                	item .Active = true
+                	item.Active = true
             	end
         		else
             		item.Active = false
@@ -2903,62 +2897,194 @@ function updateToggleItemFromByteAndFlag(segment, code, address, flag)
     end
 end
 
---function updateProgressiveItemFromByteAndFlag(segment, code, address, flag1)
---    local item = Tracker:FindObjectForCode(code)
---    if item then
---        local value = ReadU8(segment, address)        
---        if value & flag1 ~= 0 then
---            if item.CurrentStage ~= 1 then
- --               print(item.Name .. " obtained")
-  --              item.CurrentStage = 1
-    --        end
-     --   else
-      --      item.CurrentStage = 0
-       -- end
-   -- end
---end
+
 
 ---Flag Setting Code Start
-function removeQuestionAndExclamation(str)
-    return str:gsub("[!?]", "")
+
+CACHED_CHECKSUM = 0
+
+function isInMenu()
+    return AutoTracker:ReadU8(0x0040) == 0x03
 end
 
--- Function to split string by uppercase letters
-function splitStringByUpperCase(str)
-    local parts = {}
-    local currentPart = ""
-    
-    for i = 1, #str do
-        local char = str:sub(i, i)
-        if char:match("%u") then
-            table.insert(parts, currentPart)
-            currentPart = char
-        else
-            currentPart = currentPart .. char
-        end
+function resetFlags()
+	print("Resetting flags!")
+	local flags = {"flag_gf", "flag_gs", "flag_gn", "flag_gg", "flag_gc", "flag_gt", "flag_gr", "flag_wm", "flag_wh", "flag_wt", "flag_we", "flag_wg", "flag_me", "flag_mg", "flag_ro", "flag_rd", "flag_et", "flag_eu", "flag_er", "flag_nw", "flag_ns", "flag_nb", "flag_ng", "flag_vw", "flag_vb"}
+	for i, flag in ipairs(flags) do
+		local item = Tracker:FindObjectForCode(flag)
+		item.Active = false
+	end
+	local wu_item = Tracker:FindObjectForCode("flag_wu")
+	wu_item.Active = true
+	local wm_item = Tracker:FindObjectForCode("flag_vm")
+	wm_item.CurrentStage = 0
+end
+
+function readCheckSumFromMemorySegment(segment)
+    if not isInMenu() then
+        return
+    end
+	
+    InvalidateReadCaches()
+	
+	local baseAddress = 0xB885
+	local checksum = 0;
+    checksum = checksum | (ReadU8(segment, baseAddress + 7) << 56)
+    checksum = checksum | (ReadU8(segment, baseAddress + 6) << 48)
+    checksum = checksum | (ReadU8(segment, baseAddress + 5) << 40)
+    checksum = checksum | (ReadU8(segment, baseAddress + 4) << 32)
+    checksum = checksum | (ReadU8(segment, baseAddress + 3) << 24)
+    checksum = checksum | (ReadU8(segment, baseAddress + 2) << 16)
+    checksum = checksum | (ReadU8(segment, baseAddress + 1) << 8)
+    checksum = checksum | (ReadU8(segment, baseAddress + 0) << 0)
+	
+	if not checksum == CACHED_CHECKSUM then
+		print("CHECKSUM CHANGED!")
+		resetFlags()
+		CACHED_CHECKSUM = checksum
+	end
+end
+
+
+function readFlagsFromMemorySegment(segment)
+    if not isInMenu() then
+        return
     end
     
-    table.insert(parts, currentPart)
+    InvalidateReadCaches()
     
-    return parts
+    local blocks = {}
+    local blocksRead = 0
+    local addr = 0xB7FF
+    local prevChar = 0x00
+    while true do
+        local topBlock = {}
+        local bottomBlock = {}
+        for i = 1, 24 do
+            topBlock[i] = ReadU8(segment, addr)
+            bottomBlock[i] = ReadU8(segment, addr + 1)
+            addr = addr + 2
+        end
+        if (bottomBlock[1] == 0x43 and bottomBlock[2] == 0x4F) or (bottomBlock[1] == 0x49 and bottomBlock[2] == 0x4E) then
+            -- bottom line starts with CO or IN
+            break
+        end
+        blocks[blocksRead + 1] = topBlock
+        blocks[blocksRead + 2] = bottomBlock
+        blocksRead = blocksRead + 2
+        if blocksRead > 5 then
+            --something went wrong, bail out
+            return
+        end
+    end
+    --this sucks, but I couldn't find an efficient function for turning a list of chars into a string in lua
+    local flagString = ""
+    for i, block in ipairs(blocks) do
+        for j, flagChar in ipairs(block) do
+            flagString = flagString .. string.char(flagChar)
+        end
+    end
+    flagString = string.gsub(flagString, " ", "")
+    print("Flagstring found: " .. flagString)
+    for categoryFlags in string.gmatch(flagString, "%u[%l%?%!]+") do
+        local categoryChar = string.sub(categoryFlags, 1, 1)
+        i, j = string.find(categoryFlags, "%a+", 2)
+        local onFlags = string.sub(categoryFlags, i, j)
+        local bangFlags = ""
+        local bangIdx = string.find(categoryFlags, "%!", 2)
+        if bangIdx then
+            if bangIdx == 2 then
+                onFlags = ""
+            end
+            i, j = string.find(categoryFlags, "%a+", bangIdx)
+            bangFlags = string.sub(categoryFlags, i, j)
+        end
+        local randomFlags = ""
+        local randomIdx = string.find(categoryFlags, "%?", 2)
+        if randomIdx then
+            if randomIdx == 2 then
+                onFlags = ""
+            end
+            i, j = string.find(categoryFlags, "%a+", randomIdx)
+            randomFlags = string.sub(categoryFlags, i, j)
+        end
+        if categoryChar == "G" then
+            for flag in string.gmatch(onFlags .. randomFlags, ".") do
+                local code = "flag_g" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "W" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[mhtueg]") do
+                local code = "flag_w" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "M" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[eg]") do
+                local code = "flag_m" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "R" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[od]") do
+                local code = "flag_r" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "E" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[tur]") do
+                local code = "flag_e" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "N" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[wsbg]") do
+                local code = "flag_n" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    item.Active = true
+                end
+            end
+        elseif categoryChar == "V" then
+            for flag in string.gmatch(onFlags .. randomFlags, "[mwb]") do
+                local code = "flag_v" .. flag
+                print("Setting flag: " .. code)
+                local item = Tracker:FindObjectForCode(code)
+                if item then
+                    if flag == "m" then
+						item.CurrentStage = 1
+					else
+					item.Active = true
+					end
+                end
+            end
+            if string.find(bangFlags, "m") then
+                print("Setting flag: flag_vbangm")
+                local item = Tracker:FindObjectForCode("flag_vbangm")
+                if item then
+                    item.CurrentStage = 2
+                end
+            end
+        end
+    end
 end
-
--- Your provided input string
-local inputString = "A?cmDsE?tuG?cfnrstM?etN?bgwR?bdostV?bdmW?aeghmstuw"
-local outputString = removeQuestionAndExclamation(inputString)
-print(outputString) -- Output: "GfnsHtcMetgNbwRotsVmWegtu"
-
--- Function to remove question marks and exclamation marks from a string
-
-
--- Split the outputString by uppercase letters
-local parts = splitStringByUpperCase(outputString)
-
--- Print the parts
-for i, part in ipairs(parts) do
-    print(i, part)
-end
----Flag Setting Code Stop
 
 
 
@@ -3121,7 +3247,7 @@ end
 
 
 function updateKeyItemsFromMemorySegment(segment)
-    if not isInGame(segment) then
+    if not isInGame() then
         return false
     end
 
@@ -3227,3 +3353,5 @@ end
 -- checking needs to be done on the segment
 ScriptHost:AddMemoryWatch("Item Data", 0x6430, 0x500, updateKeyItemsFromMemorySegment)
 ScriptHost:AddMemoryWatch("Location Data", 0x64A0, 0x20, updateChestsFromMemorySegmentCorridor)
+ScriptHost:AddMemoryWatch("Checksum Data", 0xB885, 0x08, readCheckSumFromMemorySegment, 10)
+ScriptHost:AddMemoryWatch("Flag Data", 0xB7F0, 0xA0, readFlagsFromMemorySegment)
