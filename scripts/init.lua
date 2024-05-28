@@ -22,21 +22,24 @@ if (Tracker.ActiveVariantUID ~= "super_compact") then
 	Tracker:AddItems("items/bosses.json")
 end
 Tracker:AddItems("items/miscellaneous_items.json")
-Tracker:AddItems("items/flags.json")
+--Tracker:AddItems("items/flags.json")
 
 	if (Tracker.ActiveVariantUID == "items_only") then
 		initCustomItems()
+		Tracker:AddItems("items/flags.json")
 		Tracker:AddLayouts("layouts/flags_layout.json")
 		Tracker:AddLayouts("layouts/input_layouts.json")
 		Tracker:AddLayouts("layouts/items_only_layout.json")
 		Tracker:AddLayouts("layouts/broadcast_items_only.json")
 
 	elseif (Tracker.ActiveVariantUID == "super_compact") then
+		Tracker:AddItems("items/flags.json")
 		Tracker:AddItems("items/compact_items.json")
 		Tracker:AddLayouts("layouts/super_compact_layout.json")
 
 	elseif (Tracker.ActiveVariantUID == "items_only2") then
 		initCustomItemsAuto()			--New one to eliminate the badge system
+			Tracker:AddItems("items/autoflags.json")
 			Tracker:AddItems("items/simple_items.json")
 			Tracker:AddLayouts("layouts/flags_layout.json")
 			Tracker:AddLayouts("layouts/input_layouts_unid.json")  --Note unid field
@@ -67,6 +70,7 @@ end
 	
 	if (Tracker.ActiveVariantUID == "items_and_map_custom") then
 			initCustomItems()			--Test
+			Tracker:AddItems("items/flags.json")
 			Tracker:AddItems("items/simple_items.json")  --Test
 			Tracker:AddLayouts("layouts/flags_layout.json")
 			Tracker:AddLayouts("layouts/map_layouts.json")
@@ -77,6 +81,7 @@ end
 			
 		elseif (Tracker.ActiveVariantUID == "items_and_map_custom2") then
 			initCustomItemsAuto()			--New one to eliminate the badge system
+			Tracker:AddItems("items/autoflags.json")
 			Tracker:AddItems("items/simple_items.json")
 			Tracker:AddLayouts("layouts/flags_layout.json")
 			Tracker:AddLayouts("layouts/input_layouts_unid.json")  --Note unid field
@@ -96,6 +101,7 @@ else
 end
 
 	else
+			Tracker:AddItems("items/flags.json")
 			Tracker:AddItems("items/simple_items.json")
 			Tracker:AddLayouts("layouts/simple_flags_layout.json")
 			Tracker:AddLayouts("layouts/input_layouts.json")
