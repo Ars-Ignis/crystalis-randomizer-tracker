@@ -2946,8 +2946,13 @@ function readCheckSumFromMemorySegment(segment)
 end
 
 
+local singleread = true  --for mystery flag changes after game has started
 function readFlagsFromMemorySegment(segment)
-    if not isInMenu() then
+    if  not singleread then
+        return
+    end
+		
+	if not isInMenu() then
         return
     end
     
@@ -3084,6 +3089,8 @@ function readFlagsFromMemorySegment(segment)
             end
         end
     end
+-- Mark flags as read
+singleread = false
 end
 
 
