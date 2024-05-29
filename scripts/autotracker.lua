@@ -79,8 +79,8 @@ function updateProgessiveItemFromByteAndFlag(segment, code, address, flag)
         if (value & flag) ~= 0 then
             item.CurrentStage = 1
             currentStage = 1
-        elseif currentStage == 1 then
-            item.CurrentStage = 0
+        -- elseif currentStage == 1 then
+        --    item.CurrentStage = 0
         end
     end
 end 
@@ -3149,22 +3149,8 @@ function updategomode(segment, code)
             end
 			if ((kelby1read & 0x01) ~=0) then
 				kelby1 = 1
-			 end
-			
-			--updateProgessiveItemFromByteAndFlag("kelbesque1_cleared", segment, 0x64A1, 0x64A1)
-			--updateProgessiveItemFromByteAndFlag(segment, "kelbesque2_cleared", 0x64A4, 0x40)
-			--updateProgessiveItemFromByteAndFlag(segment, "sabera1_cleared", 0x64A7, 0x01)
-			--updateProgessiveItemFromByteAndFlag(segment, "sabera2_cleared", 0x64A4, 0x08)
-			--updateProgessiveItemFromByteAndFlag(segment, "mado1_cleared", 0x64A1, 0x08)
-			--updateProgessiveItemFromByteAndFlag(segment, "mado2_cleared", 0x64A2, 0x04)
-			--updateProgessiveItemFromByteAndFlag(segment, "karmine_cleared", 0x64A7, 0x20)	
-			--updateProgessiveItemFromByteAndFlag(segment, "vampire_cleared", 0x64AC, 0x02)
-			--updateProgessiveItemFromByteAndFlag(segment, "giantinsect_cleared", 0x64A0, 0x80)	
-			--updateProgessiveItemFromByteAndFlag(segment, "draygon_cleared", 0x64A3, 0x10)  --Needs to be made
-
-
+			 end			
            
-            
              if ((kelby2read & 0x40) ~= 0) then
                 kelby2 = 1
             end
