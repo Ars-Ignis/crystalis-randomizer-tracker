@@ -2945,13 +2945,13 @@ function readCheckSumFromMemorySegment(segment)
 	end
 end
 
+local singleread = true
 
-local singleread = true  --for mystery flag changes after game has started
 function readFlagsFromMemorySegment(segment)
     if  not singleread then
         return
     end
-		
+	
 	if not isInMenu() then
         return
     end
@@ -3088,10 +3088,199 @@ function readFlagsFromMemorySegment(segment)
                 end
             end
         end
-    end
--- Mark flags as read
-singleread = false
+    end 
+	-- Mark flags as read
+    singleread = false
 end
+
+
+
+function updategomode(segment, code)
+    local item = Tracker:FindObjectForCode(code)
+   
+ 
+    if item then
+        local gomode = 0
+        local windsword = 0
+        local firesword = 0
+        local watersword = 0        
+        local thundersword = 0
+        local graybow = 0
+        local redbow = 0
+        local bluebow = 0        
+        local kelby1 = 0
+        local kelby2 = 0
+        local sabera1 = 0
+        local sabera2 = 0
+        local mado1 = 0
+        local mado2 = 0  
+        local karmine = 0           
+        local draygon = 0  
+        local moonstatue = 0           
+        local sunstatue = 0     
+
+        local WindSwordRead = ReadU8(segment, 0x6430) 
+    	local FireSwordRead = ReadU8(segment, 0x6431)
+        local WaterSwordRead = ReadU8(segment, 0x6432) 
+    	local ThunderSwordRead = ReadU8(segment, 0x6433)
+        local kelby1read = segment:ReadUInt8(0x64A1) 
+    	local kelby2read = segment:ReadUInt8(0x64A4)
+        local sabera1read = segment:ReadUInt8(0x64A7) 
+    	local sabera2read = segment:ReadUInt8(0x64A4)
+        local mado1read = segment:ReadUInt8(0x64A1) 
+    	local mado2read = segment:ReadUInt8(0x64A2)
+        local karmineread = segment:ReadUInt8(0x64A7) 
+    	local draygonread = segment:ReadUInt8(0x64A3)
+        local sunstatueread = segment:ReadUInt8(0x6481)
+        local moonstatueread = segment:ReadUInt8(0x6481) 
+        
+        
+            if WindSwordRead == 0x00 then
+                windsword = 1
+            end
+             if FireSwordRead == 0x01 then
+                firesword = 1
+            end
+             if WaterSwordRead == 0x02 then
+                watersword = 1
+            end
+             if ThunderSwordRead == 0x03 then
+                thundersword = 1
+            end
+			if ((kelby1read & 0x01) ~=0) then
+				kelby1 = 1
+			 end
+			
+			--updateProgessiveItemFromByteAndFlag("kelbesque1_cleared", segment, 0x64A1, 0x64A1)
+			--updateProgessiveItemFromByteAndFlag(segment, "kelbesque2_cleared", 0x64A4, 0x40)
+			--updateProgessiveItemFromByteAndFlag(segment, "sabera1_cleared", 0x64A7, 0x01)
+			--updateProgessiveItemFromByteAndFlag(segment, "sabera2_cleared", 0x64A4, 0x08)
+			--updateProgessiveItemFromByteAndFlag(segment, "mado1_cleared", 0x64A1, 0x08)
+			--updateProgessiveItemFromByteAndFlag(segment, "mado2_cleared", 0x64A2, 0x04)
+			--updateProgessiveItemFromByteAndFlag(segment, "karmine_cleared", 0x64A7, 0x20)	
+			--updateProgessiveItemFromByteAndFlag(segment, "vampire_cleared", 0x64AC, 0x02)
+			--updateProgessiveItemFromByteAndFlag(segment, "giantinsect_cleared", 0x64A0, 0x80)	
+			--updateProgessiveItemFromByteAndFlag(segment, "draygon_cleared", 0x64A3, 0x10)  --Needs to be made
+
+
+           
+            
+             if ((kelby2read & 0x40) ~= 0) then
+                kelby2 = 1
+            end
+             if ((sabera1read & 0x01) ~= 0) then
+                sabera1 = 1
+            end
+             if ((sabera2read & 0x08) ~= 0) then
+                sabera2 = 1
+            end
+             if ((mado1read & 0x08) ~= 0) then
+                mado1 = 1
+            end
+             if ((mado2read & 0x04) ~= 0) then
+                mado2 = 1
+            end
+             if ((karmineread & 0x20) ~= 0) then
+                karmine = 1
+            end
+             if ((draygonread & 0x10) ~= 0) then
+                draygon = 1
+            end
+            if ((sunstatueread & 0x40) ~= 0) then
+                sunstatue = 1
+            end
+             if ((moonstatueread & 0x08) ~= 0) then
+                moonstatue = 1
+            end
+
+
+        local KEYITEM1 = ReadU8(segment, 0x6450) 
+    	local KEYITEM2 = ReadU8(segment, 0x6451)
+        local KEYITEM3 = ReadU8(segment, 0x6452) 
+    	local KEYITEM4 = ReadU8(segment, 0x6453)
+	    local KEYITEM5 = ReadU8(segment, 0x6454) 
+    	local KEYITEM6 = ReadU8(segment, 0x6455)
+	    local KEYITEM7 = ReadU8(segment, 0x6456) 
+    	local KEYITEM8 = ReadU8(segment, 0x6457)
+        local KEYITEM9 = ReadU8(segment, 0x64B8) 
+    	local KEYITEM10 = ReadU8(segment, 0x64B9)
+        local KEYITEM11 = ReadU8(segment, 0x64BA) 
+    	local KEYITEM12 = ReadU8(segment, 0x64BB)
+	    local KEYITEM13 = ReadU8(segment, 0x64BC) 
+    	local KEYITEM14 = ReadU8(segment, 0x64BD)
+	    local KEYITEM15 = ReadU8(segment, 0x64BE) 
+    	local KEYITEM16 = ReadU8(segment, 0x64BF)
+	
+	--if item  then    
+            if KEYITEM1 == 0x3E 
+		    or KEYITEM2 == 0x3E
+		    or KEYITEM3 == 0x3E 
+		    or KEYITEM4 == 0x3E 
+		    or KEYITEM5 == 0x3E 
+		    or KEYITEM6 == 0x3E 
+		    or KEYITEM7 == 0x3E
+		    or KEYITEM8 == 0x3E
+            or KEYITEM9 == 0x3E
+		    or KEYITEM10 == 0x3E 
+		    or KEYITEM11 == 0x3E 
+		    or KEYITEM12 == 0x3E 
+		    or KEYITEM13 == 0x3E 
+		    or KEYITEM14 == 0x3E
+		    or KEYITEM15 == 0x3E 
+            or KEYITEM16 == 0x3E then
+            graybow = 1
+            end
+
+            	--if item  then    
+            if KEYITEM1 == 0x3F 
+		    or KEYITEM2 == 0x3F
+		    or KEYITEM3 == 0x3F 
+		    or KEYITEM4 == 0x3F 
+		    or KEYITEM5 == 0x3F 
+		    or KEYITEM6 == 0x3F 
+		    or KEYITEM7 == 0x3F
+		    or KEYITEM8 == 0x3F
+            or KEYITEM9 == 0x3F
+		    or KEYITEM10 == 0x3F 
+		    or KEYITEM11 == 0x3F 
+		    or KEYITEM12 == 0x3F 
+		    or KEYITEM13 == 0x3F 
+		    or KEYITEM14 == 0x3F
+		    or KEYITEM15 == 0x3F 
+            or KEYITEM16 == 0x3F then
+            redbow = 1
+            end
+
+            	--if item  then    
+            if KEYITEM1 == 0x40 
+		    or KEYITEM2 == 0x40
+		    or KEYITEM3 == 0x40 
+		    or KEYITEM4 == 0x40 
+		    or KEYITEM5 == 0x40 
+		    or KEYITEM6 == 0x40 
+		    or KEYITEM7 == 0x40
+		    or KEYITEM8 == 0x40
+            or KEYITEM9 == 0x40
+		    or KEYITEM10 == 0x40 
+		    or KEYITEM11 == 0x40 
+		    or KEYITEM12 == 0x40 
+		    or KEYITEM13 == 0x40 
+		    or KEYITEM14 == 0x40
+		    or KEYITEM15 == 0x40 
+            or KEYITEM16 == 0x40 then
+            bluebow = 1
+            end
+
+        if
+        windsword + firesword + watersword + thundersword + kelby1 + kelby2 + sabera1 + sabera2 + mado1 + mado2 + karmine + draygon + redbow + graybow + bluebow + sunstatue + moonstatue == 15 then
+        item.Active = true 
+        else        
+        item.Active = false
+        end     		
+	 end
+end
+
+
 
 
 
@@ -3274,6 +3463,7 @@ function updateKeyItemsFromMemorySegment(segment)
 	updateProgessiveItemFromByteAndFlag(segment, "vampire_cleared", 0x64AC, 0x02)
 	updateProgessiveItemFromByteAndFlag(segment, "giantinsect_cleared", 0x64A0, 0x80)	
 	updateProgessiveItemFromByteAndFlag(segment, "draygon_cleared", 0x64A3, 0x10)  --Needs to be made
+    updategomode(segment, "gomode")
 	
 	updateWindSword(segment, "windsword", 0x6430)
     updateToggleItemFromByte(segment, "firesword", 0x6431, 0x01)
