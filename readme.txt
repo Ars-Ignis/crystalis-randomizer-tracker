@@ -34,6 +34,7 @@ Some notes on usage:
 	-If playing without the Rt flag, you can right click on the Sword of Thunder to cycle through all the possible warp points, to show you what you have access to. 
 	-If using the Wg flag, you can use the Goa Floor items on the Walls/Bosses/Misc tab to indicate the shape of your Goa Fortress. Left-click to cycle through bosses, and right-click to reverse the floor, indicating the boss of that floor is closer to the entrance than the exit.
 	-If using the Wm flag, individual sub-maps will have doors that can be clicked once to indicate that you have found that door, or twice to indicate the door is blocked by the map structure.  When you have the ability necessary to reach that door regardless of the structure, the door locations should disappear from the map.
+	-To set up autotracking, you'll need to be using BizHawk and to have a version of the connector.lua for EmoTracker that works with your current version of BizHawk. If you're having trouble finding it, I recommend visiting the EmoTracker Discord (specifically the channel #autotracker-support) and asking for help there. Once you have the correct lua connector, open your Crystalis Randomizer ROM in BizHawk, go to Tools -> Lua Console in BizHawk, and select Open Script in the window that appears. Load the connector lua there, leave that window open. Then, right click on the robot in the bottom-right corner of EmoTracker and select NES -> Lua. If everything is connected correctly, the robot head should turn a nice light teal, and your flags should be automatically read from the ROM. At that point, you're ready to start playing.
 
 Flags that show as a red X when selected are currently not implemented in the logic.
 
@@ -74,10 +75,8 @@ v1.3.0
 	-Fixed a logic bug with unidentified bows
 v1.4.0
 	-Added new variant: super compact variant for restreaming races
-v1.5.0
-	-Added location tracking and item tracking.  Note currently key items (statue, key, bow etc) are not tracked due to unidentified items not working yet.
-v1.6.0
-	-Unidentified key items fixed for autotracking. Use proper variants.
+v2.0.0
+	-Added autotracking! Autotracking update by The Sir Archibald.
 
 Future Release Plans:
 	Wh flag logic

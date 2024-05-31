@@ -191,7 +191,7 @@ function updateWindBall(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
     if item then
         local value = ReadU8(segment, address)
-        if value == 5 then
+        if value == 5 or value == 6 then
             if item.Active == false then
                 print(item.Name .. " obtained")
                 item.Active = true
@@ -221,7 +221,7 @@ function updateFireBall(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
     if item then
         local value = ReadU8(segment, address)
-        if value == 7 then
+        if value == 7 or value == 8 then
             if item.Active == false then
                 print(item.Name .. " obtained")
                 item.Active = true
@@ -251,7 +251,7 @@ function updateWaterBall(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
     if item then
         local value = ReadU8(segment, address)
-        if value == 9 then
+        if value == 9  or value == 10 then
             if item.Active == false then
                 print(item.Name .. " obtained")
                 item.Active = true
@@ -281,7 +281,7 @@ function updateThunderBall(segment, code, address)
     local item = Tracker:FindObjectForCode(code)
     if item then
         local value = ReadU8(segment, address)
-        if value == 11 then
+        if value == 11 or value == 12 then
             if item.Active == false then
                 print(item.Name .. " obtained")
                 item.Active = true
