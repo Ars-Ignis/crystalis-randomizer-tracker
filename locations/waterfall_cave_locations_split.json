@@ -1,0 +1,125 @@
+[
+	{
+		//Waterfall Cave
+		"name": "Waterfall Cave",
+		"access_rules": [
+			"$canMaybeReach|portoa, [$canReach|portoa], $canOpenChest"
+			],
+		"children": [
+		
+			{
+				"name": "Waterfall Cave: Mimic",
+				"access_rules": [
+					"$negate|flag_wm, $canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls]",
+					"flag_wm, [$canBreakWaterfallCaveWalls]"
+				],
+				"sections": [
+					{
+						"name": "Mimic",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_waterfall_cave",
+						"x": 20,
+						"y": 240,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1150,
+						"y": 850,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					}
+				]
+			},
+			{
+				"name": "Waterfall Cave: Sword of Water",
+				"access_rules": [
+					"$canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls], $maybeHasFluteOfLime, [$hasFluteOfLime]",
+					"$canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls], flag_gs"
+				],
+				"sections": [
+					{
+						"name": "Sword of Water",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_waterfall_cave",
+						"x": 640,
+						"y": 45
+					},
+					{
+						"map": "map_overworld",
+						"x": 1200,
+						"y": 850,
+						"size": 45,
+						"force_invisibility_rules": [  ]
+					}
+				]
+			},
+			{
+				"name": "Waterfall Cave: Flute of Lime",
+				"access_rules": [
+					"$canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls], $maybeHasFluteOfLime, [$hasFluteOfLime]",
+					"$canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls], flag_gs"
+				],
+				"sections": [
+					{
+						"name": "Flute of Lime",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_waterfall_cave",
+						"x": 540,
+						"y": 25,
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1250,
+						"y": 850,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
+					}
+				]
+			},
+			{
+				"name": "Waterfall Cave: Akahana",
+				"access_rules": [
+					"$canMaybeBreakWaterfallCaveWalls, [$canBreakWaterfallCaveWalls], $maybeHasFluteOfLime, [$hasFluteOfLime]"
+				],
+				"sections": [
+					{
+						"name": "Rescue Akahana",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_waterfall_cave",
+						"x": 485,
+						"y": 25
+					},
+					{
+						"map": "map_overworld",
+						"x": 1300,
+						"y": 850,
+						"size": 45,
+						"force_invisibility_rules": [  ]
+					}
+				]
+			}
+		]
+	}
+]

@@ -1,0 +1,360 @@
+{
+	"weapons": {
+		"type": "group",
+		"margin": 0,
+		"header": "Weapons/Worn Items/Magic",
+		"header_background": "#ff000000",
+		"content": [
+			{
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 40,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"wind",
+						"fire",
+						"water",
+						"thunder"
+					],
+					[
+						"windball",
+						"fireball",
+						"waterball",
+						"thunderball"
+					],
+					[
+						"windbracelet",
+						"firebracelet",
+						"waterbracelet",
+						"thunderbracelet"
+					],
+					[
+						"gas",
+						"power",
+						"warrior",
+						"iron"
+					],
+					[
+						"deo",
+						"rabbit",
+						"speed",
+						"shield"
+					],
+					[
+						"refresh",
+						"paralysis",
+						"telepathy",
+						"teleport"
+					],
+					[
+						"recover",
+						"barrier",
+						"change",
+						"flight"
+					]
+
+				]
+			}
+		]
+	},
+
+
+
+	"itemcounts": {
+		"type": "group",
+		"margin": 0,
+		"header": "Event Items",
+		"header_background": "#ff000000",
+		"content": [
+			{
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 40,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"bow",
+						"graybow",
+						"redbow",
+						"bluebow",
+						"unknowntrade"
+					],
+					[
+						"unknownkey",
+						"redkey",
+						"bluekey",
+						"greenkey",
+						"love"
+					],
+					[
+						"unknownflute",
+						"grayflute",
+						"greenflute",
+						"blueflute",
+						"redflute"
+					],
+					[
+						"unknownstatue",
+						"redstatue",
+						"crackedstatue",
+						"bluestatue",
+						"graystatue"
+					],
+					[
+						"unknownlamp",
+						"bluelamp",
+						"graylamp",
+						"eyeglasses",
+						"kirisa"
+					],
+					[ "opel", "kelbesque1", "sabera1", "mado1", "draygon" ],
+					[ "gomode", "kelbesque2", "sabera2", "mado2", "karmine" ]
+				]
+			},
+		]
+	},
+
+	"event_items": {
+
+				"type": "itemgrid",
+				"h_alignment": "center",
+				//"background": "#202a33",
+				"item_size": 40,
+				"item_margin": "4,4",
+				"rows": [
+					[
+						"bow",
+						"graybow",
+						"redbow",
+						"bluebow",
+						"unknowntrade"
+					],
+					[
+						"unknownkey",
+						"redkey",
+						"bluekey",
+						"greenkey",
+						"love"
+					],
+					[
+						"unknownflute",
+						"grayflute",
+						"greenflute",
+						"blueflute",
+						"redflute"
+					],
+					[
+						"unknownstatue",
+						"redstatue",
+						"crackedstatue",
+						"bluestatue",
+						"graystatue"
+					],
+					[
+						"unknownlamp",
+						"bluelamp",
+						"graylamp",
+						"eyeglasses",
+						"kirisa"
+					]
+				]
+	},
+
+	"tracker_visible_walls": {
+		"type": "group",
+		"margin": 0,
+		"header": "Visible Walls & Steel Walls",
+		"header_background": "#ff000000",
+		"content": [
+			{
+				"type": "itemgrid",
+				"margin": 0,
+				"item_margin": 2,
+				"item_size": 40,
+				"rows": [
+					[ "zcw", "ecw", "scw", "msww" ],
+					[ "msnw", "wcw", "flcw", "kpcw" ],
+					[ "esiw", "mhw", "goa_entrance_wall_cleared", "goa_basement_wall_cleared" ],
+					[ "goa_sabera_item_wall_cleared", "goa_sabera_boss_wall_cleared", "goa_mado_wall_cleared", "goa_karmine_wall_cleared" ]
+				]
+			}
+		]
+	},
+
+	"tracker_steel_walls": {
+		
+				"type": "itemgrid",
+				"margin": 0,
+				"item_margin": 4,
+				"item_size": 40,
+				"rows": [
+					[ "goa_entrance_wall_cleared", "goa_sabera_item_wall_cleared", "goa_sabera_boss_wall_cleared", "goa_mado_wall_cleared" ],
+					[ "", "goa_karmine_wall_cleared", "goa_basement_wall_cleared", "" ]
+				]
+			
+	},
+
+	"tracker_bosses": {
+		"type": "group",
+		"header": "Bosses",
+		"header_background": "#ff000000",
+		"margin": 0,
+		"content": [
+			{
+				"type": "itemgrid",
+				"margin": 0,
+				"item_margin": 0,
+				"item_size": 75,
+				"rows": [
+					[ "kelbesque1", "sabera1", "mado1", "draygon" ],
+					[ "kelbesque2", "sabera2", "mado2", "karmine" ]
+				]
+			}
+		]
+	},
+
+	"tracker_goa_floors": {
+		"type": "group",
+		"header": "Goa Floors",
+		"header_background": "#ff000000",
+		"margin": 0,
+		"content": [
+			{
+				"type": "itemgrid",
+				"margin": 0,
+				"item_margin": 5,
+				"item_size": 50,
+				"rows": [
+					[ "goa1st", "goa2nd", "goa3rd", "goa4th" ],
+					[]
+				]
+			}
+		]
+	},
+
+	"tracker_misc": {
+		"type": "group",
+		"header": "Miscellaneous",
+		"header_background": "#ff000000",
+		"margin": 0,
+		"content": [
+			{
+				"type": "itemgrid",
+				"margin": 2,
+				"item_margin": 5,
+				"item_size": 50,
+				"rows": [
+					[ "eastfreebrynmaer", "eastwallbrynmaer", "tornelwind", "ragewind" ]
+				]
+			}
+		]
+	},
+
+	"tracker_left": {
+		"type": "array",
+		"orientation": "vertical",
+		//"background": "#202a33",
+		"style": "stack",
+		"content": [
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "weapons"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "worn_items"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "magic"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_visible_walls"
+			}
+		]
+	},
+
+	"tracker_right": {
+		"type": "array",
+		"orientation": "vertical",
+		//"background": "#202a33",
+		"style": "stack",
+		"content": [
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "itemcounts"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_goa_floors"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_misc"
+			}
+		]
+	},
+
+	"tracker_items": {
+		"type": "array",
+		"orientation": "horizontal",
+		//"background": "#202a33",
+		"style": "wrap",
+		"content": [
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_left"
+			},
+			{
+				"type": "layout",
+				"dropshadow": false,
+				"margin": 0,
+				"key": "tracker_right"
+			}
+		]
+	},
+
+	"tracker_input": {
+		"type": "tabbed",
+		"tabs": [
+			{
+				"title": "Tracker",
+				"content": {
+					"type": "layout",
+					"dropshadow": false,
+					"margin": 0,
+					"key": "tracker_items"
+				}
+			},
+			{
+				"title": "Flags",
+				"content": {
+					"type": "layout",
+					"dropshadow": false,
+					"margin": 0,
+					"key": "tracker_flags"
+				}
+			}
+		]
+	}
+}

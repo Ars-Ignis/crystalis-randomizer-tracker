@@ -1,16 +1,25 @@
 ﻿{
   "name": "Crystalis Randomizer",
   "game_name": "Crystalis",
+  "platform": "nes",
   "package_version": "1.4.0",
   "package_uid": "crystalis_codegorilla",
-  "author": "CodeGorilla",
+  "author": "CodeGorilla_SirArchibald",
   "variants": {
     "items_only": {
       "display_name": "Full Item Tracker"
     },
+    "items_only2": {
+      "display_name": "Full Item Tracker Auto"
+    },
     "items_and_map_custom": {
       "display_name": "Map Tracker"
     },
+
+    "items_and_map_custom2": {
+      "display_name": "Map Tracker Auto"
+    },
+
     "items_and_map_chat_hud": {
       "display_name": "ChatHUD Compatible Map Tracker"
     },

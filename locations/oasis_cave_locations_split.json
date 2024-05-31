@@ -4,51 +4,10 @@
 		"name": "Oasis Cave",
 		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Oasis Cave",
-				"access_rules": ["[flight], [$canBreakPowerRingWall]"],
-				"sections": [
-					{
-						"name": "Oasis Cave Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 230,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Oasis Cave",
-				"access_rules": ["[flight], [$canBreakPowerRingWall]"],
-				"sections": [
-					{
-						"name": "Oasis Cave Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 230,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+
 			//Fruit of Power 1
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave: Fruit of Power 1",
 				//TODO: Technically this item can be reached by full clearing Goa.
 				"access_rules": [
 					"flight",
@@ -66,13 +25,20 @@
 						"map": "map_oasis_cave",
 						"x": 30,
 						"y": 470,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 200,
+						"y": 500,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Fruit of Power 2
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave: Fruit of Power 2",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers",
 					"flag_wm, d_oasis2, [flight]",
@@ -89,13 +55,20 @@
 						"map": "map_oasis_cave",
 						"x": 280,
 						"y": 530,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 250,
+						"y": 500,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				]
 			},
 			//Leather Boots
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave: Leather Boots",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_oasis2, [flight]",
@@ -112,12 +85,19 @@
 						"map": "map_oasis_cave",
 						"x": 300,
 						"y": 25
+					},
+					{
+						"map": "map_overworld",
+						"x": 300,
+						"y": 500,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},
 			//Power Ring
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave: Power Ring",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers, $canMaybeBreakPowerRingWall, [$canBreakPowerRingWall]",
 					"flag_wm, d_oasis2, $canCrossRivers, $canMaybeBreakPowerRingWall, [$canBreakPowerRingWall], [flight]",
@@ -134,12 +114,19 @@
 						"map": "map_oasis_cave",
 						"x": 465,
 						"y": 400
+					},
+					{
+						"map": "map_overworld",
+						"x": 200,
+						"y": 550,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},
 			//Battle Armor
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave: Battle Armor",
 				"access_rules": [
 					"flight",
 					"flag_wm, d_oasis2, [flight]"
@@ -155,6 +142,13 @@
 						"map": "map_oasis_cave",
 						"x": 470,
 						"y": 180
+					},
+					{
+						"map": "map_overworld",
+						"x": 250,
+						"y": 550,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
 				]
 			},

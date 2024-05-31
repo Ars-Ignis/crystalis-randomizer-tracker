@@ -1,83 +1,13 @@
+
 [
 	{
 		//Fog Lamp Cave
 		"name": "Fog Lamp Cave",
 		"access_rules": ["$canMaybeReach|portoa, [$canReach|portoa], $canCrossRivers, $canOpenChest"],
 		"children": [
-			//Overview with mimics
+
 			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
-			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave: Lysis",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls]"
@@ -94,12 +24,19 @@
 						"map": "map_fog_lamp_cave",
 						"x": 220,
 						"y": 25,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1300,
+						"y": 1000,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
 				],
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave: Mimic 1",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp1",
@@ -117,12 +54,19 @@
 						"map": "map_fog_lamp_cave",
 						"x": 326,
 						"y": 200,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1300,
+						"y": 942,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
 				],
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave: Mimic 2",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp1",
@@ -140,12 +84,19 @@
 						"map": "map_fog_lamp_cave",
 						"x": 170,
 						"y": 336,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 1350,
+						"y": 942,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave: Fog Lamp",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp5",
@@ -163,6 +114,13 @@
 						"map": "map_fog_lamp_cave",
 						"x": 602,
 						"y": 60,
+					},
+					{
+						"map": "map_overworld",
+						"x": 1350,
+						"y": 1000,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
 				],
 			},

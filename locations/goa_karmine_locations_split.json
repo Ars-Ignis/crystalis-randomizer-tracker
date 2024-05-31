@@ -7,96 +7,15 @@
 			"$canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], [$canOpenChest]"
 		],
 		"children": [
-			//Overview with mimics
-			{
-				"name": "Goa: Karmine's Floor",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], [$hasSlimeTrade], $canCrossSpikes, [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], [$hasSlimeTrade], $canCrossSpikes, [$canBypassBarriers], [$canKillKarmine]",
-					"flag_wm, [$canCrossSpikes], [$canBreakKarmineWall], [$canBypassBarriers], [$canKillKarmine], [$hasSlimeTrade]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Karmine's Floor Items",
-						"item_count": 8,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 819,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Goa: Karmine's Floor",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], [$hasSlimeTrade], $canCrossSpikes, [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], [$hasSlimeTrade], $canCrossSpikes, [$canBypassBarriers], [$canKillKarmine]",
-					"flag_wm, [$canCrossSpikes], [$canBreakKarmineWall], [$canBypassBarriers], [$canKillKarmine], [$hasSlimeTrade]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Karmine's Floor Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 819,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Goa: Karmine's Floor",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], [$hasSlimeTrade], $canCrossSpikes, $canBypassBarriers, $canMaybeKillKarmine, [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine]",
-					"$negate|flag_wm, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], [$hasSlimeTrade], $canCrossSpikes, $canBypassBarriers, $canMaybeKillKarmine, [$canKillKarmine]",
-					"flag_wm, $maybeHasSlimeTrade, [$hasSlimeTrade], [$canCrossSpikes], [$canBypassBarriers], [$canKillKarmine], [$canBreakKarmineWall]",
-					"flag_wm, [$hasSlimeTrade], $canCrossSpikes, $canBypassBarriers, $canMaybeKillKarmine, [$canKillKarmine], [$canBreakKarmineWall]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Karmine's Floor Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 819,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
+
 			//Mimic 1
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Mimic 1",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
 					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -110,18 +29,25 @@
 						"map": "map_goa_karmine",
 						"x": 505,
 						"y": 480,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 800,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Mimic 2
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Mimic 2",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
 					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -135,18 +61,25 @@
 						"map": "map_goa_karmine",
 						"x": 570,
 						"y": 480,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 850,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Mimic 3
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Mimic 3",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
 					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -160,13 +93,20 @@
 						"map": "map_goa_karmine",
 						"x": 570,
 						"y": 650,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 900,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Slimed Kensu
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Slimed Kensu",
 				"access_rules": [
 					"$negate|flag_wm, $maybeHasSlimeTrade, [$hasSlimeTrade], $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $maybeHasSlimeTrade, [$hasSlimeTrade], $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit]",
@@ -183,18 +123,25 @@
 					{
 						"map": "map_goa_karmine",
 						"x": 68,
-						"y": 145,
+						"y": 145
+					},
+					{
+						"map": "map_overworld",
+						"x": 800,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
-				],
+				]
 			},
 			//Warp Boots
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Warp Boots",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
 					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -208,18 +155,25 @@
 						"map": "map_goa_karmine",
 						"x": 440,
 						"y": 650,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 850,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [  "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Magic Ring
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Magic Ring",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall]",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canOpenChest",
 					"flag_wm, d_goakarmine3, [$canCrossSpikes], $canOpenChest",
-					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest",
+					"flag_wm, $canBreakKarmineWall, [$canCrossSpikes], $canOpenChest"
 				],
 				"sections": [
 					{
@@ -233,18 +187,25 @@
 						"map": "map_goa_karmine",
 						"x": 505,
 						"y": 650,
-						"force_invisibility_rules": ["flag_eu"]
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 900,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_eu" ]
 					}
-				],
+				]
 			},
 			//Karmine Reward 1
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Karmine Reward 1",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
 					"flag_wm, d_goakarmine4, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
-					"flag_wm, $canCrossSpikes, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
+					"flag_wm, $canCrossSpikes, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers"
 				],
 				"sections": [
 					{
@@ -258,17 +219,24 @@
 						"map": "map_goa_karmine",
 						"x": 425,
 						"y": 450
+					},
+					{
+						"map": "map_overworld",
+						"x": 950,
+						"y": 0,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
-				],
+				]
 			},
 			//Karmine Reward 2
 			{
-				"name": "Goa: Karmine's Floor",
+				"name": "Goa: Karmine's Floor: Karmine Reward 2",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorEntrance, [$canReachKarminesFloorEntrance], $canMaybeBreakKarmineWall, [$canBreakKarmineWall], $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
 					"$negate|flag_wm, $canCrossSpikes, $canMaybeReachKarminesFloorExit, [$canReachKarminesFloorExit], $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
 					"flag_wm, d_goakarmine4, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
-					"flag_wm, $canCrossSpikes, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers",
+					"flag_wm, $canCrossSpikes, $canMaybeKillKarmine, [$canKillKarmine], $canBypassBarriers"
 				],
 				"sections": [
 					{
@@ -281,8 +249,15 @@
 						"map": "map_goa_karmine",
 						"x": 455,
 						"y": 450
+					},
+					{
+						"map": "map_overworld",
+						"x": 950,
+						"y": 50,
+						"size": 45,
+						"force_invisibility_rules": [  ]
 					}
-				],
+				]
 			},
 			//Door Locations
 			{

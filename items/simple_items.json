@@ -182,7 +182,7 @@
 		"type": "toggle",
 		"img": "images/items/bowoftruth.png",
 		"loop": "true",
-		"codes": "bow, truth, bowoftruth, bluebow"
+		"codes": "bowoftruth, bow, truth, bluebow"
 	},
 	// Windmill Key
 	{
@@ -222,7 +222,7 @@
 		"type": "toggle",
 		"img": "images/items/fluteinsect.png",
 		"loop": "true",
-		"codes": "insect, flute, insectflute, blueflute"
+		"codes": "insect, flute, insectflute, greenflute"
 	},
 	// Flute of Lime
 	{
@@ -230,7 +230,7 @@
 		"type": "toggle",
 		"img": "images/items/flutelime.png",
 		"loop": "true",
-		"codes": "lime, flute, fluteoflime, limeflute, greenflute"
+		"codes": "lime, flute, fluteoflime, limeflute, blueflute"
 	},
 	// Shell Flute
 	{
@@ -246,7 +246,7 @@
 		"type": "toggle",
 		"img": "images/items/lampfog.png",
 		"loop": "true",
-		"codes": "fog, lamp, foglamp, bluelamp"
+		"codes": "fog, lamp, foglamp, bluelamp, tradefisherman"
 	},
 	// Glowing Lamp
 	{
@@ -278,7 +278,7 @@
 		"type": "toggle",
 		"img": "images/items/statuegold.png",
 		"loop": "true",
-		"codes": "gold, statue, goldstatue, statueofgold, bluestatue"
+		"codes": "gold, statue, goldstatue, statueofgold, bluestatue, whirlpool"
 	},
 	// Ivory Statue
 	{

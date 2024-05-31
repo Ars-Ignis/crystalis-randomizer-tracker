@@ -1,0 +1,64 @@
+[
+	{
+		//Pyramid Back
+		"name": "Pyramid Back",
+		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $maybeHasCryptAccess, [$hasCryptAccess], $canOpenChest"],
+		"children": [
+		
+			//Mimic
+			{
+				"name": "Pyramid Back: Mimic",
+				"access_rules": [ "" ],
+				"sections": [
+					{
+						"name": "Mimic",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_pyramid_back",
+						"x": 81,
+						"y": 50,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 700,
+						"y": 290,
+						"size": 45,
+						"force_invisibility_rules": [ "flag_et", "flag_eu" ]
+					}
+				]
+			},
+			//Opel Statue
+			{
+				"name": "Pyramid Back: Opel Statue",
+				"access_rules": [ "" ],
+				"sections": [
+					{
+						"name": "Opel Statue",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_pyramid_back",
+						"x": 450,
+						"y": 590,
+						"force_invisibility_rules": [ "flag_eu" ]
+					},
+					{
+						"map": "map_overworld",
+						"x": 650,
+						"y": 290,
+						"size": 45,
+						"force_invisibility_rules": [  "flag_eu" ]
+					}
+				]
+			},
+		]
+	}
+]
