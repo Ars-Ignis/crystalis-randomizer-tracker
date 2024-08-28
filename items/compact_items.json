@@ -91,6 +91,22 @@
 			},
 		]
 	},
+	// Kirisa Plant
+	{
+		"name": "Kirisa Plant",
+		"type": "toggle",
+		"img": "images/items/kirisaplant.png",
+		"loop": "true",
+		"codes": "kirisa, trade, kirisaplant"
+	},
+	// Love Pendant
+	{
+		"name": "Love Pendant",
+		"type": "toggle",
+		"img": "images/items/lovependant.png",
+		"loop": "true",
+		"codes": "love, pendant, lovependant, trade"
+	},
 	// Bow of Moon
 	{
 		"name": "Bow of Moon",
