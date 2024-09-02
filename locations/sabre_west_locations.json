@@ -4,66 +4,16 @@
 		"name": "Mt. Sabre West",
 		"access_rules": ["$canMaybeReach|brynmaer, [$canReach|brynmaer]"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Mt. Sabre West",
-				"access_rules": [
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet], [$canOpenChest]",
-					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], [$hasTornelBracelet], [$canOpenChest]"
-				],
-				"sections": [
-					{
-						"name": "Mt. Sabre West Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 400,
-						"y": 1350,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Mt. Sabre West",
-				"access_rules": [
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet], [$canOpenChest]",
-					"$canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet], [$canOpenChest]",
-					"flag_wm, [$canBreakSabreWestWalls], [$canClimbSlope], $maybeHasTornelBracelet, [$hasTornelBracelet], [$canOpenChest]",
-					"flag_wm, [$canBreakSabreWestWalls], $canClimbSlope, [$hasTornelBracelet], [$canOpenChest]",
-				],
-				"sections": [
-					{
-						"name": "Mt. Sabre West Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 400,
-						"y": 1350,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Tornado Bracelet
 			{
-				"name": "Mt. Sabre West",
+				"name": "Mt Sabre West Tornado Bracelet Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $canClimbSlope",
 					"flag_wm, $canClimbSlope, [$canBreakSabreWestWalls], $canOpenChest"
 				],
 				"sections": [
 					{
-						"name": "Tornado Bracelet",
+						"name": "Mt Sabre West Tornado Bracelet Chest",
 						"item_count": 1
 					}
 				],
@@ -77,7 +27,7 @@
 			},
 			//Warp Boots
 			{
-				"name": "Mt. Sabre West",
+				"name": "Mt Sabre West Left Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
 					"flag_wm, d_sabrewest1, $canOpenChest",
@@ -85,7 +35,7 @@
 				],
 				"sections": [
 					{
-						"name": "Warp Boots",
+						"name": "Mt Sabre West Left Chest",
 						"item_count": 1
 					}
 				],
@@ -100,7 +50,7 @@
 			},
 			//Medical Herb
 			{
-				"name": "Mt. Sabre West",
+				"name": "Mt Sabre West Right Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
 					"flag_wm, d_sabrewest2, [$canBreakSabreWestWalls], $canOpenChest",
@@ -110,7 +60,7 @@
 				],
 				"sections": [
 					{
-						"name": "Medical Herb",
+						"name": "Mt Sabre West Right Chest",
 						"item_count": 1
 					}
 				],
@@ -125,7 +75,7 @@
 			},
 			//Magic Ring
 			{
-				"name": "Mt. Sabre West",
+				"name": "Mt Sabre West Near Tornel Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls]",
 					"flag_wm, d_sabrewest6, $canOpenChest",
@@ -133,7 +83,7 @@
 				],
 				"sections": [
 					{
-						"name": "Magic Ring",
+						"name": "Mt Sabre West Near Tornel Chest",
 						"item_count": 1
 					}
 				],
@@ -148,7 +98,7 @@
 			},
 			//Tornel
 			{
-				"name": "Mt. Sabre West",
+				"name": "Mt Sabre West Tornel",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakSabreWestWalls, [$canBreakSabreWestWalls], $maybeHasTornelBracelet, [$hasTornelBracelet]",
 					"flag_wm, d_sabrewest6, $maybeHasTornelBracelet, [$hasTornelBracelet]",
@@ -156,7 +106,7 @@
 				],
 				"sections": [
 					{
-						"name": "Tornel - Show him Tornado Bracelet",
+						"name": "Mt Sabre West Tornel",
 						"item_count": 1
 					}
 				],

@@ -1,65 +1,15 @@
 [
 	{
-		//Goa: Mado's Floor
-		"name": "Goa: Mado's Floor",
+		//Mado's Floor
+		"name": "Mado's Floor",
 		"access_rules": [
 			"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canOpenChest",
 			"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canOpenChest"
 		],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Goa: Mado's Floor",
-				"access_rules": [
-					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2], [$canCrossSpikes], [$canBreakMadoWall]",
-					"$negate|flag_wm, $canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes, [$canKillMado2], [$canBreakMadoWall]",
-					"flag_wm, $canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], [$canCrossSpikes], [$canKillMado2], [$canBreakMadoWall]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Mado's Floor Items",
-						"item_count": 6,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 719,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Goa: Mado's Floor",
-				"access_rules": [
-					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2]",
-					"$negate|flag_wm, $canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes, $canMaybeKillMado2, [$canKillMado2]",
-					"flag_wm, $canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], [$canCrossSpikes], $canMaybeKillMado2, [$canKillMado2]"
-				],
-				"sections": [
-					{
-						"name": "Goa: Mado's Floor Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 719,
-						"y": 20,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Magic Ring 1
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Fortress Mado Lower Southeast Chest",
 				"access_rules": [
 					"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes",
 					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2], $canCrossSpikes",
@@ -68,7 +18,7 @@
 				],
 				"sections": [
 					{
-						"name": "Magic Ring 1",
+						"name": "Fortress Mado Lower Southeast Chest",
 						"item_count": 1
 					}
 				],
@@ -83,7 +33,7 @@
 			},
 			//Magic Ring 2
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Fortress Mado Upper Behind Wall Chest",
 				"access_rules": [
 					"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes, $canMaybeBreakMadoWall, [$canBreakMadoWall]",
 					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2], $canCrossSpikes, $canMaybeBreakMadoWall, [$canBreakMadoWall]",
@@ -94,7 +44,7 @@
 				],
 				"sections": [
 					{
-						"name": "Magic Ring 2",
+						"name": "Fortress Mado Upper Behind Wall Chest",
 						"item_count": 1
 					}
 				],
@@ -109,7 +59,7 @@
 			},
 			//Magic Ring 3
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Fortress Mado Hellway Chest",
 				"access_rules": [
 					"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes",
 					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2]",
@@ -117,7 +67,7 @@
 				],
 				"sections": [
 					{
-						"name": "Magic Ring 3",
+						"name": "Fortress Mado Hellway Chest",
 						"item_count": 1
 					}
 				],
@@ -132,7 +82,7 @@
 			},
 			//Antidote
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Fortress Mado Upper North Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes",
 					"$negate|flag_wm, $canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2], $canCrossSpikes",
@@ -143,7 +93,7 @@
 				],
 				"sections": [
 					{
-						"name": "Antidote",
+						"name": "Fortress Mado Upper North Chest",
 						"item_count": 1
 					}
 				],
@@ -158,7 +108,7 @@
 			},
 			//Opel Statue
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Fortress Mado Lower Center North Chest",
 				"access_rules": [
 					"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes",
 					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2], $canCrossSpikes",
@@ -167,7 +117,7 @@
 				],
 				"sections": [
 					{
-						"name": "Opel Statue",
+						"name": "Fortress Mado Lower Center North Chest",
 						"item_count": 1
 					}
 				],
@@ -182,7 +132,7 @@
 			},
 			//Mado 2 Reward
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Mado 2",
 				"access_rules": [
 					"$canMaybeReachMadosFloorEntrance, [$canReachMadosFloorEntrance], $canCrossSpikes, $canMaybeKillMado2, [$canKillMado2]",
 					"$canMaybeReachMadosFloorExit, [$canReachMadosFloorExit], $canMaybeKillMado2, [$canKillMado2]",
@@ -190,7 +140,7 @@
 				],
 				"sections": [
 					{
-						"name": "Mado 2 Reward",
+						"name": "Mado 2",
 						"item_count": 1,
 						"hosted_item": "mado2_cleared"
 					}
@@ -205,7 +155,7 @@
 			},
 			//Door Locations
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Mado's Floor",
 				"access_rules": ["$negate|d_goamado1_blocked"],
 				"sections": [
 					{
@@ -227,7 +177,7 @@
 				]
 			},
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Mado's Floor",
 				"access_rules": ["$negate|d_goamado2_blocked"],
 				"sections": [
 					{
@@ -249,7 +199,7 @@
 				]
 			},
 			{
-				"name": "Goa: Mado's Floor",
+				"name": "Mado's Floor",
 				"access_rules": ["$negate|d_goamado3_blocked"],
 				"sections": [
 					{

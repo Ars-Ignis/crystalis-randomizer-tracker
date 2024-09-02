@@ -1,0 +1,169 @@
+[
+	{
+		//Stxy
+		"name": "Stxy",
+		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canCrossRivers, $maybeHasKeyToStxy, [$hasKeyToStxy], $canBypassBarriers, $canOpenChest"],
+		"children": [
+			//Mimic 1
+			{
+				"name": "Stxy Left North Mimic",
+				"access_rules": [
+					"$negate|flag_wm",
+					"flag_wm, [flight]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Left North Mimic",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 95,
+						"y": 20,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Mimic 2
+			{
+				"name": "Stxy Right North Mimic",
+				"access_rules": [
+					"$negate|flag_wm, flight",
+					"flag_wm, [flight]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Right North Mimic",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 275,
+						"y": 150,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Mimic 3
+			{
+				"name": "Stxy Right South Mimic",
+				"access_rules": [
+					"$negate|flag_wm, flight",
+					"flag_wm, [flight]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Right South Mimic",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 200,
+						"y": 230,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Medical Herb
+			{
+				"name": "Stxy Left Lower Chest",
+				"access_rules": [
+					"$negate|flag_wm, $canCrossRivers",
+					"flag_wm, [flight]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Left Lower Chest",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 120,
+						"y": 230,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Sword of Thunder
+			{
+				"name": "Stxy Left Upper Sword of Thunder Chest",
+				"access_rules": [
+					"$negate|flag_wm, $canCrossRivers, $canCrossSpikes",
+					"flag_wm, flight",
+					"flag_wm, d_Stxy, [$canCrossSpikes]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Left Upper Sword of Thunder Chest",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 500,
+						"y": 100
+					}
+				],
+			},
+			//Psycho Shield
+			{
+				"name": "Stxy Right Middle Chest",
+				"access_rules": [
+					"$negate|flag_wm, flight",
+					"flag_wm, [flight]"
+				],
+				"sections": [
+					{
+						"name": "Stxy Right Middle Chest",
+						"item_count": 1,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 250,
+						"y": 175
+					}
+				],
+			},
+			//Door Location
+			{
+				"name": "Stxy",
+				"access_rules": ["$negate|d_Stxy_blocked"],
+				"sections": [
+					{
+						"name": "Stairs Up",
+						"item_count": 0,
+						"hosted_item": "d_Stxy",
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_stxy",
+						"x": 140,
+						"y": 150,
+						"force_invisibility_rules": [
+							"$negate|flag_wm",
+							"flight"
+						]
+					}
+				]
+			},
+		]
+	}
+]

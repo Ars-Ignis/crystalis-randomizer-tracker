@@ -4,58 +4,13 @@
 		"name": "Sabera's Fortress",
 		"access_rules": ["$canMaybeReach|zombie, [$canReach|zombie], $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Sabera's Fortress",
-				"access_rules": ["[$canKillVampire2], [$canKillSabera1]"],
-				"sections": [
-					{
-						"name": "Sabera's Fortress Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 910,
-						"y": 440,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Sabera's Fortress",
-				"access_rules": [
-					"$canMaybeKillVampire2, [$canKillVampire2], [$canKillSabera1]",
-					"flag_wm, $canMaybeKillSabera1, [$canKillVampire2], [$canKillSabera1]"
-				],
-				"sections": [
-					{
-						"name": "Sabera's Fortress Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 910,
-						"y": 440,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Vampire Reward
 			{
-				"name": "Sabera's Fortress",
+				"name": "Vampire 2",
 				"access_rules": ["$canMaybeKillVampire2, [$canKillVampire2]"],
 				"sections": [
 					{
-						"name": "Vampire Reward",
+						"name": "Vampire 2",
 						"item_count": 1,
 						"hosted_item": "vampire_cleared"
 					}
@@ -70,7 +25,7 @@
 			},
 			//Sabera Reward
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera 1",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeKillVampire2, [$canKillVampire2], $canMaybeKillSabera1, [$canKillSabera1]",
 					"flag_wm, d_sabera2, $canMaybeKillSabera1, [$canKillSabera1]",
@@ -79,7 +34,7 @@
 				],
 				"sections": [
 					{
-						"name": "Sabera Reward",
+						"name": "Sabera 1",
 						"item_count": 1,
 						"hosted_item": "sabera1_cleared"
 					}
@@ -94,7 +49,7 @@
 			},
 			//Fruit of Power
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera Upstairs Left Chest",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_sabera1",
@@ -102,7 +57,7 @@
 				],
 				"sections": [
 					{
-						"name": "Fruit of Power",
+						"name": "Sabera Upstairs Left Chest",
 						"item_count": 1
 					}
 				],
@@ -117,7 +72,7 @@
 			},
 			//Medical Herb
 			{
-				"name": "Sabera's Fortress",
+				"name": "Sabera Upstairs Right Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeKillVampire2, [$canKillVampire2]",
 					"flag_wm, d_sabera2",
@@ -125,7 +80,7 @@
 				],
 				"sections": [
 					{
-						"name": "Medical Herb",
+						"name": "Sabera Upstairs Right Chest",
 						"item_count": 1
 					}
 				],

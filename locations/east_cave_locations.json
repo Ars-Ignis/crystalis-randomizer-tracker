@@ -1,58 +1,14 @@
 [
 	{
-		//East Cave
-		"name": "East Cave",
+		"name": "GBC Cave",
 		"access_rules": ["$canMaybeReach|leaf, [$canReach|leaf], $canOpenChest"],
-		"force_invisibility_rules": ["flag_vm", "flag_vbangm"],
 		"children": [
-			//Overview with consumables
 			{
-				"name": "East Cave",
-				"access_rules": [""],
-				"sections": [
-					{
-						"name": "East Cave Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 275,
-						"y": 1400,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu", "flag_vm", "flag_vbangm"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "East Cave",
-				"access_rules": [""],
-				"sections": [
-					{
-						"name": "East Cave Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 275,
-						"y": 1400,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu", "flag_vm", "flag_vbangm"]
-					}
-				],
-			},
-			{
-				"name": "East Cave",
+				"name": "East Cave Northeast Chest",
 				"access_rules": [ "" ],
 				"sections": [
 					{
-						"name": "Key Item",
+						"name": "East Cave Northeast Chest",
 						"item_count": 1
 					}
 				],
@@ -66,11 +22,11 @@
 				]
 			},
 			{
-				"name": "East Cave",
+				"name": "East Cave Northwest Mimic",
 				"access_rules": [ "" ],
 				"sections": [
 					{
-						"name": "Consumable Item",
+						"name": "East Cave Northwest Mimic",
 						"item_count": 1
 					}
 				],
@@ -79,10 +35,10 @@
 						"map": "map_east_cave",
 						"x": 335,
 						"y": 25,
-						"force_invisibility_rules": ["flag_eu", "flag_vm", "flag_vbangm"]
+						"force_invisibility_rules": ["flag_eu", "flag_et", "flag_vm", "flag_vbangm"]
 					}
 				]
-			},
+			}
 		]
 	}
 ]

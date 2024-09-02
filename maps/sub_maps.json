@@ -75,8 +75,8 @@
 	},
 
 	{
-		"name": "map_styx",
-		"img": "maps/styx.png",
+		"name": "map_stxy",
+		"img": "maps/stxy.png",
 		"location_size": 32,
 		"location_border_thickness": 4
 	},

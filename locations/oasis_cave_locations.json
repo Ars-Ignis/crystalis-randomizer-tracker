@@ -4,52 +4,9 @@
 		"name": "Oasis Cave",
 		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Oasis Cave",
-				"access_rules": ["[flight], [$canBreakPowerRingWall]"],
-				"sections": [
-					{
-						"name": "Oasis Cave Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 230,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Oasis Cave",
-				"access_rules": ["[flight], [$canBreakPowerRingWall]"],
-				"sections": [
-					{
-						"name": "Oasis Cave Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 230,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Fruit of Power 1
 			{
-				"name": "Oasis Cave",
-				//TODO: Technically this item can be reached by full clearing Goa.
+				"name": "Oasis Cave Entrance Across River Chest",
 				"access_rules": [
 					"flight",
 					"flag_wm, [flight]",
@@ -57,7 +14,7 @@
 				],
 				"sections": [
 					{
-						"name": "Fruit of Power 1",
+						"name": "Oasis Cave Entrance Across River Chest",
 						"item_count": 1
 					}
 				],
@@ -72,7 +29,7 @@
 			},
 			//Fruit of Power 2
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave Near Entrance Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers",
 					"flag_wm, d_oasis2, [flight]",
@@ -80,7 +37,7 @@
 				],
 				"sections": [
 					{
-						"name": "Fruit of Power 2",
+						"name": "Oasis Cave Near Entrance Chest",
 						"item_count": 1
 					}
 				],
@@ -95,7 +52,7 @@
 			},
 			//Leather Boots
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave Northwest Chest",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, d_oasis2, [flight]",
@@ -103,7 +60,7 @@
 				],
 				"sections": [
 					{
-						"name": "Leather Boots",
+						"name": "Oasis Cave Northwest Chest",
 						"item_count": 1
 					}
 				],
@@ -117,7 +74,7 @@
 			},
 			//Power Ring
 			{
-				"name": "Oasis Cave",
+				"name": "Oasis Cave Fortress Basement Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canCrossRivers, $canMaybeBreakPowerRingWall, [$canBreakPowerRingWall]",
 					"flag_wm, d_oasis2, $canCrossRivers, $canMaybeBreakPowerRingWall, [$canBreakPowerRingWall], [flight]",
@@ -125,7 +82,7 @@
 				],
 				"sections": [
 					{
-						"name": "Power Ring",
+						"name": "Oasis Cave Fortress Basement Chest",
 						"item_count": 1
 					}
 				],
@@ -139,14 +96,14 @@
 			},
 			//Battle Armor
 			{
-				"name": "Oasis Cave",
+				"name": "Battle Armor Chest",
 				"access_rules": [
 					"flight",
 					"flag_wm, d_oasis2, [flight]"
 				],
 				"sections": [
 					{
-						"name": "Battle Armor",
+						"name": "Battle Armor Chest",
 						"item_count": 1
 					}
 				],

@@ -1,591 +1,1590 @@
 ﻿[
-	// Leaf Village
 	{
-		"name": "Leaf Village",
-		"access_rules": [
-			"$canMaybeReach|leaf, [$canReach|leaf]"
-		],
-		"sections": [
+		"name": "Overworld",
+		"children": [
+			// Leaf Village
 			{
-				"name": "Leaf Elder",
-				"visibility_rules": [ "" ],
-				"item_count": 1
+				"name": "Leaf Village",
+				"access_rules": [
+					"$canMaybeReach|leaf, [$canReach|leaf]"
+				],
+				"sections": [
+					{
+						"name": "Leaf Elder",
+						"visibility_rules": [ "" ],
+						"item_count": 1
+					},
+					{
+						"name": "Zebu Student",
+						"visibility_rules": [ "" ],
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 275,
+						"y": 1564
+					}
+				]
+			},
+			
+			// Sleeping Guy
+			{
+				"name": "Windmill Cave",
+				"access_rules": [
+					"$negate|flag_wm, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|leaf, [$canReach|leaf]",
+					"flag_wm, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|leaf, [$canReach|leaf], [$canBreakZebusCaveWall]"
+				],
+				"sections": [
+					{
+						"name": "Windmill Guard Alarm Flute Tradein",
+						"visibility_rules": [ "" ],
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 210,
+						"y": 1206
+					}
+				]
+			},
+			
+			// Windmill
+			{
+				"name": "Wind Valley",
+				"access_rules": [
+					"$maybeHasWindmillKey, [$hasWindmillKey], $canMaybeReach|leaf, [$canReach|leaf]"
+				],
+				"sections": [
+					{
+						"name": "Zebu At Windmill",
+						"visibility_rules": [ "" ],
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 140,
+						"y": 1256
+					}
+				]
+			},
+
+			// Tall Grass
+			{
+				"name": "Cordel Plains",
+				"access_rules": [
+					"$canMaybeReach|brynmaer, [$canReach|brynmaer]"
+				],
+				"sections": [
+					{
+						"name": "Cordel Grass",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [""],
+						"x": 550,
+						"y": 1038
+					}
+				]
+			},
+			
+			// Akahana
+			{
+				"name": "Brynmaer",
+				"access_rules": [
+					"$maybeHasAkahanaTrade, [$hasAkahanaTrade], $canMaybeReach|brynmaer, [$canReach|brynmaer]"
+				],
+				"sections": [
+					{
+						"name": "Akahana Statue of Onyx Tradein",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 400,
+						"y": 1150
+					}
+				]
+			},
+			
+			// Stom Fight
+			{
+				"name": "Tornel's House",
+				"access_rules": [
+					"$canMaybeReach|oak, $canMaybeReach|brynmaer, [$canReach|oak], [$canReach|brynmaer]"
+				],
+				"sections": [
+					{
+						"name": "Stom Fight Reward",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 605,
+						"y": 900
+					}
+				]
+			},
+
+			// Amazones Items
+			{
+				"name": "Aryllis's House",
+				"sections": [
+					{
+						"name": "Aryllis Basement Chest",
+						"item_count": 1,
+						"access_rules": [
+							"change, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+							"paralysis, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+							"flag_gs, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
+							"$canTriggerSkip, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest"
+						]
+					},
+					{
+						"name": "Aryllis",
+						"item_count": 1, 
+						"access_rules": [
+							"change, $maybeHasAryllisTrade, [$hasAryllisTrade], $canMaybeReach|amazones, [$canReach|amazones]"
+						]
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 615,
+						"y": 1350
+					}
+				]
+			},
+
+			// Oak Items
+			{
+				"name": "Oak",
+				"access_rules": [
+					"telepathy, gas, $canMaybeReach|oak, [$canReach|oak]",
+					"telepathy, flag_ng, $canMaybeReach|oak, [$canReach|oak]"
+				],
+				"sections": [
+					{
+						"name": "Oak Mother",
+						"item_count": 1
+					},
+					{
+						"name": "Oak Elder",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 900,
+						"y": 1042
+					}
+				]
+			},
+
+			// Insect Fight
+			{
+				"name": "Swamp",
+				"access_rules": [
+					"$maybeHasInsectFlute, [$hasInsectFlute], gas, $canMaybeKillInsect, [$canKillInsect], $canMaybeReach|oak, [$canReach|oak]"
+				],
+				"sections": [
+					{
+						"name": "Giant Insect",
+						"item_count": 1,
+						"hosted_item": "giantinsect_cleared"
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 900,
+						"y": 1102
+					}
+				]
+			},
+
+			// Portoa Items
+			{
+				"name": "Portoa Palace",
+				"access_rules": [
+					"paralysis, $canMaybeReach|portoa, [$canReach|portoa]",
+					"flag_gs, $canMaybeReach|portoa, [$canReach|portoa]",
+					"$canTriggerSkip, $canMaybeReach|portoa, [$canReach|portoa]",
+					"$maybeHasRageSword, [$hasRageSword], $canMaybeReach|portoa, [$canReach|portoa]",
+					"$canMaybeTriggerMesia, [$canTriggerMesia], $canMaybeReach|portoa, [$canReach|portoa]",
+					"flight, $canMaybeReach|joel, [$canReach|joel]",
+					"$canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]"
+				],
+				"sections": [
+					{
+						"name": "Portoa Queen",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 980,
+						"y": 1002
+					}
+				]
 			},
 			{
-				"name": "Zebu's Student",
-				"visibility_rules": [ "" ],
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"x": 275,
-				"y": 1564
-			}
-		]
-	},
-	
-	// Sleeping Guy
-	{
-		"name": "Windmill Guard",
-		"access_rules": [
-			"$negate|flag_wm, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|leaf, [$canReach|leaf]",
-			"flag_wm, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|leaf, [$canReach|leaf], [$canBreakZebusCaveWall]"
-		],
-		"sections": [
-			{
-				"name": "Wake him up",
-				"visibility_rules": [ "" ],
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"x": 210,
-				"y": 1206
-			}
-		]
-	},
-	
-	// Windmill
-	{
-		"name": "Windmill Reward",
-		"access_rules": [
-			"$maybeHasWindmillKey, [$hasWindmillKey], $canMaybeReach|leaf, [$canReach|leaf]"
-		],
-		"sections": [
-			{
-				"name": "Activate Windmill",
-				"visibility_rules": [ "" ],
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"x": 140,
-				"y": 1256
-			}
-		]
-	},
-
-	// Tall Grass
-	{
-		"name": "Item in grass",
-		"access_rules": [
-			"$canMaybeReach|brynmaer, [$canReach|brynmaer]"
-		],
-		"sections": [
-			{
-				"name": "Walk on bridge first",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"visibility_rules": [""],
-				"x": 550,
-				"y": 1038
-			}
-		]
-	},
-	
-	// Akahana
-	{
-		"name": "Akahana Trade-In",
-		"access_rules": [
-			"$maybeHasAkahanaTrade, [$hasAkahanaTrade], $canMaybeReach|brynmaer, [$canReach|brynmaer]"
-		],
-		"sections": [
-			{
-				"name": "Give him item",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 400,
-				"y": 1150
-			}
-		]
-	},
-	
-	// Stom Fight
-	{
-		"name": "Stom Fight",
-		"access_rules": [
-			"$canMaybeReach|oak, $canMaybeReach|brynmaer, [$canReach|oak], [$canReach|brynmaer]"
-		],
-		"sections": [
-			{
-				"name": "Visit Oak first",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 605,
-				"y": 900
-			}
-		]
-	},
-
-	// Amazones Items
-	{
-		"name": "Amazones",
-		"access_rules": [
-			"change, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
-			"paralysis, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
-			"flag_gs, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest",
-			"$canTriggerSkip, $canMaybeReach|amazones, [$canReach|amazones], $canOpenChest"
-		],
-		"sections": [
-			{
-				"name": "Storage Room",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 580,
-				"y": 1350
-			}
-		]
-	},
-	{
-		"name": "Amazones",
-		"access_rules": [
-			"change, $maybeHasAryllisTrade, [$hasAryllisTrade], $canMaybeReach|amazones, [$canReach|amazones]"
-		],
-		"sections": [
-			{
-				"name": "Trade In Kirisa Plant",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 650,
-				"y": 1350
-			}
-		]
-	},
-
-	// Oak Items
-	{
-		"name": "Save the child or kill the boss",
-		"access_rules": [
-			"telepathy, gas, $canMaybeReach|oak, [$canReach|oak]",
-			"telepathy, flag_ng, $canMaybeReach|oak, [$canReach|oak]"
-		],
-		"sections": [
-			{
-				"name": "Mom",
-				"item_count": 1
+				"name": "Asina's Chambers",
+				"access_rules": [
+					"$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]"
+				],
+				"sections": [
+					{
+						"name": "Asina In Back Room",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 980,
+						"y": 942
+					}
+				]
 			},
 			{
-				"name": "Oak Elder",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Portoa Waterway",
+				"sections": [
+					{
+						"name": "Injured Dolphin",
+						"access_rules": [
+							"$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]"
+						],
+						"item_count": 1
+					},
+					{
+						"name": "Underground Channel Underwater Chest",
+						"access_rules": [
+							"$canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]"
+						],
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 980,
+						"y": 882
+					}
+				]
+			},
+			
+			// Kensu's Beach House
 			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 900,
-				"y": 1042
-			}
-		]
-	},
+				"name": "Beach House",
+				"access_rules": [
+					"$maybeHasFishermanTrade, [$hasFishermanTrade], $canMaybeReach|portoa, [$canReach|portoa], $canOpenChest"
+				],
+				"sections": [
+					{
+						"name": "Kensu In Cabin",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "$negate|flag_rd" ],
+						"x": 1190,
+						"y": 720
+					}
+				]
+			},
 
-	// Insect Fight
-	{
-		"name": "Insect Boss",
-		"access_rules": [
-			"$maybeHasInsectFlute, [$hasInsectFlute], gas, $canMaybeKillInsect, [$canKillInsect], $canMaybeReach|oak, [$canReach|oak]"
-		],
-		"sections": [
-			{
-				"name": "Use Insect Flute",
-				"item_count": 1,
-				"hosted_item": "giantinsect_cleared"
-			}
-		],
-		"map_locations": [
-			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 900,
-				"y": 1102
-			}
-		]
-	},
-
-	// Portoa Items
-	{
-		"name": "Queen 1",
-		"access_rules": [
-			"paralysis, $canMaybeReach|portoa, [$canReach|portoa]",
-			"flag_gs, $canMaybeReach|portoa, [$canReach|portoa]",
-			"$canTriggerSkip, $canMaybeReach|portoa, [$canReach|portoa]",
-			"$maybeHasRageSword, [$hasRageSword], $canMaybeReach|portoa, [$canReach|portoa]",
-			"$canMaybeTriggerMesia, [$canTriggerMesia], $canMaybeReach|portoa, [$canReach|portoa]",
-			"flight, $canMaybeReach|joel, [$canReach|joel]",
-			"$canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]"
-		],
-		"sections": [
-			{
-				"name": "Queen 1",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 980,
-				"y": 1002
-			}
-		]
-	},
-	{
-		"name": "Queen 2",
-		"access_rules": [
-			"$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]"
-		],
-		"sections": [
-			{
-				"name": "Queen 2 (Talk to Mesia first)",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 980,
-				"y": 942
-			}
-		]
-	},
-	{
-		"name": "Dolphin",
-		"access_rules": [
-			"$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]"
-		],
-		"sections": [
-			{
-				"name": "Heal them",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 980,
-				"y": 882
-			}
-		]
-	},
-	{
-		"name": "Portoa Waterway",
-		"access_rules": [
-			"$canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]"
-		],
-		"sections": [
-			{
-				"name": "Underwater Item",
-				"visibility_rules": [ "" ],
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"x": 980,
-				"y": 822
-			}
-		]
-	},
-	// Kensu's Beach House
-	{
-		"name": "Kensu's Beach House",
-		"access_rules": [
-			"$maybeHasFishermanTrade, [$hasFishermanTrade], $canMaybeReach|portoa, [$canReach|portoa], $canOpenChest"
-		],
-		"sections": [
-			{
-				"name": "Take the boat",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
-			{
-				"map": "map_overworld",
-				"visibility_rules": [ "$negate|flag_rd" ],
-				"x": 1190,
-				"y": 720
-			}
-		]
-	},
-
-	// Rage
-	{
-		"name": "Lime Tree",
-		"access_rules": [
-			"$maybeHasRageSword, [$hasRageSword], $canMaybeReach|portoa, [$canReach|portoa]"
-		],
-		"sections": [
+			// Rage
 			{
 				"name": "Rage",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"access_rules": [
+					"$maybeHasRageSword, [$hasRageSword], $canMaybeReach|portoa, [$canReach|portoa]"
+				],
+				"sections": [
+					{
+						"name": "Rage",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 910,
+						"y": 1300
+					}
+				]
+			},
+			
+			// Sleeping Kensu
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 910,
-				"y": 1300
-			}
-		]
-	},
-	
-	// Sleeping Kensu
-	{
-		"name": "Lighthouse",
-		"access_rules": [
-			"glasses, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|joel, [$canReach|joel], $canOpenChest"
-		],
-		"sections": [
+				"name": "Lighthouse",
+				"access_rules": [
+					"glasses, $maybeHasAlarmFlute, [$hasAlarmFlute], $canMaybeReach|joel, [$canReach|joel], $canOpenChest"
+				],
+				"sections": [
+					{
+						"name": "Kensu In Lighthouse",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 1050,
+						"y": 600
+					}
+				]
+			},
+			
+			// Post-Sabera Clean-up
 			{
-				"name": "Wake Up Kensu",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Clark's Hideout",
+				"access_rules": [
+					"$canMaybeKillSabera1, [$canKillSabera1], $canMaybeReach|zombie, [$canReach|zombie]"
+				],
+				"sections": [
+					{
+						"name": "Clark",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 920,
+						"y": 510
+					}
+				]
+			},
+			
+			// Altar
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 1050,
-				"y": 600
-			}
-		]
-	},
-	
-	// Post-Sabera Clean-up
-	{
-		"name": "Clark",
-		"access_rules": [
-			"$canMaybeKillSabera1, [$canKillSabera1], $canMaybeReach|zombie, [$canReach|zombie]"
-		],
-		"sections": [
+				"name": "Angry Sea",
+				"access_rules": [
+					"$maybeHasWhirlpoolStatue, [$hasWhirlpoolStatue], flight, $canMaybeReach|joel, [$canReach|joel]",
+					"$maybeHasWhirlpoolStatue, [$hasWhirlpoolStatue], $canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]",
+					"{$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]}"
+				],
+				"sections": [
+					{
+						"name": "Behind Whirlpool",
+						"item_count": 1,
+						"capture_item": true,
+						"capture_item_layout": "tracker_items"
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 870,
+						"y": 360
+					}
+				]
+			},
+			
+			// Combine the Items
 			{
-				"name": "Kill Sabera first",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Repaired Statue",
+				"access_rules": [
+					"$maybeHasBrokenStatue, [$hasBrokenStatue], $maybeHasRepairLamp, [$hasRepairLamp]"
+				],
+				"sections": [
+					{
+						"name": "Repaired Statue",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 700,
+						"y": 735
+					}
+				]
+			},
+			
+			// Kensu Tag
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 920,
-				"y": 510
-			}
-		]
-	},
-	
-	// Altar
-	{
-		"name": "Altar",
-		"access_rules": [
-			"$maybeHasWhirlpoolStatue, [$hasWhirlpoolStatue], flight, $canMaybeReach|joel, [$canReach|joel]",
-			"$maybeHasWhirlpoolStatue, [$hasWhirlpoolStatue], $canMaybeUseShellFlute, [$canUseShellFlute], $canMaybeReach|joel, [$canReach|joel]",
-			"{$canMaybeTriggerMesia, [$canTriggerMesia], $canCrossRivers, $canMaybeReach|portoa, [$canReach|portoa]}"
-		],
-		"sections": [
+				"name": "Swan Dance Hall",
+				"access_rules": [
+					"paralysis, $maybeHasKensuTrade, [$hasKensuTrade], $canMaybeReach|swan, [$canReach|swan]"
+				],
+				"sections": [
+					{
+						"name": "Kensu In Swan",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"visibility_rules": [ "" ],
+						"map": "map_overworld",
+						"x": 1000,
+						"y": 200
+					}
+				]
+			},
+			
+			// Shyron Temple
 			{
-				"name": "Calm the Sea",
-				"item_count": 1,
-				"capture_item": true,
-				"capture_item_layout": "tracker_items"
-			}
-		],
-		"map_locations": [
+				"name": "Shyron Temple",
+				"access_rules": [
+					"$canMaybeReach|shyron, [$canReach|shyron]"
+				],
+				"sections": [
+					{
+						"name": "Zebu In Shyron",
+						"visibility_rules": [ "" ],
+						"item_count": 1
+					},
+					{
+						"name": "Mado 1",
+						"item_count": 1,
+						"access_rules": [
+							"thunder, $canMaybeKillMado1, [$canKillMado1], $canMaybeReach|goa, [$canReach|goa], $canMaybeReach|shyron, [$canReach|shyron]"
+						],
+						"hosted_item": "mado1_cleared"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 90,
+						"y": 230
+					}
+				]
+			},
+			
+			// Brokahana
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 870,
-				"y": 360
-			}
-		]
-	},
-	
-	// Combine the Items
-	{
-		"name": "Combine the Items",
-		"access_rules": [
-			"$maybeHasBrokenStatue, [$hasBrokenStatue], $maybeHasRepairLamp, [$hasRepairLamp]"
-		],
-		"sections": [
+				"name": "Brokahana's House",
+				"access_rules": [
+					"thunder, $canMaybeKillMado1, [$canKillMado1], change, $canMaybeReach|goa, [$canReach|goa], $canMaybeReach|shyron, [$canReach|shyron]"
+				],
+				"sections": [
+					{
+						"name": "Brokahana",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 360,
+						"y": 50
+					}
+				]
+			},
+			
+			// Deo's Pendant
 			{
-				"name": "Combine them!",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Deo Valley",
+				"access_rules": [
+					"change, telepathy, $canMaybeReach|sahara, [$canReach|sahara]"
+				],
+				"sections": [
+					{
+						"name": "Deo",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "" ],
+						"x": 550,
+						"y": 500
+					}
+				]
+			},
+			
+			//Zebu's Door
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 700,
-				"y": 735
-			}
-		]
-	},
-	
-	// Kensu Tag
-	{
-		"name": "Kensu Tag",
-		"access_rules": [
-			"paralysis, $maybeHasKensuTrade, [$hasKensuTrade], $canMaybeReach|swan, [$canReach|swan]"
-		],
-		"sections": [
+				"name": "Zebu's Cave",
+				"access_rules": ["$negate|d_zebu_blocked"],
+				"sections": [
+					{
+						"name": "Passage to Mt. Sabre West",
+						"item_count": 1,
+						"hosted_item": "d_zebu",
+						"chest_opened_img": "images/blank.png",
+						"chest_unopened_img": "images/blank.png",
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"visibility_rules": [ "flag_wm" ],
+						"x": 60,
+						"y": 1400,
+						"force_invisibility_rules": ["$canBreakZebusCaveWall"]
+					}
+				]
+			},
+			//GBC Cave Overview with consumables
 			{
-				"name": "Turn-in Love Pendant",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "GBC Cave",
+				"sections": [
+					{
+						"name": "East Cave Northwest Mimic",
+						"ref": "GBC Cave/East Cave Northwest Mimic/East Cave Northwest Mimic"
+					},
+					{
+						"name": "East Cave Northeast Chest",
+						"ref": "GBC Cave/East Cave Northeast Chest/East Cave Northeast Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 275,
+						"y": 1400,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu", "flag_et", "flag_vm", "flag_vbangm"]
+					}
+				],
+			},
+			//GBC Cave Overview without consumables
 			{
-				"visibility_rules": [ "" ],
-				"map": "map_overworld",
-				"x": 1000,
-				"y": 200
-			}
-		]
-	},
-	
-	// Zebu in the Temple
-	{
-		"name": "Shyron",
-		"access_rules": [
-			"$canMaybeReach|shyron, [$canReach|shyron]"
-		],
-		"sections": [
+				"name": "GBC Cave",
+				"sections": [
+					{
+						"name": "East Cave Northeast Chest",
+						"ref": "GBC Cave/East Cave Northeast Chest/East Cave Northeast Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 275,
+						"y": 1400,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu, $negate|flag_et", "flag_vm", "flag_vbangm"]
+					}
+				],
+			},
+			//Evil Spirit Island Overview with consumables and mimics
 			{
-				"name": "Zebu in the Temple",
-				"visibility_rules": [ "" ],
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Evil Spirit Island",
+				"sections": [
+					{
+						"name": "Evil Spirit Island Lower Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island Lower Chest/Evil Spirit Island Lower Chest"
+					},
+					{
+						"name": "Evil Spirit Island River Left Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island River Left Chest/Evil Spirit Island River Left Chest"
+					},
+					{
+						"name": "Evil Spirit Island River Right Mimic",
+						"ref": "Evil Spirit Island/Evil Spirit Island River Right Mimic/Evil Spirit Island River Right Mimic"
+					},
+					{
+						"name": "Evil Spirit Island Exit Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island Exit Chest/Evil Spirit Island Exit Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 840,
+						"y": 520,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu", "flag_et"]
+					}
+				],
+			},
+			//Evil Spirit Island Overview without mimics
 			{
-				"map": "map_overworld",
-				"x": 120,
-				"y": 230
-			}
-		]
-	},
-
-	// Mado 1
-	{
-		"name": "Mado 1",
-		"access_rules": [
-			"thunder, $canMaybeKillMado1, [$canKillMado1], $canMaybeReach|goa, [$canReach|goa], $canMaybeReach|shyron, [$canReach|shyron]"
-		],
-		"sections": [
+				"name": "Evil Spirit Island",
+				"sections": [
+					{
+						"name": "Evil Spirit Island Lower Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island Lower Chest/Evil Spirit Island Lower Chest"
+					},
+					{
+						"name": "Evil Spirit Island River Left Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island River Left Chest/Evil Spirit Island River Left Chest"
+					},
+					{
+						"name": "Evil Spirit Island Exit Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island Exit Chest/Evil Spirit Island Exit Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 840,
+						"y": 520,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Evil Spirit Island Overview without consumables
 			{
-				"name": "Trigger Massacre first",
-				"item_count": 1,
-				"hosted_item": "mado1_cleared"
-			}
-		],
-		"map_locations": [
+				"name": "Evil Spirit Island",
+				"sections": [
+					{
+						"name": "Evil Spirit Island River Left Chest",
+						"ref": "Evil Spirit Island/Evil Spirit Island River Left Chest/Evil Spirit Island River Left Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 840,
+						"y": 520,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Fog Lamp Cave Overview with mimics
 			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 60,
-				"y": 230
-			}
-		]
-	},
-	
-	// Brokahana
-	{
-		"name": "Brokahana",
-		"access_rules": [
-			"thunder, $canMaybeKillMado1, [$canKillMado1], change, $canMaybeReach|goa, [$canReach|goa], $canMaybeReach|shyron, [$canReach|shyron]"
-		],
-		"sections": [
+				"name": "Fog Lamp Cave",
+				"sections": [
+					{
+						"name": "Fog Lamp Cave Front Chest",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Front Chest/Fog Lamp Cave Front Chest"
+					},
+					{
+						"name": "Fog Lamp Cave Middle North Mimic",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Middle North Mimic/Fog Lamp Cave Middle North Mimic"
+					},
+					{
+						"name": "Fog Lamp Cave Middle Southwest Mimic",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Middle Southwest Mimic/Fog Lamp Cave Middle Southwest Mimic"
+					},
+					{
+						"name": "Fog Lamp Cave Back Chest",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Back Chest/Fog Lamp Cave Back Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1280,
+						"y": 942,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Fog Lamp Cave Overview without mimics
 			{
-				"name": "Change into Akahana",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Fog Lamp Cave",
+				"sections": [
+					{
+						"name": "Fog Lamp Cave Front Chest",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Front Chest/Fog Lamp Cave Front Chest"
+					},
+					{
+						"name": "Fog Lamp Cave Back Chest",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Back Chest/Fog Lamp Cave Back Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1280,
+						"y": 942,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Fog Lamp Cave Overview without consumables
 			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 360,
-				"y": 50
-			}
-		]
-	},
-	
-	// Deo's Pendant
-	{
-		"name": "Meadow",
-		"access_rules": [
-			"change, telepathy, $canMaybeReach|sahara, [$canReach|sahara]"
-		],
-		"sections": [
+				"name": "Fog Lamp Cave",
+				"sections": [
+					{
+						"name": "Fog Lamp Cave Back Chest",
+						"ref": "Fog Lamp Cave/Fog Lamp Cave Back Chest/Fog Lamp Cave Back Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1280,
+						"y": 942,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Karmine's Floor Overview with mimics
 			{
-				"name": "Console the Bunny",
-				"item_count": 1
-			}
-		],
-		"map_locations": [
+				"name": "Karmine's Floor",
+				"sections": [
+					{
+						"name": "Karmine Basement Upper Middle Mimic",
+						"ref": "Karmine's Floor/Karmine Basement Upper Middle Mimic/Karmine Basement Upper Middle Mimic"
+					},
+					{
+						"name": "Karmine Basement Upper Right Mimic",
+						"ref": "Karmine's Floor/Karmine Basement Upper Right Mimic/Karmine Basement Upper Right Mimic"
+					},
+					{
+						"name": "Karmine Basement Lower Right Mimic",
+						"ref": "Karmine's Floor/Karmine Basement Lower Right Mimic/Karmine Basement Lower Right Mimic"
+					},
+					{
+						"name": "Slimed Kensu",
+						"ref": "Karmine's Floor/Slimed Kensu/Slimed Kensu"
+					},
+					{
+						"name": "Karmine Basement Lower Left Chest",
+						"ref": "Karmine's Floor/Karmine Basement Lower Left Chest/Karmine Basement Lower Left Chest"
+					},
+					{
+						"name": "Karmine Basement Lower Middle Chest",
+						"ref": "Karmine's Floor/Karmine Basement Lower Middle Chest/Karmine Basement Lower Middle Chest"
+					},
+					{
+						"name": "Karmine",
+						"ref": "Karmine's Floor/Karmine/Karmine"
+					},
+					{
+						"name": "Storm Bracelet Chest",
+						"ref": "Karmine's Floor/Storm Bracelet Chest/Storm Bracelet Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 819,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Karmine's Floor Overview without mimics
 			{
-				"map": "map_overworld",
-				"visibility_rules": [ "" ],
-				"x": 550,
-				"y": 500
-			}
-		]
-	},
-	
-	//Zebu's Door
-	{
-		"name": "Zebu's Cave",
-		"access_rules": ["$negate|d_zebu_blocked"],
-		"sections": [
+				"name": "Karmine's Floor",
+				"sections": [
+					{
+						"name": "Slimed Kensu",
+						"ref": "Karmine's Floor/Slimed Kensu/Slimed Kensu"
+					},
+					{
+						"name": "Karmine Basement Lower Left Chest",
+						"ref": "Karmine's Floor/Karmine Basement Lower Left Chest/Karmine Basement Lower Left Chest"
+					},
+					{
+						"name": "Karmine Basement Lower Middle Chest",
+						"ref": "Karmine's Floor/Karmine Basement Lower Middle Chest/Karmine Basement Lower Middle Chest"
+					},
+					{
+						"name": "Karmine",
+						"ref": "Karmine's Floor/Karmine/Karmine"
+					},
+					{
+						"name": "Storm Bracelet Chest",
+						"ref": "Karmine's Floor/Storm Bracelet Chest/Storm Bracelet Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 819,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Karmine's Floor Overview without consumables
 			{
-				"name": "Passage to Mt. Sabre West",
-				"item_count": 1,
-				"hosted_item": "d_zebu",
-				"chest_opened_img": "images/blank.png",
-				"chest_unopened_img": "images/blank.png",
-			}
-		],
-		"map_locations": [
+				"name": "Karmine's Floor",
+				"sections": [
+					{
+						"name": "Slimed Kensu",
+						"ref": "Karmine's Floor/Slimed Kensu/Slimed Kensu"
+					},
+					{
+						"name": "Karmine",
+						"ref": "Karmine's Floor/Karmine/Karmine"
+					},
+					{
+						"name": "Storm Bracelet Chest",
+						"ref": "Karmine's Floor/Storm Bracelet Chest/Storm Bracelet Chest"
+					},
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 819,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Mado's Floor Overview with consumables
 			{
-				"map": "map_overworld",
-				"visibility_rules": [ "flag_wm" ],
-				"x": 60,
-				"y": 1400,
-				"force_invisibility_rules": ["$canBreakZebusCaveWall"]
+				"name": "Mado's Floor",
+				"sections": [
+					{
+						"name": "Fortress Mado Lower Southeast Chest",
+						"ref": "Mado's Floor/Fortress Mado Lower Southeast Chest/Fortress Mado Lower Southeast Chest"
+					},
+					{
+						"name": "Fortress Mado Upper Behind Wall Chest",
+						"ref": "Mado's Floor/Fortress Mado Upper Behind Wall Chest/Fortress Mado Upper Behind Wall Chest"
+					},
+					{
+						"name": "Fortress Mado Hellway Chest",
+						"ref": "Mado's Floor/Fortress Mado Hellway Chest/Fortress Mado Hellway Chest"
+					},
+					{
+						"name": "Fortress Mado Upper North Chest",
+						"ref": "Mado's Floor/Fortress Mado Upper North Chest/Fortress Mado Upper North Chest"
+					},
+					{
+						"name": "Fortress Mado Lower Center North Chest",
+						"ref": "Mado's Floor/Fortress Mado Lower Center North Chest/Fortress Mado Lower Center North Chest"
+					},
+					{
+						"name": "Mado 2",
+						"ref": "Mado's Floor/Mado 2/Mado 2"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 719,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Mado's Floor Overview without consumables
+			{
+				"name": "Mado's Floor",
+				"sections": [
+					{
+						"name": "Mado 2",
+						"ref": "Mado's Floor/Mado 2/Mado 2"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 719,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Sabera's Floor Overview with consumables
+			{
+				"name": "Sabera's Floor",
+				"sections": [
+					{
+						"name": "Fortress Sabera Northwest Chest",
+						"ref": "Sabera's Floor/Fortress Sabera Northwest Chest/Fortress Sabera Northwest Chest"
+					},
+					{
+						"name": "Fortress Sabera Middle Chest",
+						"ref": "Sabera's Floor/Fortress Sabera Middle Chest/Fortress Sabera Middle Chest"
+					},
+					{
+						"name": "Fortress Sabera Southeast Chest",
+						"ref": "Sabera's Floor/Fortress Sabera Southeast Chest/Fortress Sabera Southeast Chest"
+					},
+					{
+						"name": "Sabera 2",
+						"ref": "Sabera's Floor/Sabera 2/Sabera 2"
+					},
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 619,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Sabera's Floor Overview without consumables
+			{
+				"name": "Sabera's Floor",
+				"sections": [
+					{
+						"name": "Sabera 2",
+						"ref": "Sabera's Floor/Sabera 2/Sabera 2"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 619,
+						"y": 20,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Kirisa Plant Cave Overview with consumables
+			{
+				"name": "Kirisa Plant Cave",
+				"sections": [
+					{
+						"name": "Kirisa Plant Cave Chest",
+						"ref": "Kirisa Plant Cave/Kirisa Plant Cave Chest/Kirisa Plant Cave Chest"
+					},
+					{
+						"name": "Kirisa Meadow",
+						"ref": "Kirisa Plant Cave/Kirisa Meadow/Kirisa Meadow"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1280,
+						"y": 1317,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Kirisa Plant Cave Overview without consumables
+			{
+				"name": "Kirisa Plant Cave",
+				"sections": [
+					{
+						"name": "Kirisa Meadow",
+						"ref": "Kirisa Plant Cave/Kirisa Meadow/Kirisa Meadow"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1280,
+						"y": 1317,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Mt. Hydra Overview with mimics
+			{
+				"name": "Mt. Hydra",
+				"sections": [
+					{
+						"name": "Mt Hydra Final Cave Mimic",
+						"ref": "Mt. Hydra/Mt Hydra Final Cave Mimic/Mt Hydra Final Cave Mimic"
+					},
+					{
+						"name": "Mt Hydra Summit Chest",
+						"ref": "Mt. Hydra/Mt Hydra Summit Chest/Mt Hydra Summit Chest"
+					},
+					{
+						"name": "Mt Hydra Left Right Chest",
+						"ref": "Mt. Hydra/Mt Hydra Left Right Chest/Mt Hydra Left Right Chest"
+					},
+					{
+						"name": "Mt Hydra Right Chest",
+						"ref": "Mt. Hydra/Mt Hydra Right Chest/Mt Hydra Right Chest"
+					},
+					{
+						"name": "Mt Hydra Far Left Chest",
+						"ref": "Mt. Hydra/Mt Hydra Far Left Chest/Mt Hydra Far Left Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 155,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Mt. Hydra Overview without mimics
+			{
+				"name": "Mt. Hydra",
+				"sections": [
+					{
+						"name": "Mt Hydra Summit Chest",
+						"ref": "Mt. Hydra/Mt Hydra Summit Chest/Mt Hydra Summit Chest"
+					},
+					{
+						"name": "Mt Hydra Left Right Chest",
+						"ref": "Mt. Hydra/Mt Hydra Left Right Chest/Mt Hydra Left Right Chest"
+					},
+					{
+						"name": "Mt Hydra Right Chest",
+						"ref": "Mt. Hydra/Mt Hydra Right Chest/Mt Hydra Right Chest"
+					},
+					{
+						"name": "Mt Hydra Far Left Chest",
+						"ref": "Mt. Hydra/Mt Hydra Far Left Chest/Mt Hydra Far Left Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 155,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Mt. Hydra Overview without consumables
+			{
+				"name": "Mt. Hydra",
+				"sections": [
+					{
+						"name": "Mt Hydra Summit Chest",
+						"ref": "Mt. Hydra/Mt Hydra Summit Chest/Mt Hydra Summit Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 155,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Oasis Cave Overview with consumables
+			{
+				"name": "Oasis Cave",
+				"sections": [
+					{
+						"name": "Oasis Cave Entrance Across River Chest",
+						"ref": "Oasis Cave/Oasis Cave Entrance Across River Chest/Oasis Cave Entrance Across River Chest"
+					},
+					{
+						"name": "Oasis Cave Near Entrance Chest",
+						"ref": "Oasis Cave/Oasis Cave Near Entrance Chest/Oasis Cave Near Entrance Chest"
+					},
+					{
+						"name": "Oasis Cave Northwest Chest",
+						"ref": "Oasis Cave/Oasis Cave Northwest Chest/Oasis Cave Northwest Chest"
+					},
+					{
+						"name": "Oasis Cave Fortress Basement Chest",
+						"ref": "Oasis Cave/Oasis Cave Fortress Basement Chest/Oasis Cave Fortress Basement Chest"
+					},
+					{
+						"name": "Battle Armor Chest",
+						"ref": "Oasis Cave/Battle Armor Chest/Battle Armor Chest"
+					},
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 230,
+						"y": 490,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Oasis Cave Overview without consumables
+			{
+				"name": "Oasis Cave",
+				"sections": [
+					{
+						"name": "Oasis Cave Northwest Chest",
+						"ref": "Oasis Cave/Oasis Cave Northwest Chest/Oasis Cave Northwest Chest"
+					},
+					{
+						"name": "Oasis Cave Fortress Basement Chest",
+						"ref": "Oasis Cave/Oasis Cave Fortress Basement Chest/Oasis Cave Fortress Basement Chest"
+					},
+					{
+						"name": "Battle Armor Chest",
+						"ref": "Oasis Cave/Battle Armor Chest/Battle Armor Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 230,
+						"y": 490,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Crypt Overview with mimics
+			{
+				"name": "Crypt",
+				"sections": [
+					{
+						"name": "Crypt Left Pit Mimic",
+						"ref": "Crypt/Crypt Left Pit Mimic/Crypt Left Pit Mimic"
+					},
+					{
+						"name": "Crypt Right Chest",
+						"ref": "Crypt/Crypt Right Chest/Crypt Right Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 660,
+						"y": 290,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Crypt Overview without mimics
+			{
+				"name": "Crypt",
+				"sections": [
+					{
+						"name": "Crypt Right Chest",
+						"ref": "Crypt/Crypt Right Chest/Crypt Right Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 660,
+						"y": 290,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Pyramid Overview with consumables
+			{
+				"name": "Pyramid",
+				"sections": [
+					{
+						"name": "Pyramid Chest",
+						"ref": "Pyramid/Pyramid Chest/Pyramid Chest"
+					},
+					{
+						"name": "Draygon 1",
+						"ref": "Pyramid/Draygon 1/Draygon 1"
+					},
+					{
+						"name": "Azteca In Pyramid",
+						"ref": "Pyramid/Azteca In Pyramid/Azteca In Pyramid"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 650,
+						"y": 490,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu", "$pryamidFrontIsCleared"]
+					}
+				],
+			},
+			//Pyramid Overview without consumables
+			{
+				"name": "Pyramid",
+				"sections": [
+					{
+						"name": "Draygon 1",
+						"ref": "Pyramid/Draygon 1/Draygon 1"
+					},
+					{
+						"name": "Azteca In Pyramid",
+						"ref": "Pyramid/Azteca In Pyramid/Azteca In Pyramid"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 650,
+						"y": 490,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu", "$pryamidFrontIsCleared"]
+					}
+				],
+			},
+			//Sabera's Fortress Overview with consumables
+			{
+				"name": "Sabera's Fortress",
+				"sections": [
+					{
+						"name": "Vampire 2",
+						"ref": "Sabera's Fortress/Vampire 2/Vampire 2"
+					},
+					{
+						"name": "Sabera 1",
+						"ref": "Sabera's Fortress/Sabera 1/Sabera 1"
+					},
+					{
+						"name": "Sabera Upstairs Left Chest",
+						"ref": "Sabera's Fortress/Sabera Upstairs Left Chest/Sabera Upstairs Left Chest"
+					},
+					{
+						"name": "Sabera Upstairs Right Chest",
+						"ref": "Sabera's Fortress/Sabera Upstairs Right Chest/Sabera Upstairs Right Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 910,
+						"y": 440,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Sabera's Fortress Overview without consumables
+			{
+				"name": "Sabera's Fortress",
+				"sections": [
+					{
+						"name": "Vampire 2",
+						"ref": "Sabera's Fortress/Vampire 2/Vampire 2"
+					},
+					{
+						"name": "Sabera 1",
+						"ref": "Sabera's Fortress/Sabera 1/Sabera 1"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 910,
+						"y": 440,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Mt. Sabre North Overview with consumables
+			{
+				"name": "Mt. Sabre North",
+				"sections": [
+					{
+						"name": "Mt Sabre North Under Bridge Chest",
+						"ref": "Mt. Sabre North/Mt Sabre North Under Bridge Chest/Mt Sabre North Under Bridge Chest"
+					},
+					{
+						"name": "Mt Sabre North Middle Chest",
+						"ref": "Mt. Sabre North/Mt Sabre North Middle Chest/Mt Sabre North Middle Chest"
+					},
+					{
+						"name": "Mt Sabre North Back of Prison Chest",
+						"ref": "Mt. Sabre North/Mt Sabre North Back of Prison Chest/Mt Sabre North Back of Prison Chest"
+					},
+					{
+						"name": "Kelbesque 1",
+						"ref": "Mt. Sabre North/Kelbesque 1/Kelbesque 1"
+					},
+					{
+						"name": "Mt Sabre North Summit",
+						"ref": "Mt. Sabre North/Mt Sabre North Summit/Mt Sabre North Summit"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 795,
+						"y": 875,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Mt. Sabre North Overview without consumables
+			{
+				"name": "Mt. Sabre North",
+				"sections": [
+					{
+						"name": "Mt Sabre North Back of Prison Chest",
+						"ref": "Mt. Sabre North/Mt Sabre North Back of Prison Chest/Mt Sabre North Back of Prison Chest"
+					},
+					{
+						"name": "Kelbesque 1",
+						"ref": "Mt. Sabre North/Kelbesque 1/Kelbesque 1"
+					},
+					{
+						"name": "Mt Sabre North Summit",
+						"ref": "Mt. Sabre North/Mt Sabre North Summit/Mt Sabre North Summit"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 795,
+						"y": 875,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Mt. Sabre West Overview with consumables
+			{
+				"name": "Mt. Sabre West",
+				"sections": [
+					{
+						"name": "Mt Sabre West Tornado Bracelet Chest",
+						"ref": "Mt. Sabre West/Mt Sabre West Tornado Bracelet Chest/Mt Sabre West Tornado Bracelet Chest"
+					},
+					{
+						"name": "Mt Sabre West Left Chest",
+						"ref": "Mt. Sabre West/Mt Sabre West Left Chest/Mt Sabre West Left Chest"
+					},
+					{
+						"name": "Mt Sabre West Right Chest",
+						"ref": "Mt. Sabre West/Mt Sabre West Right Chest/Mt Sabre West Right Chest"
+					},
+					{
+						"name": "Mt Sabre West Near Tornel Chest",
+						"ref": "Mt. Sabre West/Mt Sabre West Near Tornel Chest/Mt Sabre West Near Tornel Chest"
+					},
+					{
+						"name": "Mt Sabre West Tornel",
+						"ref": "Mt. Sabre West/Mt Sabre West Tornel/Mt Sabre West Tornel"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 400,
+						"y": 1350,
+						"size": 75,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Mt. Sabre West Overview without consumables
+			{
+				"name": "Mt. Sabre West",
+				"sections": [
+					{
+						"name": "Mt Sabre West Tornado Bracelet Chest",
+						"ref": "Mt. Sabre West/Mt Sabre West Tornado Bracelet Chest/Mt Sabre West Tornado Bracelet Chest"
+					},
+					{
+						"name": "Mt Sabre West Tornel",
+						"ref": "Mt. Sabre West/Mt Sabre West Tornel/Mt Sabre West Tornel"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 400,
+						"y": 1350,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Stxy Overview with mimics
+			{
+				"name": "Stxy",
+				"sections": [
+					{
+						"name": "Stxy Left North Mimic",
+						"ref": "Stxy/Stxy Left North Mimic/Stxy Left North Mimic"
+					},
+					{
+						"name": "Stxy Right North Mimic",
+						"ref": "Stxy/Stxy Right North Mimic/Stxy Right North Mimic"
+					},
+					{
+						"name": "Stxy Right South Mimic",
+						"ref": "Stxy/Stxy Right South Mimic/Stxy Right South Mimic"
+					},
+					{
+						"name": "Stxy Left Lower Chest",
+						"ref": "Stxy/Stxy Left Lower Chest/Stxy Left Lower Chest"
+					},
+					{
+						"name": "Stxy Left Upper Sword of Thunder Chest",
+						"ref": "Stxy/Stxy Left Upper Sword of Thunder Chest/Stxy Left Upper Sword of Thunder Chest"
+					},
+					{
+						"name": "Stxy Right Middle Chest",
+						"ref": "Stxy/Stxy Right Middle Chest/Stxy Right Middle Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 70,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Stxy Overview without mimics
+			{
+				"name": "Stxy",
+				"sections": [
+					{
+						"name": "Stxy Left Lower Chest",
+						"ref": "Stxy/Stxy Left Lower Chest/Stxy Left Lower Chest"
+					},
+					{
+						"name": "Stxy Left Upper Sword of Thunder Chest",
+						"ref": "Stxy/Stxy Left Upper Sword of Thunder Chest/Stxy Left Upper Sword of Thunder Chest"
+					},
+					{
+						"name": "Stxy Right Middle Chest",
+						"ref": "Stxy/Stxy Right Middle Chest/Stxy Right Middle Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 70,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Stxy Overview without consumables
+			{
+				"name": "Stxy",
+				"sections": [
+					{
+						"name": "Stxy Left Upper Sword of Thunder Chest",
+						"ref": "Stxy/Stxy Left Upper Sword of Thunder Chest/Stxy Left Upper Sword of Thunder Chest"
+					},
+					{
+						"name": "Stxy Right Middle Chest",
+						"ref": "Stxy/Stxy Right Middle Chest/Stxy Right Middle Chest"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 85,
+						"y": 70,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
+			},
+			//Waterfall Cave Overview with mimics
+			{
+				"name": "Waterfall Cave",
+				"sections": [
+					{
+						"name": "Waterfall Cave Front Mimic",
+						"ref": "Waterfall Cave/Waterfall Cave Front Mimic/Waterfall Cave Front Mimic"
+					},
+					{
+						"name": "Waterfall Cave Sword of Water Chest",
+						"ref": "Waterfall Cave/Waterfall Cave Sword of Water Chest/Waterfall Cave Sword of Water Chest"
+					},
+					{
+						"name": "Waterfall Cave River Left Chest",
+						"ref": "Waterfall Cave/Waterfall Cave River Left Chest/Waterfall Cave River Left Chest"
+					},
+					{
+						"name": "Akahana Flute of Lime Tradein",
+						"ref": "Waterfall Cave/Akahana Flute of Lime Tradein/Akahana Flute of Lime Tradein"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1190,
+						"y": 882,
+						"size": 75,
+						"force_invisibility_rules": ["flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Waterfall Cave Overview without mimics
+			{
+				"name": "Waterfall Cave",
+				"sections": [
+					{
+						"name": "Waterfall Cave Sword of Water Chest",
+						"ref": "Waterfall Cave/Waterfall Cave Sword of Water Chest/Waterfall Cave Sword of Water Chest"
+					},
+					{
+						"name": "Waterfall Cave River Left Chest",
+						"ref": "Waterfall Cave/Waterfall Cave River Left Chest/Waterfall Cave River Left Chest"
+					},
+					{
+						"name": "Akahana Flute of Lime Tradein",
+						"ref": "Waterfall Cave/Akahana Flute of Lime Tradein/Akahana Flute of Lime Tradein"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1190,
+						"y": 882,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
+					}
+				],
+			},
+			//Waterfall Cave Overview without consumables
+			{
+				"name": "Waterfall Cave",
+				"sections": [
+					{
+						"name": "Waterfall Cave Sword of Water Chest",
+						"ref": "Waterfall Cave/Waterfall Cave Sword of Water Chest/Waterfall Cave Sword of Water Chest"
+					},
+					{
+						"name": "Akahana Flute of Lime Tradein",
+						"ref": "Waterfall Cave/Akahana Flute of Lime Tradein/Akahana Flute of Lime Tradein"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 1190,
+						"y": 882,
+						"size": 75,
+						"force_invisibility_rules": ["$negate|flag_eu"]
+					}
+				],
 			}
 		]
 	}

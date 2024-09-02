@@ -4,61 +4,9 @@
 		"name": "Mt. Sabre North",
 		"access_rules": ["$canMaybeAccessSabreNorth, [$canAccessSabreNorth], $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Mt. Sabre North",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls], [$canKillKelbesque1], [$hasKeyToPrison]",
-					"$negate|flag_wm, [$canBreakSabreNorthWalls], $canMaybeKillKelbesque1, [$canKillKelbesque1], flight, [$hasKeyToPrison]",
-					"$negate|flag_wm, [$canBreakSabreNorthWalls], $canMaybeKillKelbesque1, [$canKillKelbesque1], $canTriggerSkip, [$hasKeyToPrison]",
-					"flag_wm, [$canBreakSabreNorthWalls], [$canKillKelbesque1], [$hasKeyToPrison]"
-					
-				],
-				"sections": [
-					{
-						"name": "Mt. Sabre North Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 795,
-						"y": 875,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Mt. Sabre North",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls], [$canKillKelbesque1], [$hasKeyToPrison]",
-					"$negate|flag_wm, [$canBreakSabreNorthWalls], $canMaybeKillKelbesque1, [$canKillKelbesque1], flight, [$hasKeyToPrison]",
-					"flag_wm, [$canBreakSabreNorthWalls], [$canKillKelbesque1], [$hasKeyToPrison]"
-				],
-				"sections": [
-					{
-						"name": "Mt. Sabre North Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 795,
-						"y": 875,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Antidote
 			{
-				"name": "Mt. Sabre North",
+				"name": "Mt Sabre North Under Bridge Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls]",
 					"$negate|flag_wm, $canMaybeAccessSabreNorthBack, [$canAccessSabreNorthBack], $canMaybeKillKelbesque1, [$canKillKelbesque1]",
@@ -67,7 +15,7 @@
 				],
 				"sections": [
 					{
-						"name": "Antidote",
+						"name": "Mt Sabre North Under Bridge Chest",
 						"item_count": 1
 					}
 				],
@@ -82,7 +30,7 @@
 			},
 			//Medical Herb
 			{
-				"name": "Mt. Sabre North",
+				"name": "Mt Sabre North Middle Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls]",
 					"$negate|flag_wm, $canMaybeAccessSabreNorthBack, [$canAccessSabreNorthBack], $canMaybeKillKelbesque1, [$canKillKelbesque1]",
@@ -94,7 +42,7 @@
 				],
 				"sections": [
 					{
-						"name": "Medical Herb",
+						"name": "Mt Sabre North Middle Chest",
 						"item_count": 1
 					}
 				],
@@ -109,14 +57,14 @@
 			},
 			//Key to Prison
 			{
-				"name": "Mt. Sabre North",
+				"name": "Mt Sabre North Back of Prison Chest",
 				"access_rules": [
 					"$canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls]",
 					"$canMaybeAccessSabreNorthBack, [$canAccessSabreNorthBack], $canMaybeKillKelbesque1, [$canKillKelbesque1]",
 				],
 				"sections": [
 					{
-						"name": "Key to Prison",
+						"name": "Mt Sabre North Back of Prison Chest",
 						"item_count": 1
 					}
 				],
@@ -130,7 +78,7 @@
 			},
 			//Kelbesque 1 Reward
 			{
-				"name": "Mt. Sabre North",
+				"name": "Kelbesque 1",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls], $canMaybeKillKelbesque1, [$canKillKelbesque1]",
 					"$canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], flight, $canMaybeKillKelbesque1, [$canKillKelbesque1]",
@@ -141,7 +89,7 @@
 				],
 				"sections": [
 					{
-						"name": "Kelbesque 1 Reward",
+						"name": "Kelbesque 1",
 						"item_count": 1,
 						"hosted_item": "kelbesque1_cleared"
 					}
@@ -156,7 +104,7 @@
 			},
 			//Prison Break Reward
 			{
-				"name": "Mt. Sabre North",
+				"name": "Mt Sabre North Summit",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], $canMaybeBreakSabreNorthWalls, [$canBreakSabreNorthWalls], $canMaybeKillKelbesque1, [$canKillKelbesque1], $maybeHasKeyToPrison, [$hasKeyToPrison]",
 					"$canMaybeAccessSabreNorthFront, [$canAccessSabreNorthFront], flight, $canMaybeKillKelbesque1, [$canKillKelbesque1], $maybeHasKeyToPrison, [$hasKeyToPrison]",
@@ -167,7 +115,7 @@
 				],
 				"sections": [
 					{
-						"name": "Prison Break Reward",
+						"name": "Mt Sabre North Summit",
 						"item_count": 1
 					}
 				],

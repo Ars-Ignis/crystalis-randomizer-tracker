@@ -1,64 +1,16 @@
 [
 	{
-		//Pyramid Front
-		"name": "Pyramid Front",
+		//Pyramid
+		"name": "Pyramid",
 		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $canOpenChest"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Pyramid Front",
-				"access_rules": [
-					"[$hasAnySword], [flag_nw]",
-					"[$hasAnyLevelTwo]"
-				],
-				"sections": [
-					{
-						"name": "Pyramid Front Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 650,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu", "$pryamidFrontIsCleared"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Pyramid Front",
-				"access_rules": [
-					"$hasAnySword, flag_nw",
-					"$hasAnyLevelTwo"
-				],
-				"sections": [
-					{
-						"name": "Pyramid Front Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 650,
-						"y": 490,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu", "$pryamidFrontIsCleared"]
-					}
-				],
-			},
 			//Magic Ring
 			{
-				"name": "Pyramid Front",
+				"name": "Pyramid Chest",
 				"access_rules": [""],
 				"sections": [
 					{
-						"name": "Magic Ring",
+						"name": "Pyramid Chest",
 						"item_count": 1
 					}
 				],
@@ -71,23 +23,44 @@
 					}
 				]
 			},
-			//Bow Of Truth/Psycho Armor
+			//Psycho Armor
 			{
-				"name": "Pyramid Front",
+				"name": "Draygon 1",
 				"access_rules": [
 					"$hasAnySword, flag_nw",
 					"$hasAnyLevelTwo"
 				],
 				"sections": [
 					{
-						"name": "Bow of Truth + Psycho Armor",
-						"item_count": 2
+						"name": "Draygon 1",
+						"item_count": 1
 					}
 				],
 				"map_locations": [
 					{
 						"map": "map_pyramid_front",
-						"x": 190,
+						"x": 170,
+						"y": 310
+					}
+				]
+			},
+			//Bow of Truth
+			{
+				"name": "Azteca In Pyramid",
+				"access_rules": [
+					"$hasAnySword, flag_nw",
+					"$hasAnyLevelTwo"
+				],
+				"sections": [
+					{
+						"name": "Azteca In Pyramid",
+						"item_count": 1
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_pyramid_front",
+						"x": 210,
 						"y": 310
 					}
 				]

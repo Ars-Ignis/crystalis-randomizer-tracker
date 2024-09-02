@@ -138,18 +138,18 @@ function canCrossSpikes()
 			canTriggerSkip()
 end
 
-pyramidFrontCached = nil
+pyramidCached = nil
 
 function pryamidFrontIsCleared()
-	if pyramidFrontCached == nil then
-		local pyramidFront = Tracker:FindObjectForCode("@Pyramid Front")
-		local fightPrizes = pyramidFront.Children[3].Sections[0]
-		local magicRing = pyramidFront.Children[2].Sections[0]
+	if pyramidCached == nil then
+		local draygon1 = Tracker:FindObjectForCode("@Pyramid/Draygon 1")
+		local azteca = Tracker:FindObjectForCode("@Pyramid/Azteca In Pyramid")
+		local magicRing = Tracker:FindObjectForCode("@Pyramid/Pyramid Chest")
 		if Tracker:ProviderCountForCode("flag_eu") > 0 then
-			pyramidFrontCached = fightPrizes.AvailableChestCount == 0
+			pyramidCached = draygon1.AvailableChestCount == 0 and azteca.AvailableChestCount == 0
 		else
-			pyramidFrontCached = fightPrizes.AvailableChestCount == 0 and magicRing.AvailableChestCount == 0
+			pyramidCached = draygon1.AvailableChestCount == 0 and azteca.AvailableChestCount == 0 and magicRing.AvailableChestCount == 0
 		end
 	end
-	return pyramidFrontCached
+	return pyramidCached
 end

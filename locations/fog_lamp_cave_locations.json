@@ -4,87 +4,15 @@
 		"name": "Fog Lamp Cave",
 		"access_rules": ["$canMaybeReach|portoa, [$canReach|portoa], $canCrossRivers, $canOpenChest"],
 		"children": [
-			//Overview with mimics
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave Front Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls]"
 				],
 				"sections": [
 					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Fog Lamp Cave Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 942,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
-			{
-				"name": "Fog Lamp Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
-					"flag_wm, [$canBreakFogLampCaveWalls]"
-				],
-				"sections": [
-					{
-						"name": "Lysis Plant",
+						"name": "Fog Lamp Cave Front Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -99,7 +27,7 @@
 				],
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave Middle North Mimic",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp1",
@@ -107,7 +35,7 @@
 				],
 				"sections": [
 					{
-						"name": "Mimic 1",
+						"name": "Fog Lamp Cave Middle North Mimic",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -122,7 +50,7 @@
 				],
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave Middle Southwest Mimic",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp1",
@@ -130,7 +58,7 @@
 				],
 				"sections": [
 					{
-						"name": "Mimic 2",
+						"name": "Fog Lamp Cave Middle Southwest Mimic",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -145,7 +73,7 @@
 				],
 			},
 			{
-				"name": "Fog Lamp Cave",
+				"name": "Fog Lamp Cave Back Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakFogLampCaveWalls, [$canBreakFogLampCaveWalls]",
 					"flag_wm, [$canBreakFogLampCaveWalls], d_foglamp5",
@@ -153,7 +81,7 @@
 				],
 				"sections": [
 					{
-						"name": "Fog Lamp",
+						"name": "Fog Lamp Cave Back Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}

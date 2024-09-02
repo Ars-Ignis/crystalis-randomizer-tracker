@@ -321,7 +321,7 @@
 		]
 	},
 	
-	"styx_map_layout": {
+	"stxy_map_layout": {
 		"type": "array",
 		"orientation": "vertical",
 		"style": "stack",
@@ -334,7 +334,7 @@
 				"max_height": 850,
 				"max_width": 500,
 				"maps": [
-					"map_styx"
+					"map_stxy"
 				]
 			},
 			{
@@ -345,7 +345,7 @@
 				"h_alignment": "center",
 				"margin": 0,
 				"rows": [
-					[ "d_styx" ]
+					[ "d_stxy" ]
 				]
 			}
 		]

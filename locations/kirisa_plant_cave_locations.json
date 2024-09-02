@@ -4,57 +4,9 @@
 		"name": "Kirisa Plant Cave",
 		"access_rules": ["$canMaybeReach|portoa, [$canReach|portoa], $canCrossRivers"],
 		"children": [
-			//Overview with consumables
-			{
-				"name": "Kirisa Plant Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
-					"flag_wm, [$canBreakKirisaPlantCaveWalls], [$canOpenChest]"
-				],
-				"sections": [
-					{
-						"name": "Kirisa Plant Cave Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 1317,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Kirisa Plant Cave",
-				"access_rules": [
-					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
-					"flag_wm, [$canBreakKirisaPlantCaveWalls], [$canOpenChest]"
-				],
-				"sections": [
-					{
-						"name": "Kirisa Plant Cave Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 1280,
-						"y": 1317,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Antidote
 			{
-				"name": "Kirisa Plant Cave",
+				"name": "Kirisa Plant Cave Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
 					"flag_wm, [$canBreakKirisaPlantCaveWalls], d_kirisaplant1, $canOpenChest",
@@ -62,7 +14,7 @@
 				],
 				"sections": [
 					{
-						"name": "Antidote",
+						"name": "Kirisa Plant Cave Chest",
 						"item_count": 1
 					}
 				],
@@ -77,7 +29,7 @@
 			},
 			//Kirisa Plant
 			{
-				"name": "Kirisa Plant Cave",
+				"name": "Kirisa Meadow",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakKirisaPlantCaveWalls, [$canBreakKirisaPlantCaveWalls]",
 					"flag_wm, d_kirisaplant1, d_kirisaplant2, d_kirisaplant3",
@@ -85,7 +37,7 @@
 				],
 				"sections": [
 					{
-						"name": "Kirisa Plant",
+						"name": "Kirisa Meadow",
 						"item_count": 1
 					}
 				],

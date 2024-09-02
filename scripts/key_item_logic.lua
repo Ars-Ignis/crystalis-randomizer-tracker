@@ -34,20 +34,20 @@ function maybeHasKeyToPrison()
 	end
 end
 
-function hasKeyToStyx()
+function hasKeyToStxy()
 	if negate("flag_wu") then
 		return Tracker:ProviderCountForCode("greenkey") > 0
 	else
-		return	Tracker:ProviderCountForCode("styx") > 0 or
+		return	Tracker:ProviderCountForCode("stxy") > 0 or
 				Tracker:ProviderCountForCode("key") >= 3
 	end
 end
 
-function maybeHasKeyToStyx()
+function maybeHasKeyToStxy()
 	if negate("flag_wu") then
 		return Tracker:ProviderCountForCode("greenkey") > 0
 	else
-		return	(Tracker:ProviderCountForCode("unknownkey") > 0 and Tracker:ProviderCountForCode("notstyx") == 0) or hasKeyToStyx()
+		return	(Tracker:ProviderCountForCode("unknownkey") > 0 and Tracker:ProviderCountForCode("notstxy") == 0) or hasKeyToStxy()
 	end
 end
 

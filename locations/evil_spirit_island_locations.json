@@ -10,72 +10,9 @@
 			"flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canOpenChest"
 		],
 		"children": [
-			//Overview with consumables and mimics
-			{
-				"name": "Evil Spirit Island",
-				"access_rules": ["[$canCrossRivers], [$canBreakEvilSpiritIslandWalls]"],
-				"sections": [
-					{
-						"name": "Evil Spirit Island Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 840,
-						"y": 520,
-						"size": 90,
-						"force_invisibility_rules": ["flag_eu", "flag_et"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Evil Spirit Island",
-				"access_rules": ["[$canCrossRivers], [$canBreakEvilSpiritIslandWalls]"],
-				"sections": [
-					{
-						"name": "Evil Spirit Island Items",
-						"item_count": 3,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 840,
-						"y": 520,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Evil Spirit Island",
-				"access_rules": ["$canCrossRivers, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]"],
-				"sections": [
-					{
-						"name": "Evil Spirit Island Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					}
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 840,
-						"y": 520,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Magic Ring
 			{
-				"name": "Evil Spirit Island",
+				"name": "Evil Spirit Island Lower Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]",
 					"flag_wm, $canReach|zombie, d_evilspirit2, [$canCrossRivers], [$canBreakEvilSpiritIslandWalls]",
@@ -84,7 +21,7 @@
 				],
 				"sections": [
 					{
-						"name": "Magic Ring",
+						"name": "Evil Spirit Island Lower Chest",
 						"item_count": 1
 					}
 				],
@@ -99,7 +36,7 @@
 			},
 			//Iron Necklace
 			{
-				"name": "Evil Spirit Island",
+				"name": "Evil Spirit Island River Left Chest",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls], $canCrossRivers",
 					"flag_wm, d_evilspirit3, [$canCrossRivers]",
@@ -107,7 +44,7 @@
 				],
 				"sections": [
 					{
-						"name": "Iron Necklace",
+						"name": "Evil Spirit Island River Left Chest",
 						"item_count": 1
 					}
 				],
@@ -121,7 +58,7 @@
 			},
 			//Mimic
 			{
-				"name": "Evil Spirit Island",
+				"name": "Evil Spirit Island River Right Mimic",
 				"access_rules": [
 					"$negate|flag_wm, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]",
 					"flag_wm, d_evilspirit3, [$canCrossRivers]",
@@ -129,7 +66,7 @@
 				],
 				"sections": [
 					{
-						"name": "Mimic",
+						"name": "Evil Spirit Island River Right Mimic",
 						"item_count": 1
 					}
 				],
@@ -144,7 +81,7 @@
 			},
 			//Lysis Plant
 			{
-				"name": "Evil Spirit Island",
+				"name": "Evil Spirit Island Exit Chest",
 				"access_rules": [
 					"$negate|flag_wm",
 					"flag_wm, $canReach|zombie, [$canBreakEvilSpiritIslandWalls]",
@@ -153,7 +90,7 @@
 				],
 				"sections": [
 					{
-						"name": "Lysis Plant",
+						"name": "Evil Spirit Island Exit Chest",
 						"item_count": 1
 					}
 				],

@@ -17,7 +17,7 @@
 				"type": "tabbed",
 				"tabs": [
 					{
-						"title": "East",
+						"title": "GBC",
 						"content": {
 							"type": "layout",
 							"dropshadow": false,
@@ -132,12 +132,12 @@
 						}
 					},
 					{
-						"title": "Styx",
+						"title": "Stxy",
 						"content": {
 							"type": "layout",
 							"dropshadow": false,
 							"v_alignment": "center",
-							"key": "styx_map_layout"
+							"key": "stxy_map_layout"
 						}
 					},
 					{

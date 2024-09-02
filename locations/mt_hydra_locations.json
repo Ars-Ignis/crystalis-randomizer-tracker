@@ -4,76 +4,13 @@
 		"name": "Mt. Hydra",
 		"access_rules": ["$canMaybeReach|goa, [$canReach|goa], $canOpenChest"],
 		"children": [
-			//Overview with mimics
-			{
-				"name": "Mt. Hydra",
-				"access_rules": ["[$canBreakHydraWalls], [flight]"],
-				"sections": [
-					{
-						"name": "Mt. Hydra Items",
-						"item_count": 5,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 155,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Mt. Hydra",
-				"access_rules": ["[$canBreakHydraWalls], [flight]"],
-				"sections": [
-					{
-						"name": "Mt. Hydra Items",
-						"item_count": 4,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 155,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without consumables
-			{
-				"name": "Mt. Hydra",
-				"access_rules": ["$canMaybeBreakHydraWalls, [$canBreakHydraWalls], flight"],
-				"sections": [
-					{
-						"name": "Mt. Hydra Items",
-						"item_count": 1,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 85,
-						"y": 155,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_eu"]
-					}
-				],
-			},
 			//Mimic
 			{
-				"name": "Mt. Hydra",
+				"name": "Mt Hydra Final Cave Mimic",
 				"access_rules": ["$canCrossRivers, $canMaybeBreakHydraWalls, [$canBreakHydraWalls]"],
 				"sections": [
 					{
-						"name": "Mimic",
+						"name": "Mt Hydra Final Cave Mimic",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -89,11 +26,11 @@
 			},
 			//Bow of Sun
 			{
-				"name": "Mt. Hydra",
+				"name": "Mt Hydra Summit Chest",
 				"access_rules": ["$canMaybeBreakHydraWalls, [$canBreakHydraWalls], flight"],
 				"sections": [
 					{
-						"name": "Bow of Sun",
+						"name": "Mt Hydra Summit Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -108,11 +45,11 @@
 			},
 			//Magic Ring
 			{
-				"name": "Mt. Hydra",
+				"name": "Mt Hydra Left Right Chest",
 				"access_rules": ["$canCrossRivers, $canMaybeBreakHydraWalls, [$canBreakHydraWalls]"],
 				"sections": [
 					{
-						"name": "Magic Ring",
+						"name": "Mt Hydra Left Right Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -128,11 +65,11 @@
 			},
 			//Fruit of Lime
 			{
-				"name": "Mt. Hydra",
+				"name": "Mt Hydra Right Chest",
 				"access_rules": [""],
 				"sections": [
 					{
-						"name": "Fruit of Lime",
+						"name": "Mt Hydra Right Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -148,11 +85,11 @@
 			},
 			//Medical Herb
 			{
-				"name": "Mt. Hydra",
+				"name": "Mt Hydra Far Left Chest",
 				"access_rules": ["$canCrossRivers"],
 				"sections": [
 					{
-						"name": "Medical Herb",
+						"name": "Mt Hydra Far Left Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}

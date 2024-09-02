@@ -1,58 +1,16 @@
 [
 	{
-		//Pyramid Back
-		"name": "Pyramid Back",
+		//Crypt
+		"name": "Crypt",
 		"access_rules": ["$canMaybeReach|sahara, [$canReach|sahara], flight, $maybeHasCryptAccess, [$hasCryptAccess], $canOpenChest"],
 		"children": [
-			//Overview with mimics
-			{
-				"name": "Pyramid Back",
-				"access_rules": [""],
-				"sections": [
-					{
-						"name": "Pyramid Back Items",
-						"item_count": 2,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 660,
-						"y": 290,
-						"size": 90,
-						"force_invisibility_rules": ["flag_et", "flag_eu"]
-					}
-				],
-			},
-			//Overview without mimics
-			{
-				"name": "Pyramid Back",
-				"access_rules": [""],
-				"sections": [
-					{
-						"name": "Pyramid Back Item",
-						"item_count": 1,
-						"clear_as_group": "false"
-					},
-				],
-				"map_locations": [
-					{
-						"map": "map_overworld",
-						"x": 660,
-						"y": 290,
-						"size": 90,
-						"force_invisibility_rules": ["$negate|flag_et", "flag_eu"]
-					}
-				],
-			},
 			//Mimic
 			{
-				"name": "Pyramid Back",
+				"name": "Crypt Left Pit Mimic",
 				"access_rules": [""],
 				"sections": [
 					{
-						"name": "Mimic",
+						"name": "Crypt Left Pit Mimic",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}
@@ -68,11 +26,11 @@
 			},
 			//Opel Statue
 			{
-				"name": "Pyramid Back",
+				"name": "Crypt Right Chest",
 				"access_rules": [""],
 				"sections": [
 					{
-						"name": "Opel Statue",
+						"name": "Crypt Right Chest",
 						"item_count": 1,
 						"clear_as_group": "false"
 					}

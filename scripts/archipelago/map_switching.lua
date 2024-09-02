@@ -1,0 +1,6 @@
+CURRENT_ROOM = nil
+CURRENT_ROOM_ADDRESS = "Overworld"
+
+TABS_MAPPING = 
+{
+}
