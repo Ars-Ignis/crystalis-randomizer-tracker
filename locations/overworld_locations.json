@@ -1416,6 +1416,68 @@
 					}
 				],
 			},
+			//Sealed Cave Overview with consumables
+			{
+				"name": "Sealed Cave",
+				"access_rules": ["[$canBreakSealedCaveWalls]"],
+				"sections": [
+					{
+						"name": "Sealed Cave Small Room Front Chest",
+						"ref": "Sealed Cave/Sealed Cave Small Room Front Chest/Sealed Cave Small Room Front Chest"
+					},
+					{
+						"name": "Sealed Cave Big Room Southwest Chest",
+						"ref": "Sealed Cave/Sealed Cave Big Room Southwest Chest/Sealed Cave Big Room Southwest Chest"
+					},
+					{
+						"name": "Sealed Cave Ball of Wind Chest",
+						"ref": "Sealed Cave/Sealed Cave Ball of Wind Chest/Sealed Cave Ball of Wind Chest"
+					},
+					{
+						"name": "Sealed Cave Big Room Northeast Chest",
+						"ref": "Sealed Cave/Sealed Cave Big Room Northeast Chest/Sealed Cave Big Room Northeast Chest"
+					},
+					{
+						"name": "Sealed Cave Small Room Back Chest",
+						"ref": "Sealed Cave/Sealed Cave Small Room Back Chest/Sealed Cave Small Room Back Chest"
+					},
+					{
+						"name": "Vampire 1",
+						"ref": "Sealed Cave/Vampire 1/Vampire 1"
+					}
+				],
+				"map_locations": [
+					{
+						"map": "map_overworld",
+						"x": 130,
+						"y": 1180,
+						"size": 90,
+						"force_invisibility_rules": ["flag_eu"]
+					}
+				],
+			},
+			//Sealed Cave Overview without consumables
+			{
+				"name": "Sealed Cave",
+				"access_rules": ["[$canBreakSealedCaveWalls]"],
+				"sections": [
+					{
+						"name": "Sealed Cave Items",
+						"item_count": 2,
+						"clear_as_group": "false"
+					}
+				],
+				"map_locations": [
+					{
+						"name": "Sealed Cave Ball of Wind Chest",
+						"ref": "Sealed Cave/Sealed Cave Ball of Wind Chest/Sealed Cave Ball of Wind Chest"
+					},
+					{
+						"name": "Vampire 1",
+						"ref": "Sealed Cave/Vampire 1/Vampire 1"
+					}
+				],
+			},
 			//Stxy Overview with mimics
 			{
 				"name": "Stxy",

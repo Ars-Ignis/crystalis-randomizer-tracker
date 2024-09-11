@@ -4,6 +4,7 @@ ScriptHost:LoadScript("scripts/archipelago/map_switching.lua")
 
 CUR_INDEX = -1
 SLOT_DATA = nil
+KEY_ITEM_MAP = nil
 HOSTED = {}
 
 data_storage_table = {}
@@ -37,7 +38,14 @@ end
 
 function onClear(slot_data)
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-        print(string.format("called onClear, slot_data:\n%s", dump_table(slot_data)))
+        print("called onClear, slot_data:\n")
+		if slot_data ~= nil then
+			for k, v in pairs(slot_data) do
+				print(string.format("%s: %s", k, v))
+			end
+		else
+			print("nil\n")
+		end
     end
     SLOT_DATA = slot_data
     CUR_INDEX = -1
@@ -88,8 +96,18 @@ function onClear(slot_data)
     end
 
     if SLOT_DATA == nil then
+		KEY_ITEM_MAP = nil
         return
-    end
+    elseif SLOT_DATA["unidentified_key_items"] ~= 0 then
+	    local forward_map = SLOT_DATA["shuffle_data"]["key_item_names"]
+		KEY_ITEM_MAP = {}
+		for k, v in pairs(forward_map) do
+			KEY_ITEM_MAP[v] = k
+		end
+			
+	else
+		KEY_ITEM_MAP = nil
+	end
 
     Tracker:FindObjectForCode("auto_tab").CurrentStage = 1
     local slot_player = toString(Archipelago.PlayerNumber)
@@ -110,10 +128,17 @@ function onItem(index, item_id, item_name, player_number)
     CUR_INDEX = index;
     local v = ITEM_MAPPING[item_id]
     if not v then
-        if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+		local found = false
+		if KEY_ITEM_MAP ~= nil then
+			v = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
+			if v then
+				found = true
+			end
+		end
+        if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP and not found then
             print(string.format("onItem: could not find item mapping for id %s", item_id))
+			return
         end
-        return
     end
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print(string.format("onItem: code: %s, type %s", v[1], v[2]))
@@ -178,7 +203,7 @@ end
 -- called when a bounce message is received 
 function onBounce(json)
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-        print(string.format("called onBounce: %s", dump_table(json)))
+        print(string.format("called onBounce: %s", json))
     end
 end
 
@@ -187,7 +212,6 @@ end
 Archipelago:AddClearHandler("clear handler", onClear)
 Archipelago:AddItemHandler("item handler", onItem)
 Archipelago:AddLocationHandler("location handler", onLocation)
---Archipelago:AddSetReplyHandler("Current Map", onChangedRegion) -- OLD OLD OLD
 Archipelago:AddSetReplyHandler("set reply handler", onSetReply)
 -- Archipelago:AddScoutHandler("scout handler", onScout)
 -- Archipelago:AddBouncedHandler("bounce handler", onBounce)

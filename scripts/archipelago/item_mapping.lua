@@ -24,7 +24,7 @@ ITEM_MAPPING = {
     [2241030] = {"powerring", "toggle"},
     [2241031] = {"warriorring", "toggle"},
     [2241032] = {"ironnecklace", "toggle"},
-    [2241033] = {"deo'spendant", "toggle"},
+    [2241033] = {"deospendant", "toggle"},
     [2241034] = {"rabbitboots", "toggle"},
     [2241035] = {"speedboots", "toggle"},
     [2241036] = {"shieldring", "toggle"},
@@ -52,4 +52,23 @@ ITEM_MAPPING = {
     [2241058] = {"barrier", "toggle"},
     [2241059] = {"change", "toggle"},
     [2241060] = {"flight", "toggle"},
+}
+
+KEY_ITEM_REVERSE_MAP = {
+	["Windmill Key"] = 2241038,
+	["Key to Prison"] = 2241039,
+	["Key to Stxy"] = 2241040,
+	["Alarm Flute"] = 2241037,
+	["Insect Flute"] = 2241027,
+	["Flute of Lime"] = 2241028,
+	["Shell Flute"] = 2241042,
+	["Fog Lamp"] = 2241041,
+	["Glowing Lamp"] = 2241045,
+	["Statue of Onyx"] = 2241025,
+	["Broken Statue"] = 2241044,
+	["Statue of Gold"] = 2241046,
+	["Ivory Statue"] = 2241049,
+	["Bow of Moon"] = 2241050,
+	["Bow of Sun"] = 2241051,
+	["Bow of Truth"] = 2241052,
 }

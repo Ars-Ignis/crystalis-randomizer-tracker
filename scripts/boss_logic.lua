@@ -219,7 +219,7 @@ function canKillKarmine()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("thunder") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("thunderball") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("thunderorb") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return 	Tracker:ProviderCountForCode("karmine_cleared") > 0 or 

@@ -4,7 +4,7 @@ function canBreakStoneWalls()
 	if Tracker:ProviderCountForCode("wind") == 0 then
 		return false
 	else
-		return	Tracker:ProviderCountForCode("windball") > 0 or 
+		return	Tracker:ProviderCountForCode("windorb") > 0 or 
 				Tracker:ProviderCountForCode("windbracelet") > 0 or 
 				Tracker:ProviderCountForCode("flag_ro") > 0 or
 				(Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())
@@ -15,7 +15,7 @@ function canBreakIceWalls()
 	if Tracker:ProviderCountForCode("fire") == 0 then
 		return false
 	else
-		return	Tracker:ProviderCountForCode("fireball") > 0 or 
+		return	Tracker:ProviderCountForCode("fireorb") > 0 or 
 				Tracker:ProviderCountForCode("firebracelet") > 0 or 
 				Tracker:ProviderCountForCode("flag_ro") > 0 or
 				(Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())
@@ -26,7 +26,7 @@ function canBreakEmberWalls()
 	if Tracker:ProviderCountForCode("water") == 0 then
 		return false
 	else
-		return	Tracker:ProviderCountForCode("waterball") > 0 or 
+		return	Tracker:ProviderCountForCode("waterorb") > 0 or 
 				Tracker:ProviderCountForCode("waterbracelet") > 0 or 
 				Tracker:ProviderCountForCode("flag_ro") > 0 or
 				(Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())
@@ -37,7 +37,7 @@ function canBreakIronWalls()
 	if Tracker:ProviderCountForCode("thunder") == 0 then
 		return false
 	else
-		return	Tracker:ProviderCountForCode("thunderball") > 0 or 
+		return	Tracker:ProviderCountForCode("thunderorb") > 0 or 
 				Tracker:ProviderCountForCode("thunderbracelet") > 0 or 
 				Tracker:ProviderCountForCode("flag_ro") > 0 or
 				(Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())

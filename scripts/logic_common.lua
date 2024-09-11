@@ -11,12 +11,12 @@ function hasAllSwords()
 	return Tracker:ProviderCountForCode("sword") >= 4
 end
 
-function hasAnyBall()
-	return Tracker:ProviderCountForCode("ball") > 0
+function hasAnyOrb()
+	return Tracker:ProviderCountForCode("orb") > 0
 end
 
-function hasAllBalls()
-	return Tracker:ProviderCountForCode("ball") >= 4
+function hasAllOrbs()
+	return Tracker:ProviderCountForCode("orb") >= 4
 end
 
 function hasAnyBracelet()
@@ -29,16 +29,16 @@ end
 
 function levelTwoCount()
 	local count = 0
-	if Tracker:ProviderCountForCode("windball") > 0 and Tracker:ProviderCountForCode("wind") > 0 then
+	if Tracker:ProviderCountForCode("windorb") > 0 and Tracker:ProviderCountForCode("wind") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("fireball") > 0 and Tracker:ProviderCountForCode("fire") > 0 then
+	if Tracker:ProviderCountForCode("fireorb") > 0 and Tracker:ProviderCountForCode("fire") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("waterball") > 0 and Tracker:ProviderCountForCode("water") > 0 then
+	if Tracker:ProviderCountForCode("waterorb") > 0 and Tracker:ProviderCountForCode("water") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("thunderball") > 0 and Tracker:ProviderCountForCode("thunder") > 0 then
+	if Tracker:ProviderCountForCode("thunderorb") > 0 and Tracker:ProviderCountForCode("thunder") > 0 then
 		count = count + 1
 	end
 	return count
@@ -49,7 +49,7 @@ function hasAnyLevelTwo()
 end
 
 function hasAllLevelTwo()
-	return hasAllSwords() and hasAllBalls()
+	return hasAllSwords() and hasAllOrbs()
 end
 
 function battleMagicCount()

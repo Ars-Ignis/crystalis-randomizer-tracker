@@ -96,37 +96,37 @@
 			},
 		]
 	},
-	// Ball of Wind
+	// Orb of Wind
 	{
-		"name": "Ball of Wind",
+		"name": "Orb of Wind",
 		"type": "toggle",
 		"img": "images/items/ballofwind.png",
 		"loop": "true",
-		"codes": "windball, ball, ballofwind"
+		"codes": "windorb, orb, orbofwind"
 	},
-	// Ball of Fire
+	// Orb of Fire
 	{
-		"name": "Ball of Fire",
+		"name": "Orb of Fire",
 		"type": "toggle",
 		"img": "images/items/balloffire.png",
 		"loop": "true",
-		"codes": "fireball, ball, balloffire"
+		"codes": "fireorb, orb, orboffire"
 	},
-	// Ball of Water
+	// Orb of Water
 	{
-		"name": "Ball of Water",
+		"name": "Orb of Water",
 		"type": "toggle",
 		"img": "images/items/ballofwater.png",
 		"loop": "true",
-		"codes": "waterball, ball, ballofwater"
+		"codes": "waterorb, orb, orbofwater"
 	},
-	// Ball of Thunder
+	// Orb of Thunder
 	{
-		"name": "Ball of Thunder",
+		"name": "Orb of Thunder",
 		"type": "toggle",
 		"img": "images/items/ballofthunder.png",
 		"loop": "true",
-		"codes": "thunderball, ball, ballofthunder"
+		"codes": "thunderorb, orb, orbofthunder"
 	},
 	// Tornado Bracelet
 	{
@@ -443,9 +443,9 @@
 	// Opel Statue
 	{
 		"name": "Opel Statue",
-		"type": "toggle",
+		"type": "consumable",
 		"img": "images/items/statueopel.png",
-		"loop": "true",
+		"max_quantity": 3,
 		"codes": "opel, opelstatue"
 	},
 	// Go Mode
