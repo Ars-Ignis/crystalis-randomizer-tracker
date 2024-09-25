@@ -29,16 +29,16 @@ end
 
 function levelTwoCount()
 	local count = 0
-	if Tracker:ProviderCountForCode("windorb") > 0 and Tracker:ProviderCountForCode("wind") > 0 then
+	if Tracker:ProviderCountForCode("windupgrade") > 0 and Tracker:ProviderCountForCode("wind") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("fireorb") > 0 and Tracker:ProviderCountForCode("fire") > 0 then
+	if Tracker:ProviderCountForCode("fireupgrade") > 0 and Tracker:ProviderCountForCode("fire") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("waterorb") > 0 and Tracker:ProviderCountForCode("water") > 0 then
+	if Tracker:ProviderCountForCode("waterupgrade") > 0 and Tracker:ProviderCountForCode("water") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("thunderorb") > 0 and Tracker:ProviderCountForCode("thunder") > 0 then
+	if Tracker:ProviderCountForCode("thunderupgrade") > 0 and Tracker:ProviderCountForCode("thunder") > 0 then
 		count = count + 1
 	end
 	return count
@@ -49,21 +49,21 @@ function hasAnyLevelTwo()
 end
 
 function hasAllLevelTwo()
-	return hasAllSwords() and hasAllOrbs()
+	return levelTwoCount() == 4
 end
 
 function battleMagicCount()
 	local count = 0
-	if Tracker:ProviderCountForCode("windbracelet") > 0 and Tracker:ProviderCountForCode("wind") > 0 then
+	if Tracker:ProviderCountForCode("windupgrade") > 1 and Tracker:ProviderCountForCode("wind") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("firebracelet") > 0 and Tracker:ProviderCountForCode("fire") > 0 then
+	if Tracker:ProviderCountForCode("fireupgrade") > 1 and Tracker:ProviderCountForCode("fire") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("waterbracelet") > 0 and Tracker:ProviderCountForCode("water") > 0 then
+	if Tracker:ProviderCountForCode("waterupgrade") > 1 and Tracker:ProviderCountForCode("water") > 0 then
 		count = count + 1
 	end
-	if Tracker:ProviderCountForCode("thunderbracelet") > 0 and Tracker:ProviderCountForCode("thunder") > 0 then
+	if Tracker:ProviderCountForCode("thunderupgrade") > 1 and Tracker:ProviderCountForCode("thunder") > 0 then
 		count = count + 1
 	end
 	return count
@@ -74,7 +74,7 @@ function hasAnyBattleMagic()
 end
 
 function hasAllBattleMagic()
-	return hasAllSwords() and hasAllBracelets()
+	return battleMagicCount() == 4
 end
 
 function canOpenChest()

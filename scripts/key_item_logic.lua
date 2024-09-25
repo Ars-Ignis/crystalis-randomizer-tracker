@@ -351,21 +351,21 @@ end
 
 function hasTornelBracelet()
 	if negate("flag_wt") then
-		return Tracker:ProviderCountForCode("windbracelet") > 0
+		return Tracker:ProviderCountForCode("windupgrade") > 1
 	else
-		return 	hasAllBracelets() or
-				(Tracker:ProviderCountForCode("tornelwind") > 0 and Tracker:ProviderCountForCode("windbracelet") > 0) or
-				(Tracker:ProviderCountForCode("tornelfire") > 0 and Tracker:ProviderCountForCode("firebracelet") > 0) or
-				(Tracker:ProviderCountForCode("tornelwater") > 0 and Tracker:ProviderCountForCode("waterbracelet") > 0) or
-				(Tracker:ProviderCountForCode("tornelthunder") > 0 and Tracker:ProviderCountForCode("thunderbracelet") > 0) 
+		return 	hasAllBattleMagic() or
+				(Tracker:ProviderCountForCode("tornelwind") > 0 and Tracker:ProviderCountForCode("windupgrade") > 1) or
+				(Tracker:ProviderCountForCode("tornelfire") > 0 and Tracker:ProviderCountForCode("fireupgrade") > 1) or
+				(Tracker:ProviderCountForCode("tornelwater") > 0 and Tracker:ProviderCountForCode("waterupgrade") > 1) or
+				(Tracker:ProviderCountForCode("tornelthunder") > 0 and Tracker:ProviderCountForCode("thunderupgrade") > 1) 
 	end
 end
 
 function maybeHasTornelBracelet()
 	if negate("flag_wt") then
-		return Tracker:ProviderCountForCode("windbracelet") > 0
+		return Tracker:ProviderCountForCode("windupgrade") > 1
 	else
-		return (hasAnyBracelet() and Tracker:ProviderCountForCode("tornel") == 0) or hasTornelBracelet()
+		return (hasAnyBattleMagic() and Tracker:ProviderCountForCode("tornel") == 0) or hasTornelBracelet()
 	end
 end
 

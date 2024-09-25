@@ -102,7 +102,7 @@
 		"type": "toggle",
 		"img": "images/items/ballofwind.png",
 		"loop": "true",
-		"codes": "windorb, orb, orbofwind"
+		"codes": "windorb, orb, orbofwind, windupgrade"
 	},
 	// Orb of Fire
 	{
@@ -110,7 +110,7 @@
 		"type": "toggle",
 		"img": "images/items/balloffire.png",
 		"loop": "true",
-		"codes": "fireorb, orb, orboffire"
+		"codes": "fireorb, orb, orboffire, fireupgrade"
 	},
 	// Orb of Water
 	{
@@ -118,7 +118,7 @@
 		"type": "toggle",
 		"img": "images/items/ballofwater.png",
 		"loop": "true",
-		"codes": "waterorb, orb, orbofwater"
+		"codes": "waterorb, orb, orbofwater, waterupgrade"
 	},
 	// Orb of Thunder
 	{
@@ -126,7 +126,7 @@
 		"type": "toggle",
 		"img": "images/items/ballofthunder.png",
 		"loop": "true",
-		"codes": "thunderorb, orb, orbofthunder"
+		"codes": "thunderorb, orb, orbofthunder, thunderupgrade"
 	},
 	// Tornado Bracelet
 	{
@@ -134,7 +134,7 @@
 		"type": "toggle",
 		"img": "images/items/braceletofwind.png",
 		"loop": "true",
-		"codes": "tornado, bracelet, windbracelet, tornadobracelet"
+		"codes": "tornado, bracelet, windbracelet, tornadobracelet, windupgrade"
 	},
 	// Flame Bracelet
 	{
@@ -142,7 +142,7 @@
 		"type": "toggle",
 		"img": "images/items/braceletoffire.png",
 		"loop": "true",
-		"codes": "flame, bracelet, firebracelet, flamebracelet"
+		"codes": "flame, bracelet, firebracelet, flamebracelet, fireupgrade"
 	},
 	// Blizzard Bracelet
 	{
@@ -150,7 +150,7 @@
 		"type": "toggle",
 		"img": "images/items/braceletofwater.png",
 		"loop": "true",
-		"codes": "blizzard, bracelet, waterbracelet, blizzardbracelet"
+		"codes": "blizzard, bracelet, waterbracelet, blizzardbracelet, waterupgrade"
 	},
 	// Storm Bracelet
 	{
@@ -158,7 +158,7 @@
 		"type": "toggle",
 		"img": "images/items/braceletofthunder.png",
 		"loop": "true",
-		"codes": "storm, bracelet, thunderbracelet, stormbracelet"
+		"codes": "storm, bracelet, thunderbracelet, stormbracelet, thunderupgrade"
 	},
 	// Bow of Moon
 	{
