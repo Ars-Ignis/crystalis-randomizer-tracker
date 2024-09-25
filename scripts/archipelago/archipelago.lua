@@ -7,31 +7,20 @@ SLOT_DATA = nil
 KEY_ITEM_MAP = nil
 HOSTED = {}
 
-data_storage_table = {}
-
 function onSetReply(key, value, _)
-    local slot_player = toString(Archipelago.PlayerNumber)
-    if key ==  "current_location" .. slot_player then
-        if Tracker:FindObjectForCode("auto_tab").CurrentStage == 1 then
+    local slot_team = tostring(Archipelago.TeamNumber)
+    local slot_player = tostring(Archipelago.PlayerNumber)
+    if key ==  "current_location_".. slot_team .. "_" .. slot_player then
+        if true then --Tracker:FindObjectForCode("auto_tab").CurrentStage == 1 then
             if TABS_MAPPING[value] then
                 CURRENT_ROOM = TABS_MAPPING[value]
             else
                 CURRENT_ROOM = CURRENT_ROOM_ADDRESS
             end
-            Tracker:UiHint("ActivateTab", CURRENT_ROOM)
-        end
-    end
-    for long_name, short_name in pairs(data_storage_table) do
-        if key == slot_player .. ":" .. long_name then
-            Tracker:FindObjectForCode(short_name, ITEMS).Active = value
-        end
-    end
-end
-
-function retrieved(key, value)
-    for long_name, short_name in pairs(data_storage_table) do
-        if key == "Slot:" .. Archipelago.PlayerNumber .. ":" .. long_name then
-            Tracker:FindObjectForCode(short_name, ITEMS).Active = value
+            print("CURRENT_ROOM: " .. tostring(CURRENT_ROOM))
+            for _, tab in ipairs(CURRENT_ROOM) do
+                Tracker:UiHint("ActivateTab", tab)
+            end
         end
     end
 end
@@ -39,13 +28,13 @@ end
 function onClear(slot_data)
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print("called onClear, slot_data:\n")
-		if slot_data ~= nil then
-			for k, v in pairs(slot_data) do
-				print(string.format("%s: %s", k, v))
-			end
-		else
-			print("nil\n")
-		end
+        if slot_data ~= nil then
+            for k, v in pairs(slot_data) do
+                print(string.format("%s: %s", k, v))
+            end
+        else
+            print("nil\n")
+        end
     end
     SLOT_DATA = slot_data
     CUR_INDEX = -1
@@ -96,22 +85,23 @@ function onClear(slot_data)
     end
 
     if SLOT_DATA == nil then
-		KEY_ITEM_MAP = nil
+        KEY_ITEM_MAP = nil
         return
     elseif SLOT_DATA["unidentified_key_items"] ~= 0 then
-	    local forward_map = SLOT_DATA["shuffle_data"]["key_item_names"]
-		KEY_ITEM_MAP = {}
-		for k, v in pairs(forward_map) do
-			KEY_ITEM_MAP[v] = k
-		end
-			
-	else
-		KEY_ITEM_MAP = nil
-	end
+        local forward_map = SLOT_DATA["shuffle_data"]["key_item_names"]
+        KEY_ITEM_MAP = {}
+        for k, v in pairs(forward_map) do
+            KEY_ITEM_MAP[v] = k
+        end
+            
+    else
+        KEY_ITEM_MAP = nil
+    end
 
-    Tracker:FindObjectForCode("auto_tab").CurrentStage = 1
-    local slot_player = toString(Archipelago.PlayerNumber)
-    local data_storage_list = ({"current_location" .. slot_player})
+    --Tracker:FindObjectForCode("auto_tab").CurrentStage = 1
+    local slot_team = tostring(Archipelago.TeamNumber)
+    local slot_player = tostring(Archipelago.PlayerNumber)
+    local data_storage_list = ({"current_location_".. slot_team .. "_" .. slot_player})
 
     Archipelago:SetNotify(data_storage_list)
     Archipelago:Get(data_storage_list)
@@ -128,16 +118,18 @@ function onItem(index, item_id, item_name, player_number)
     CUR_INDEX = index;
     local v = ITEM_MAPPING[item_id]
     if not v then
-		local found = false
-		if KEY_ITEM_MAP ~= nil then
-			v = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
-			if v then
-				found = true
-			end
-		end
-        if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP and not found then
-            print(string.format("onItem: could not find item mapping for id %s", item_id))
-			return
+        local found = false
+        if KEY_ITEM_MAP ~= nil then
+            v = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
+            if v then
+                found = true
+            end
+        end
+        if not found then
+            if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+                print(string.format("onItem: could not find item mapping for id %s", item_id))
+            end
+            return
         end
     end
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
@@ -215,4 +207,4 @@ Archipelago:AddLocationHandler("location handler", onLocation)
 Archipelago:AddSetReplyHandler("set reply handler", onSetReply)
 -- Archipelago:AddScoutHandler("scout handler", onScout)
 -- Archipelago:AddBouncedHandler("bounce handler", onBounce)
-Archipelago:AddRetrievedHandler("retrieved", retrieved)
+-- Archipelago:AddRetrievedHandler("retrieved", retrieved)
