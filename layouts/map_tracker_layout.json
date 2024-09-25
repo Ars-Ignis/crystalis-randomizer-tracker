@@ -141,7 +141,7 @@
 						}
 					},
 					{
-						"title": "Pyramid Front",
+						"title": "Pyramid",
 						"content": {
 							"type": "layout",
 							"dropshadow": false,
@@ -150,7 +150,7 @@
 						}
 					},
 					{
-						"title": "Pyramid Back",
+						"title": "Crypt",
 						"content": {
 							"type": "layout",
 							"dropshadow": false,
