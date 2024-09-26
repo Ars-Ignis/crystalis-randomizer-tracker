@@ -384,16 +384,6 @@
 						"margin": 0,
 						"key": "tracker_walls_bosses_and_misc"
 					}
-			},
-			{
-				"title": "Flags",
-				"content": 
-					{
-						"type": "layout",
-						"dropshadow": false,
-						"margin": 0,
-						"key": "tracker_flags"
-					}
 			}
 		]
 	},

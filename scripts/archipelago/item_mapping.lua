@@ -72,3 +72,52 @@ KEY_ITEM_REVERSE_MAP = {
 	["Bow of Sun"] = 2241051,
 	["Bow of Truth"] = 2241052,
 }
+
+OPTION_NAME_TO_FLAG_ITEM_MAP = {
+	["randomize_maps"] = "flag_wm",
+	["shuffle_houses"] = "flag_wh",
+	["randomize_tradeins"] = "flag_wt",
+	["unidentified_key_items"] = "flag_wu",
+	["randomize_wall_elements"] = "flag_we",
+	["shuffle_goa"] = "flag_wg",
+	["orbs_not_required"] = "flag_ro",
+	["vanilla_dolphin"] = "flag_rd",
+	["fake_flight"] = "flag_gf",
+	["statue_glitch"] = "flag_gs",
+	["mt_sabre_skip"] = "flag_gn",
+	["statue_gauntlet_skip"] = "flag_gg",
+	["sword_charge_glitch"] = "flag_gc",
+	["trigger_skip"] = "flag_gt",
+	["rage_skip"] = "flag_gr",
+	["randomize_monster_weaknesses"] = "flag_me",
+	["oops_all_mimics"] = "flag_mg",
+	["dont_shuffle_mimics"] = "flag_et",
+	["keep_unique_items_and_consumables_separate"] = "flag_eu",
+	["guarantee_refresh"] = "flag_er",
+	["battle_magic_not_guaranteed"] = "flag_nw",
+	["tink_mode"] = "flag_ns",
+	["barrier_not_guaranteed"] = "flag_nb",
+	["gas_mask_not_guaranteed"] = "flag_ng",
+	["dont_buff_bonus_items"] = "flag_vb",
+	["vanilla_wild_warp"] = "flag_vw"
+}
+
+--These settings need special handling
+--****["vanilla_maps"] = "flag_",
+--****["thunder_warp"] = "flag_",
+
+THUNDER_CODE_TO_INDEX = {
+	["thunder"] = 0,
+	["thundershyron"] = 1,
+	["thunderleaf"] = 2,
+	["thunderbrynmaer"] = 3,
+	["thunderoak"] = 4,
+	["thundernadares"] = 5,
+	["thunderportoa"] = 6,
+	["thunderamazones"] = 7,
+	["thunderjoel"] = 8,
+	["thunderzombie"] = 9,
+	["thunderswan"] = 10,
+	["thundergoa"] = 11,
+	["thundersahara"] = 12
+}

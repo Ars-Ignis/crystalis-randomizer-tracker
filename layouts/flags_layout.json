@@ -1,6 +1,6 @@
 {
 
-	"tracker_flags": {
+	"settings_popup": {
 		"type": "array",
 		"orientation": "horizontal",
 		"v_alignment": "top",

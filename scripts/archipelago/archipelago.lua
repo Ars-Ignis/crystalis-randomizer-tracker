@@ -7,6 +7,8 @@ SLOT_DATA = nil
 KEY_ITEM_MAP = nil
 HOSTED = {}
 
+--AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
+
 function onSetReply(key, value, _)
     local slot_team = tostring(Archipelago.TeamNumber)
     local slot_player = tostring(Archipelago.PlayerNumber)
@@ -38,6 +40,37 @@ function onClear(slot_data)
     end
     SLOT_DATA = slot_data
     CUR_INDEX = -1
+    if SLOT_DATA ~= nil then
+        for k, v in pairs(SLOT_DATA) do
+            if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
+                local flag_obj = Tracker:FindObjectForCode(OPTION_NAME_TO_FLAG_ITEM_MAP[k])
+                flag_obj.Active = (v ~= 0)
+            end
+        end
+        local vm_value = SLOT_DATA["vanilla_maps"]
+        local vm_obj = Tracker:FindObjectForCode("flag_vm")
+        if vm_value == 0 then
+            vm_obj.CurrentStage = 0
+            vm_obj.Active = false
+        elseif vm_value == 1 then
+            vm_obj.CurrentStage = 2
+            vm_obj.Active = true
+        elseif vm_value == 2 then
+            vm_obj.CurrentStage = 1
+            vm_obj.Active = true
+        end
+        local thunder_warp = SLOT_DATA["shuffle_data"]["thunder_warp"]
+        if thunder_warp == "Nadare's" then
+            thunder_warp = "nadares"
+        elseif thunder_warp == "Zombie Town" then
+            thunder_warp = "zombie"
+        else
+            thunder_warp = string.lower(thunder_warp)
+        end
+        local thunder_code = "thunder" .. thunder_warp
+        local thunder_obj = Tracker:FindObjectForCode("thunder")
+        thunder_obj.CurrentStage = THUNDER_CODE_TO_INDEX[thunder_code]
+    end
     -- reset locations
     for _, v in pairs(LOCATION_MAPPING) do
         if v[1] then
