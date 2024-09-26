@@ -4,13 +4,13 @@ ITEM_MAPPING = {
     [2241002] = {"swordofwater", "toggle"},
     [2241003] = {"swordofthunder", "toggle"},
     [2241004] = {"orbofwind", "toggle"},
-    [2241005] = {"tornadobracelet", "toggle"},
+    [2241005] = {"windbracelet", "toggle"},
     [2241006] = {"orboffire", "toggle"},
-    [2241007] = {"flamebracelet", "toggle"},
+    [2241007] = {"firebracelet", "toggle"},
     [2241008] = {"orbofwater", "toggle"},
-    [2241009] = {"blizzardbracelet", "toggle"},
+    [2241009] = {"waterbracelet", "toggle"},
     [2241010] = {"orbofthunder", "toggle"},
-    [2241011] = {"stormbracelet", "toggle"},
+    [2241011] = {"thunderbracelet", "toggle"},
     [2241012] = {"mirroredshield", "toggle"},
     [2241013] = {"sacredshield", "toggle"},
     [2241014] = {"psychoshield", "toggle"},
@@ -71,6 +71,8 @@ KEY_ITEM_REVERSE_MAP = {
 	["Bow of Moon"] = 2241050,
 	["Bow of Sun"] = 2241051,
 	["Bow of Truth"] = 2241052,
+	["Kirisa Plant"] = 2241048,
+	["Love Pendant"] = 2241047,
 }
 
 OPTION_NAME_TO_FLAG_ITEM_MAP = {
@@ -120,4 +122,33 @@ THUNDER_CODE_TO_INDEX = {
 	["thunderswan"] = 10,
 	["thundergoa"] = 11,
 	["thundersahara"] = 12
+}
+
+REGION_TO_ROCK_WALL_CODE = {
+	["Zebu Cave"] = "zcw",
+	["East Cave"] = "ecw",
+	["Sealed Cave"] = "scw",
+	["Mt Sabre West"] = "msww",
+	["Mt Sabre North"] = "msnw",
+	["Waterfall Cave"] = "wcw",
+	["Fog Lamp Cave"] = "flcw",
+	["Kirisa Plant Cave"] = "kpcw",
+	["Evil Spirit Island"] = "esiw",
+	["Mt Hydra"] = "mhw"
+}
+
+REGION_TO_IRON_WALL_CODE = {
+	["Goa Fortress - Entrance"] = "goa_entrance_wall_cleared",
+	["Goa Fortress Basement"] = "goa_basement_wall_cleared",
+	["Goa Fortress - Sabera Item"] = "goa_sabera_item_wall_cleared",
+	["Goa Fortress - Sabera Boss"] = "goa_sabera_boss_wall_cleared",
+	["Goa Fortress - Mado 2"] = "goa_mado_wall_cleared",
+	["Goa Fortress - Karmine 5"] = "goa_karmine_wall_cleared"
+}
+
+REGION_TO_GBC_EXIT_STAGE = {
+	["Cordel Plains - Main"] = 1,
+	["Lime Valley"] = 2,
+	["Goa Valley"] = 3,
+	["Desert 2"] = 4
 }

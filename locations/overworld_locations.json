@@ -312,9 +312,9 @@
 				"map_locations": [
 					{
 						"map": "map_overworld",
-						"visibility_rules": [ "$negate|flag_rd" ],
 						"x": 1190,
-						"y": 720
+						"y": 720,
+						"force_invisibility_rules": ["flag_rd"]
 					}
 				]
 			},
@@ -545,10 +545,9 @@
 				"map_locations": [
 					{
 						"map": "map_overworld",
-						"visibility_rules": [ "flag_wm" ],
 						"x": 60,
 						"y": 1400,
-						"force_invisibility_rules": ["$canBreakZebusCaveWall"]
+						"force_invisibility_rules": ["$canBreakZebusCaveWall", "$negate|flag_wm"]
 					}
 				]
 			},

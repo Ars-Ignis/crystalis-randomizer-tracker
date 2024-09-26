@@ -143,8 +143,18 @@ function hasBothLamps()
 end
 
 function hasAkahanaTrade()
-local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
+	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local akahana_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Akahana"]
+		if flag_wu then
+			local akahana_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[akahana_trade_item]]][1]
+			return Tracker:ProviderCountForCode(akahana_trade_code) > 0
+		else
+			local akahana_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[akahana_trade_item]][1]
+			return Tracker:ProviderCountForCode(akahana_trade_code) > 0
+		end
+	end
 	if not flag_wt and not flag_wu then
 		return Tracker:ProviderCountForCode("redstatue") > 0
 	elseif not flag_wt and flag_wu then
@@ -157,6 +167,9 @@ local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 end
 
 function maybeHasAkahanaTrade()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasAkahanaTrade()
+	end
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt and not flag_wu then
@@ -178,6 +191,16 @@ end
 function hasSlimeTrade()
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local slime_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Slimed Kensu"]
+		if flag_wu then
+			local slime_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[slime_trade_item]]][1]
+			return Tracker:ProviderCountForCode(slime_trade_code) > 0
+		else
+			local slime_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[slime_trade_item]][1]
+			return Tracker:ProviderCountForCode(slime_trade_code) > 0
+		end
+	end
 	if not flag_wt and not flag_wu then
 		return Tracker:ProviderCountForCode("graystatue") > 0
 	elseif not flag_wt and flag_wu then
@@ -190,6 +213,9 @@ function hasSlimeTrade()
 end
 
 function maybeHasSlimeTrade()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasSlimeTrade()
+	end
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt and not flag_wu then
@@ -209,6 +235,17 @@ function maybeHasSlimeTrade()
 end
 
 function hasAryllisTrade()
+	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local aryllis_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Aryllis"]
+		if flag_wu then
+			local aryllis_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[aryllis_trade_item]]][1]
+			return Tracker:ProviderCountForCode(aryllis_trade_code) > 0
+		else
+			local aryllis_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[aryllis_trade_item]][1]
+			return Tracker:ProviderCountForCode(aryllis_trade_code) > 0
+		end
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("kirisa") > 0
 	else
@@ -218,6 +255,9 @@ function hasAryllisTrade()
 end
 
 function maybeHasAryllisTrade()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasAryllisTrade()
+	end
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt then
@@ -236,6 +276,28 @@ function maybeHasAryllisTrade()
 end
 
 function hasKensuTrade()
+	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local kensu_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Kensu"]
+		if flag_wu then
+			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+				print("kensu_trade_item: " .. kensu_trade_item)
+				print("KEY_ITEM_MAP:")
+				for k, v in pairs(KEY_ITEM_MAP) do
+					print(k .. ": " .. v)
+				end
+				print("KEY_ITEM_REVERSE_MAP:")
+				for k, v in pairs(KEY_ITEM_REVERSE_MAP) do
+					print(k .. ": " .. v)
+				end
+			end
+			local kensu_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[kensu_trade_item]]][1]
+			return Tracker:ProviderCountForCode(kensu_trade_code) > 0
+		else
+			local kensu_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[kensu_trade_item]][1]
+			return Tracker:ProviderCountForCode(kensu_trade_code) > 0
+		end
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("love") > 0
 	else
@@ -245,6 +307,9 @@ function hasKensuTrade()
 end
 
 function maybeHasKensuTrade()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasKensuTrade()
+	end
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt then
@@ -265,6 +330,16 @@ end
 function hasFishermanTrade()
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local fisherman_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Fisherman"]
+		if flag_wu then
+			local fisherman_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[fisherman_trade_item]]][1]
+			return Tracker:ProviderCountForCode(fisherman_trade_code) > 0
+		else
+			local fisherman_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[fisherman_trade_item]][1]
+			return Tracker:ProviderCountForCode(fisherman_trade_code) > 0
+		end
+	end
 	if not flag_wt and not flag_wu then
 		return Tracker:ProviderCountForCode("bluelamp") > 0
 	elseif not flag_wt and flag_wu then
@@ -277,6 +352,9 @@ function hasFishermanTrade()
 end
 
 function maybeHasFishermanTrade()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasFishermanTrade()
+	end
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	if not flag_wt and not flag_wu then
@@ -350,6 +428,10 @@ function maybeHasWhirlpoolStatue()
 end
 
 function hasTornelBracelet()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local tornelement = string.lower(SLOT_DATA["shuffle_data"]["trade_in_map"]["Tornel"])
+		return Tracker:ProviderCountForCode(tornelement .. "upgrade") > 1
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("windupgrade") > 1
 	else
@@ -362,6 +444,9 @@ function hasTornelBracelet()
 end
 
 function maybeHasTornelBracelet()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasTornelBracelet()
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("windupgrade") > 1
 	else
@@ -370,6 +455,10 @@ function maybeHasTornelBracelet()
 end
 
 function hasRageSword()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		local ragesword = string.gsub(string.lower(SLOT_DATA["shuffle_data"]["trade_in_map"]["Rage"]), " ", "")
+		return Tracker:ProviderCountForCode(ragesword) > 0
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("water") > 0
 	else
@@ -382,6 +471,9 @@ function hasRageSword()
 end
 
 function maybeHasRageSword()
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+		return hasRageSword()
+	end
 	if negate("flag_wt") then
 		return Tracker:ProviderCountForCode("water") > 0
 	else

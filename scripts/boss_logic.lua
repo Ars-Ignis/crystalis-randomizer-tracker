@@ -73,7 +73,7 @@ function canKillKelbesque1()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("wind") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("windbracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("windupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("kelbesque1_cleared") > 0 or canKillTetrarchyMember()
@@ -96,7 +96,7 @@ function canKillKelbesque2()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("wind") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("windbracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("windupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("kelbesque2_cleared") > 0 or canKillTetrarchyMember()
@@ -119,7 +119,7 @@ function canKillSabera1()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("fire") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("firebracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("fireupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("sabera1_cleared") > 0 or canKillTetrarchyMember()
@@ -142,7 +142,7 @@ function canKillSabera2()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("fire") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("firebracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("fireupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("sabera2_cleared") > 0 or canKillTetrarchyMember()
@@ -165,7 +165,7 @@ function canKillMado1()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("water") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("waterbracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("waterupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("mado1_cleared") > 0 or canKillTetrarchyMember()
@@ -188,7 +188,7 @@ function canKillMado2()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("water") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("waterbracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("waterupgrade") > 1 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return Tracker:ProviderCountForCode("mado2_cleared") > 0 or canKillTetrarchyMember()
@@ -219,7 +219,7 @@ function canKillKarmine()
 	end
 	if negate("flag_me") then
 		return Tracker:ProviderCountForCode("thunder") > 0 and 
-		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("thunderorb") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())) and 
+		(Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode("thunderupgrade") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo())) and 
 		(negate("flag_er") or Tracker:ProviderCountForCode("refresh") > 0)
 	else
 		return 	Tracker:ProviderCountForCode("karmine_cleared") > 0 or 
