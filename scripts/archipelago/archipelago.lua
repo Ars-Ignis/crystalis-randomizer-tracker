@@ -9,7 +9,7 @@ HOSTED = {}
 IRON_WALL_ELEMENTS = nil
 BOSS_ELEMENTS = nil
 
-AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
+--AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
 
 function onSetReply(key, value, _)
     local slot_team = tostring(Archipelago.TeamNumber)
@@ -48,6 +48,9 @@ function onClear(slot_data)
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
                 local flag_obj = Tracker:FindObjectForCode(OPTION_NAME_TO_FLAG_ITEM_MAP[k])
                 flag_obj.Active = (v ~= 0)
+            elseif GLITCH_OPTION_TO_FLAG_ITEM_MAP[k] ~= nil then
+                local flag_obj = Tracker:FindObjectForCode(GLITCH_OPTION_TO_FLAG_ITEM_MAP[k])
+                flag_obj.Active = (v == 2)
             end
         end
         local vm_value = SLOT_DATA["vanilla_maps"]
@@ -108,7 +111,7 @@ function onClear(slot_data)
                 end
             else
                 wall_code = REGION_TO_IRON_WALL_CODE[wall_region]
-                IRON_WALL_ELEMENTS[wall_code] = "swordof" .. string.lower(wall_element)
+                IRON_WALL_ELEMENTS[wall_code] = string.lower(wall_element)
             end
         end
         BOSS_ELEMENTS = SLOT_DATA["shuffle_data"]["boss_reqs"]
@@ -230,11 +233,14 @@ function onItem(index, item_id, item_name, player_number)
             print(string.format("onItem: unknown item type %s for code %s", item_type, item_code))
         end
         if string.sub(item_code, 1, 7) == "swordof" then
-            for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
-                if wall_element == item_code then
-                    local wall_obj = Tracker:FindObjectForCode(wall_code)
-                    wall_obj.Active = true
-                    wall_obj.CurrentStage = 1
+            local sword_element = string.sub(item_code, 8)
+            if Tracker:ProviderCountForCode("flag_ro") > 0 or Tracker:ProviderCountForCode(sword_element .. "upgrade") > 0 then
+                for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
+                    if wall_element == sword_element then
+                        local wall_obj = Tracker:FindObjectForCode(wall_code)
+                        wall_obj.Active = true
+                        wall_obj.CurrentStage = 1
+                    end
                 end
             end
             for boss_name, boss_element in pairs(BOSS_ELEMENTS) do
@@ -254,7 +260,7 @@ function onItem(index, item_id, item_name, player_number)
                     if item_code == "swordof" .. string.lower(boss_element) then
                         boss_obj.Active = true
                         boss_obj.CurrentStage = 1
-                    else
+                    elseif boss_obj.Active == false then
                         boss_obj.Active = true
                         boss_obj.CurrentStage = 2
                     end
@@ -272,7 +278,7 @@ function onItem(index, item_id, item_name, player_number)
                 elseif item_code == "swordofthunder" then
                     rage_obj.CurrentStage = 4
                 end
-            else
+            elseif rage_obj.Active == false then
                 rage_obj.Active = true
                 rage_obj.CurrentStage = 5
             end
@@ -283,23 +289,36 @@ function onItem(index, item_id, item_name, player_number)
         elseif string.sub(item_code, -8) == "bracelet" then
             upgrade_element = string.sub(item_code, 1, -9)
         end
-        if upgrade_element ~= nil and upgrade_element == string.lower(SLOT_DATA["shuffle_data"]["trade_in_map"]["Tornel"]) then
-            upgrade_code = upgrade_element .. "upgrade"
-            local tornel_obj = Tracker:FindObjectForCode("tornel")
-            if Tracker:ProviderCountForCode(upgrade_code) > 1 then
-                tornel_obj.Active = true
-                if upgrade_code == "wind" then
-                    tornel_obj.CurrentStage = 1
-                elseif upgrade_code == "fire" then
-                    tornel_obj.CurrentStage = 2
-                elseif upgrade_code == "water" then
-                    tornel_obj.CurrentStage = 3
-                elseif upgrade_code == "thunder" then
-                    tornel_obj.CurrentStage = 4
+        if upgrade_element ~= nil then
+            if upgrade_element == string.lower(SLOT_DATA["shuffle_data"]["trade_in_map"]["Tornel"]) then
+                upgrade_code = upgrade_element .. "upgrade"
+                local tornel_obj = Tracker:FindObjectForCode("tornel")
+                if Tracker:ProviderCountForCode(upgrade_code) > 1 then
+                    tornel_obj.Active = true
+                    if upgrade_code == "wind" then
+                        tornel_obj.CurrentStage = 1
+                    elseif upgrade_code == "fire" then
+                        tornel_obj.CurrentStage = 2
+                    elseif upgrade_code == "water" then
+                        tornel_obj.CurrentStage = 3
+                    elseif upgrade_code == "thunder" then
+                        tornel_obj.CurrentStage = 4
+                    end
+                else
+                    tornel_obj.Active = false
+                    tornel_obj.CurrentStage = 0
                 end
-            else
-                tornel_obj.Active = false
-                tornel_obj.CurrentStage = 0
+            end
+            if Tracker:ProviderCountForCode("flag_ro") == 0 and 
+               Tracker:ProviderCountForCode("swordof" .. upgrade_element) > 0 and 
+               Tracker:ProviderCountForCode(upgrade_element .. "upgrade") == 1 then
+                for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
+                    if wall_element == upgrade_element then
+                        local wall_obj = Tracker:FindObjectForCode(wall_code)
+                        wall_obj.Active = true
+                        wall_obj.CurrentStage = 1
+                    end
+                end
             end
         end
     elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then

@@ -280,17 +280,6 @@ function hasKensuTrade()
 	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
 		local kensu_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Kensu"]
 		if flag_wu then
-			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-				print("kensu_trade_item: " .. kensu_trade_item)
-				print("KEY_ITEM_MAP:")
-				for k, v in pairs(KEY_ITEM_MAP) do
-					print(k .. ": " .. v)
-				end
-				print("KEY_ITEM_REVERSE_MAP:")
-				for k, v in pairs(KEY_ITEM_REVERSE_MAP) do
-					print(k .. ": " .. v)
-				end
-			end
 			local kensu_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[kensu_trade_item]]][1]
 			return Tracker:ProviderCountForCode(kensu_trade_code) > 0
 		else

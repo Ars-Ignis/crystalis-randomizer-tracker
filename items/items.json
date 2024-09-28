@@ -334,7 +334,7 @@
 		"type": "toggle",
 		"img": "images/items/ironnecklace.png",
 		"loop": "true",
-		"codes": "iron,ironpendant"
+		"codes": "iron,ironpendant,ironnecklace"
 	},
 	// Deo's Pendant
 	{

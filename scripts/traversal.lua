@@ -31,6 +31,7 @@ function getStartingPoints()
 		table.insert(starts, "swan")
 		table.insert(starts, "goa")
 		table.insert(starts, "sahara")
+		table.insert(starts, "ESI")
 	end
 	if Tracker:ProviderCountForCode("thundershyron") > 0 then
 		table.insert(starts, "shyron")
@@ -255,6 +256,15 @@ function canReachGoaFromSahara()
 	return Tracker:ProviderCountForCode("flight") > 0
 end
 
+function canReachJoelFromESI()
+	return Tracker:ProviderCountForCode("flight") > 0 or canUseShellFlute()
+end
+
+function canReachZombieFromESI()
+	return (canCrossRivers() and canBreakEvilSpiritIslandWalls()) or
+		   (Tracker:ProviderCountForCode("d_evilspirit2") > 0 and Tracker:ProviderCountForCode("d_evilspirit4") > 0)
+end
+
 local traversalGraph = {
 	leaf = {brynmaer = canReachBrynmaerFromLeaf, portoa = canReachPortoaFromLeaf, goa = canReachGoaFromLeaf, sahara = canReachSaharaFromLeaf},
 	brynmaer = {leaf = canReachLeafFromBrynmaer, amazones = canReachAmazonesFromBrynmaer, oak = canReachOakFromBrynmaer, nadares = canReachNadaresFromBrynmaer},
@@ -267,7 +277,8 @@ local traversalGraph = {
 	swan = {joel = canReachJoelFromSwan, goa = canReachGoaFromSwan},
 	shyron = {goa = canReachGoaFromShyron},
 	goa = {leaf = canReachLeafFromGoa, shyron = canReachShyronFromGoa, swan = canReachSwanFromGoa, sahara = canReachSaharaFromGoa},
-	sahara = {leaf = canReachLeafFromSahara, goa = canReachGoaFromSahara}
+	sahara = {leaf = canReachLeafFromSahara, goa = canReachGoaFromSahara},
+	ESI = {joel = canReachJoelFromESI, zombie = canReachZombieFromESI}
 }
 
 function canReach(location)
@@ -524,6 +535,17 @@ function canMaybeReachGoaFromSahara()
 	return canReachGoaFromSahara()
 end
 
+function canMaybeReachJoelFromESI()
+	return Tracker:ProviderCountForCode("flight") > 0 or canMaybeUseShellFlute()
+end
+
+function canMaybeReachZombieFromESI()
+	return (canCrossRivers() and canMaybeBreakEvilSpiritIslandWalls()) or
+		   (Tracker:ProviderCountForCode("flag_wm") > 0 and
+			Tracker:ProviderCountForCode("d_evilspirit2_blocked") == 0 and
+			Tracker:ProviderCountForCode("d_evilspirit4_blocked") == 0)
+end
+
 local maybeTraversalGraph = {
 	leaf = {brynmaer = canMaybeReachBrynmaerFromLeaf, portoa = canMaybeReachPortoaFromLeaf, goa = canMaybeReachGoaFromLeaf, sahara = canMaybeReachSaharaFromLeaf},
 	brynmaer = {leaf = canMaybeReachLeafFromBrynmaer, amazones = canMaybeReachAmazonesFromBrynmaer, oak = canMaybeReachOakFromBrynmaer, nadares = canMaybeReachNadaresFromBrynmaer},
@@ -536,7 +558,8 @@ local maybeTraversalGraph = {
 	swan = {joel = canMaybeReachJoelFromSwan, goa = canMaybeReachGoaFromSwan},
 	shyron = {goa = canMaybeReachGoaFromShyron},
 	goa = {leaf = canMaybeReachLeafFromGoa, shyron = canMaybeReachShyronFromGoa, swan = canMaybeReachSwanFromGoa, sahara = canMaybeReachSaharaFromGoa},
-	sahara = {leaf = canMaybeReachLeafFromSahara, goa = canMaybeReachGoaFromSahara}
+	sahara = {leaf = canMaybeReachLeafFromSahara, goa = canMaybeReachGoaFromSahara},
+	ESI = {joel = canMaybeReachJoelFromESI, zombie = canMaybeReachZombieFromESI}
 }
 
 function canMaybeReach(location)
