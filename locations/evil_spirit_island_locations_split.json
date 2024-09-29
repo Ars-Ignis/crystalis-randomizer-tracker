@@ -7,7 +7,8 @@
 			"$negate|flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canCrossRivers, $canMaybeBreakEvilSpiritIslandWalls, [$canBreakEvilSpiritIslandWalls]",
 			"$canMaybeReach|zombie, [$canReach|zombie], $canOpenChest",
 			"flag_wm, $canMaybeReach|joel, [$canReach|joel], $canMaybeUseShellFlute, [$canUseShellFlute], $canOpenChest",
-			"flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canOpenChest"
+			"flag_wm, $canMaybeReach|joel, [$canReach|joel], flight, flag_gt, $canOpenChest",
+			"flag_vw, $canCrossRivers, $canOpenChest"
 		],
 		"children": [
 
