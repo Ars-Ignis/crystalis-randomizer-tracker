@@ -132,7 +132,7 @@ function canCrossGivenGoaFloor(boss)
 	elseif boss == "karmine" then
 		return canCrossKarminesFloor()
 	end
-	--print("Unrecognized boss: " .. boss)
+	print("Unrecognized boss: " .. boss)
 	return false
 end
 
@@ -146,29 +146,23 @@ function canMaybeCrossGivenGoaFloor(boss)
 	elseif boss == "karmine" then
 		return canMaybeCrossKarminesFloor()
 	end
-	--print("Unrecognized boss: " .. boss)
+	print("Unrecognized boss: " .. boss)
 	return false
 end
 
-function getBossForFloor(floorName)
+function getBossForFloor(floorNum)
 	if negate("flag_wg") then
-		if floorName == "1st" then
+		if floorNum == 1 then
 			return "kelbesque"
-		elseif floorName == "2nd" then
+		elseif floorNum == 2 then
 			return "sabera"
-		elseif floorName == "3rd" then
+		elseif floorNum == 3 then
 			return "mado"
-		elseif floorName == "4th" then
+		elseif floorNum == 4 then
 			return "karmine"
 		end
-	elseif 	Tracker:ProviderCountForCode("goa" .. floorName .. "kelbesque") > 0 then
-				return "kelbesque"
-	elseif	Tracker:ProviderCountForCode("goa" .. floorName .. "sabera") > 0 then
-				return "sabera"
-	elseif	Tracker:ProviderCountForCode("goa" .. floorName .. "mado") > 0 then
-				return "mado"
-	elseif	Tracker:ProviderCountForCode("goa" .. floorName .. "karmine") > 0 then
-				return "karmine"
+	elseif GOA_ORDER ~= nil then
+		return GOA_ORDER[floorNum]["name"]
 	else
 		--if Tracker:ProviderCountForCode("goaknownfloor") < 3 then
 			return "unknown"
@@ -192,30 +186,38 @@ function getFloorForBoss(bossName)
 		elseif bossName == "mado" then return "3rd"
 		elseif bossName == "karmine" then return "4th"
 		end
-	else
-		if Tracker:ProviderCountForCode("goa1st" .. bossName) > 0 then
+	elseif GOA_ORDER ~= nil then
+		if GOA_ORDER[1]["name"] == bossName then
 			return "1st"
-		elseif Tracker:ProviderCountForCode("goa2nd" .. bossName) > 0 then
+		elseif GOA_ORDER[2]["name"] == bossName then
 			return "2nd"
-		elseif Tracker:ProviderCountForCode("goa3rd" .. bossName) > 0 then
+		elseif GOA_ORDER[3]["name"] == bossName then
 			return "3rd"
-		elseif Tracker:ProviderCountForCode("goa4th" .. bossName) > 0 then
+		elseif GOA_ORDER[4]["name"] == bossName then
 			return "4th"
 		else
 			return "unknown"
 		end
 	end
+	return "unknown"
 end
 
 function isBossFloorReversed(bossName)
-	return Tracker:ProviderCountForCode("goa" .. bossName .. "_r") > 0
+	if GOA_ORDER ~= nil then
+		for _, floor_info in ipairs(GOA_ORDER) do
+			if floor_info["name"] == bossName then
+				return floor_info["is_flipped"]
+			end
+		end
+	end
+	return false
 end
 
 function canCrossGoa1stFloor()
 	if negate("flag_wg") then
 		return canCrossKelbesquesFloor()
 	else
-		local boss = getBossForFloor("1st")
+		local boss = getBossForFloor(1)
 		if boss == "unknown" then
 			return canFullyCrossGoa()
 		else
@@ -229,7 +231,7 @@ function canMaybeCrossGoa1stFloor()
 	if negate("flag_wg") then
 		return canMaybeCrossKelbesquesFloor()
 	else
-		local boss = getBossForFloor("1st")
+		local boss = getBossForFloor(1)
 		if boss == "unknown" then
 			return 	(Tracker:ProviderCountForCode("goakelbesque") == 0 and canMaybeCrossKelbesquesFloor()) or
 					(Tracker:ProviderCountForCode("goasabera") == 0 and canMaybeCrossSaberasFloor()) or
@@ -246,7 +248,7 @@ function canCrossGoa2ndFloor()
 	if negate("flag_wg") then
 		return canCrossSaberasFloor()
 	else
-		local boss = getBossForFloor("2nd")
+		local boss = getBossForFloor(2)
 		if boss == "unknown" then
 			return canFullyCrossGoa()
 		else
@@ -260,7 +262,7 @@ function canMaybeCrossGoa2ndFloor()
 	if negate("flag_wg") then
 		return canMaybeCrossSaberasFloor()
 	else
-		local boss = getBossForFloor("2nd")
+		local boss = getBossForFloor(2)
 		if boss == "unknown" then
 			return 	(Tracker:ProviderCountForCode("goakelbesque") == 0 and canMaybeCrossKelbesquesFloor()) or
 					(Tracker:ProviderCountForCode("goasabera") == 0 and canMaybeCrossSaberasFloor()) or
@@ -277,7 +279,7 @@ function canCrossGoa3rdFloor()
 	if negate("flag_wg") then
 		return canCrossMadosFloor()
 	else
-		local boss = getBossForFloor("3rd")
+		local boss = getBossForFloor(3)
 		if boss == "unknown" then
 			return canFullyCrossGoa()
 		else
@@ -291,7 +293,7 @@ function canMaybeCrossGoa3rdFloor()
 	if negate("flag_wg") then
 		return canMaybeCrossMadosFloor()
 	else
-		local boss = getBossForFloor("3rd")
+		local boss = getBossForFloor(3)
 		if boss == "unknown" then
 			return 	(Tracker:ProviderCountForCode("goakelbesque") == 0 and canMaybeCrossKelbesquesFloor()) or
 					(Tracker:ProviderCountForCode("goasabera") == 0 and canMaybeCrossSaberasFloor()) or
@@ -308,7 +310,7 @@ function canCrossGoa4thFloor()
 	if negate("flag_wg") then
 		return canCrossKarminesFloor()
 	else
-		local boss = getBossForFloor("4th")
+		local boss = getBossForFloor(4)
 		if boss == "unknown" then
 			return canFullyCrossGoa()
 		else
@@ -322,7 +324,7 @@ function canMaybeCrossGoa4thFloor()
 	if negate("flag_wg") then
 		return canMaybeCrossKarminesFloor()
 	else
-		local boss = getBossForFloor("4th")
+		local boss = getBossForFloor(4)
 		if boss == "unknown" then
 			return 	(Tracker:ProviderCountForCode("goakelbesque") == 0 and canMaybeCrossKelbesquesFloor()) or
 					(Tracker:ProviderCountForCode("goasabera") == 0 and canMaybeCrossSaberasFloor()) or
@@ -333,46 +335,6 @@ function canMaybeCrossGoa4thFloor()
 		end
 	end
 	return false
-end
-
-function canGetPastGivenGoaFloorsBoss(floorName)
-	if canKillTetrarchyMember() then
-		return true
-	else
-		local boss = getBossForFloor(floorName)
-		if boss == "kelbesque" then
-			return canKillKelbesque2()
-		elseif boss == "sabera" then
-			return canKillSabera2()
-		elseif boss == "mado" then
-			return canKillMado2()
-		elseif boss == "karmine" then
-			return true
-		else
-			return	(canKillKelbesque2() or Tracker:ProviderCountForCode("goakelbesque") > 0) and 
-					(canKillSabera2() or Tracker:ProviderCountForCode("goasabera") > 0) and 
-					(canKillMado2() or Tracker:ProviderCountForCode("goamado") > 0)
-		end
-	end
-end
-
-function canMaybeGetPastGivenGoaFloorsBoss(floorName)
-	if canKillTetrarchyMember() then
-		return true
-	else
-		local boss = getBossForFloor(floorName)
-		if boss == "kelbesque" then
-			return canMaybeKillKelbesque2()
-		elseif boss == "sabera" then
-			return canMaybeKillSabera2()
-		elseif boss == "mado" then
-			return canMaybeKillMado2()
-		elseif boss == "karmine" then
-			return true
-		else
-			return Tracker:ProviderCountForCode("goakarmine") == 0 or canMaybeKillKelbesque2() or canMaybeKillSabera2() or canMaybeKillMado2()
-		end
-	end
 end
 
 --------1st Floor Functions--------------

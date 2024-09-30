@@ -216,25 +216,6 @@
 		]
 	},
 
-	"tracker_goa_floors": {
-		"type": "group",
-		"header": "Goa Floors",
-		"header_background": "#ff000000",
-		"margin": 0,
-		"content": [
-			{
-				"type": "itemgrid",
-				"margin": 0,
-				"item_margin": 5,
-				"item_size": 50,
-				"rows": [
-					[ "goa1st", "goa2nd", "goa3rd", "goa4th" ],
-					[]
-				]
-			}
-		]
-	},
-
 	"tracker_misc": {
 		"type": "group",
 		"header": "Miscellaneous",
@@ -297,12 +278,6 @@
 				"dropshadow": false,
 				"margin": 0,
 				"key": "itemcounts"
-			},
-			{
-				"type": "layout",
-				"dropshadow": false,
-				"margin": 0,
-				"key": "tracker_goa_floors"
 			},
 			{
 				"type": "layout",

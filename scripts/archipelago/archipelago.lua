@@ -8,6 +8,7 @@ KEY_ITEM_MAP = nil
 HOSTED = {}
 IRON_WALL_ELEMENTS = nil
 BOSS_ELEMENTS = nil
+GOA_ORDER = nil
 
 --AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
 
@@ -64,7 +65,7 @@ function onClear(slot_data)
             local free_exit = gbc_exits[1]
             free_obj.Active = true
             free_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[free_exit]
-            local blocked_exit = gbc_exit[2]
+            local blocked_exit = gbc_exits[2]
             blocked_obj.Active = true
             blocked_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[blocked_exit]
         elseif vm_value == 1 then
@@ -115,6 +116,27 @@ function onClear(slot_data)
             end
         end
         BOSS_ELEMENTS = SLOT_DATA["shuffle_data"]["boss_reqs"]
+		if Tracker:ProviderCountForCode("flag_wg") > 0 then
+			GOA_ORDER = {}
+			local prev_exit = "Goa Entrance - Stairs"
+			for i=1,4 do
+				local current_floor = SLOT_DATA["shuffle_data"]["goa_connection_map"][prev_exit]
+				local flipped = (string.sub(current_floor, -4) == "Back")
+				local apostrophe_index, _ = string.find(current_floor, "'")
+				local boss = string.lower(string.sub(current_floor, 1, apostrophe_index-1))
+				GOA_ORDER[i] = {name=boss, is_flipped=flipped}
+				if flipped then
+					prev_exit = string.gsub(current_floor, "Back", "Entrance")
+				else
+					prev_exit = string.gsub(current_floor, "Front", "Exit")
+				end
+			end
+			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+				for i, floor_info in ipairs(GOA_ORDER) do
+					print("Floor " .. tostring(i) .. ": " .. floor_info["name"] .. " is flipped: " .. tostring(floor_info["is_flipped"]))
+				end
+			end
+		end
     end
     -- reset locations
     for _, v in pairs(LOCATION_MAPPING) do
