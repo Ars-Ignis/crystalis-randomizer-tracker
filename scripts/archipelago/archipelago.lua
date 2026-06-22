@@ -4,13 +4,14 @@ ScriptHost:LoadScript("scripts/archipelago/map_switching.lua")
 
 CUR_INDEX = -1
 SLOT_DATA = nil
+SHUFFLE_DATA = nil
 KEY_ITEM_MAP = nil
 HOSTED = {}
 IRON_WALL_ELEMENTS = nil
 BOSS_ELEMENTS = nil
 GOA_ORDER = nil
 
---AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
+AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
 
 function onSetReply(key, value, _)
     local slot_team = tostring(Archipelago.TeamNumber)
@@ -45,6 +46,7 @@ function onClear(slot_data)
     SLOT_DATA = slot_data
     CUR_INDEX = -1
     if SLOT_DATA ~= nil then
+        SHUFFLE_DATA = SLOT_DATA["shuffle_data"]
         for k, v in pairs(SLOT_DATA) do
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
                 local flag_obj = Tracker:FindObjectForCode(OPTION_NAME_TO_FLAG_ITEM_MAP[k])
@@ -61,13 +63,15 @@ function onClear(slot_data)
         if vm_value == 0 then
             vm_obj.CurrentStage = 0
             vm_obj.Active = false
-            local gbc_exits = SLOT_DATA["shuffle_data"]["gbc_cave_exits"]
-            local free_exit = gbc_exits[1]
-            free_obj.Active = true
-            free_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[free_exit]
-            local blocked_exit = gbc_exits[2]
-            blocked_obj.Active = true
-            blocked_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[blocked_exit]
+			if SHUFFLE_DATA ~= nil then
+				local gbc_exits = SHUFFLE_DATA["gbc_cave_exits"]
+				local free_exit = gbc_exits[1]
+				free_obj.Active = true
+				free_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[free_exit]
+				local blocked_exit = gbc_exits[2]
+				blocked_obj.Active = true
+				blocked_obj.CurrentStage = REGION_TO_GBC_EXIT_STAGE[blocked_exit]
+			end
         elseif vm_value == 1 then
             vm_obj.CurrentStage = 2
             vm_obj.Active = true
@@ -83,60 +87,64 @@ function onClear(slot_data)
             blocked_obj.Active = false
             blocked_obj.CurrentStage = 0
         end
-        local thunder_warp = SLOT_DATA["shuffle_data"]["thunder_warp"]
-        if thunder_warp == "Nadare's" then
-            thunder_warp = "nadares"
-        elseif thunder_warp == "Zombie Town" then
-            thunder_warp = "zombie"
-        else
-            thunder_warp = string.lower(thunder_warp)
-        end
-        local thunder_code = "thunder" .. thunder_warp
-        local thunder_obj = Tracker:FindObjectForCode("thunder")
-        thunder_obj.CurrentStage = THUNDER_CODE_TO_INDEX[thunder_code]
-        for wall_region, wall_element in pairs(SLOT_DATA["shuffle_data"]["wall_map"]) do
-            local wall_code = REGION_TO_ROCK_WALL_CODE[wall_region]
-            if wall_code ~= nil then
-                local wall_obj = Tracker:FindObjectForCode(wall_code)
-                wall_obj.Active = true
-                if wall_element == "Wind" then
-                    wall_obj.CurrentStage = 1
-                elseif wall_element == "Fire" then
-                    wall_obj.CurrentStage = 2
-                elseif wall_element == "Water" then
-                    wall_obj.CurrentStage = 3
-                elseif wall_element == "Thunder" then
-                    wall_obj.CurrentStage = 4
-                else
-                    wall_obj.Active = false
-                end
-            else
-                wall_code = REGION_TO_IRON_WALL_CODE[wall_region]
-                IRON_WALL_ELEMENTS[wall_code] = string.lower(wall_element)
-            end
-        end
-        BOSS_ELEMENTS = SLOT_DATA["shuffle_data"]["boss_reqs"]
-		if Tracker:ProviderCountForCode("flag_wg") > 0 then
-			GOA_ORDER = {}
-			local prev_exit = "Goa Entrance - Stairs"
-			for i=1,4 do
-				local current_floor = SLOT_DATA["shuffle_data"]["goa_connection_map"][prev_exit]
-				local flipped = (string.sub(current_floor, -4) == "Back")
-				local apostrophe_index, _ = string.find(current_floor, "'")
-				local boss = string.lower(string.sub(current_floor, 1, apostrophe_index-1))
-				GOA_ORDER[i] = {name=boss, is_flipped=flipped}
-				if flipped then
-					prev_exit = string.gsub(current_floor, "Back", "Entrance")
+		if SHUFFLE_DATA ~= nil then
+			local thunder_warp = SHUFFLE_DATA["thunder_warp"]
+			if thunder_warp == "Nadare's" then
+				thunder_warp = "nadares"
+			elseif thunder_warp == "Zombie Town" then
+				thunder_warp = "zombie"
+			else
+				thunder_warp = string.lower(thunder_warp)
+			end
+			local thunder_code = "thunder" .. thunder_warp
+			local thunder_obj = Tracker:FindObjectForCode("thunder")
+			thunder_obj.CurrentStage = THUNDER_CODE_TO_INDEX[thunder_code]
+			for wall_region, wall_element in pairs(SHUFFLE_DATA["wall_map"]) do
+				local wall_code = REGION_TO_ROCK_WALL_CODE[wall_region]
+				if wall_code ~= nil then
+					local wall_obj = Tracker:FindObjectForCode(wall_code)
+					wall_obj.Active = true
+					if wall_element == "Wind" then
+						wall_obj.CurrentStage = 1
+					elseif wall_element == "Fire" then
+						wall_obj.CurrentStage = 2
+					elseif wall_element == "Water" then
+						wall_obj.CurrentStage = 3
+					elseif wall_element == "Thunder" then
+						wall_obj.CurrentStage = 4
+					else
+						wall_obj.Active = false
+					end
 				else
-					prev_exit = string.gsub(current_floor, "Front", "Exit")
+					wall_code = REGION_TO_IRON_WALL_CODE[wall_region]
+					IRON_WALL_ELEMENTS[wall_code] = string.lower(wall_element)
 				end
 			end
-			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-				for i, floor_info in ipairs(GOA_ORDER) do
-					print("Floor " .. tostring(i) .. ": " .. floor_info["name"] .. " is flipped: " .. tostring(floor_info["is_flipped"]))
+			BOSS_ELEMENTS = SHUFFLE_DATA["boss_reqs"]
+			if Tracker:ProviderCountForCode("flag_wg") > 0 then
+				GOA_ORDER = {}
+				local prev_exit = "Goa Entrance - Stairs"
+				for i=1,4 do
+					local current_floor = SHUFFLE_DATA["goa_connection_map"][prev_exit]
+					local flipped = (string.sub(current_floor, -4) == "Back")
+					local apostrophe_index, _ = string.find(current_floor, "'")
+					local boss = string.lower(string.sub(current_floor, 1, apostrophe_index-1))
+					GOA_ORDER[i] = {name=boss, is_flipped=flipped}
+					if flipped then
+						prev_exit = string.gsub(current_floor, "Back", "Entrance")
+					else
+						prev_exit = string.gsub(current_floor, "Front", "Exit")
+					end
+				end
+				if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+					for i, floor_info in ipairs(GOA_ORDER) do
+						print("Floor " .. tostring(i) .. ": " .. floor_info["name"] .. " is flipped: " .. tostring(floor_info["is_flipped"]))
+					end
 				end
 			end
 		end
+	else
+		SHUFFLE_DATA = nil
     end
     -- reset locations
     for _, v in pairs(LOCATION_MAPPING) do
@@ -184,14 +192,19 @@ function onClear(slot_data)
         Tracker:FindObjectForCode(k).Active = false
     end
 
-    if SLOT_DATA == nil then
+    if SLOT_DATA == nil or SHUFFLE_DATA == nil then
+		if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+			print(string.format("SLOT_DATA: %s\nSHUFFLE_DATA: %s", SLOT_DATA, SHUFFLE_DATA))
+		end
         KEY_ITEM_MAP = nil
-        return
     else
-        local forward_map = SLOT_DATA["shuffle_data"]["key_item_names"]
+        local forward_map = SHUFFLE_DATA["key_item_names"]
         KEY_ITEM_MAP = {}
         for k, v in pairs(forward_map) do
             KEY_ITEM_MAP[v] = k
+			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+				print(string.format("KEY_ITEM_MAP: key: %s, value: %s", k, v))
+			end
         end
         KEY_ITEM_MAP["Love Pendant"] = "Love Pendant"
         KEY_ITEM_MAP["Kirisa Plant"] = "Kirisa Plant"
@@ -289,7 +302,7 @@ function onItem(index, item_id, item_name, player_number)
                 end
             end
             local rage_obj = Tracker:FindObjectForCode("rage")
-            if item_code == string.lower(string.gsub(SLOT_DATA["shuffle_data"]["trade_in_map"]["Rage"], " ", "")) then
+            if SHUFFLE_DATA ~= nil and item_code == string.lower(string.gsub(SHUFFLE_DATA["trade_in_map"]["Rage"], " ", "")) then
                 rage_obj.Active = true
                 if item_code == "swordofwind" then
                     rage_obj.CurrentStage = 1
@@ -305,44 +318,46 @@ function onItem(index, item_id, item_name, player_number)
                 rage_obj.CurrentStage = 5
             end
         end
-        local upgrade_element = nil
-        if string.sub(item_code, 1, 5) == "orbof" then
-            upgrade_element = string.sub(item_code, 6)
-        elseif string.sub(item_code, -8) == "bracelet" then
-            upgrade_element = string.sub(item_code, 1, -9)
-        end
-        if upgrade_element ~= nil then
-            if upgrade_element == string.lower(SLOT_DATA["shuffle_data"]["trade_in_map"]["Tornel"]) then
-                upgrade_code = upgrade_element .. "upgrade"
-                local tornel_obj = Tracker:FindObjectForCode("tornel")
-                if Tracker:ProviderCountForCode(upgrade_code) > 1 then
-                    tornel_obj.Active = true
-                    if upgrade_code == "wind" then
-                        tornel_obj.CurrentStage = 1
-                    elseif upgrade_code == "fire" then
-                        tornel_obj.CurrentStage = 2
-                    elseif upgrade_code == "water" then
-                        tornel_obj.CurrentStage = 3
-                    elseif upgrade_code == "thunder" then
-                        tornel_obj.CurrentStage = 4
-                    end
-                else
-                    tornel_obj.Active = false
-                    tornel_obj.CurrentStage = 0
-                end
-            end
-            if Tracker:ProviderCountForCode("flag_ro") == 0 and 
-               Tracker:ProviderCountForCode("swordof" .. upgrade_element) > 0 and 
-               Tracker:ProviderCountForCode(upgrade_element .. "upgrade") == 1 then
-                for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
-                    if wall_element == upgrade_element then
-                        local wall_obj = Tracker:FindObjectForCode(wall_code)
-                        wall_obj.Active = true
-                        wall_obj.CurrentStage = 1
-                    end
-                end
-            end
-        end
+		if SHUFFLE_DATA ~= nil then
+			local upgrade_element = nil
+			if string.sub(item_code, 1, 5) == "orbof" then
+				upgrade_element = string.sub(item_code, 6)
+			elseif string.sub(item_code, -8) == "bracelet" then
+				upgrade_element = string.sub(item_code, 1, -9)
+			end
+			if upgrade_element ~= nil then
+				if upgrade_element == string.lower(SHUFFLE_DATA["trade_in_map"]["Tornel"]) then
+					upgrade_code = upgrade_element .. "upgrade"
+					local tornel_obj = Tracker:FindObjectForCode("tornel")
+					if Tracker:ProviderCountForCode(upgrade_code) > 1 then
+						tornel_obj.Active = true
+						if upgrade_code == "wind" then
+							tornel_obj.CurrentStage = 1
+						elseif upgrade_code == "fire" then
+							tornel_obj.CurrentStage = 2
+						elseif upgrade_code == "water" then
+							tornel_obj.CurrentStage = 3
+						elseif upgrade_code == "thunder" then
+							tornel_obj.CurrentStage = 4
+						end
+					else
+						tornel_obj.Active = false
+						tornel_obj.CurrentStage = 0
+					end
+				end
+				if Tracker:ProviderCountForCode("flag_ro") == 0 and 
+				   Tracker:ProviderCountForCode("swordof" .. upgrade_element) > 0 and 
+				   Tracker:ProviderCountForCode(upgrade_element .. "upgrade") == 1 then
+					for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
+						if wall_element == upgrade_element then
+							local wall_obj = Tracker:FindObjectForCode(wall_code)
+							wall_obj.Active = true
+							wall_obj.CurrentStage = 1
+						end
+					end
+				end
+			end
+		end
     elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print(string.format("onItem: could not find object for code %s", v[1]))
     end
