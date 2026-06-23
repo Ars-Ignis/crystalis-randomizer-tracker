@@ -109,3 +109,14 @@ LOCATION_MAPPING = {
     [2241103] = {"@Overworld/Mezame Shrine/Mezame Left Chest"},
     [2241104] = {"@Overworld/Mezame Shrine/Mezame Right Chest"},
 }
+
+COMPACT_LOCATION_MAPPING = {
+    [2241007] = {"kelbesque", "left"},
+    [2241026] = {"kelbesque", "right"},
+    [2241044] = {"sabera", "left"},
+    [2241023] = {"sabera", "right"},
+    [2241010] = {"mado", "left"},
+    [2241013] = {"mado", "right"},
+    [2241049] = {"karmine", "enable"},
+    [2241016] = {"draygon", "enable"},
+}

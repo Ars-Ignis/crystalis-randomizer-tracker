@@ -228,6 +228,10 @@ function onItem(index, item_id, item_name, player_number)
         return
     end
     CUR_INDEX = index;
+	if Tracker.ActiveVariantUID == "compact_items" then
+		compactItemHandler(item_id, item_name)
+		return
+	end
     local v = ITEM_MAPPING[item_id]
     if not v then
         local found = false
@@ -363,11 +367,53 @@ function onItem(index, item_id, item_name, player_number)
     end
 end
 
+-- handles items for the super compact item tracker
+function compactItemHandler(item_id, item_name)
+    local v = COMPACT_ITEM_MAPPING[item_id]
+    if not v then
+        local found = false
+        if KEY_ITEM_MAP ~= nil then
+            v = COMPACT_ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
+            if v then
+                found = true
+            end
+        end
+        if not found then
+            if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+                print(string.format("compactItemHandler: could not find item mapping for id %s", item_id))
+            end
+            return
+        end
+    end
+    if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+        print(string.format("compactItemHandler: code: %s, action %s", v[1], v[2]))
+    end
+    if not v[1] then
+        return
+    end
+	local action = v[2]
+	local item_code = v[1]
+	local item_obj = Tracker:FindObjectForCode(item_code)
+	if action == "enable" then
+		item_obj.Active = true
+	elseif action == "increment" then
+		item_obj.CurrentStage = item_obj.CurrentStage + 1
+	elseif action == "left" then
+		item_obj.CurrentStage = item_obj.CurrentStage | 1
+	elseif action == "right" then
+		item_obj.CurrentStage = item_obj.CurrentStage | 2
+	end
+end
+
 --called when a location gets cleared
 function onLocation(location_id, location_name)
     if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print(string.format("called onLocation: %s, %s", location_id, location_name))
     end
+	if Tracker.ActiveVariantUID == "compact_items" then
+		compactLocationHandler(location_id, location_name)
+		return
+	end
     local codes = LOCATION_MAPPING[location_id]
     if not codes and AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print(string.format("onLocation: could not find location mapping for id %s", location_id))
@@ -387,6 +433,26 @@ function onLocation(location_id, location_name)
             print(string.format("onLocation: could not find object for code %s", code))
         end
     end
+end
+
+--handling for locations for the compact item Tracker
+function compactLocationHandler(location_id, location_name)
+	local location_data = COMPACT_LOCATION_MAPPING[location_id]
+	if location_data == nil then
+		return
+	end
+	local location_code = location_data[1]
+	local action = location_data[2]
+	local location_obj = Tracker:FindObjectForCode(location_code)
+	if action == "enable" then
+		location_obj.Active = true
+	elseif action == "increment" then
+		location_obj.CurrentStage = location_obj.CurrentStage + 1
+	elseif action == "left" then
+		location_obj.CurrentStage = location_obj.CurrentStage | 1
+	elseif action == "right" then
+		location_obj.CurrentStage = location_obj.CurrentStage | 2
+	end
 end
 
 -- called when a locations is scouted

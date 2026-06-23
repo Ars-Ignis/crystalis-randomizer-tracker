@@ -7,10 +7,10 @@
 		"item_margin": "4,4",
 		"rows": [
 			[
-				"wind",
-				"fire",
-				"water",
-				"thunder"
+				"compactwind",
+				"compactfire",
+				"compactwater",
+				"compactthunder"
 			],
 			[
 				"sunmoon",

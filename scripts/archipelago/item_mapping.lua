@@ -51,6 +51,25 @@ ITEM_MAPPING = {
     [2241062] = {"flight", "toggle"},
 }
 
+COMPACT_ITEM_MAPPING = {
+    [2241000] = {"compactwind", "enable"},
+    [2241001] = {"compactfire", "enable"},
+    [2241002] = {"compactwater", "enable"},
+    [2241003] = {"compactthunder", "enable"},
+    [2241004] = {"compactwind", "increment"},
+    [2241005] = {"compactwind", "increment"},
+    [2241006] = {"compactfire", "increment"},
+    [2241007] = {"compactfire", "increment"},
+    [2241008] = {"compactwater", "increment"},
+    [2241009] = {"compactwater", "increment"},
+    [2241010] = {"compactthunder", "increment"},
+    [2241011] = {"compactthunder", "increment"},
+    [2241052] = {"sunmoon", "left"},
+    [2241053] = {"sunmoon", "right"},
+    [2241054] = {"bowoftruth", "enable"},
+    [2241062] = {"flight", "enable"},
+}
+
 KEY_ITEM_REVERSE_MAP = {
 	["Windmill Key"] = 2241040,
 	["Key to Prison"] = 2241041,
