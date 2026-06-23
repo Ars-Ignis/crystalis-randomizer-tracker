@@ -6,5 +6,5 @@
 	"allow_resize": true,
 	"chest_unopened_img": "images/items/chest.png",
 	"chest_opened_img": "images/items/chest_open.png",
-	"disabled_image_filter": "grayscale,dim"
+	"disabled_image_filter": "greyscale,dim"
 }
