@@ -42,14 +42,14 @@ function onClear(slot_data)
             print("nil\n")
         end
     end
+    SHUFFLE_DATA = nil
+    GOA_ORDER = nil
     IRON_WALL_ELEMENTS = {}
     SLOT_DATA = slot_data
     CUR_INDEX = -1
     if SLOT_DATA ~= nil then
         if SLOT_DATA["is_race"] == false then
             SHUFFLE_DATA = SLOT_DATA["shuffle_data"]
-        else
-            SHUFFLE_DATA = nil
         end
         for k, v in pairs(SLOT_DATA) do
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then

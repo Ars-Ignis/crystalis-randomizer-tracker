@@ -150,6 +150,13 @@ function canMaybeCrossGivenGoaFloor(boss)
 	return false
 end
 
+ORDINALS = {
+	"1st",
+	"2nd",
+	"3rd",
+	"4th"
+}
+
 function getBossForFloor(floorNum)
 	if negate("flag_wg") then
 		if floorNum == 1 then
@@ -160,23 +167,24 @@ function getBossForFloor(floorNum)
 			return "mado"
 		elseif floorNum == 4 then
 			return "karmine"
+		else
+			return "unknown"
 		end
 	elseif GOA_ORDER ~= nil then
 		return GOA_ORDER[floorNum]["name"]
 	else
-		--if Tracker:ProviderCountForCode("goaknownfloor") < 3 then
-			return "unknown"
-		--[[elseif Tracker:ProviderCountForCode("goakelbesque") == 0 then
+		if Tracker:ProviderCountForCode("goa" .. ORDINALS[floorNum] .. "kelbesque") > 0 then
 			return "kelbesque"
-		elseif Tracker:ProviderCountForCode("goasabera") == 0 then
+		elseif Tracker:ProviderCountForCode("goa" .. ORDINALS[floorNum] .. "sabera") > 0 then
 			return "sabera"
-		elseif Tracker:ProviderCountForCode("goamado") == 0 then
+		elseif Tracker:ProviderCountForCode("goa" .. ORDINALS[floorNum] .. "mado") > 0 then
 			return "mado"
-		elseif Tracker:ProviderCountForCode("goakarmine") == 0 then
+		elseif Tracker:ProviderCountForCode("goa" .. ORDINALS[floorNum] .. "karmine") > 0 then
 			return "karmine"
-		end]]--
+		else
+			return "unknown"
+		end
 	end
-	return "unknown"
 end
 
 function getFloorForBoss(bossName)
@@ -185,6 +193,7 @@ function getFloorForBoss(bossName)
 		elseif bossName == "sabera" then return "2nd"
 		elseif bossName == "mado" then return "3rd"
 		elseif bossName == "karmine" then return "4th"
+		else return "unknown"
 		end
 	elseif GOA_ORDER ~= nil then
 		if GOA_ORDER[1]["name"] == bossName then
@@ -198,8 +207,19 @@ function getFloorForBoss(bossName)
 		else
 			return "unknown"
 		end
+	else
+		if Tracker:ProviderCountForCode("goa1st" .. bossName) > 0 then
+			return "1st"
+		elseif Tracker:ProviderCountForCode("goa2nd" .. bossName) > 0 then
+			return "2nd"
+		elseif Tracker:ProviderCountForCode("goa3rd" .. bossName) > 0 then
+			return "3rd"
+		elseif Tracker:ProviderCountForCode("goa4th" .. bossName) > 0 then
+			return "4th"
+		else
+			return "unknown"
+		end
 	end
-	return "unknown"
 end
 
 function isBossFloorReversed(bossName)
@@ -209,8 +229,9 @@ function isBossFloorReversed(bossName)
 				return floor_info["is_flipped"]
 			end
 		end
+	else
+		return Tracker:ProviderCountForCode("goa" .. bossName .. "_r") > 0
 	end
-	return false
 end
 
 function canCrossGoa1stFloor()
