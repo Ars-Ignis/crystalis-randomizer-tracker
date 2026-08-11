@@ -12,6 +12,8 @@ ScriptHost:LoadScript("scripts/key_item_logic.lua")
 Tracker:AddMaps("maps/sub_maps.json")
 Tracker:AddLayouts("layouts/flags_layout.json")
 if Tracker.ActiveVariantUID == "items_and_map_custom" then
+	ScriptHost:LoadScript("scripts/init_custom_items.lua")
+	initCustomItems()
 	Tracker:AddItems("items/bosses.json")
 	Tracker:AddItems("items/miscellaneous_items.json")
 	Tracker:AddItems("items/doors.json")

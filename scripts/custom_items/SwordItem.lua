@@ -1,89 +1,86 @@
-SwordItem = CustomItem:extend()
-
-function SwordItem:init(name, code, imagePath)
-	self:createItem(name)
-	self.code = code
-	self:setProperty("active", false)
-	self.activeImage = ImageReference:FromPackRelativePath(imagePath)
-	self.disabledImage = ImageReference:FromImageReference(self.activeImage, "@disabled")
-	self.ItemInstance.PotentialIcon = self.activeImage
-	self:updateIcon()	
-	self.allowResets = true
+function SwordItemFunc_onLeftClick(self)
+	self:Set("active", not self.ItemState["active"])
 end
 
-function SwordItem:setActive(active)
-	self:setProperty("active", active)
+function SwordItemFunc_onRightClick(self)
+	self:Set("active", not self.ItemState["active"])
 end
 
-function SwordItem:getActive()
-	return self:getProperty("active")
-end
-
-function SwordItem:updateIcon()
-	if self:getActive() then
-		self.ItemInstance.Icon = self.activeImage
-	else
-		self.ItemInstance.Icon = self.disabledImage
-	end
-end
-
-function SwordItem:onLeftClick()
-	self:setActive(not self:getActive())
-end
-
-function SwordItem:onRightClick()
-	self:setActive(not self:getActive())
-end
-
-function SwordItem:canProvideCode(code)
-	if code == self.code then
+function SwordItemFunc_canProvideCode(self, code)
+	if code == self.ItemState["swordCode"] then
 		return true
 	elseif code == "sword" then
+		return true
+	elseif code == "swordof"..self.ItemState["swordCode"]then
 		return true
 	else
 		return false
 	end
 end
 
-function SwordItem:providesCode(code)
-	if self:getActive() and (code == self.code or code == "sword") then
+function SwordItemFunc_providesCode(self, code)
+	if self.ItemState["active"] and (code == self.ItemState["swordCode"] or code == "sword") then
 		return 1
 	end
 	return 0
 end
 
-function SwordItem:advanceToCode(code)
-	if code == nil or code == self.code then
-		self:setActive(true)
+function SwordItemFunc_advanceToCode(self, code)
+	if code == nil or code == self.ItemState["swordCode"] then
+		self:Set("active", true)
 	end
 end
 
-function SwordItem:save()
-	local saveData = {}
-	saveData["active"] = self:getActive()
-	return saveData
+function SwordItemFunc_save(self)
+	return self.ItemState
 end
 
-function SwordItem:load(data)
-	self.allowResets = false
-	if data["active"] ~= nil then
-		self:setActive(data["active"])
+function SwordItemFunc_load(self, data)
+	self.ItemState = data
+end
+
+function SwordItemFunc_propertyChanged(self, key, value)
+	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+		print("Property changed for LuaItem: " .. self.Name .. ". Key: " .. key .. " Value: " .. tostring(value))
 	end
-	self.allowResets = true
-	return true
-end
-
-function SwordItem:propertyChanged(key, value)
-	if key == "active" and value == true and Tracker.ActiveVariantUID == "items_and_map_custom" and self.allowResets then
+	if key == "active" and value == true and Tracker.ActiveVariantUID == "items_and_map_custom" and self.ItemState["allowResets"] then
 		resetMinorBossTracking()
 		resetRageTracking()
-		if Tracker:ProviderCountForCode("flag_ro") > 0 or Tracker:ProviderCountForCode(self.code .. "ball") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo()) then
+		if Tracker:ProviderCountForCode("flag_ro") > 0 or Tracker:ProviderCountForCode(self.ItemState["swordCode"] .. "orb") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyLevelTwo()) then
 			resetWallTracking()
 			resetKarmineTracking()
 		end
-		if Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode(self.code .. "bracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic()) then
+		if Tracker:ProviderCountForCode("flag_nw") > 0 or Tracker:ProviderCountForCode(self.ItemState["swordCode"] .. "bracelet") > 0 or (Tracker:ProviderCountForCode("flag_gc") > 0 and hasAnyBattleMagic()) then
 			resetTetrarchyBossTracking()
 		end
 	end
-	self:updateIcon()
+	if self.ItemState["active"] then
+		self.Icon = self.ItemState["activeImage"]
+	else
+		self.Icon = self.ItemState["disabledImage"]
+	end
+end
+
+function CreateSwordItem(name, code, imagePath)
+	local self = ScriptHost:CreateLuaItem()
+	self.Name = name
+	local activeImage = ImageReference:FromPackRelativePath(imagePath)
+	local disabledImage = ImageReference:FromImageReference(activeImage, "@disabled")
+	self.ItemState = {
+	["active"] = false,
+	["activeImage"] = activeImage,
+	["disabledImage"] = disabledImage,
+	["swordCode"] = code,
+	["allowResets"] = true,
+	}
+	self.Icon = disabledImage
+	
+	self.OnLeftClickFunc = SwordItemFunc_onLeftClick
+	self.OnRightClickFunc = SwordItemFunc_onRightClick
+	self.CanProvideCodeFunc = SwordItemFunc_canProvideCode
+	self.ProvidesCodeFunc = SwordItemFunc_providesCode
+	self.AdvanceToCodeFunc = SwordItemFunc_advanceToCode
+	self.SaveFunc = SwordItemFunc_save
+	self.LoadFunc = SwordItemFunc_load
+	self.PropertyChangedFunc = SwordItemFunc_propertyChanged
 end

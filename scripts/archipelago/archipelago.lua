@@ -46,7 +46,11 @@ function onClear(slot_data)
     SLOT_DATA = slot_data
     CUR_INDEX = -1
     if SLOT_DATA ~= nil then
-        SHUFFLE_DATA = SLOT_DATA["shuffle_data"]
+        if SLOT_DATA["is_race"] == false then
+            SHUFFLE_DATA = SLOT_DATA["shuffle_data"]
+        else
+            SHUFFLE_DATA = nil
+        end
         for k, v in pairs(SLOT_DATA) do
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
                 local flag_obj = Tracker:FindObjectForCode(OPTION_NAME_TO_FLAG_ITEM_MAP[k])

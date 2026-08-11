@@ -1,86 +1,82 @@
-BallItem = CustomItem:extend()
-
-function BallItem:init(name, code, imagePath)
-	self:createItem(name)
-	self.code = code
-	self:setProperty("active", false)
-	self.activeImage = ImageReference:FromPackRelativePath(imagePath)
-	self.disabledImage = ImageReference:FromImageReference(self.activeImage, "@disabled")
-	self.ItemInstance.PotentialIcon = self.activeImage
-	self:updateIcon()	
-	self.allowResets = true
+function OrbItemFunc_onLeftClick(self)
+	self:Set("active", not self.ItemState["active"])
 end
 
-function BallItem:setActive(active)
-	self:setProperty("active", active)
+function OrbItemFunc_onRightClick(self)
+	self:Set("active", not self.ItemState["active"])
 end
 
-function BallItem:getActive()
-	return self:getProperty("active")
-end
-
-function BallItem:updateIcon()
-	if self:getActive() then
-		self.ItemInstance.Icon = self.activeImage
-	else
-		self.ItemInstance.Icon = self.disabledImage
-	end
-end
-
-function BallItem:onLeftClick()
-	self:setActive(not self:getActive())
-end
-
-function BallItem:onRightClick()
-	self:setActive(not self:getActive())
-end
-
-function BallItem:canProvideCode(code)
-	if code == self.code then
+function OrbItemFunc_canProvideCode(self, code)
+	if code == self.ItemState["orbCode"] then
 		return true
-	elseif code == "ball" then
+	elseif code == "orb" then
 		return true
 	else
 		return false
 	end
 end
 
-function BallItem:providesCode(code)
-	if self:getActive() and (code == self.code or code == "ball") then
+function OrbItemFunc_providesCode(self, code)
+	if self.ItemState["active"] and (code == self.ItemState["orbCode"] or code == "orb") then
 		return 1
 	end
 	return 0
 end
 
-function BallItem:advanceToCode(code)
-	if code == nil or code == self.code then
-		self:setActive(true)
+function OrbItemFunc_advanceToCode(self, code)
+	if code == nil or code == self.ItemState["orbCode"] then
+		self:Set("active", true)
 	end
 end
 
-function BallItem:save()
-	local saveData = {}
-	saveData["active"] = self:getActive()
-	return saveData
+function OrbItemFunc_save(self)
+	return self.ItemState
 end
 
-function BallItem:load(data)
-	self.allowResets = false
-	if data["active"] ~= nil then
-		self:setActive(data["active"])
+function OrbItemFunc_load(self, data)
+	self.ItemState = data
+end
+
+function OrbItemFunc_propertyChanged(self, key, value)
+	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+		print("Property changed for LuaItem: " .. self.Name .. ". Key: " .. key .. " Value: " .. tostring(value))
 	end
-	self.allowResets = true
-	return true
-end
-
-function BallItem:propertyChanged(key, value)
-	if key == "active" and value == true and Tracker.ActiveVariantUID == "items_and_map_custom" and self.allowResets then
-		if negate("flag_ro") and Tracker:ProviderCountForCode(string.sub(self.code, 1, -5)) > 0 and (negate("flag_gc") or levelTwoCount() == 1) then
+	if key == "active" and value == true and Tracker.ActiveVariantUID == "items_and_map_custom" and self.ItemState["allowResets"] then
+		if negate("flag_ro") and Tracker:ProviderCountForCode(string.sub(self.ItemState["orbCode"], 1, -4)) > 0 and (negate("flag_gc") or levelTwoCount() == 1) then
 			resetWallTracking()
 		end
-		if negate("flag_nw") and Tracker:ProviderCountForCode(string.sub(self.code, 1, -5)) > 0 and (negate("flag_gc") or levelTwoCount() == 1) then
+		if negate("flag_nw") and Tracker:ProviderCountForCode(string.sub(self.ItemState["orbCode"], 1, -4)) > 0 and (negate("flag_gc") or levelTwoCount() == 1) then
 			resetKarmineTracking()
 		end
 	end
-	self:updateIcon()
+	if self.ItemState["active"] then
+		self.Icon = self.ItemState["activeImage"]
+	else
+		self.Icon = self.ItemState["disabledImage"]
+	end
+end
+
+
+function CreateOrbItem(name, code, imagePath)
+	local self = ScriptHost:CreateLuaItem()
+	self.Name = name
+	local activeImage = ImageReference:FromPackRelativePath(imagePath)
+	local disabledImage = ImageReference:FromImageReference(activeImage, "@disabled")
+	self.ItemState = {
+	["active"] = false,
+	["activeImage"] = activeImage,
+	["disabledImage"] = disabledImage,
+	["orbCode"] = code,
+	["allowResets"] = true,
+	}
+	self.Icon = disabledImage
+	
+	self.OnLeftClickFunc = OrbItemFunc_onLeftClick
+	self.OnRightClickFunc = OrbItemFunc_onRightClick
+	self.CanProvideCodeFunc = OrbItemFunc_canProvideCode
+	self.ProvidesCodeFunc = OrbItemFunc_providesCode
+	self.AdvanceToCodeFunc = OrbItemFunc_advanceToCode
+	self.SaveFunc = OrbItemFunc_save
+	self.LoadFunc = OrbItemFunc_load
+	self.PropertyChangedFunc = OrbItemFunc_propertyChanged
 end
