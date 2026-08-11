@@ -1,43 +1,46 @@
-function OrbItemFunc_onLeftClick(self)
+function OrbItem_onLeftClick(self)
 	self:Set("active", not self.ItemState["active"])
 end
 
-function OrbItemFunc_onRightClick(self)
+function OrbItem_onRightClick(self)
 	self:Set("active", not self.ItemState["active"])
 end
 
-function OrbItemFunc_canProvideCode(self, code)
+function OrbItem_canProvideCode(self, code)
 	if code == self.ItemState["orbCode"] then
 		return true
 	elseif code == "orb" then
+		return true
+	elseif code == string.gsub(self.ItemState["orbCode"], "orb", "upgrade") then
 		return true
 	else
 		return false
 	end
 end
 
-function OrbItemFunc_providesCode(self, code)
-	if self.ItemState["active"] and (code == self.ItemState["orbCode"] or code == "orb") then
+function OrbItem_providesCode(self, code)
+	if self.ItemState["active"] and (code == self.ItemState["orbCode"] or code == "orb" or code == string.gsub(self.ItemState["orbCode"], "orb", "upgrade")) then
 		return 1
 	end
 	return 0
 end
 
-function OrbItemFunc_advanceToCode(self, code)
+function OrbItem_advanceToCode(self, code)
 	if code == nil or code == self.ItemState["orbCode"] then
 		self:Set("active", true)
 	end
 end
 
-function OrbItemFunc_save(self)
+function OrbItem_save(self)
 	return self.ItemState
 end
 
-function OrbItemFunc_load(self, data)
+function OrbItem_load(self, data)
 	self.ItemState = data
+	OrbItem_updateIcon(self)
 end
 
-function OrbItemFunc_propertyChanged(self, key, value)
+function OrbItem_propertyChanged(self, key, value)
 	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
 		print("Property changed for LuaItem: " .. self.Name .. ". Key: " .. key .. " Value: " .. tostring(value))
 	end
@@ -49,13 +52,16 @@ function OrbItemFunc_propertyChanged(self, key, value)
 			resetKarmineTracking()
 		end
 	end
+	OrbItem_updateIcon(self)
+end
+
+function OrbItem_updateIcon(self)
 	if self.ItemState["active"] then
 		self.Icon = self.ItemState["activeImage"]
 	else
 		self.Icon = self.ItemState["disabledImage"]
 	end
 end
-
 
 function CreateOrbItem(name, code, imagePath)
 	local self = ScriptHost:CreateLuaItem()
@@ -71,12 +77,12 @@ function CreateOrbItem(name, code, imagePath)
 	}
 	self.Icon = disabledImage
 	
-	self.OnLeftClickFunc = OrbItemFunc_onLeftClick
-	self.OnRightClickFunc = OrbItemFunc_onRightClick
-	self.CanProvideCodeFunc = OrbItemFunc_canProvideCode
-	self.ProvidesCodeFunc = OrbItemFunc_providesCode
-	self.AdvanceToCodeFunc = OrbItemFunc_advanceToCode
-	self.SaveFunc = OrbItemFunc_save
-	self.LoadFunc = OrbItemFunc_load
-	self.PropertyChangedFunc = OrbItemFunc_propertyChanged
+	self.OnLeftClickFunc = OrbItem_onLeftClick
+	self.OnRightClickFunc = OrbItem_onRightClick
+	self.CanProvideCodeFunc = OrbItem_canProvideCode
+	self.ProvidesCodeFunc = OrbItem_providesCode
+	self.AdvanceToCodeFunc = OrbItem_advanceToCode
+	self.SaveFunc = OrbItem_save
+	self.LoadFunc = OrbItem_load
+	self.PropertyChangedFunc = OrbItem_propertyChanged
 end
