@@ -1,6 +1,4 @@
-GoaFloorItem = CustomItem:extend()
-
-BOSSNAMES = 
+BOSSNAMES =
 {
 	"unknown",
 	"kelbesque",
@@ -9,29 +7,40 @@ BOSSNAMES =
 	"karmine"
 }
 
-function GoaFloorItem:init(name, defaultState)
-	self.enableIconUpdates = false
-	self.name = name
-	self.displayName = "Goa " .. name .. " Floor"
-	self:createItem(self.displayName)
-	self:setProperty("state", defaultState)
-	self:setProperty("reversed", false)
-	self.enableIconUpdates = true
-	self:updateIcon()
+function CreateGoaFloorItem(floor, defaultState)
+	local self = ScriptHost:CreateLuaItem()
+	self.Name = "Goa " .. floor .. " Floor"
+	self.ItemState = {
+		["floor"] = floor,
+		["active"] = false,
+		["activeImage"] = activeImage,
+		["disabledImage"] = disabledImage,
+		["state"] = defaultState,
+		["reversed"] = false,
+		["enableIconUpdates"] = true
+	}
+	self.Icon = disabledImage
+
+	self.OnLeftClickFunc = GoaFloorItem_onLeftClick
+	self.OnRightClickFunc = GoaFloorItem_onRightClick
+	self.CanProvideCodeFunc = GoaFloorItem_canProvideCode
+	self.ProvidesCodeFunc = GoaFloorItem_providesCode
+	self.AdvanceToCodeFunc = GoaFloorItem_advanceToCode
+	self.SaveFunc = GoaFloorItem_save
+	self.LoadFunc = GoaFloorItem_load
+	self.PropertyChangedFunc = GoaFloorItem_propertyChanged
+	
+	self.ItemState["enableIconUpdates"] = false
+	self:Set("state", defaultState)
+	self:Set("reversed", false)
+	self.ItemState["enableIconUpdates"] = true
+	GoaFloorItem_updateIcon(self)
 end
 
-function GoaFloorItem:getState()
-	return self:getProperty("state")
-end
-
-function GoaFloorItem:setState(state)
-	self:setProperty("state", state)
-end
-
-function GoaFloorItem:updateIcon()
-	if self.enableIconUpdates then
-		local filename = "images/goa floors/" .. self.name .. "_"
-		local state = self:getState()
+function GoaFloorItem_updateIcon(self)
+	if self.ItemState["enableIconUpdates"] then
+		local filename = "images/goa floors/" .. self.ItemState["floor"] .. "_"
+		local state = self.ItemState["state"]
 		if state == 0 then
 			filename = filename .. "badge"
 		elseif state == 1 then
@@ -43,96 +52,88 @@ function GoaFloorItem:updateIcon()
 		elseif state == 4 then
 			filename = filename .. "karmine"
 		end
-		if self:getProperty("reversed") and state ~= 0 then
+		if self.ItemState["reversed"] and state ~= 0 then
 			filename = filename .. "_r"
 		end
 		filename = filename .. ".png"
-		self.ItemInstance.Icon = ImageReference:FromPackRelativePath(filename)
+		self.Icon = ImageReference:FromPackRelativePath(filename)
 	end
 end
 
-function GoaFloorItem:onLeftClick()
-	local state = self:getState()
+function GoaFloorItem_onLeftClick(self)
+	local state = self.ItemState["state"]
 	state = state + 1
 	if state == 5 then
 		state = 0
 	end
-	self:setState(state)
+	self:Set("state", state)
 end
 
-function GoaFloorItem:onRightClick()
-	self:setProperty("reversed",  not self:getProperty("reversed"))
+function GoaFloorItem_onRightClick(self)
+	self:Set("reversed",  not self.ItemState["reversed"])
 end
 
-function GoaFloorItem:canProvideCode(code)
+function GoaFloorItem_canProvideCode(self, code)
 	if code == "goaknownfloor" then return true end
-	if code == "goa" .. self.name then return true end
+	if code == "goa" .. self.ItemState["floor"] then return true end
 	for index, bossName in ipairs(BOSSNAMES) do
 		if	code == "goa" .. bossName or
 			code == "goa" .. bossName .. "_r" or
-			code == "goa" .. self.name .. bossName then
+			code == "goa" .. self.ItemState["floor"] .. bossName then
 				return true
 		end
 	end
 end
 
-function GoaFloorItem:providesCode(code)
-	if code == "goa" .. self.name then return 1 end
-	local state = self:getProperty("state")
+function GoaFloorItem_providesCode(self, code)
+	if code == "goa" .. self.ItemState["floor"] then return 1 end
+	local state = self.ItemState["state"]
 	if code == "goaknownfloor" and state > 0 then return 1 end
 	local bossName = BOSSNAMES[state + 1]
 	if	code == "goa" .. bossName or
-		code == "goa" .. self.name .. bossName then
+		code == "goa" .. self.ItemState["floor"] .. bossName then
 			return 1
 	end
-	if self:getProperty("reversed") and code == "goa" .. bossName .. "_r" then
+	if self.ItemState["reversed"] and code == "goa" .. bossName .. "_r" then
 		return 1
 	end
 	return 0
 end
 
-function GoaFloorItem:advanceToCode(code)
-	self.enableIconUpdates = false
+function GoaFloorItem_advanceToCode(self, code)
+	self.ItemState["enableIconUpdates"] = false
 	if string.find(code, "unknown") ~= nil then
-		self:setState(0)
+		self:Set("state", 0)
 	elseif string.find(code, "kelbesque") ~= nil then
-		self:setState(1)
+		self:Set("state", 1)
 	elseif string.find(code, "sabera") ~= nil then
-		self:setState(2)
+		self:Set("state", 2)
 	elseif string.find(code, "mado") ~= nil then
-		self:setState(3)
+		self:Set("state", 3)
 	elseif string.find(code, "karmine") ~= nil then
-		self:setState(4)
+		self:Set("state", 4)
 	end
 	if string.find(code, "_r") ~= nil then
-		self:setProperty("reversed", true)
+		self:Set("reversed", true)
 	else
-		self:setProperty("reversed", false)
+		self:Set("reversed", false)
 	end
-	self.enableIconUpdates = true
-	self:updateIcon()
+	self.ItemState["enableIconUpdates"] = true
+	GoaFloorItem_updateIcon(self)
 end
 
-function GoaFloorItem:save()
-	local saveData = {}
-	saveData["state"] = self:getState()
-	saveData["reversed"] = self:getProperty("reversed")
-	return saveData
+function GoaFloorItem_save(self)
+	return self.ItemState
 end
 
-function GoaFloorItem:load(data)
-	self.enableIconUpdates = false
-	if data["reversed"] ~= nil then
-		self:setProperty("reversed", data["reversed"])
-	end
-	if data["state"] ~= nil then
-		self:setState(data["state"])
-	end
-	self.enableIconUpdates = true
-	self:updateIcon()
+function GoaFloorItem_load(self, data)
+	self.ItemState["enableIconUpdates"] = false
+	self.ItemState = data
+	self.ItemState["enableIconUpdates"] = true
+	GoaFloorItem_updateIcon(self)
 	return true
 end
 
-function GoaFloorItem:propertyChanged(key, value)
-	self:updateIcon()
+function GoaFloorItem_propertyChanged(self, key, value)
+	GoaFloorItem_updateIcon(self)
 end

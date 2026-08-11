@@ -2,6 +2,7 @@ function initCustomItems()
 	ScriptHost:LoadScript("scripts/custom_items/SwordItem.lua")
 	ScriptHost:LoadScript("scripts/custom_items/BallItem.lua")
 	ScriptHost:LoadScript("scripts/custom_items/BraceletItem.lua")
+	ScriptHost:LoadScript("scripts/custom_items/GoaFloorItem.lua")
 	local swordOfWind = CreateSwordItem("Sword of Wind", "wind", "images/items/swordofwind.png")
 	local swordOfFire = CreateSwordItem("Sword of Fire", "fire", "images/items/swordoffire.png")
 	local swordOfWater = CreateSwordItem("Sword of Water", "water", "images/items/swordofwater.png")
@@ -14,13 +15,13 @@ function initCustomItems()
 	local fireBracelet = CreateBraceletItem("Flame Bracelet", "firebracelet", "images/items/braceletoffire.png")
 	local waterBracelet = CreateBraceletItem("Blizzard Bracelet", "waterbracelet", "images/items/braceletofwater.png")
 	local thunderBracelet = CreateBraceletItem("Storm Bracelet", "thunderbracelet", "images/items/braceletofthunder.png")
-	--[[local goa1st = CreateGoaFloorItem("1st", 0)
+	local goa1st = CreateGoaFloorItem("1st", 0)
 	local goa2nd = CreateGoaFloorItem("2nd", 0)
 	local goa3rd = CreateGoaFloorItem("3rd", 0)
 	local goa4th = CreateGoaFloorItem("4th", 0)
 
 
-	local keyBadges = 
+	--[[local keyBadges =
 	{
 		{code = "unknownkey", flag_wt = false, flag_wu = true, both = true},
 		{code = "windmill", flag_wt = false, flag_wu = true, both = true},
