@@ -1,36 +1,46 @@
-KeyItem = CustomItem:extend()
-
 BADGE_IMAGE_PATH = "images/badges/"
 
-function KeyItem:init(name, code, category, imagePath, badges)
-	self.canUpdateIcon = false
-	self:createItem(name)
-	self.name = name
-	--print("name: " .. name .. " code: " .. code)
-	self.code = code
-	self.category = category
-	self.badges = badges
-	self:setProperty("active", false)
-	self:setProperty("badgeNum", 0)
-	self.imageBase = ImageReference:FromPackRelativePath(imagePath)
-	self.ItemInstance.PotentialIcon = self.imageBase
-	self:cacheAndUpdateFromFlags()
-	self.canUpdateIcon = true
-	self:updateIcon()
+function CreateKeyItem(name, code, category, imagePath, badges)
+	local self = ScriptHost:CreateLuaItem()
+	self.Name = name
+	local imageBase = ImageReference:FromPackRelativePath(imagePath)
+	self.ItemState = {
+	["active"] = false,
+	["imageBase"] = imageBase,
+	["code"] = code,
+	["allowResets"] = true,
+	["badges"] = badges,
+	["badgeNum"] = 0,
+	["canUpdateIcon"] = false,
+	["category"] = category,
+	["flag_wt"] = 0,
+	["flag_wu"] = 0
+	}
+	self.Icon = imageBase	
+	self.OnLeftClickFunc = KeyItem_onLeftClick
+	self.OnRightClickFunc = KeyItem_onRightClick
+	self.CanProvideCodeFunc = KeyItem_canProvideCode
+	self.ProvidesCodeFunc = KeyItem_providesCode
+	self.AdvanceToCodeFunc = KeyItem_advanceToCode
+	self.SaveFunc = KeyItem_save
+	self.LoadFunc = KeyItem_load
+	self.PropertyChangedFunc = KeyItem_propertyChanged
+	KeyItem_cacheAndUpdateFromFlags(self)
+	self.ItemState["canUpdateIcon"] = true
+	KeyItem_updateIcon(self)
 end
 
-function KeyItem:cacheAndUpdateFromFlags()
-	self.isCaching = true
+function KeyItem_cacheAndUpdateFromFlags(self)
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if self.flag_wt == nil or self.flag_wt ~= flag_wt or self.flag_wu == nil or self.flag_wu ~= flag_wu then
+	if self.ItemState["flag_wt"] ~= flag_wt or self.ItemState["flag_wu"] ~= flag_wu then
 		--print("caching")
-		self.flag_wt = flag_wt
-		self.flag_wu = flag_wu
-		local badgeNum = self:getProperty("badgeNum")
-		local badge = self.badges[badgeNum]
+		self.ItemState["flag_wt"] = flag_wt
+		self.ItemState["flag_wu"] = flag_wu
+		local badgeNum = self.ItemState["badgeNum"]
+		local badge = self.ItemState["badges"][badgeNum]
 		if not flag_wt and not flag_wu then
-			self:setProperty("badgeNum", 0)
+			self:Set("badgeNum", 0)
 		elseif	badgeNum > 0 and
 			((flag_wt and not flag_wu and badge["flag_wt"]) or
 			(not flag_wt and flag_wu and badge["flag_wu"]) or
@@ -38,74 +48,73 @@ function KeyItem:cacheAndUpdateFromFlags()
 				--no need to update
 		else
 			--print("right-clicking: " .. self.name)
-			self:onRightClick()
+			KeyItem_onRightClick(self)
 		end
 	end
-	self.isCaching = false
 end
 
-function KeyItem:updateIcon()
-	if self.canUpdateIcon then
+function KeyItem_updateIcon(self)
+	if self.ItemState["canUpdateIcon"] then
 		local img_mod = ""
-		if self:getProperty("badgeNum") and self:getProperty("badgeNum") > 0 then
-			img_mod = "overlay|".. BADGE_IMAGE_PATH .. self.badges[self:getProperty("badgeNum")]["code"] .. ".png"
+		if self.ItemState["badgeNum"] and self.ItemState["badgeNum"] > 0 then
+			img_mod = "overlay|".. BADGE_IMAGE_PATH .. self.ItemState["badges"][self.ItemState["badgeNum"]]["code"] .. ".png"
 		end
-		if not self:getProperty("active") then
+		if not self.ItemState["active"] then
 			img_mod = img_mod .. ",@disabled"
 		end
-		self.ItemInstance.Icon = ImageReference:FromImageReference(self.imageBase, img_mod)
+		self.Icon = ImageReference:FromImageReference(self.ItemState["imageBase"], img_mod)
 	end
 end
 
-function KeyItem:onLeftClick()
-	self:cacheAndUpdateFromFlags()
-	self:setProperty("active", not self:getProperty("active"))
+function KeyItem_onLeftClick(self)
+	KeyItem_cacheAndUpdateFromFlags(self)
+	self:Set("active", not self.ItemState["active"])
 end
 
-function KeyItem:onRightClick()
+function KeyItem_onRightClick(self)
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
 	--print ("flag_wt: " .. (flag_wt and 'true' or 'false') .. " flag_wu: " .. (flag_wu and 'true' or 'false'))
 	if not flag_wt and not flag_wu then
-		self:setProperty("badgeNum", 0)
+		self:Set("badgeNum", 0)
 	else
-		local badgeNum = self:getProperty("badgeNum")
+		local badgeNum = self.ItemState["badgeNum"]
 		local initialBadgeNum = badgeNum
 		badgeNum = badgeNum + 1
-		if badgeNum > #self.badges then
+		if badgeNum > #self.ItemState["badges"] then
 			badgeNum = 1
 		end
 		while badgeNum ~= initialBadgeNum do
-			local currentBadge = self.badges[badgeNum]
+			local currentBadge = self.ItemState["badges"][badgeNum]
 			if	(flag_wt and not flag_wu and currentBadge["flag_wt"]) or
 				(not flag_wt and flag_wu and currentBadge["flag_wu"]) or
 				(flag_wt and flag_wu and currentBadge["both"]) then
 					break
 			end
 			badgeNum = badgeNum + 1
-			if badgeNum > #self.badges then
+			if badgeNum > #self.ItemState["badges"] then
 				if initialBadgeNum == 0 then
 					break
 				end
 				badgeNum = 1
 			end
 		end
-		if badgeNum == initialBadgeNum or badgeNum > #self.badges then
-			self:setProperty("badgeNum", 0)
+		if badgeNum == initialBadgeNum or badgeNum > #self.ItemState["badges"] then
+			self:Set("badgeNum", 0)
 		else
-			self:setProperty("badgeNum", badgeNum)
+			self:Set("badgeNum", badgeNum)
 		end
 	end
 end
 
-function KeyItem:canProvideCode(code)
-	if self.code and self.code == code then
+function KeyItem_canProvideCode(self, code)
+	if self.ItemState["code"] == code then
 		return true
 	end
-	if self.category and self.category == code then
+	if self.ItemState["category"] == code then
 		return true
 	end
-	for _, badge in ipairs(self.badges) do
+	for _, badge in ipairs(self.ItemState["badges"]) do
 		if 	code == badge["code"] or
 			code == "not" .. badge["code"] then
 			return true
@@ -114,34 +123,34 @@ function KeyItem:canProvideCode(code)
 	return false
 end
 
-function KeyItem:providesCode(code)
-	local badgeNum = self:getProperty("badgeNum")
-	if 	self:getProperty("active") and 
-		(code == self.code or 
-		code == self.category or
-		(badgeNum > 0 and code == self.badges[badgeNum]["code"])) then
+function KeyItem_providesCode(self, code)
+	local badgeNum = self.ItemState["badgeNum"]
+	if 	self.ItemState["active"] and 
+		(code == self.ItemState["code"] or 
+		code == self.ItemState["category"] or
+		(badgeNum > 0 and code == self.ItemState["badges"][badgeNum]["code"])) then
 			return 1
 	end
-	if 	not self:getProperty("active") and
-		(badgeNum > 0 and code == ("not" .. self.badges[badgeNum]["code"])) then
+	if 	not self.ItemState["active"] and
+		(badgeNum > 0 and code == ("not" .. self.ItemState["badges"][badgeNum]["code"])) then
 			return 1
 	end
 	return 0
 end
 
-function KeyItem:advanceToCode(code)
+function KeyItem_advanceToCode(self, code)
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if code ~= nil and code == self.code then
-		self:setProperty("active", true)
+	if code ~= nil and code == self.ItemState["code"] then
+		self:Set("active", true)
 	else
-		for badgeIndex, badge in ipairs(self.badges) do
+		for badgeIndex, badge in ipairs(self.ItemState["badges"]) do
 			if code == badge["code"] then
 				if	(flag_wt and not flag_wu and currentBadge["flag_wt"]) or
 					(not flag_wt and flag_wu and currentBadge["flag_wu"]) or
 					(flag_wt and flag_wu and currentBadge["both"]) then
-						self:setProperty("badgeNum", badgeIndex)
-						self:setProperty("active", true)
+						self:Set("badgeNum", badgeIndex)
+						self:Set("active", true)
 				end
 				break
 			end
@@ -149,26 +158,15 @@ function KeyItem:advanceToCode(code)
 	end
 end
 
-function KeyItem:save()
-	local saveData = {}
-	saveData["active"] = self:getProperty("active")
-	saveData["badgeNum"] = self:getProperty("badgeNum")
-	return saveData
+function KeyItem_save(self)
+	return self.ItemState
 end
 
-function KeyItem:load(data)
-	self.canUpdateIcon = false
-	if data["active"] ~= nil then
-		self:setProperty("active", data["active"])
-	end
-	if data["badgeNum"] ~= nil then
-		self:setProperty("badgeNum", data["badgeNum"])
-	end
-	self.canUpdateIcon = true
-	self:updateIcon()
-	return true
+function KeyItem_load(self, data)
+	self.ItemState = data
+	KeyItem_updateIcon(self)
 end
 
-function KeyItem:propertyChanged(key, value)
-	self:updateIcon()
+function KeyItem_propertyChanged(self, key, value)
+	KeyItem_updateIcon(self)
 end
