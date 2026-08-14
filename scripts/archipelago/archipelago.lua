@@ -239,10 +239,24 @@ function onItem(index, item_id, item_name, player_number)
     local v = ITEM_MAPPING[item_id]
     if not v then
         local found = false
+        KEY_ITEM_MAP = nil
         if KEY_ITEM_MAP ~= nil then
             v = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
             if v then
                 found = true
+            end
+        else
+            local type = KEY_ITEM_TYPE_MAPPING[item_id]
+            if type ~= nil then
+                local possibleCodes = KEY_ITEM_TYPE_TO_CODES[type]
+                for _, code in pairs(possibleCodes) do
+                    local item = Tracker:FindObjectForCode(code)
+                    if not item:Get("active") then
+                        v = {code, "custom"}
+                        found = true
+                        break
+                    end
+                end
             end
         end
         if not found then
@@ -272,64 +286,66 @@ function onItem(index, item_id, item_name, player_number)
             end
         elseif item_type == "consumable" then
             obj.AcquiredCount = obj.AcquiredCount + obj.Increment
+        elseif item_type == "custom" then
+            obj:Set("active", true)
         elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
             print(string.format("onItem: unknown item type %s for code %s", item_type, item_code))
         end
-        if string.sub(item_code, 1, 7) == "swordof" then
-            local sword_element = string.sub(item_code, 8)
-            if Tracker:ProviderCountForCode("flag_ro") > 0 or Tracker:ProviderCountForCode(sword_element .. "upgrade") > 0 then
-                for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
-                    if wall_element == sword_element then
-                        local wall_obj = Tracker:FindObjectForCode(wall_code)
-                        wall_obj.Active = true
-                        wall_obj.CurrentStage = 1
-                    end
-                end
-            end
-            for boss_name, boss_element in pairs(BOSS_ELEMENTS) do
-                if boss_name == "Vampire 2" or boss_name == "Giant Insect" then
-                    local boss_code = string.lower(string.gsub(string.gsub(boss_name, " ", ""), "2", ""))
-                    local boss_obj = Tracker:FindObjectForCode(boss_code)
-                    if item_code ~= "swordof" .. string.lower(boss_element) or Tracker:ProviderCountForCode("sword") > 2 then
-                        boss_obj.Active = true
-                        boss_obj.CurrentStage = 1
-                    else
-                        boss_obj.Active = true
-                        boss_obj.CurrentStage = 2
-                    end
-                else
-                    local boss_code = string.lower(string.gsub(boss_name, " ", ""))
-                    local boss_obj = Tracker:FindObjectForCode(boss_code)
-                    if item_code == "swordof" .. string.lower(boss_element) then
-                        boss_obj.Active = true
-                        boss_obj.CurrentStage = 1
-                    elseif boss_obj.Active == false then
-                        boss_obj.Active = true
-                        boss_obj.CurrentStage = 2
-                    end
-                end
-            end
-            local rage_obj = Tracker:FindObjectForCode("rage")
-            if SHUFFLE_DATA ~= nil and item_code == string.lower(string.gsub(SHUFFLE_DATA["trade_in_map"]["Rage"], " ", "")) then
-                rage_obj.Active = true
-                if item_code == "swordofwind" then
-                    rage_obj.CurrentStage = 1
-                elseif item_code == "swordoffire" then
-                    rage_obj.CurrentStage = 2
-                elseif item_code == "swordofwater" then
-                    rage_obj.CurrentStage = 3
-                elseif item_code == "swordofthunder" then
-                    rage_obj.CurrentStage = 4
-                end
-            elseif rage_obj.Active == false then
-                rage_obj.Active = true
-                rage_obj.CurrentStage = 5
-            end
-        end
 		if SHUFFLE_DATA ~= nil then
+            if string.sub(item_code, 1, 7) == "swordof" then
+                local sword_element = string.sub(item_code, 8)
+                if Tracker:ProviderCountForCode("flag_ro") > 0 or Tracker:ProviderCountForCode(sword_element .. "upgrade") > 0 then
+                    for wall_code, wall_element in pairs(IRON_WALL_ELEMENTS) do
+                        if wall_element == sword_element then
+                            local wall_obj = Tracker:FindObjectForCode(wall_code)
+                            wall_obj.Active = true
+                            wall_obj.CurrentStage = 1
+                        end
+                    end
+                end
+                for boss_name, boss_element in pairs(BOSS_ELEMENTS) do
+                    if boss_name == "Vampire 2" or boss_name == "Giant Insect" then
+                        local boss_code = string.lower(string.gsub(string.gsub(boss_name, " ", ""), "2", ""))
+                        local boss_obj = Tracker:FindObjectForCode(boss_code)
+                        if item_code ~= "swordof" .. string.lower(boss_element) or Tracker:ProviderCountForCode("sword") > 2 then
+                            boss_obj.Active = true
+                            boss_obj.CurrentStage = 1
+                        else
+                            boss_obj.Active = true
+                            boss_obj.CurrentStage = 2
+                        end
+                    else
+                        local boss_code = string.lower(string.gsub(boss_name, " ", ""))
+                        local boss_obj = Tracker:FindObjectForCode(boss_code)
+                        if item_code == "swordof" .. string.lower(boss_element) then
+                            boss_obj.Active = true
+                            boss_obj.CurrentStage = 1
+                        elseif boss_obj.Active == false then
+                            boss_obj.Active = true
+                            boss_obj.CurrentStage = 2
+                        end
+                    end
+                end
+                local rage_obj = Tracker:FindObjectForCode("rage")
+                if SHUFFLE_DATA ~= nil and item_code == string.lower(string.gsub(SHUFFLE_DATA["trade_in_map"]["Rage"], " ", "")) then
+                    rage_obj.Active = true
+                    if item_code == "swordofwind" then
+                        rage_obj.CurrentStage = 1
+                    elseif item_code == "swordoffire" then
+                        rage_obj.CurrentStage = 2
+                    elseif item_code == "swordofwater" then
+                        rage_obj.CurrentStage = 3
+                    elseif item_code == "swordofthunder" then
+                        rage_obj.CurrentStage = 4
+                    end
+                elseif rage_obj.Active == false then
+                    rage_obj.Active = true
+                    rage_obj.CurrentStage = 5
+                end
+            end
 			local upgrade_element = nil
-			if string.sub(item_code, 1, 5) == "orbof" then
-				upgrade_element = string.sub(item_code, 6)
+			if string.sub(item_code, -3) == "orb" then
+				upgrade_element = string.sub(item_code, 1, -4)
 			elseif string.sub(item_code, -8) == "bracelet" then
 				upgrade_element = string.sub(item_code, 1, -9)
 			end
