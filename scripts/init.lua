@@ -17,6 +17,7 @@ if Tracker.ActiveVariantUID == "items_and_map_custom" then
 	Tracker:AddItems("items/bosses.json")
 	Tracker:AddItems("items/miscellaneous_items.json")
 	Tracker:AddItems("items/doors.json")
+	Tracker:AddItems("items/thunder_warps.json")
 	Tracker:AddLayouts("layouts/map_layouts.json")
 	Tracker:AddLayouts("layouts/input_layouts.json")
 	Tracker:AddLayouts("layouts/map_tracker_layout.json")

@@ -92,17 +92,6 @@ function onClear(slot_data)
             blocked_obj.CurrentStage = 0
         end
 		if SHUFFLE_DATA ~= nil then
-			local thunder_warp = SHUFFLE_DATA["thunder_warp"]
-			if thunder_warp == "Nadare's" then
-				thunder_warp = "nadares"
-			elseif thunder_warp == "Zombie Town" then
-				thunder_warp = "zombie"
-			else
-				thunder_warp = string.lower(thunder_warp)
-			end
-			local thunder_code = "thunder" .. thunder_warp
-			local thunder_obj = Tracker:FindObjectForCode("thunder")
-			thunder_obj.CurrentStage = THUNDER_CODE_TO_INDEX[thunder_code]
 			for wall_region, wall_element in pairs(SHUFFLE_DATA["wall_map"]) do
 				local wall_code = REGION_TO_ROCK_WALL_CODE[wall_region]
 				if wall_code ~= nil then
@@ -239,7 +228,6 @@ function onItem(index, item_id, item_name, player_number)
     local v = ITEM_MAPPING[item_id]
     if not v then
         local found = false
-        KEY_ITEM_MAP = nil
         if KEY_ITEM_MAP ~= nil then
             v = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
             if v then
@@ -382,6 +370,13 @@ function onItem(index, item_id, item_name, player_number)
 				end
 			end
 		end
+        if item_code == "swordofthunder" then
+            local warp_code = THUNDER_ID_TO_WARP[item_id]
+            if warp_code ~= "thundernowarp" then
+                local warp_obj = Tracker:FindObjectForCode(warp_code)
+                warp_obj.Active = true
+            end
+        end
     elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
         print(string.format("onItem: could not find object for code %s", v[1]))
     end

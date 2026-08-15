@@ -1,0 +1,98 @@
+[
+	// Leaf
+	{
+		"name": "Leaf Warp",
+		"type": "toggle",
+		"img": "images/items/thunderleaf.png",
+		"loop": "true",
+		"codes": "thunderleaf"
+	},
+	// Brynmaer
+	{
+		"name": "Brynmaer Warp",
+		"type": "toggle",
+		"img": "images/items/thunderbrynmaer.png",
+		"loop": "true",
+		"codes": "thunderbrynmaer"
+	},
+	// Oak
+	{
+		"name": "Oak Warp",
+		"type": "toggle",
+		"img": "images/items/thunderoak.png",
+		"loop": "true",
+		"codes": "thunderoak"
+	},
+	// Nadare's
+	{
+		"name": "Nadare's Warp",
+		"type": "toggle",
+		"img": "images/items/thundernadares.png",
+		"loop": "true",
+		"codes": "thundernadares"
+	},
+	// Portoa
+	{
+		"name": "Portoa Warp",
+		"type": "toggle",
+		"img": "images/items/thunderportoa.png",
+		"loop": "true",
+		"codes": "thunderportoa"
+	},
+	// Amazones
+	{
+		"name": "Amazones Warp",
+		"type": "toggle",
+		"img": "images/items/thunderamazones.png",
+		"loop": "true",
+		"codes": "thunderamazones"
+	},
+	// Joel
+	{
+		"name": "Joel Warp",
+		"type": "toggle",
+		"img": "images/items/thunderjoel.png",
+		"loop": "true",
+		"codes": "thunderjoel"
+	},
+	// Zombie
+	{
+		"name": "Zombie Warp",
+		"type": "toggle",
+		"img": "images/items/thunderzombie.png",
+		"loop": "true",
+		"codes": "thunderzombie"
+	},
+	// Swan
+	{
+		"name": "Swan Warp",
+		"type": "toggle",
+		"img": "images/items/thunderswan.png",
+		"loop": "true",
+		"codes": "thunderswan"
+	},
+	// Shyron
+	{
+		"name": "Shyron Warp",
+		"type": "toggle",
+		"img": "images/items/thundershyron.png",
+		"loop": "true",
+		"codes": "thundershyron"
+	},
+	// Goa
+	{
+		"name": "Goa Warp",
+		"type": "toggle",
+		"img": "images/items/thundergoa.png",
+		"loop": "true",
+		"codes": "thundergoa"
+	},
+	// Sahara
+	{
+		"name": "Sahara Warp",
+		"type": "toggle",
+		"img": "images/items/thundersahara.png",
+		"loop": "true",
+		"codes": "thundersahara"
+	}
+]

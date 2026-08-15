@@ -151,20 +151,20 @@ GLITCH_OPTION_TO_FLAG_ITEM_MAP = {
 --****["vanilla_maps"] = "flag_",
 --****["thunder_warp"] = "flag_",
 
-THUNDER_CODE_TO_INDEX = {
-	["thunder"] = 0,
-	["thundershyron"] = 1,
-	["thunderleaf"] = 2,
-	["thunderbrynmaer"] = 3,
-	["thunderoak"] = 4,
-	["thundernadares"] = 5,
-	["thunderportoa"] = 6,
-	["thunderamazones"] = 7,
-	["thunderjoel"] = 8,
-	["thunderzombie"] = 9,
-	["thunderswan"] = 10,
-	["thundergoa"] = 11,
-	["thundersahara"] = 12
+THUNDER_ID_TO_WARP = {
+    [4] = "thundernowarp",
+    [325] = "thunderleaf",
+    [326] = "thunderbrynmaer",
+    [327] = "thunderoak",
+    [328] = "thundernadares",
+    [329] = "thunderportoa",
+    [330] = "thunderamazones",
+    [331] = "thunderjoel",
+    [332] = "thunderzombie",
+    [333] = "thunderswan",
+    [334] = "thundershyron",
+    [335] = "thundergoa",
+    [336] = "thundersahara",
 }
 
 REGION_TO_ROCK_WALL_CODE = {

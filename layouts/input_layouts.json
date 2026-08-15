@@ -209,26 +209,8 @@
 				"rows": [
 					["zcw","ecw","scw","msww"],
 					["msnw","wcw","flcw","kpcw"],
-					["","esiw","mhw",""],
-				],
-			},
-		]
-	},
-
-	"tracker_steel_walls": {
-		"type": "group",
-		"margin": 0,
-		"header": "Steel Walls",
-		"header_background": "#ff000000",
-		"content": [
-			{
-				"type": "itemgrid",
-				"margin": 0,
-				"item_margin": 2,
-				"item_size": 40,
-				"rows": [
-					["goa_entrance_wall_cleared","goa_sabera_item_wall_cleared","goa_sabera_boss_wall_cleared","goa_mado_wall_cleared"],
-					["","goa_karmine_wall_cleared","goa_basement_wall_cleared",""],
+					["esiw","mhw","goa_entrance_wall_cleared", "goa_sabera_item_wall_cleared"],
+					["goa_sabera_boss_wall_cleared","goa_mado_wall_cleared","goa_karmine_wall_cleared","goa_basement_wall_cleared"]
 				],
 			},
 		]
@@ -284,8 +266,27 @@
 				"item_margin": 2,
 				"item_size": 40,
 				"rows": [
-					["eastfreebrynmaer","eastwallbrynmaer",],
-					["tornelwind","ragewind"],
+					["eastfreebrynmaer","eastwallbrynmaer","tornelwind","ragewind"],
+				],
+			},
+		]
+	},
+
+	"tracker_thunder_warp": {
+		"type": "group",
+		"header": "Thunder Warps",
+		"header_background": "#ff000000",
+		"margin": 0,
+		"content": [
+			{
+				"type": "itemgrid",
+				"margin": 0,
+				"item_margin": 2,
+				"item_size": 40,
+				"rows": [
+					["thunderleaf","thunderbrynmaer","thunderoak","thundernadares"],
+					["thunderportoa","thunderamazones","thunderjoel","thunderzombie"],
+					["thunderswan","thundershyron","thundergoa","thundersahara"]
 				],
 			},
 		]
@@ -316,13 +317,13 @@
 						"type": "layout",
 						"dropshadow": false,
 						"margin": 0,
-						"key": "tracker_steel_walls"
+						"key": "tracker_goa_floors"
 					},
 					{
 						"type": "layout",
 						"dropshadow": false,
 						"margin": 0,
-						"key": "tracker_goa_floors"
+						"key": "tracker_misc"
 					}
 				],
 			},
@@ -355,7 +356,7 @@
 						"type": "layout",
 						"dropshadow": false,
 						"margin": 0,
-						"key": "tracker_misc"
+						"key": "tracker_thunder_warp"
 					},
 				],
 			},
