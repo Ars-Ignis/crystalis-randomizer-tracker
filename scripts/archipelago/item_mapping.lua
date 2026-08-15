@@ -80,6 +80,18 @@ COMPACT_ITEM_MAPPING = {
     [54] = {"sunmoon", "right"},
     [55] = {"bowoftruth", "enable"},
     [63] = {"flight", "enable"},
+    [325] = {"compactthunder", "enable"},
+    [326] = {"compactthunder", "enable"},
+    [327] = {"compactthunder", "enable"},
+    [328] = {"compactthunder", "enable"},
+    [329] = {"compactthunder", "enable"},
+    [330] = {"compactthunder", "enable"},
+    [331] = {"compactthunder", "enable"},
+    [332] = {"compactthunder", "enable"},
+    [333] = {"compactthunder", "enable"},
+    [334] = {"compactthunder", "enable"},
+    [335] = {"compactthunder", "enable"},
+    [336] = {"compactthunder", "enable"},
 }
 
 KEY_ITEM_REVERSE_MAP = {
@@ -466,7 +478,7 @@ KEY_ITEM_TYPE_MAPPING = {
 KEY_ITEM_TYPE_TO_CODES = {
 	["Key"] = {"redkey", "bluekey", "greenkey"},
 	["Flute"] = {"grayflute", "greenflute", "blueflute", "redflute"},
-	["Statue"] = {"redstatue", "graystatue", "bluestatue", "crackedstatue"},
+	["Statue"] = {"redstatue", "crackedstatue", "bluestatue", "graystatue"},
 	["Lamp"] = {"bluelamp", "graylamp"},
-	["Bow"] = {"redbow", "graybow", "bluebow"},
+	["Bow"] = {"graybow", "redbow", "bluebow"},
 }
