@@ -324,7 +324,7 @@ function onItem(index, item_id, item_name, player_number)
         elseif item_type == "custom" then
             obj:Set("active", true)
         elseif item_type == "customkey" then
-            if SLOT_DATA ~= nil then
+            if SHUFFLE_DATA ~= nil then
                 if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
                     print(string.format("Calling KeyItem_advanceToDefaultCode..."))
                 end
