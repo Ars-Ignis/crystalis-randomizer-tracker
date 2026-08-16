@@ -8,7 +8,6 @@ function CreateKeyItem(name, code, category, imagePath, badges, default_code)
 	["active"] = false,
 	["imageBase"] = imageBase,
 	["code"] = code,
-	["allowResets"] = true,
 	["badges"] = badges,
 	["badgeNum"] = 0,
 	["canUpdateIcon"] = false,

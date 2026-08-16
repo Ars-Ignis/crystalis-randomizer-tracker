@@ -13,6 +13,35 @@ GOA_ORDER = nil
 
 AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP = true
 
+RESET_ITEMS = {
+    "swordofwind",
+    "swordoffire",
+    "swordofwater",
+    "swordofthunder",
+    "windorb",
+    "windbracelet",
+    "fireorb",
+    "firebracelet",
+    "waterorb",
+    "waterbracelet",
+    "thunderorb",
+    "thunderbracelet"
+}
+
+function blockAllResets()
+    for _, code in ipairs(RESET_ITEMS) do
+        local resettable_object = Tracker:FindObjectForCode(code)
+        resettable_object.ItemState["allowResets"] = false
+    end
+end
+
+function enableAllResets()
+    for _, code in ipairs(RESET_ITEMS) do
+        local resettable_object = Tracker:FindObjectForCode(code)
+        resettable_object.ItemState["allowResets"] = true
+    end
+end
+
 function onSetReply(key, value, _)
     local slot_team = tostring(Archipelago.TeamNumber)
     local slot_player = tostring(Archipelago.PlayerNumber)
@@ -50,6 +79,9 @@ function onClear(slot_data)
     if SLOT_DATA ~= nil then
         if SLOT_DATA["is_race"] == false then
             SHUFFLE_DATA = SLOT_DATA["shuffle_data"]
+            blockAllResets()
+        else
+            enableAllResets()
         end
         for k, v in pairs(SLOT_DATA) do
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
@@ -111,6 +143,9 @@ function onClear(slot_data)
 				else
 					wall_code = REGION_TO_IRON_WALL_CODE[wall_region]
 					IRON_WALL_ELEMENTS[wall_code] = string.lower(wall_element)
+					local wall_obj = Tracker:FindObjectForCode(wall_code)
+                    wall_obj.Active = true
+                    wall_obj.CurrentStage = 2
 				end
 			end
 			BOSS_ELEMENTS = SHUFFLE_DATA["boss_reqs"]
@@ -123,11 +158,16 @@ function onClear(slot_data)
 					local apostrophe_index, _ = string.find(current_floor, "'")
 					local boss = string.lower(string.sub(current_floor, 1, apostrophe_index-1))
 					GOA_ORDER[i] = {name=boss, is_flipped=flipped}
+                    local floor_code = "goa" .. ORDINALS[i]
+                    local floor_obj = Tracker:FindObjectForCode(floor_code)
+                    floor_code = floor_code .. boss
 					if flipped then
+                        floor_code = floor_code .. "_r"
 						prev_exit = string.gsub(current_floor, "Back", "Entrance")
 					else
 						prev_exit = string.gsub(current_floor, "Front", "Exit")
 					end
+                    GoaFloorItem_advanceToCode(floor_obj, floor_code)
 				end
 				if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
 					for i, floor_info in ipairs(GOA_ORDER) do
