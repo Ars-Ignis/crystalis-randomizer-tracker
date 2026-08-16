@@ -29,6 +29,7 @@ RESET_ITEMS = {
 }
 
 function blockAllResets()
+    if Tracker.ActiveVariantUID == "compact_items" then return end
     for _, code in ipairs(RESET_ITEMS) do
         local resettable_object = Tracker:FindObjectForCode(code)
         resettable_object.ItemState["allowResets"] = false
@@ -36,6 +37,7 @@ function blockAllResets()
 end
 
 function enableAllResets()
+    if Tracker.ActiveVariantUID == "compact_items" then return end
     for _, code in ipairs(RESET_ITEMS) do
         local resettable_object = Tracker:FindObjectForCode(code)
         resettable_object.ItemState["allowResets"] = true
@@ -83,6 +85,24 @@ function onClear(slot_data)
         else
             enableAllResets()
         end
+        if SLOT_DATA == nil or SHUFFLE_DATA == nil then
+            if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+                print(string.format("SLOT_DATA: %s\nSHUFFLE_DATA: %s", SLOT_DATA, SHUFFLE_DATA))
+            end
+            KEY_ITEM_MAP = nil
+        else
+            local forward_map = SHUFFLE_DATA["key_item_names"]
+            KEY_ITEM_MAP = {}
+            for k, v in pairs(forward_map) do
+                KEY_ITEM_MAP[v] = k
+                if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+                    print(string.format("KEY_ITEM_MAP: key: %s, value: %s", k, v))
+                end
+            end
+            KEY_ITEM_MAP["Love Pendant"] = "Love Pendant"
+            KEY_ITEM_MAP["Kirisa Plant"] = "Kirisa Plant"
+        end
+        if Tracker.ActiveVariantUID == "compact_items" then return end
         for k, v in pairs(SLOT_DATA) do
             if OPTION_NAME_TO_FLAG_ITEM_MAP[k] ~= nil then
                 local flag_obj = Tracker:FindObjectForCode(OPTION_NAME_TO_FLAG_ITEM_MAP[k])
@@ -228,24 +248,6 @@ function onClear(slot_data)
     -- reset hosted items
     for k, _ in pairs(HOSTED) do
         Tracker:FindObjectForCode(k).Active = false
-    end
-
-    if SLOT_DATA == nil or SHUFFLE_DATA == nil then
-		if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-			print(string.format("SLOT_DATA: %s\nSHUFFLE_DATA: %s", SLOT_DATA, SHUFFLE_DATA))
-		end
-        KEY_ITEM_MAP = nil
-    else
-        local forward_map = SHUFFLE_DATA["key_item_names"]
-        KEY_ITEM_MAP = {}
-        for k, v in pairs(forward_map) do
-            KEY_ITEM_MAP[v] = k
-			if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
-				print(string.format("KEY_ITEM_MAP: key: %s, value: %s", k, v))
-			end
-        end
-        KEY_ITEM_MAP["Love Pendant"] = "Love Pendant"
-        KEY_ITEM_MAP["Kirisa Plant"] = "Kirisa Plant"
     end
 
     --Tracker:FindObjectForCode("auto_tab").CurrentStage = 1
@@ -442,6 +444,9 @@ function compactItemHandler(item_id, item_name)
     if not v then
         local found = false
         if KEY_ITEM_MAP ~= nil then
+            if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+                print(string.format("compactItemHandler: checking KEY_ITEM_MAP for item id %s name %s", item_id, item_name))
+            end
             v = COMPACT_ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[item_name]]]
             if v then
                 found = true
