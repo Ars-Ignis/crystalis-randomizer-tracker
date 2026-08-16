@@ -11,7 +11,7 @@ function SwordItemFunc_canProvideCode(self, code)
 		return true
 	elseif code == "sword" then
 		return true
-	elseif code == "swordof"..self.ItemState["swordCode"]then
+	elseif code == "swordof"..self.ItemState["swordCode"] then
 		return true
 	else
 		return false
@@ -19,7 +19,7 @@ function SwordItemFunc_canProvideCode(self, code)
 end
 
 function SwordItemFunc_providesCode(self, code)
-	if self.ItemState["active"] and (code == self.ItemState["swordCode"] or code == "sword") then
+	if self.ItemState["active"] and (code == self.ItemState["swordCode"] or code == "sword" or code == "swordof"..self.ItemState["swordCode"]) then
 		return 1
 	end
 	return 0
