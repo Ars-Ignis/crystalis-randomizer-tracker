@@ -172,6 +172,11 @@ function onClear(slot_data)
                     obj.Active = false
                 elseif v[2] == "consumable" then
                     obj.AcquiredCount = 0
+                elseif v[2] == "custom" then
+                    obj:Set("active", false)
+                elseif v[2] == "customkey" then
+                    obj.ItemState["badgeNum"] = 0
+                    obj:Set("active", false)
                 elseif AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
                     print(string.format("onClear: unknown item type %s for code %s", v[2], v[1]))
                 end

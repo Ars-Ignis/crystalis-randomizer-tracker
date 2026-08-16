@@ -145,7 +145,7 @@ end
 function hasAkahanaTrade()
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil and Archipelago.Seed ~= nil then
 		local akahana_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Akahana"]
 		if flag_wu then
 			local akahana_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[akahana_trade_item]]][1]
@@ -191,7 +191,7 @@ end
 function hasSlimeTrade()
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil and Archipelago.Seed ~= nil then
 		local slime_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Slimed Kensu"]
 		if flag_wu then
 			local slime_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[slime_trade_item]]][1]
@@ -236,7 +236,7 @@ end
 
 function hasAryllisTrade()
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil and Archipelago.Seed ~= nil then
 		local aryllis_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Aryllis"]
 		if flag_wu then
 			local aryllis_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[aryllis_trade_item]]][1]
@@ -277,7 +277,7 @@ end
 
 function hasKensuTrade()
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil and Archipelago.Seed ~= nil then
 		local kensu_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Kensu"]
 		if flag_wu then
 			local kensu_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[kensu_trade_item]]][1]
@@ -319,7 +319,7 @@ end
 function hasFishermanTrade()
 	local flag_wt = Tracker:ProviderCountForCode("flag_wt") > 0
 	local flag_wu = Tracker:ProviderCountForCode("flag_wu") > 0
-	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil then
+	if SLOT_DATA ~= nil and KEY_ITEM_MAP ~= nil and Archipelago.Seed ~= nil then
 		local fisherman_trade_item = SLOT_DATA["shuffle_data"]["trade_in_map"]["Fisherman"]
 		if flag_wu then
 			local fisherman_trade_code = ITEM_MAPPING[KEY_ITEM_REVERSE_MAP[KEY_ITEM_MAP[fisherman_trade_item]]][1]

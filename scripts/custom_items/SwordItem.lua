@@ -37,6 +37,11 @@ end
 
 function SwordItemFunc_load(self, data)
 	self.ItemState = data
+	if self.ItemState["active"] then
+		self.Icon = self.ItemState["activeImage"]
+	else
+		self.Icon = self.ItemState["disabledImage"]
+	end
 end
 
 function SwordItemFunc_propertyChanged(self, key, value)
