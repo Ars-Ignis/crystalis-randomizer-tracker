@@ -451,6 +451,16 @@ function compactItemHandler(item_id, item_name)
             if v then
                 found = true
             end
+        elseif KEY_ITEM_TYPE_MAPPING[item_id] == "Bow" then
+	        local sunmoon_obj = Tracker:FindObjectForCode("sunmoon")
+            if sunmoon_obj.CurrentStage == 3 then
+                local truth_obj = Tracker:FindObjectForCode("bowoftruth")
+                truth_obj.Active = true
+            elseif sunmoon_obj.CurrentStage == 1 or sunmoon_obj.CurrentStage == 2 then
+                sunmoon_obj.CurrentStage = 3
+            elseif sunmoon_obj.CurrentStage == 0 then
+                sunmoon_obj.CurrentStage = 1
+            end
         end
         if not found then
             if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
