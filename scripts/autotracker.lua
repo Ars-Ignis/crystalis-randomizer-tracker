@@ -1076,7 +1076,7 @@ function updateKeyCount(segment, code)
         local value = 0
         local valuewind = 0
         local valueprison = 0
-        local valuestyx = 0
+        local valuestxy = 0
 
         local KEYITEM1 = ReadU8(segment, 0x6450) 
     	local KEYITEM2 = ReadU8(segment, 0x6451)
@@ -1150,12 +1150,12 @@ function updateKeyCount(segment, code)
 		        or KEYITEM14 == 0x34
 		        or KEYITEM15 == 0x34 
                 or KEYITEM16 == 0x34 then
-                valuestyx = 1
+                valuestxy = 1
             end
 
         if
-        valuewind or valueprison or valuestyx > 0 then
-        value = valuewind + valueprison + valuestyx
+        valuewind or valueprison or valuestxy > 0 then
+        value = valuewind + valueprison + valuestxy
         end
 
         if item.AcquiredCount ~= value then

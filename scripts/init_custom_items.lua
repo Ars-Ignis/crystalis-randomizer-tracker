@@ -26,11 +26,11 @@ function initCustomItems()
 		{code = "unknownkey", flag_wt = false, flag_wu = true, both = true},
 		{code = "windmill", flag_wt = false, flag_wu = true, both = true},
 		{code = "prison", flag_wt = false, flag_wu = true, both = true},
-		{code = "styx", flag_wt = false, flag_wu = true, both = true}
+		{code = "stxy", flag_wt = false, flag_wu = true, both = true}
 	}
-	CreateKeyItem("Windmill Key", "redkey", "key", "images/items/keywindmill.png", keyBadges)
-	CreateKeyItem("Key to Prison", "bluekey", "key", "images/items/keyprison.png", keyBadges)
-	CreateKeyItem("Key to Styx", "greenkey", "key", "images/items/keystyx.png", keyBadges)
+	CreateKeyItem("Windmill Key", "redkey", "key", "images/items/keywindmill.png", keyBadges, "windmill")
+	CreateKeyItem("Key to Prison", "bluekey", "key", "images/items/keyprison.png", keyBadges, "prison")
+	CreateKeyItem("Key to Styx", "greenkey", "key", "images/items/keystxy.png", keyBadges, "stxy")
 
 	local fluteBadges = 
 	{
@@ -41,10 +41,10 @@ function initCustomItems()
 		{code = "shell", flag_wt = false, flag_wu = true, both = true}
 	}
 
-	CreateKeyItem("Alarm Flute", "grayflute", "flute", "images/items/flutealarm.png", fluteBadges)
-	CreateKeyItem("Insect Flute", "greenflute", "flute", "images/items/fluteinsect.png", fluteBadges)
-	CreateKeyItem("Flute of Lime", "blueflute", "flute", "images/items/flutelime.png", fluteBadges)
-	CreateKeyItem("Shell Flute", "redflute", "flute", "images/items/fluteshell.png", fluteBadges)
+	CreateKeyItem("Alarm Flute", "grayflute", "flute", "images/items/flutealarm.png", fluteBadges, "alarm")
+	CreateKeyItem("Insect Flute", "greenflute", "flute", "images/items/fluteinsect.png", fluteBadges, "insect")
+	CreateKeyItem("Flute of Lime", "blueflute", "flute", "images/items/flutelime.png", fluteBadges, "lime")
+	CreateKeyItem("Shell Flute", "redflute", "flute", "images/items/fluteshell.png", fluteBadges, "shell")
 	
 	local tradeStatueBadges = 
 	{
@@ -59,8 +59,8 @@ function initCustomItems()
 		{code = "whirlpool", flag_wt = false, flag_wu = true, both = true}
 	}
 	
-	CreateKeyItem("Statue of Onyx", "redstatue", "tradestatue", "images/items/statueonyx.png", tradeStatueBadges)
-	CreateKeyItem("Ivory Statue", "graystatue", "tradestatue", "images/items/statueivory.png", tradeStatueBadges)
+	CreateKeyItem("Statue of Onyx", "redstatue", "tradestatue", "images/items/statueonyx.png", tradeStatueBadges, "tradeakahana")
+	CreateKeyItem("Ivory Statue", "graystatue", "tradestatue", "images/items/statueivory.png", tradeStatueBadges, "tradeslime")
 	
 	local nontradeStatueBadges =  
 	{
@@ -74,8 +74,8 @@ function initCustomItems()
 		{code = "whirlpool", flag_wt = false, flag_wu = true, both = true}
 	}
 	
-	CreateKeyItem("Statue of Gold", "bluestatue", "statue", "images/items/statuegold.png", nontradeStatueBadges)
-	CreateKeyItem("Broken Statue", "crackedstatue", "statue", "images/items/statuebroken.png", nontradeStatueBadges)
+	CreateKeyItem("Statue of Gold", "bluestatue", "statue", "images/items/statuegold.png", nontradeStatueBadges, "whirlpool")
+	CreateKeyItem("Broken Statue", "crackedstatue", "statue", "images/items/statuebroken.png", nontradeStatueBadges, "brokenstatue")
 	
 	local fogLampBadges =
 	{
@@ -89,7 +89,7 @@ function initCustomItems()
 		{code = "brokenlamp", flag_wt = false, flag_wu = true, both = true},
 	}
 	
-	CreateKeyItem("Fog Lamp", "bluelamp", "foglamp", "images/items/lampfog.png", fogLampBadges)
+	CreateKeyItem("Fog Lamp", "bluelamp", "foglamp", "images/items/lampfog.png", fogLampBadges, "tradefisherman")
 	
 	local glowingLampBadges =
 	{
@@ -102,7 +102,7 @@ function initCustomItems()
 		{code = "brokenlamp", flag_wt = false, flag_wu = true, both = true},
 	}
 	
-	CreateKeyItem("Glowing Lamp", "graylamp", "glowinglamp", "images/items/lampglowing.png", glowingLampBadges)
+	CreateKeyItem("Glowing Lamp", "graylamp", "glowinglamp", "images/items/lampglowing.png", glowingLampBadges, "brokenlamp")
 	
 	local tradeBadges =
 	{
@@ -114,8 +114,8 @@ function initCustomItems()
 		{code = "tradeslime", flag_wt = true, flag_wu = false, both = true},
 	}
 	
-	CreateKeyItem("Kirisa Plant", "kirisa", "trade", "images/items/kirisaplant.png", tradeBadges)
-	CreateKeyItem("Love Pendant", "love", "trade", "images/items/lovependant.png", tradeBadges)
+	CreateKeyItem("Kirisa Plant", "kirisa", "trade", "images/items/kirisaplant.png", tradeBadges, "tradearyllis")
+	CreateKeyItem("Love Pendant", "love", "trade", "images/items/lovependant.png", tradeBadges, "tradekensu")
 	
 	local bowBadges = 
 	{
@@ -125,8 +125,8 @@ function initCustomItems()
 		{code = "truth", flag_wt = false, flag_wu = true, both = true}
 	}
 	
-	CreateKeyItem("Bow of Sun", "redbow", "bow", "images/items/bowofsun.png", bowBadges)
-	CreateKeyItem("Bow of Moon", "graybow", "bow", "images/items/bowofmoon.png", bowBadges)
-	CreateKeyItem("Bow of Truth", "bluebow", "bow", "images/items/bowoftruth.png", bowBadges)
+	CreateKeyItem("Bow of Sun", "redbow", "bow", "images/items/bowofsun.png", bowBadges, "sun")
+	CreateKeyItem("Bow of Moon", "graybow", "bow", "images/items/bowofmoon.png", bowBadges, "moon")
+	CreateKeyItem("Bow of Truth", "bluebow", "bow", "images/items/bowoftruth.png", bowBadges, "truth")
 	
 end

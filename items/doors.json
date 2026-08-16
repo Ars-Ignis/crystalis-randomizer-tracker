@@ -559,12 +559,12 @@
 		"stages": [
 			{
 				"img": "images/doors/fortressstairsup.png",
-				"codes": "d_styx",
+				"codes": "d_stxy",
 				"inherit_codes" : false
 			},
 			{
 				"img": "images/doors/fortressstairsupblocked.png",
-				"codes": "d_styx_blocked",
+				"codes": "d_stxy_blocked",
 				"inherit_codes" : false
 			}
 		]

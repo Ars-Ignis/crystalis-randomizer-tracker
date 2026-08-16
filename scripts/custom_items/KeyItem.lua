@@ -1,6 +1,6 @@
 BADGE_IMAGE_PATH = "images/badges/"
 
-function CreateKeyItem(name, code, category, imagePath, badges)
+function CreateKeyItem(name, code, category, imagePath, badges, default_code)
 	local self = ScriptHost:CreateLuaItem()
 	self.Name = name
 	local imageBase = ImageReference:FromPackRelativePath(imagePath)
@@ -13,6 +13,7 @@ function CreateKeyItem(name, code, category, imagePath, badges)
 	["badgeNum"] = 0,
 	["canUpdateIcon"] = false,
 	["category"] = category,
+	["default_code"] = default_code,
 	["flag_wt"] = 0,
 	["flag_wu"] = 0
 	}
@@ -146,9 +147,9 @@ function KeyItem_advanceToCode(self, code)
 	else
 		for badgeIndex, badge in ipairs(self.ItemState["badges"]) do
 			if code == badge["code"] then
-				if	(flag_wt and not flag_wu and currentBadge["flag_wt"]) or
-					(not flag_wt and flag_wu and currentBadge["flag_wu"]) or
-					(flag_wt and flag_wu and currentBadge["both"]) then
+				if	(flag_wt and not flag_wu and badge["flag_wt"]) or
+					(not flag_wt and flag_wu and badge["flag_wu"]) or
+					(flag_wt and flag_wu and badge["both"]) then
 						self:Set("badgeNum", badgeIndex)
 						self:Set("active", true)
 				end
@@ -169,4 +170,11 @@ end
 
 function KeyItem_propertyChanged(self, key, value)
 	KeyItem_updateIcon(self)
+end
+
+function KeyItem_advanceToDefaultCode(self)
+	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+		print(string.format("Default code for item [%s]: %s", self.Name, self.ItemState["default_code"]))
+	end
+	KeyItem_advanceToCode(self, self.ItemState["default_code"])
 end
